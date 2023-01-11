@@ -11,3 +11,4 @@ MiniShell will introduce you to the world of shells, which provide a convenient 
 **Writing your own shell:**
 - [Chapter5-WritingYourOwnShell.pdf](https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf)
 - [Swoorup/mysh: A basic unix shell interpreter in c programming language using recursive descent parser.](https://github.com/Swoorup/mysh)
+- [LucieLeBriquer: minishell](https://github.com/LucieLeBriquer/minishell)
