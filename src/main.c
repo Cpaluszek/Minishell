@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/13 10:12:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:54:01 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	main(int argc, char **argv, char **env)
 	{
 		// Set the prompt & read input
 		input = readline(PROMPT);
-		if (ft_strlen(input) == 0)
+		if (input == NULL || ft_strlen(input) == 0)
 			continue ;
-		printf("%s\n", input);
+		printf("%ld %s\n", ft_strlen(input), input);
 		add_history(input);
 		// Lexically analyze
 
