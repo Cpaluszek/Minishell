@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/13 10:09:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:12:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	main(int argc, char **argv, char **env)
 	{
 		// Set the prompt & read input
 		input = readline(PROMPT);
+		if (ft_strlen(input) == 0)
+			continue ;
 		printf("%s\n", input);
+		add_history(input);
 		// Lexically analyze
 
 		// Parse
