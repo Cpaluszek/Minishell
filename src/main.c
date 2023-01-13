@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/09 16:35:26 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:09:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // NOTE: check argc error ?
 int	main(int argc, char **argv, char **env)
 {
+	char	*input;
 	// Manage signals
 		// Intercept SIGQUIT (^\)
 		// Ignore SIGERM SIGHUP, SIGTSTP, SIGTTOU
@@ -22,16 +23,20 @@ int	main(int argc, char **argv, char **env)
 
 	// Manage env -> store env in file (unlink at the end)
 	// Get PATH from env
-
-
-	// While 
-		// Set the prompt
-		// read input
-
+	(void) argc;
+	(void) argv;
+	(void) env;
+	while (1)
+	{
+		// Set the prompt & read input
+		input = readline(PROMPT);
+		printf("%s\n", input);
 		// Lexically analyze
 
 		// Parse
 
 		// Execute
+	}
+
 	return (0);
 }
