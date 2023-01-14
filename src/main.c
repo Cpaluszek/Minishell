@@ -6,13 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/13 11:54:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/14 10:11:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // NOTE: check argc error ?
+// Note: here_doc in a fork to manage CTRL-C
 int	main(int argc, char **argv, char **env)
 {
 	char	*input;
