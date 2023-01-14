@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/14 11:03:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:46:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	exec_start(s_block **block)
 	// disable signals
 }
 
+// For pipes: use minimal amount of pipes
+// create pipe in child then close it ASAP
 int	exec_block(s_block **block)
 {
 	// Foreach token
