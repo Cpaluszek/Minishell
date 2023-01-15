@@ -1,14 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/13 17:15:43 by Teiki            ###   ########.fr       */
+/*   Created: 2022/11/07 13:39:35 by jlitaudo          #+#    #+#             */
+/*   Updated: 2022/11/09 11:31:56 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
+#include "libft.h"
 
+void	*ft_memset(void *s, int c, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((char *)s)[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
+}
