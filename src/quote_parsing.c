@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/15 18:31:52 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/15 22:30:39 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_token *quote_parsing(char *str)
 			return (NULL);
 		i = 0;
 	}
+	if (space_truncature(token_list))
+		return (NULL);
 	return (token_list);
 }
 
@@ -73,7 +75,7 @@ int	space_truncature(t_token *token_list)
 		if (token_list->token == EMPTY)
 		{
 			len = ft_strlen(token_list->str);
-			if (token_list->str[0] != ' ')
+			if (token_list->prev && token_list->str[0] != ' ')
 				token_list->prev->space_link = false;
 			if (token_list->str[len - 1] != ' ')
 				token_list->space_link = false;

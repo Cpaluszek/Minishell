@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other_token_parsing.c                              :+:      :+:    :+:   */
+/*   token_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/15 19:40:59 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/15 22:44:04 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,30 @@
 #include "libft.h"
 #include "token_list_functions.h"
 #include "parsing.h"
-#include <stdio.h>
 
 void			insert_token_list(t_token *token_list, t_token *splitted_token_list);
-t_token			*other_token_parsing(char *str);
+t_token			*create_sub_token_list(char *str);
 enum e_token	which_token(char *str);
 
-t_token	*central_parsing(char *str)
+t_token	*token_parsing(t_token *token_list)
 {
-	t_token	*token_list;
 	t_token	*temp;
 	t_token	*del;
 	t_token	*splitted_token_list;
 
-	token_list = quote_parsing(str);
 	temp = token_list;
 	while (temp)
 	{
-		if (temp->token == EMPTY)
+		if (temp->token == EMPTY && temp->str[0])
 		{
-			splitted_token_list = other_token_parsing(temp->str); // ajouter une fonction de protection de malloc
+			splitted_token_list = create_sub_token_list(temp->str); // ajouter une fonction de protection de malloc
 			if (temp->space_link == false)
 				(ft_lstlast_token(splitted_token_list))->space_link = false;
 			insert_token_list(temp, splitted_token_list);
 			del = temp;
 			temp = temp->next;
 			ft_lstdelone_token(del);
+			token_list = splitted_token_list;
 		}
 		else
 			temp = temp->next;
@@ -49,22 +47,7 @@ t_token	*central_parsing(char *str)
 	return (token_list);
 }
 
-void	insert_token_list(t_token *token_list, t_token *splitted_token_list)
-{
-	t_token *last_splitted_token;
-
-	if (token_list->prev)
-	{
-		token_list->prev->next = splitted_token_list;
-		splitted_token_list->prev = token_list->prev;
-	}
-	last_splitted_token = ft_lstlast_token(splitted_token_list);
-	last_splitted_token->next = token_list->next;
-	if (token_list->next)
-		token_list->next->prev = last_splitted_token;
-}
-
-t_token	*other_token_parsing(char *str)
+t_token	*create_sub_token_list(char *str)
 {
 	int				i;
 	enum e_token	token;
@@ -75,7 +58,7 @@ t_token	*other_token_parsing(char *str)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] && !ft_is_inside(str[i], "<>|"))
+		while (str[i] && !ft_is_inside(str[i], "<>|\n"))
 			i++;
 		if (i != 0 && new_token(&token_list, str, i, CMD))
 			return (NULL);
@@ -107,5 +90,23 @@ enum e_token which_token(char *str)
 			return (HERE_DOC);
 		return (INPUT);	
 	}
-	return (PIPE);
+	else if (*str == '|')
+		return (PIPE);
+	return (NEW_LINE);
+}
+
+void	insert_token_list(t_token *token_list, t_token *splitted_token_list)
+{
+	t_token *last_splitted_token;
+
+	if (token_list->prev)
+	{
+		token_list->prev->next = splitted_token_list;
+		splitted_token_list->prev = token_list->prev;
+	}
+	last_splitted_token = ft_lstlast_token(splitted_token_list);
+	last_splitted_token->next = token_list->next;
+	if (token_list->next)
+		token_list->next->prev = last_splitted_token;
+	last_splitted_token->space_link = token_list->space_link;
 }

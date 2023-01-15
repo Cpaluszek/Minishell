@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/15 17:53:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/15 23:36:51 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv, char **env)
 		token_list = central_parsing(input);
 		while (token_list)
 		{
-			printf("[%d :%s] -> ", token_list->token, token_list->str);
+			printf("{ [%s]:[%s], SL(%d)} -> ", token_list->token_str, token_list->str, token_list->space_link);
 			token_list = token_list->next;
 		}
 		printf("\n");

@@ -6,7 +6,7 @@
 #    By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 13:00:31 by jlitaudo          #+#    #+#              #
-#    Updated: 2023/01/15 17:27:27 by Teiki            ###   ########.fr        #
+#    Updated: 2023/01/15 20:09:41 by Teiki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ BONUS_DIR	:= bonus/
 BONUS		:= $(addprefix $(BONUS_DIR), $(LIST_BONUS))
 
 LIST_SRC	:=	main.c\
-				other_token_parsing.c\
+				central_parsing.c\
+				token_parsing.c\
 				quote_parsing.c\
 				token_list_functions.c\
 				$(CHECKING)\

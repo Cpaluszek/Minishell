@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/15 17:10:55 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/15 23:06:44 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ enum e_token
     HERE_DOC = 1,
     OUTPUT_TRUNC = 2,
     OUTPUT_APPEND = 3,
-    CMD = 4,
-    PIPE = 5,
+    PIPE = 4,
+    CMD = 5,
     // PARSING UTILS
     DQUOTE = 6,
     QUOTE = 7,
     DOLLAR = 8,
 	EMPTY = 9,
+	NEW_LINE = 10,
 };
 
 typedef struct s_block {
@@ -52,6 +53,7 @@ typedef struct s_token {
     struct s_token	*next;
     struct s_token	*prev;
     char			*str;
+	char			*token_str;
 	bool			space_link;
     
     // IF token == CMD

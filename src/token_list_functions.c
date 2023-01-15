@@ -6,12 +6,14 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/15 17:25:26 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/15 23:41:42 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "libft.h"
+
+void	token_str_assignment(t_token *elem, enum e_token token);
 
 void	ft_lstadd_back_token(t_token **lst, t_token *new)
 {
@@ -85,5 +87,30 @@ t_token	*ft_lstnew_token(char	*content, enum e_token token)
 	elem->token = token;
 	elem->next = NULL;
 	elem->prev = NULL;
+	token_str_assignment(elem, token);
 	return (elem);
+}
+
+void	token_str_assignment(t_token *elem, enum e_token token)
+{
+	if (token == INPUT)
+		elem->token_str = "<";
+	else if (token == HERE_DOC)
+		elem->token_str = "<<";
+	else if (token == OUTPUT_TRUNC)
+		elem->token_str = ">";
+	else if (token == OUTPUT_APPEND)
+		elem->token_str = ">>";
+	else if (token == PIPE)
+		elem->token_str = "|";
+	else if (token == CMD)
+		elem->token_str = "CMD";
+	else if (token == DQUOTE)
+		elem->token_str = "\"";
+	else if (token == QUOTE)
+		elem->token_str = "'";
+	else if (token == DOLLAR)
+		elem->token_str = "$";
+	else if (token == NEW_LINE)
+		elem->token_str = "newline";
 }
