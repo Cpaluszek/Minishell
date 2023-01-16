@@ -9,7 +9,24 @@ HEADERS			:=	inc
 HEADERS_FILES	:=	minishell.h
 
 SRC_DIR			:=	src
-SRC_FILES		:=	main.c
+
+PARSING_DIR		:=	parsing
+PARSING_FILES	:=	central_parsing.c \
+					quote_parsing.c \
+					token_list_functions.c \
+					token_parsing.c
+
+EXEC_DIR		:=	exec
+EXEC_FILES		:=	#exec.c
+
+PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
+EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))
+
+SRC_FILES		:=	main.c \
+					$(EXEC_SRC) \
+					$(PARSING_SRC)
+SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+					
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

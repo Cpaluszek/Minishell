@@ -19,6 +19,7 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	str/ft_tolower.c \
  			   	str/ft_atoi.c \
  			   	str/ft_strdup.c \
+ 			   	str/ft_strndup.c \
  			   	str/ft_strchr.c \
  			   	str/ft_strrchr.c \
  			   	str/ft_strlen.c \
@@ -34,6 +35,7 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	str/ft_itoa.c \
  			   	str/ft_strmapi.c \
  			   	str/ft_striteri.c \
+				str/ft_is_inside.c \
  			   	mem/ft_calloc.c \
  			   	mem/ft_bzero.c \
  			   	mem/ft_memset.c \

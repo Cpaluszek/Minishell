@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/16 10:17:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/16 10:33:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv, char **env)
 	while (1)
 	{
 		// Set the prompt & read input
-		input = get_next_line(STDIN_FILENO);
+		input = readline(PROMPT);
 		if (input == NULL || ft_strlen(input) == 0)
 			continue ;
 		token_list = central_parsing(input);
@@ -43,7 +43,6 @@ int	main(int argc, char **argv, char **env)
 			token_list = token_list->next;
 		}
 		printf("\n");
-		printf("%ld %s\n", ft_strlen(input), input);
 		// add_history(input);
 		// Lexically analyze
 
@@ -58,20 +57,20 @@ int	main(int argc, char **argv, char **env)
 /*
 	Function that will get each line read in the standard input.
 */
-char	*get_next_line(int fd)
-{
-	char	buffer[1001];
-	char	*line;
+// char	*get_next_line(int fd)
+// {
+// 	char	buffer[1001];
+// 	char	*line;
 
-	ft_bzero(buffer, 1001);
-	line = ft_calloc(1, sizeof(char));
-	read(fd, buffer, 1000);
-	while (!ft_strrchr(buffer, '\n') && ft_strlen(buffer))
-	{
-		line = ft_strjoin_free_s1(line, buffer);
-		ft_bzero(buffer, 1001);
-		read(STDIN_FILENO, buffer, 1000);
-	}
-	line = ft_strjoin_free_s1(line, buffer);
-	return (line);
-}
+// 	ft_bzero(buffer, 1001);
+// 	line = ft_calloc(1, sizeof(char));
+// 	read(fd, buffer, 1000);
+// 	while (!ft_strrchr(buffer, '\n') && ft_strlen(buffer))
+// 	{
+// 		line = ft_strjoin_free_s1(line, buffer);
+// 		ft_bzero(buffer, 1001);
+// 		read(STDIN_FILENO, buffer, 1000);
+// 	}
+// 	line = ft_strjoin_free_s1(line, buffer);
+// 	return (line);
+// }
