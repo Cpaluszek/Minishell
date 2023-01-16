@@ -1,0 +1,20 @@
+total 96
+-rw-r--r--   1 jlitaudo  4222   1977 Jan 16 09:22  
+drwxr-xr-x  19 jlitaudo  4222    646 Jan 16 09:36 .
+drwx------  14 jlitaudo  4222    476 Jan 16 09:21 ..
+drwxr-xr-x  12 jlitaudo  4222    408 Jan 16 09:22 .git
+-rw-r--r--   1 jlitaudo  4222     66 Jan 16 09:21 .gitattributes
+-rw-r--r--   1 jlitaudo  4222     16 Jan 16 09:21 .gitignore
+-rw-r--r--   1 jlitaudo  4222     84 Jan 16 09:21 .gitmodules
+drwxr-xr-x   3 jlitaudo  4222    102 Jan 16 09:21 .vscode
+drwxr-xr-x   7 jlitaudo  4222    238 Jan 16 09:22 Libft
+-rw-r--r--   1 jlitaudo  4222   3585 Jan 16 09:22 Makefile
+-rw-r--r--   1 jlitaudo  4222   1804 Jan 16 09:22 Makefile_Clem.txt
+-rw-r--r--   1 jlitaudo  4222      0 Jan 16 09:40 a
+drwxr-xr-x   7 jlitaudo  4222    238 Jan 16 09:22 inc
+drwxr-xr-x   3 jlitaudo  4222    102 Jan 16 09:21 lib
+-rwxr-xr-x   1 jlitaudo  4222  18556 Jan 16 09:22 minishell
+drwxr-xr-x   8 jlitaudo  4222    272 Jan 16 09:22 obj
+-rw-r--r--   1 jlitaudo  4222      0 Jan 16 09:36 out
+-rw-r--r--   1 jlitaudo  4222   1154 Jan 16 09:21 readme.md
+drwxr-xr-x   7 jlitaudo  4222    238 Jan 16 09:22 src

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/15 22:44:04 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/16 10:10:27 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_token	*token_parsing(t_token *token_list)
 	{
 		if (temp->token == EMPTY && temp->str[0])
 		{
-			splitted_token_list = create_sub_token_list(temp->str); // ajouter une fonction de protection de malloc
+			splitted_token_list = create_sub_token_list(temp->str)// ajouter une fonction de protection de malloc
 			if (temp->space_link == false)
 				(ft_lstlast_token(splitted_token_list))->space_link = false;
 			insert_token_list(temp, splitted_token_list);

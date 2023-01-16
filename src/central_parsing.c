@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   central_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/15 23:32:51 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/16 09:28:05 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "token_list_functions.h"
 #include "parsing.h"
-# include <stdio.h>
+#include <stdio.h>
 
 void	empty_token_assignation(t_token *token);
 int		syntaxe_checking(t_token *token);
@@ -22,13 +22,12 @@ void	remove_empty_token(t_token **token_list);
 t_token	*central_parsing(char *str)
 {
 	t_token	*token_list;
-	
+
 	token_list = quote_parsing(str);
 	token_list = token_parsing(token_list);
 	empty_token_assignation(token_list);
 	if (syntaxe_checking(token_list))
 		return (NULL);
-
 	return (token_list);
 }
 
@@ -36,7 +35,7 @@ void	empty_token_assignation(t_token *token)
 {
 	int	i;
 
-	while(token)
+	while (token)
 	{
 		if (token->token == CMD)
 		{
@@ -53,7 +52,7 @@ void	empty_token_assignation(t_token *token)
 int	syntaxe_checking(t_token *token_list)
 {
 	t_token	*token;
-	
+
 	token = token_list;
 	while (token)
 	{
@@ -70,7 +69,7 @@ int	syntaxe_checking(t_token *token_list)
 	token = token_list;
 	while (token)
 	{
-		if (token->token <= 4 && token->next && 
+		if (token->token <= 4 && token->next && \
 			(token->next->token <= 4 || token->next->token == 10))
 		{
 			dprintf(2, "%s`%s'\n", ERR_SYNTAX, token->next->token_str);
