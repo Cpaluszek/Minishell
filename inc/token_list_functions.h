@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   token_list_functions.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/15 22:57:40 by Teiki            ###   ########.fr       */
+/*   Created: 2023/01/15 16:27:20 by Teiki             #+#    #+#             */
+/*   Updated: 2023/01/15 16:31:28 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#ifndef TOKEN_LIST_FUNCTIONS_H
+# define TOKEN_LIST_FUNCTIONS_H
 
 # include "structs.h"
 
-# define ERR_SYNTAX "syntax error near unexpected token "
-
-int		new_token(t_token **list, char *str, int len, enum e_token type);
-t_token *quote_parsing(char *str);
-t_token	*token_parsing(t_token *token_list);
-t_token	*central_parsing(char *str);
+void	ft_lstadd_back_token(t_token **lst, t_token *new);
+void	ft_lstdelone_token(t_token *lst);
+void	ft_lstclear_token(t_token **lst);
+t_token	*ft_lstlast_token(t_token *lst);
+t_token	*ft_lstnew_token(char	*content, enum e_token token);
 
 #endif
