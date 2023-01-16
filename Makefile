@@ -14,7 +14,8 @@ PARSING_DIR		:=	parsing
 PARSING_FILES	:=	central_parsing.c \
 					quote_parsing.c \
 					token_list_functions.c \
-					token_parsing.c
+					token_parsing.c \
+					utils_parsing.c
 
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	#exec.c

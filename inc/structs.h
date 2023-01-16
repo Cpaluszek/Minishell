@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/15 23:06:44 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/16 19:34:59 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 enum e_link {
     NO_LINK = 0,
-    OR = 1,         // ||
-    AND = 2,        // &&
+    OR_L = 1,         // ||
+    AND_L = 2,        // &&
 };
 
 enum e_token 
@@ -29,13 +29,17 @@ enum e_token
     OUTPUT_TRUNC = 2,
     OUTPUT_APPEND = 3,
     PIPE = 4,
-    CMD = 5,
+	AND = 5,
+	OR = 6,
+	OPEN_PAR = 7,
+	CLOSE_PAR = 8,
+    CMD = 9,
     // PARSING UTILS
-    DQUOTE = 6,
-    QUOTE = 7,
-    DOLLAR = 8,
-	EMPTY = 9,
-	NEW_LINE = 10,
+    DQUOTE = 10,
+    QUOTE = 11,
+    DOLLAR = 12,
+	EMPTY = 13,
+	NEW_LINE = 14,
 };
 
 typedef struct s_block {
@@ -46,6 +50,7 @@ typedef struct s_block {
     struct s_block		*upper_block;
     struct s_token		*token_list;
     int					block_level;
+	int					pipe_count;
 }   t_block;
 
 typedef struct s_token {
@@ -55,11 +60,21 @@ typedef struct s_token {
     char			*str;
 	char			*token_str;
 	bool			space_link;
+    bool            writtable;
     
     // IF token == CMD
     // Split into char **
     char			**cmd;
     int				exit_status;
 }t_token;
+
+typedef struct s_global{
+	t_list	*env;
+	char	**path;
+	char	*input;
+	t_block	*block_list;
+	t_token	*token_list;
+	int		last_exit_status;
+}t_global;
 
 #endif

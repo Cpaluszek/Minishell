@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/16 10:33:31 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:29:11 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ char	*get_next_line(int fd);
 // Note: here_doc in a fork to manage CTRL-C
 int	main(int argc, char **argv, char **env)
 {
-	char	*input;
-	t_token	*token_list;
+	t_global	shell;
 	// Manage signals
 		// Intercept SIGQUIT (^\)
 		// Ignore SIGERM SIGHUP, SIGTSTP, SIGTTOU
@@ -29,21 +28,18 @@ int	main(int argc, char **argv, char **env)
 	// Get PATH from env
 	(void) argc;
 	(void) argv;
-	(void) env;
+	set_env_and_path(&shell);
 	while (1)
 	{
 		// Set the prompt & read input
-		input = readline(PROMPT);
-		if (input == NULL || ft_strlen(input) == 0)
-			continue ;
-		token_list = central_parsing(input);
+		shell.input = NULL;
+		central_parsing(&shell, PROMPT);
 		while (token_list)
 		{
 			printf("{ [%s]:[%s], SL(%d)} -> ", token_list->token_str, token_list->str, token_list->space_link);
 			token_list = token_list->next;
 		}
 		printf("\n");
-		// add_history(input);
 		// Lexically analyze
 
 		// Parse
@@ -74,3 +70,4 @@ int	main(int argc, char **argv, char **env)
 // 	line = ft_strjoin_free_s1(line, buffer);
 // 	return (line);
 // }
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/16 10:30:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:20:17 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "token_list_functions.h"
 #include "parsing.h"
+#include <stdio.h>
 
 void			insert_token_list(t_token *token_list, t_token *splitted_token_list);
 t_token			*create_sub_token_list(char *str);
@@ -53,7 +54,7 @@ t_token	*create_sub_token_list(char *str)
 	enum e_token	token;
 	t_token			*token_list;
 
-
+	// printf("[%s]", str);
 	token_list = NULL;
 	i = 0;
 	while (str[i])
@@ -97,7 +98,7 @@ enum e_token which_token(char *str)
 
 void	insert_token_list(t_token *token_list, t_token *splitted_token_list)
 {
-	t_token *last_splitted_token;
+	t_token	*last_splitted_token;
 
 	if (token_list->prev)
 	{

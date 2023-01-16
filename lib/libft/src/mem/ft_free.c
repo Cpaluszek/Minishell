@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:12:37 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/09 15:51:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:03:16 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_free(void *ptr)
 {
+	if (ptr == NULL)
+		return ;
 	free(ptr);
 	ptr = NULL;
 }

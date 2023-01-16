@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/15 22:30:39 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/16 15:04:01 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,15 @@ int	quote_parsing2(t_token **token_list, char **str, char quote);
 int	space_truncature(t_token *token_list);
 int	new_token(t_token **list, char *str, int len, enum e_token type);
 
-t_token *quote_parsing(char *str)
+t_token	*quote_parsing(char *str)
 {
 	int		i;
-	t_token *token_list;
-	
+	t_token	*token_list;
+
 	token_list = NULL;
 	i = 0;
-	while (str[i] && str[i] == ' ')
+	while (str[i] == ' ')
 		i++;
-	str = &str[i];
-	i = 0;
 	while (str[i])
 	{
 		while (str[i] && str[i] != '"' && str[i] != '\'')
@@ -38,12 +36,12 @@ t_token *quote_parsing(char *str)
 		if (!str[i])
 			break ;
 		str = &str[i];
-		if ((*str == '"' || *str == '\'') && quote_parsing2(&token_list, &str, *str))
+		if ((*str == '"' || *str == '\'') && \
+			quote_parsing2(&token_list, &str, *str))
 			return (NULL);
 		i = 0;
 	}
-	if (space_truncature(token_list))
-		return (NULL);
+	space_truncature(token_list);
 	return (token_list);
 }
 
@@ -58,7 +56,7 @@ int	quote_parsing2(t_token **token_list, char **str, char quote)
 		i++;
 	i++;
 	if (quote == '"' && new_token(token_list, str_quote, i, DQUOTE))
-			return (1);
+		return (1);
 	else if (quote == '\'' && new_token(token_list, str_quote, i, QUOTE))
 		return (1);
 	*str = &str_quote[i];
@@ -67,7 +65,6 @@ int	quote_parsing2(t_token **token_list, char **str, char quote)
 
 int	space_truncature(t_token *token_list)
 {
-	char	*str_trunc;
 	int		len;
 
 	while (token_list)
@@ -79,15 +76,6 @@ int	space_truncature(t_token *token_list)
 				token_list->prev->space_link = false;
 			if (token_list->str[len - 1] != ' ')
 				token_list->space_link = false;
-			str_trunc = ft_strtrim(token_list->str, " ");
-			if (!str_trunc)
-			{
-				// TODO : dprintf en sortie d'erreur d'une rreur de malloc
-				ft_lstclear_token(&token_list);
-				return (1);
-			}
-			free(token_list->str);
-			token_list->str = str_trunc;
 		}
 		token_list = token_list->next;
 	}
