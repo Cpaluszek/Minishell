@@ -5,8 +5,15 @@
 # Folders and names
 NAME			:=	minishell
 
-HEADERS			:=	inc
-HEADERS_FILES	:=	minishell.h
+HEADERS_DIR		:=	inc
+HEADERS_FILES	:=	minishell.h \
+					parsing.h \
+					exec.h \
+					structs.h \
+					errors.h \
+					token_list_functions.h
+
+HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:=	src
 
@@ -17,16 +24,16 @@ PARSING_FILES	:=	central_parsing.c \
 					token_parsing.c
 
 EXEC_DIR		:=	exec
-EXEC_FILES		:=	#exec.c
+EXEC_FILES		:=	exec.c \
+					find_exec.c
 
 PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
 EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))
 
 SRC_FILES		:=	main.c \
+					errors.c \
 					$(EXEC_SRC) \
 					$(PARSING_SRC)
-SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-					
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
@@ -43,8 +50,8 @@ OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
 
 # Compiler options
 CC				:=	cc
-CC_FLAGS		:=	-Wextra -Werror -Wall
-DEBUG_FLAG		:=	-g3 -fsanitize=address
+DEBUG_FLAG		:=	-g3
+CC_FLAGS		:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
 
 MAKE			:=	make -C
 
@@ -68,24 +75,25 @@ _WHITE			:=	\x1b[37m
 
 all: build_libs $(NAME)
 
+echo:
+	@echo $(SRC_DIR)
+	@echo $(SRCS)
+	@echo $(OBJS)
+	@echo $(HEADERS)
+
 build_libs:
 	@$(foreach lib, $(LIB_NAMES), \
 		@$(MAKE) $(lib); \
 	)
 
-echo:
-	@echo $(LIB_NAMES)
-	@echo $(LIBS)
-	@echo $(LIB_LD)
-
 $(NAME): $(LIB_PATHS) $(OBJS)
 	@$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
 	@echo "> $(NAME) Done!\n"
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS) $(HEADERS)/$(HEADERS_FILES)
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS) $(HEADERS)
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) -I$(HEADERS) $(LIB_HEADERS) -c $< -o $@
+	@$(CC) $(CC_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 
 # clean commands
 clean:

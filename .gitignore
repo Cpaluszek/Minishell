@@ -1,3 +1,5 @@
 build/
 minishell
 lib/libft/libft.a
+minishell.dSYM
+.vscode/*

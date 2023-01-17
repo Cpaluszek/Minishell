@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   find_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 12:57:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 16:25:49 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/01/16 17:08:04 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/01/17 11:09:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Writes argument to STDOUT
-// Option -n: print without trailing newline
-// The echo utility exits 0 on success, and >0 if an error occurs.
 #include "structs.h"
-#define OPTION "\n"
+#include <unistd.h>
 
-int	ft_echo(t_token *token)
+// Todo: rename file
+// NOTE: search in PATH in parsing
+/**
+ * @brief Check for command access in absolute path, 
+ * 
+ * @param str input command
+ * @return char** path to command and arguments splitted
+ */
+char	**find_exec(char *str)
 {
-	int	i;
-	int	new_line;
+	char	**cmd;
 
-	i = 1;
-	new_line = 1;
-	// Skip all "-n" and "-nnnnn"
-	while (ft_strncmp("-n", OPTION, ft_strlen(OPTION)))
-	{
-		new_line = 0;
-		i++;
-	}		
+	cmd = ft_split(str, ' ');
+	if (cmd == NULL)
+		return (NULL);
+	if (access(cmd[0], X_OK) == 0)
+		return (cmd);
+	return (cmd);
 }

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:48 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/14 11:03:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:51:01 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 	// unset a b c
 #include "structs.h"
 
+// Note: if unset with | execute with a child (copy of env)
+// Export and unset works only without forks
 int	ft_unset(t_token *token)
 {
 	
