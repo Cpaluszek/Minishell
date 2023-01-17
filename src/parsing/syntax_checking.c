@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/16 19:16:30 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:25:30 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	empty_token_assignation(t_token *token_list)
 	token = token_list;
 	while (token)
 	{
-		if (token->token == CMD && only_spaces(token->str))
+		if (token->token == CMD && !not_only_spaces(token->str))
 			token->token = EMPTY;
 		token = token->next;
 	}
@@ -55,8 +55,9 @@ void	empty_token_assignation(t_token *token_list)
 	while (token)
 	{
 		len = ft_strlen(token->str);
-		if ((token->token <= 4 || token->str[len - 1] != ' ') \
-			&& token->next && token->next->token != EMPTY)
+		if (token->token <= 4 && token->next && token->next->token !=EMPTY)
+			token->space_link = false;
+		else if (token->token == CMD && token->str[0] != ' ')
 			token->space_link = false;
 		token = token->next;
 	}
@@ -87,7 +88,7 @@ int	syntax_exception(t_token *token1, t_token *token2)
 	if (token1->token == PIPE && (token2->token == OUTPUT_TRUNC || \
 		token2->token == OUTPUT_APPEND))
 	{
-		token2->writtable = 0;
+		token2->writtable = false;
 		return (1);
 	}
 	if (token1->token == OUTPUT_TRUNC && token2->token == PIPE)
@@ -102,8 +103,8 @@ int	syntax_exception(t_token *token1, t_token *token2)
 int	print_syntax_error(t_global *shell, char *str)
 {
 	ft_printf_fd(2, "%s`%s'\n", ERR_SYNTAX, str);
-	add_history(shell->input);
-	ft_lstclear_token(shell->token_list);
-	ft_free(shell->input);
+	shell->command_line = SYNTAX_ERROR;
+	add_history(shell->input_completed);
+	ft_lstclear_token(&shell->token_list);
 	return (1);
 }

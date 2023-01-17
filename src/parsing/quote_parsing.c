@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/16 15:04:01 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:41:18 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,13 @@ int	quote_parsing2(t_token **token_list, char **str, char quote)
 	while (str_quote[i] != quote) //CHECK : pas de protection ici pour le \0 mais les quotes sont toujours censees etre fermees;
 		i++;
 	i++;
-	if (quote == '"' && new_token(token_list, str_quote, i, DQUOTE))
+	if (quote == '"' && new_token(token_list, &str_quote[1], i - 2, DQUOTE))
 		return (1);
-	else if (quote == '\'' && new_token(token_list, str_quote, i, QUOTE))
+	else if (quote == '\'' && new_token(token_list, &str_quote[1], i - 2, QUOTE))
 		return (1);
 	*str = &str_quote[i];
 	return (0);
 }
-
 int	space_truncature(t_token *token_list)
 {
 	int		len;
@@ -77,11 +76,12 @@ int	space_truncature(t_token *token_list)
 			if (token_list->str[len - 1] != ' ')
 				token_list->space_link = false;
 		}
+		else if (token_list->next && token_list->next->token != EMPTY)
+			token_list->space_link = false;
 		token_list = token_list->next;
 	}
 	return (0);
 }
-
 int	new_token(t_token **list, char *str, int len, enum e_token type)
 {
 	char	*instruction;

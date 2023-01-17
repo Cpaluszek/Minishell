@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/16 17:20:17 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:20:52 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ t_token	*token_parsing(t_token *token_list)
 		if (temp->token == EMPTY && temp->str[0])
 		{
 			splitted_token_list = create_sub_token_list(temp->str);// ajouter une fonction de protection de malloc
-			if (temp->space_link == false)
-				(ft_lstlast_token(splitted_token_list))->space_link = false;
 			insert_token_list(temp, splitted_token_list);
 			del = temp;
 			temp = temp->next;
@@ -54,9 +52,8 @@ t_token	*create_sub_token_list(char *str)
 	enum e_token	token;
 	t_token			*token_list;
 
-	// printf("[%s]", str);
 	token_list = NULL;
-	i = 0;
+	i = not_only_spaces(str);
 	while (str[i])
 	{
 		while (str[i] && !ft_is_inside(str[i], "<>|\n"))

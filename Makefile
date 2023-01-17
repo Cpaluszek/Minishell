@@ -13,8 +13,13 @@ SRC_DIR			:=	src
 PARSING_DIR		:=	parsing
 PARSING_FILES	:=	central_parsing.c \
 					quote_parsing.c \
+					add_path_to_command.c \
+					init_and_reset_parsing.c \
+					syntax_checking.c \
 					token_list_functions.c \
+					block_list_functions.c \
 					token_parsing.c \
+					merging_str_token.c \
 					utils_parsing.c
 
 EXEC_DIR		:=	exec

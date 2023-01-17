@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/16 17:29:11 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:20:26 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*get_next_line(int fd);
 int	main(int argc, char **argv, char **env)
 {
 	t_global	shell;
+	t_token		*token_list;
 	// Manage signals
 		// Intercept SIGQUIT (^\)
 		// Ignore SIGERM SIGHUP, SIGTSTP, SIGTTOU
@@ -28,17 +29,27 @@ int	main(int argc, char **argv, char **env)
 	// Get PATH from env
 	(void) argc;
 	(void) argv;
-	set_env_and_path(&shell);
+	set_environment(&shell, env);
 	while (1)
 	{
-		// Set the prompt & read input
-		shell.input = NULL;
+		reset_commands(&shell);
+		shell.path = get_path(&shell, shell.env);
 		central_parsing(&shell, PROMPT);
+		token_list = shell.token_list;
 		while (token_list)
 		{
 			printf("{ [%s]:[%s], SL(%d)} -> ", token_list->token_str, token_list->str, token_list->space_link);
 			token_list = token_list->next;
 		}
+		// while (token_list)
+		// {
+		// 	printf("{ [%s]:[", token_list->token_str);
+		// 	i = 0;
+		// 	while (token_list->cmd[i])
+		// 		printf("%s", token_list->cmd[i++]);
+		// 	printf("], SL(%d)} -> ", token_list->space_link);
+		// 	token_list = token_list->next;
+		// }
 		printf("\n");
 		// Lexically analyze
 

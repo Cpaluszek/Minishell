@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   ft_size_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 12:41:19 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 11:19:15 by jlitaudo         ###   ########.fr       */
+/*   Created: 2022/12/05 15:12:08 by jlitaudo          #+#    #+#             */
+/*   Updated: 2023/01/17 11:22:01 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	**ft_free_split(char **strs)
+size_t	ft_size_tab(char **tab)
 {
-	int	i;
+	size_t	i;
 
-	if (!strs)
-		return (NULL);
 	i = 0;
-	while (strs[i])
-		free(strs[i++]);
-	free(strs);
-	return (NULL);
+	while (tab[i])
+		i++;
+	return (i);
 }

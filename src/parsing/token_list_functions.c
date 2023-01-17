@@ -6,12 +6,13 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/16 18:48:50 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:14:14 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "libft.h"
+#include <unistd.h>
 
 void	token_str_assignment(t_token *elem, enum e_token token);
 
@@ -41,6 +42,7 @@ void	ft_lstdelone_token(t_token *lst)
 {
 	if (!lst)
 		return ;
+	ft_free_split(lst->cmd);
 	free(lst->str);
 	free(lst);
 }
@@ -87,6 +89,10 @@ t_token	*ft_lstnew_token(char	*content, enum e_token token)
 	elem->token = token;
 	elem->next = NULL;
 	elem->prev = NULL;
+	elem->fd_input = STDIN_FILENO;
+	elem->fd_output = STDOUT_FILENO;
+	elem->redir_use = false;
+	elem->writtable = true;
 	token_str_assignment(elem, token);
 	return (elem);
 }
@@ -113,4 +119,6 @@ void	token_str_assignment(t_token *elem, enum e_token token)
 		elem->token_str = "$";
 	else if (token == NEW_LINE)
 		elem->token_str = "newline";
+	else
+		elem->token_str = NULL;
 }

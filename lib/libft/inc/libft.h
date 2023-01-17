@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:23:15 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/16 10:32:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:19:08 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_isspace(int c);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+size_t	ft_size_tab(char **tab);
 int		ft_strncmp(const char *first, const char *second, size_t length);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
@@ -50,6 +51,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strjoin_and_free(char *s1, const char *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+char	**ft_tab_strdup(char **tab);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_striteri(char *s, char (*f)(unsigned int, char*));
@@ -64,7 +66,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	ft_free(void *ptr);
-void	ft_free_split(char **strs);
+char	**ft_free_split(char **strs);
 
 /* Input-Output */
 void	ft_putchar_fd(const char c, int fd);

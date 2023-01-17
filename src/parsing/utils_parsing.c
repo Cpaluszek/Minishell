@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/16 19:26:02 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:00:05 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,39 @@ void	get_input(t_global *shell, char *prompt)
 	{
 		ft_free(input);
 		input = readline(prompt);
-		if (!(input == NULL || ft_strlen(input) == 0 || only_spaces(input)))
+		if (!not_only_spaces(input) && ft_strlen(input))
+			add_history(input);
+		if (!(input == NULL || ft_strlen(input) == 0 || !not_only_spaces(input)))
 			break ;
 	}
-	shell->input = ft_strjoin_and_free(shell->input, input);
-	ft_free(input);
-	if (!shell->input)
-		error_exit_parsing(shell);
+	ft_free(shell->input);
+	shell->input = input;
+	shell->input_completed = ft_strjoin_and_free(shell->input_completed, input);
+	if (!shell->input_completed)
+		error_exit_parsing(shell, ERR_MALLOC);
 }
 
-int	only_spaces(char *line)
+int	not_only_spaces(char *line)
 {
 	int	i;
 
 	i = 0;
 	while (line[i])
 		if (line[i++] != ' ')
-			return (0);
+			return (i);
 	if (line[i] == '\n')
-		return (1);
-	return (1);
+		return (i);
+	return (0);
 }
 
 void	error_exit_parsing(t_global *shell, char *err_msg)
 {
 	ft_printf_fd(2, "%s", err_msg);
-	ft_lstclear_token(shell->token_list);
+	ft_free_split(shell->env);
+	ft_free_split(shell->path);
+	ft_lstclear_token(&shell->token_list);
+	ft_lstclear(&shell->env_list, free);
 	ft_free(shell->input);
+	ft_free(shell->input_completed);
 	exit(EXIT_FAILURE);
 }
