@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_reset_parsing.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/18 08:37:04 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/18 17:12:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	set_environment(t_global *shell, char **env)
 	shell->input = NULL;
 	shell->token_list = NULL;
 	shell->block_list = NULL;
+	shell->input_completed = NULL;
 	shell->env = ft_tab_strdup(env);
 	if (!shell->env)
 		error_exit_parsing(shell, ERR_MALLOC);

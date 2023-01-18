@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 13:58:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/18 17:11:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ int	main(int argc, char **argv, char **env)
 		// Intercept SIGQUIT (^\)
 		// Ignore SIGERM SIGHUP, SIGTSTP, SIGTTOU
 	// Block control characters printing (^C, ^\) ->tcgetattr & tcsetattr
-
-	// Manage env -> store env in file (unlink at the end)
-	// Get PATH from env
 	(void) argc;
 	(void) argv;
 	set_environment(&shell, env);
@@ -48,13 +45,7 @@ int	main(int argc, char **argv, char **env)
 		// }
 		print_command_line(token_list);
 		short_test_exec(&shell);
-		
 		printf("\n");
-		// Lexically analyze
-
-		// Parse
-
-		// Execute
 	}
 
 	return (0);
