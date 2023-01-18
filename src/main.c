@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 13:58:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/18 16:23:26 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ void	short_test_exec(t_global *shell)
 					exit(0);
 			}
 		}
-		wait(NULL);
 		token = token->next;
 	}
 	token = first;
+	sleep(2);
 	// while (token)
 	// {
 	// 	if (token->token == CMD)
