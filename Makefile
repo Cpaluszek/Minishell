@@ -24,12 +24,10 @@ PARSING_FILES	:=	central_parsing.c \
 					utils_parsing.c
 
 EXEC_DIR		:=	exec
-EXEC_FILES		:=	exec.c \
-					find_exec.c \
+EXEC_FILES		:=	exec.c
 					
 BUILTIN_DIR		:=	builtins
 BUILTIN_FILES	:=	parse_builtins.c \
-					builtins_utils.c \
 					cd.c \
 					echo.c \
 					env.c \
@@ -62,8 +60,8 @@ OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
 
 # Compiler options
 CC				:=	cc
-CC_FLAGS		:=	-Wextra -Werror -Wall
-DEBUG_FLAG		:=	-g3 -fsanitize=address
+DEBUG_FLAG		:=	-g3 #-fsanitize=address
+CC_FLAGS		:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
 
 MAKE			:=	make -C
 

@@ -6,21 +6,24 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:52:53 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:59:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
+#include "error.h"
+#include <unistd.h>
 
 int	exec_start(t_block **block)
 {
 	// Foreach block
-	while (*block != NULL)
-	{
-		exec_token_list(blocks);
-		// Todo: check exit status code
-		blocks = blocks->next;
-	}
+	// while (*block != NULL)
+	// {
+	// 	exec_token_list(blocks);
+	// 	// Todo: check exit status code
+	// 	blocks = blocks->next;
+	// }
+	(void) block;
 	return (0);
 }
 
@@ -31,31 +34,32 @@ int	exec_start(t_block **block)
 	// when reading into pipe, recover previous pipe
 int	exec_token_list(t_block *block)
 {
-	t_token	*tokens;
-	int		*pipes_fd;
-	int		pipe_index;
-	int		is_builtin;
-	int		return_val;
+	(void) block;
+	// t_token	*tokens;
+	// int		*pipes_fd;
+	// int		pipe_index;
+	// int		is_builtin;
+	// int		return_val;
 
-	tokens = block->token_list;
-	pipes_fd = NULL;
-	// Todo: create pipes
-	while (tokens != NULL)
-	{
-		if (tokens->token == CMD)
-		{
-			is_builtin = 0;
-			return_val = parse_builtins(tokens, &is_builtin);
-			if (!is_builtin)
-				return_val = exec_cmd(tokens, pipes_fd, &pipe_index);
-			// Todo set return val to $? (global)
-		}
-		tokens = tokens->next;
-	}
-	(void) return_val;
-	// Todo: close all pipes
-	while (waitpid(-1, NULL, 0) > 0)
-		;
+	// tokens = block->token_list;
+	// pipes_fd = NULL;
+	// // Todo: create pipes
+	// while (tokens != NULL)
+	// {
+	// 	if (tokens->token == CMD)
+	// 	{
+	// 		is_builtin = 0;
+	// 		return_val = parse_builtins(tokens, &is_builtin);
+	// 		if (!is_builtin)
+	// 			return_val = exec_cmd(tokens, pipes_fd, &pipe_index);
+	// 		// Todo set return val to $? (global)
+	// 	}
+	// 	tokens = tokens->next;
+	// }
+	// (void) return_val;
+	// // Todo: close all pipes
+	// while (waitpid(-1, NULL, 0) > 0)
+	// 	;
 	return (0);
 }
 
@@ -64,21 +68,21 @@ int	exec_token_list(t_block *block)
 	// create a function that checks pipes + redirection and returns fd
 int	exec_cmd(t_token *token, int *pipes_fd, int *pipe_index)
 {
-	int	pid;
-
+	//int	pid;
+	(void) token;
 	(void) pipes_fd;
 	(void) pipe_index;
-	pid = fork();
-	if (pid == -1)
-		print_perror_exit("fork: ");
-	if (pid != 0)
-		return (0);
-	token->cmd = find_exec(token->str);
-	if (token->cmd == NULL)
-		return (-1);
-	//manage_redir_pipes(token, pipes_fd, pipe_index);
-	execve(token->cmd[0], token->cmd, NULL);
-	ft_free_split(token->cmd);
+	// pid = fork();
+	// if (pid == -1)
+	// 	print_perror_exit("fork: ");
+	// if (pid != 0)
+	// 	return (0);
+	// token->cmd = find_exec(token->str);
+	// if (token->cmd == NULL)
+	// 	return (-1);
+	// //manage_redir_pipes(token, pipes_fd, pipe_index);
+	// execve(token->cmd[0], token->cmd, NULL);
+	// ft_free_split(token->cmd);
 	exit (0);
 }
 

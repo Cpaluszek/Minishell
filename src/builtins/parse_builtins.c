@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:31 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:28:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:02:42 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ int	parse_builtins(t_token *token, int *is_builtin)
 	};
 
 	return (search_builtins(token, arr, is_builtin));
+}
+
+int	args_number(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i])
+		i++;
+	return (i);
 }
 
 static int	search_builtins(t_token *token, t_builtin *arr, int *is_builtin)
