@@ -19,6 +19,7 @@ PARSING_FILES	:=	central_parsing.c \
 					token_list_functions.c \
 					block_list_functions.c \
 					token_parsing.c \
+					token_modifications.c \
 					merging_str_token.c \
 					utils_parsing.c
 

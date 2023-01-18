@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 16:31:14 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:49:21 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include "libft.h"
 
 # define SYNTAX_ERROR -1
-# define UNCOMPLETED 0
+# define BEGIN 0
 # define COMPLETED 1
+# define UNCOMPLETED 2
 
 enum e_link {
     NO_LINK = 0,
@@ -55,7 +56,6 @@ typedef struct s_block {
     struct s_block		*upper_block;
     struct s_token		*token_list;
     int					block_level;
-	int					pipe_count;
 }   t_block;
 
 typedef struct s_token {
@@ -66,10 +66,13 @@ typedef struct s_token {
     char			**cmd;
 	char			*token_str;
 	bool			space_link;
-    bool            redir_use;
 	bool			writtable;
-	int				fd_input;
-	int				fd_output;
+	bool			make_a_pipe;
+	int				*fd_input;
+	int				*fd_output;
+	int				pipe_fd[2];
+	int				pid;
+	int				fd_file;
     int				exit_status;
 }t_token;
 

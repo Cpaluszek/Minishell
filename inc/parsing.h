@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 19:55:37 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:09:14 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,15 @@ int		central_parsing(t_global *shell, char *prompt);
 t_token *quote_parsing(char *str);
 t_token	*token_parsing(t_token *token_list);
 void	get_input(t_global *shell, char *prompt);
+void	test_failed_malloc(t_global *shell, void *content);
 void	error_exit_parsing(t_global *shell, char *err_msg);
 void	token_dollar_expand_and_str_merging(t_global *shell);
+void	transform_quote_token(t_global *shell);
 void	set_environment(t_global *shell, char **env);
 void	add_path_to_command_token(t_global *shell);
+void	add_info_to_command_token(t_global *shell);
+void	delete_pipe_token(t_global *shell);
 void	reset_commands(t_global	*shell);
+void	remove_token(t_token *token);
 
 #endif

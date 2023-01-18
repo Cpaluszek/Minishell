@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merging_str_token.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/17 20:20:07 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:02:13 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #include "token_list_functions.h"
 #include "libft.h"
 
-void	merge_command(t_global *shell, t_token *token_list);
-void	merge_redirection(t_global *shell, t_token *token_list);
+static void	merge_command(t_global *shell, t_token *token_list);
+static void	merge_redirection(t_global *shell, t_token *token_list);
+static void	joining_with_space_truncature(t_global *shell, \
+t_token *token, char **redirection_str);
 void	remove_token(t_token *token);
 
 void	token_dollar_expand_and_str_merging(t_global *shell)
@@ -36,14 +38,13 @@ void	token_dollar_expand_and_str_merging(t_global *shell)
 		{
 			merge_command(shell, token);
 			token->cmd = ft_split(token->str, ' ');
-			if (!token->cmd)
-				error_exit_parsing(shell, ERR_MALLOC);
+			test_failed_malloc(shell, token->cmd);
 		}
 		token = token->next;
 	}
 }
 
-void	merge_command(t_global *shell, t_token *token_list)
+static void	merge_command(t_global *shell, t_token *token_list)
 {
 	t_token	*token;
 	t_token	*temp;
@@ -57,8 +58,7 @@ void	merge_command(t_global *shell, t_token *token_list)
 			token->token == DQUOTE)
 		{
 			str = ft_strjoin_and_free(str, token->str);
-			if (!str)
-				error_exit_parsing(shell, ERR_MALLOC);
+			test_failed_malloc(shell, str);
 			temp = token;
 			token = token->next;
 			remove_token(temp);
@@ -69,30 +69,61 @@ void	merge_command(t_global *shell, t_token *token_list)
 	token_list->str = str;
 }
 
-void	merge_redirection(t_global *shell, t_token *token_list)
+static void	merge_redirection(t_global *shell, t_token *token_list)
 {
 	t_token	*token;
 	t_token	*temp;
 	char	*str;
+	bool	space_link;
 
 	str = token_list->str;
 	token = token_list->next;
 	while (token && token->token > PIPE)
 	{
-		if (token->token == CMD || token->token == QUOTE || \
-			token->token == DQUOTE)
+		space_link = token->space_link;
+		temp = token;
+		token = token->next;
+		if (temp->token == CMD)
+			joining_with_space_truncature(shell, temp, &str);
+		else if (temp->token == QUOTE || temp->token == DQUOTE)
 		{
-			str = ft_strjoin_and_free(str, token->str);
-			if (!str)
-				error_exit_parsing(shell, ERR_MALLOC);
-		if (token && token->space_link == true) // retravailler ce point ici
-			break ;
-			temp = token;
-			token = token->next;
+			str = ft_strjoin_and_free(str, temp->str);
+			test_failed_malloc(shell, str);
 			remove_token(temp);
 		}
+		if (space_link == true)
+			break ;
 	}
 	token_list->str = str;
+}
+
+static void	joining_with_space_truncature(t_global *shell, \
+t_token *token, char **redirection_str)
+{
+	char	*token_str;
+	char	*new_str;
+	int		i;
+	int		j;
+
+	token_str = token->str;
+	i = 0;
+	j = 0;
+	if (token->token == CMD)
+	{
+		while (token_str[i] == ' ')
+			i++;
+		while (token_str[i + j] != ' ')
+			j++;
+		new_str = ft_substr(token_str, i, j);
+		test_failed_malloc(shell, new_str);
+		*redirection_str = ft_strjoin_and_free(*redirection_str, new_str);
+		test_failed_malloc(shell, *redirection_str);
+		free(new_str);
+		new_str = ft_substr(token_str, j + i, ft_strlen(token->str));
+		test_failed_malloc(shell, new_str);
+		free(token_str);
+		token->str = new_str;
+	}
 }
 
 void	remove_token(t_token *token)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:59:33 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/17 15:47:20 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/18 08:21:38 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	find_path(char **cmd, char **path)
 		{
 			free(*cmd);
 			*cmd = test_path;
-			dprintf(1, "OK3 %s\n", *cmd);
 			return (1);
 		}
 		free(test_path);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/17 19:00:05 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/18 09:24:13 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	get_input(t_global *shell, char *prompt)
 	{
 		ft_free(input);
 		input = readline(prompt);
-		if (!not_only_spaces(input) && ft_strlen(input))
+		if (!not_only_spaces(input) && ft_strlen(input) && \
+			shell->command_line == BEGIN)
 			add_history(input);
 		if (!(input == NULL || ft_strlen(input) == 0 || !not_only_spaces(input)))
 			break ;
@@ -46,6 +47,12 @@ int	not_only_spaces(char *line)
 	if (line[i] == '\n')
 		return (i);
 	return (0);
+}
+
+void	test_failed_malloc(t_global *shell, void *content)
+{
+	if (!content)
+		error_exit_parsing(shell, ERR_MALLOC);
 }
 
 void	error_exit_parsing(t_global *shell, char *err_msg)

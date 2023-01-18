@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_reset_parsing.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/17 17:33:51 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/18 08:37:04 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	set_environment(t_global *shell, char **env)
 	shell->env_list = make_env_list(shell, env);
 }
 
-/*
-	Function that retrieve the "PATH" environment of the program.
+/**
+ * Function that retrieve the "PATH" environment of the program.
+ * @param shell
+ * @param env
 */
 char	**get_path(t_global *shell, char **env)
 {
@@ -81,7 +83,7 @@ void	reset_commands(t_global	*shell)
 	shell->input = NULL;
 	ft_free(shell->input_completed);
 	shell->input_completed = NULL;
-	shell->command_line = UNCOMPLETED;
+	shell->command_line = BEGIN;
 	ft_lstclear_block(&shell->block_list);
 	shell->token_list = NULL;
 	shell->block_list = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_list_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/17 17:14:14 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:37:55 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ t_token	*ft_lstnew_token(char	*content, enum e_token token)
 	elem->token = token;
 	elem->next = NULL;
 	elem->prev = NULL;
-	elem->fd_input = STDIN_FILENO;
-	elem->fd_output = STDOUT_FILENO;
-	elem->redir_use = false;
+	elem->fd_input = NULL;
+	elem->fd_output = NULL;
+	elem->make_a_pipe = false;
 	elem->writtable = true;
 	token_str_assignment(elem, token);
 	return (elem);

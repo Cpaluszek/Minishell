@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/17 19:41:18 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/18 08:40:46 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "libft.h"
 #include "token_list_functions.h"
 
-int	quote_parsing2(t_token **token_list, char **str, char quote);
-int	space_truncature(t_token *token_list);
-int	new_token(t_token **list, char *str, int len, enum e_token type);
+int			quote_parsing2(t_token **token_list, char **str, char quote);
+static void	setting_space_links(t_token *token_list);
+int			new_token(t_token **list, char *str, int len, enum e_token type);
 
 t_token	*quote_parsing(char *str)
 {
@@ -41,7 +41,7 @@ t_token	*quote_parsing(char *str)
 			return (NULL);
 		i = 0;
 	}
-	space_truncature(token_list);
+	setting_space_links(token_list);
 	return (token_list);
 }
 
@@ -62,7 +62,7 @@ int	quote_parsing2(t_token **token_list, char **str, char quote)
 	*str = &str_quote[i];
 	return (0);
 }
-int	space_truncature(t_token *token_list)
+static void	setting_space_links(t_token *token_list)
 {
 	int		len;
 
@@ -80,7 +80,6 @@ int	space_truncature(t_token *token_list)
 			token_list->space_link = false;
 		token_list = token_list->next;
 	}
-	return (0);
 }
 int	new_token(t_token **list, char *str, int len, enum e_token type)
 {
