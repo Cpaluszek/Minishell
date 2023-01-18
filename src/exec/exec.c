@@ -6,84 +6,58 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:59:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:36:48 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
-#include "error.h"
+#include "exec.h"
 #include <unistd.h>
 
-int	exec_start(t_block **block)
+int	exec_start(t_global *shell)
 {
-	// Foreach block
-	// while (*block != NULL)
-	// {
-	// 	exec_token_list(blocks);
-	// 	// Todo: check exit status code
-	// 	blocks = blocks->next;
-	// }
-	(void) block;
+	setup_redirections(shell->token_list);
+	exec_cmd(shell->token_list, shell->env);
 	return (0);
 }
 
-// Todo: check for maximum amount of pipes
-// Todo: protect malloc for pipes
-// Note: pipe creation:
-	// create pipe when writing needed
-	// when reading into pipe, recover previous pipe
-int	exec_token_list(t_block *block)
+void	setup_redirections(t_token *tok)
 {
-	(void) block;
-	// t_token	*tokens;
-	// int		*pipes_fd;
-	// int		pipe_index;
-	// int		is_builtin;
-	// int		return_val;
-
-	// tokens = block->token_list;
-	// pipes_fd = NULL;
-	// // Todo: create pipes
-	// while (tokens != NULL)
-	// {
-	// 	if (tokens->token == CMD)
-	// 	{
-	// 		is_builtin = 0;
-	// 		return_val = parse_builtins(tokens, &is_builtin);
-	// 		if (!is_builtin)
-	// 			return_val = exec_cmd(tokens, pipes_fd, &pipe_index);
-	// 		// Todo set return val to $? (global)
-	// 	}
-	// 	tokens = tokens->next;
-	// }
-	// (void) return_val;
-	// // Todo: close all pipes
-	// while (waitpid(-1, NULL, 0) > 0)
-	// 	;
-	return (0);
+	while (tok)
+	{
+		if (tok->token == INPUT)
+			tok->fd_file = open(tok->str, O_RDONLY);
+		else if (tok->token == OUTPUT_TRUNC)
+			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		else if (tok->token == OUTPUT_APPEND)
+			tok->fd_file = open(tok->str, O_RDONLY | O_CREAT | O_APPEND, 0644);
+		tok = tok->next;
+	}
 }
 
-// Todo: protect dup2 + fork + malloc (error message ?)
-// Todo: check redirections
-	// create a function that checks pipes + redirection and returns fd
-int	exec_cmd(t_token *token, int *pipes_fd, int *pipe_index)
+int	exec_cmd(t_token *token, char **env)
 {
-	//int	pid;
-	(void) token;
-	(void) pipes_fd;
-	(void) pipe_index;
-	// pid = fork();
-	// if (pid == -1)
-	// 	print_perror_exit("fork: ");
-	// if (pid != 0)
-	// 	return (0);
-	// token->cmd = find_exec(token->str);
-	// if (token->cmd == NULL)
-	// 	return (-1);
-	// //manage_redir_pipes(token, pipes_fd, pipe_index);
-	// execve(token->cmd[0], token->cmd, NULL);
-	// ft_free_split(token->cmd);
-	exit (0);
+	while (token)
+	{
+		if (token->token == CMD)
+		{
+			if (token->make_a_pipe)
+				pipe(token->pipe_fd);
+			token->pid = fork();
+			if (token->pid == 0)
+			{
+				if (token->fd_input != NULL)
+					dup2(*(token->fd_input), STDIN_FILENO);
+				if (token->fd_output != NULL)
+					dup2(*(token->fd_output), STDIN_FILENO);
+				execve(token->cmd[0], token->cmd, env);
+				exit(0);
+			}
+		}
+		wait(NULL);
+		token = token->next;
+	}
+	return (0);
 }
 
 // Redirection or pipe

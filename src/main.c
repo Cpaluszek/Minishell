@@ -12,13 +12,13 @@
 
 #include "minishell.h"
 #include "parsing.h"
+#include "exec.h"
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <unistd.h>
 
 char	*get_next_line(int fd);
 void	print_command_line(t_token *token_list);
-void	short_test_exec(t_global *shell);
 // NOTE: check argc error ?
 // Note: here_doc in a fork to manage CTRL-C
 int	main(int argc, char **argv, char **env)
@@ -38,67 +38,61 @@ int	main(int argc, char **argv, char **env)
 		shell.path = get_path(&shell, shell.env);
 		central_parsing(&shell, PROMPT);
 		token_list = shell.token_list;
-		// while (token_list)
-		// {
-		// 	printf("{ [%s]:[%s], SL(%d)} -> ", token_list->token_str, token_list->str, token_list->space_link);
-		// 	token_list = token_list->next;
-		// }
 		print_command_line(token_list);
-		short_test_exec(&shell);
+		exec_start(&shell);
 		printf("\n");
 	}
-
 	return (0);
 }
 
 // PROBLEME DANS LES FD IN ET OUT, difference de 4 chaque fois dans l'adresse, sinon fonctionne. ATTENTION ane pas commencer
 // par des quotes en debut de commande ou juste apres un pipe : risque de SEGFAULT non resolu;
 
-void	short_test_exec(t_global *shell)
-{
-	t_token *token;
-	t_token *first;
-	// int		status;
+// void	short_test_exec(t_global *shell)
+// {
+// 	t_token *token;
+// 	t_token *first;
+// 	// int		status;
 
-	first = shell->token_list;
-	token = first;
-	while (token)
-	{
-		if (token->token <= 1)
-			token->fd_file = open(token->str, O_RDONLY);
-		else if (token->token <= 3 && token->token >= 2)
-			token->fd_file = open(token->str, O_WRONLY | O_TRUNC | O_CREAT, 0000644);
-		token = token->next;
-	}
-	token = first;
-	while (token)
-	{
-		if (token->token == CMD)
-		{
-			if (token->make_a_pipe == true)
-				pipe(token->pipe_fd);
-			token->pid = fork();
-			if (token->pid == 0)
-			{
-				if (token->fd_input)
-					dup2(*token->fd_input, STDIN_FILENO);
-				if (token->fd_output)
-					dup2(*token->fd_output, STDOUT_FILENO);
-				if (execve(token->cmd[0], token->cmd, shell->env) == -1)
-					exit(0);
-			}
-		}
-		wait(NULL);
-		token = token->next;
-	}
-	token = first;
-	// while (token)
-	// {
-	// 	if (token->token == CMD)
-	// 		waitpid(token->pid, &status, 0);
-	// 	token = token->next;
-	// }
-}
+// 	first = shell->token_list;
+// 	token = first;
+// 	while (token)
+// 	{
+// 		if (token->token <= 1)
+// 			token->fd_file = open(token->str, O_RDONLY);
+// 		else if (token->token <= 3 && token->token >= 2)
+// 			token->fd_file = open(token->str, O_WRONLY | O_TRUNC | O_CREAT, 0000644);
+// 		token = token->next;
+// 	}
+// 	token = first;
+// 	while (token)
+// 	{
+// 		if (token->token == CMD)
+// 		{
+// 			if (token->make_a_pipe == true)
+// 				pipe(token->pipe_fd);
+// 			token->pid = fork();
+// 			if (token->pid == 0)
+// 			{
+// 				if (token->fd_input)
+// 					dup2(*token->fd_input, STDIN_FILENO);
+// 				if (token->fd_output)
+// 					dup2(*token->fd_output, STDOUT_FILENO);
+// 				if (execve(token->cmd[0], token->cmd, shell->env) == -1)
+// 					exit(0);
+// 			}
+// 		}
+// 		wait(NULL);
+// 		token = token->next;
+// 	}
+// 	token = first;
+// 	// while (token)
+// 	// {
+// 	// 	if (token->token == CMD)
+// 	// 		waitpid(token->pid, &status, 0);
+// 	// 	token = token->next;
+// 	// }
+// }
 
 void	print_command_line(t_token *token_list)
 {
