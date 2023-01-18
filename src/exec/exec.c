@@ -49,29 +49,35 @@ int	exec_token_list(t_token *token, char **env)
 	return (0);
 }
 
+// Todo: recover builtins exit status
 int	exec_cmd(t_token *token, char **env)
 {
 	int	is_builtin;
-	int	err;
 
-	err = 0;
 	is_builtin = 0;
-	err = parse_builtins(token, &is_builtin);
-	(void) err;
+	parse_builtins(token, &is_builtin);
 	if (is_builtin)
 	{
 		dprintf(STDERR_FILENO, "builtin found - %s\n", token->str);
-		return (err);
+		return (0);
+	}
+	else if (access(token->cmd[0], X_OK) == -1)
+	{
+		perror(token->cmd[0]);
+		return (0);
 	}
 	if (token->make_a_pipe)
+	{
+		dprintf(STDERR_FILENO, "creating a pipe\n");
 		pipe(token->pipe_fd);
+	}
 	token->pid = fork();
 	if (token->pid == 0)
 	{
 		if (token->fd_input != NULL)
-			dup2(*(token->fd_input), STDIN_FILENO);
+			dup2(*token->fd_input, STDIN_FILENO);
 		if (token->fd_output != NULL)
-			dup2(*(token->fd_output), STDIN_FILENO);
+			dup2(*token->fd_output, STDIN_FILENO);
 		execve(token->cmd[0], token->cmd, env);
 		exit(0);
 	}
