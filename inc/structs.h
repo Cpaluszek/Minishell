@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:09:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:49:21 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ enum e_link {
     AND_LINK = 2,        // &&
 };
 
-enum e_token
+enum e_token 
 {
     // EXEC INFOS
     INPUT = 0,
@@ -58,7 +58,6 @@ typedef struct s_block {
     int					block_level;
 }   t_block;
 
-// Note: is bool allowed ?
 typedef struct s_token {
     enum e_token	token;
     struct s_token	*next;
