@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:30:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:50:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,7 @@
 // Option -n: print without trailing newline
 // The echo utility exits 0 on success, and >0 if an error occurs.
 #include "structs.h"
-#include "libft.h"
-#include <unistd.h>
-#define OPTION "\n"
 
-static int	echo_option(t_token *token, int *i);
-
-// Todo: fork + redirect
 int	ft_echo(t_token *token)
 {
 	int	i;

@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:05:25 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:58:54 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parsing.h"
-#include "exec.h"
-#include "token_list_functions.h"
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -32,7 +30,7 @@ int	main(int argc, char **argv, char **env)
 		// Ignore SIGERM SIGHUP, SIGTSTP, SIGTTOU
 	// Block control characters printing (^C, ^\) ->tcgetattr & tcsetattr
 
-	// Manage env -> store env in chained list
+	// Manage env -> store env in file (unlink at the end)
 	// Get PATH from env
 	(void) argc;
 	(void) argv;

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:19:31 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:49:42 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,15 @@ void	check_redir(t_token *token, int *input_fd, int *output_fd);
 char	**find_exec(char *str);
 
 /*	Builtins	*/
-int		parse_builtins(t_token *token, int *is_builtin);
-int		ft_echo(t_token *token);
-int		ft_cd(t_token *token);
-int		ft_pwd(t_token *token);
-int		ft_export(t_token *token);
-int		ft_unset(t_token *token);
-int		ft_env(t_token *token);
-int		ft_exit(t_token *token);
 
-/*	Utils	*/
-int		args_number(char **args);
+int	ft_echo(t_token *token);
+int	ft_cd(t_token *token);
+int	ft_pwd(s_token *token);
+int	ft_export(t_token *token);
+int	ft_unset(t_token *token);
+int	ft_env(t_token *token);
+int	ft_exit(s_token *token);
+
+
 
 #endif

@@ -6,26 +6,16 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:24:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:52:53 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
-#include "libft.h"
-#include "exec.h"
-#include "errors.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
 
-// Note: Return int useful ?
-// Todo: toggle signals and disable signals
-int	exec_start(t_global *shell)
+int	exec_start(t_block **block)
 {
-	t_block	*blocks;
-
-	blocks = shell->block_list;
-	while (blocks)
+	// Foreach block
+	while (*block != NULL)
 	{
 		exec_token_list(blocks);
 		// Todo: check exit status code

@@ -6,19 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:30:18 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:49:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// change current working directory
+// only with relative or absolute path
 #include "structs.h"
-#include "exec.h"
-#include <unistd.h>
 
-static int	cd_home(void);
-static int	cd_old(void);
-
-// Note: what is errno = EFAULT
-// Todo: cd - -> OLDPWD
 int	ft_cd(t_token *token)
 {
 	char	*target;
