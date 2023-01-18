@@ -14,9 +14,12 @@
 // Can remove multiples variables at once
 	// unset a b c
 #include "structs.h"
+#include <stdio.h>
+#include <unistd.h>
 
 int	ft_unset(t_token *token)
 {
 	(void) token;
+	dprintf(STDERR_FILENO, "unset execution\n");
 	return (0);
 }

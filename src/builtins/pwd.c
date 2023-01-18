@@ -13,9 +13,12 @@
 // The pwd utility writes the absolute pathname of the current working directory
 // to the standard output.
 #include "structs.h"
+#include <stdio.h>
+#include <unistd.h>
 
 int	ft_pwd(t_token *token)
 {
 	(void) token;
+	dprintf(STDERR_FILENO, "pwd execution\n");
 	return (0);
 }

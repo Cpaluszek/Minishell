@@ -12,9 +12,12 @@
 
 // Print a list of environement variables
 #include "structs.h"
+#include <stdio.h>
+#include <unistd.h>
 
 int	ft_env(t_token *token)
 {
 	(void) token;
+	dprintf(STDERR_FILENO, "env execution\n");
 	return (0);
 }

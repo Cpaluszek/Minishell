@@ -17,10 +17,11 @@
 #include "libft.h"
 #include "errors.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
 #include "exec.h"
 
-static int	ft_isnum(char *str);
+// static int	ft_isnum(char *str);
 
 // exit N
 // if N is not given - exit status code is the last executed command ($?)
@@ -28,35 +29,38 @@ static int	ft_isnum(char *str);
 // Todo: if no args - return last command exit status
 int	ft_exit(t_token *token)
 {
-	int	exit_value;
+	(void) token;
+	dprintf(STDERR_FILENO, "exit execution\n");
+	return (0);
+	// int	exit_value;
 
-	exit_value = 0;
-	if (args_number(token->cmd) < 2)
-		exit(exit_value);
-	else if (!ft_isnum(token->cmd[1]))
-	{
-		ft_putstr_fd("exit: numeric argument required", STDERR_FILENO);
-		exit(255);
-	}
-	else if (args_number(token->cmd) > 2)
-	{
-		ft_putstr_fd("exit: too many arguments", STDERR_FILENO);
-		return (1);
-	}
-	exit_value = ft_atoi(token->cmd[1]);
-	exit(exit_value);
+	// exit_value = 0;
+	// if (args_number(token->cmd) < 2)
+	// 	exit(exit_value);
+	// else if (!ft_isnum(token->cmd[1]))
+	// {
+	// 	ft_putstr_fd("exit: numeric argument required", STDERR_FILENO);
+	// 	exit(255);
+	// }
+	// else if (args_number(token->cmd) > 2)
+	// {
+	// 	ft_putstr_fd("exit: too many arguments", STDERR_FILENO);
+	// 	return (1);
+	// }
+	// exit_value = ft_atoi(token->cmd[1]);
+	// exit(exit_value);
 }
 
-static int	ft_isnum(char *str)
-{
-	int	i;
+// static int	ft_isnum(char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		if (!ft_isdigit(str[i]))
+// 			return (0);
+// 		i++;
+// 	}
+// 	return (1);
+// }

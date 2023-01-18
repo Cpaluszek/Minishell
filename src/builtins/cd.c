@@ -15,38 +15,42 @@
 #include "structs.h"
 #include "exec.h"
 #include <unistd.h>
+#include <stdio.h>
 
-static int	cd_home(void);
-static int	cd_old(void);
+// static int	cd_home(void);
+// static int	cd_old(void);
 
 int	ft_cd(t_token *token)
 {
-	char	*target;
-	int		err;
-
-	(void) err;
-	if (args_number(token->cmd) > 2)
-		return (1);
-	else if (args_number(token->cmd) == 1)
-		return (cd_home());
-	target = token->cmd[1];
-	if (target[0] == '-')
-		return (cd_old());
-	return (chdir(target));
-}
-
-static int	cd_home(void)
-{
-	// char	*home_path;
-
-	// Todo: check in env for HOME
+	(void) token;
+	dprintf(STDERR_FILENO, "cd execution\n");
 	return (0);
+	// char	*target;
+	// int		err;
+
+	// (void) err;
+	// if (args_number(token->cmd) > 2)
+	// 	return (1);
+	// else if (args_number(token->cmd) == 1)
+	// 	return (cd_home());
+	// target = token->cmd[1];
+	// if (target[0] == '-')
+	// 	return (cd_old());
+	// return (chdir(target));
 }
 
-static int	cd_old(void)
-{
-	// char	*previous_path;
+// static int	cd_home(void)
+// {
+// 	// char	*home_path;
 
-	// Todo: search in env for OLDPWD
-	return (0);
-}
+// 	// Todo: check in env for HOME
+// 	return (0);
+// }
+
+// static int	cd_old(void)
+// {
+// 	// char	*previous_path;
+
+// 	// Todo: search in env for OLDPWD
+// 	return (0);
+// }

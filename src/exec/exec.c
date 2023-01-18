@@ -13,11 +13,12 @@
 #include "structs.h"
 #include "exec.h"
 #include <unistd.h>
+#include <stdio.h>
 
 int	exec_start(t_global *shell)
 {
 	setup_redirections(shell->token_list);
-	exec_cmd(shell->token_list, shell->env);
+	exec_token_list(shell->token_list, shell->env);
 	return (0);
 }
 
@@ -35,81 +36,44 @@ void	setup_redirections(t_token *tok)
 	}
 }
 
-int	exec_cmd(t_token *token, char **env)
+int	exec_token_list(t_token *token, char **env)
 {
 	while (token)
 	{
 		if (token->token == CMD)
-		{
-			if (token->make_a_pipe)
-				pipe(token->pipe_fd);
-			token->pid = fork();
-			if (token->pid == 0)
-			{
-				if (token->fd_input != NULL)
-					dup2(*(token->fd_input), STDIN_FILENO);
-				if (token->fd_output != NULL)
-					dup2(*(token->fd_output), STDIN_FILENO);
-				execve(token->cmd[0], token->cmd, env);
-				exit(0);
-			}
-		}
-		wait(NULL);
+			exec_cmd(token, env);
 		token = token->next;
 	}
+	while (waitpid(-1, NULL, 0) > 0)
+		;
 	return (0);
 }
 
-// Redirection or pipe
-// [cmd] [</>] [pipe]
-// [</>] [cmd] [pipe]
-// Note: if pipe + redir (redir wins ?)
-// void	manage_redir_pipes(t_token *token, int *pipes_fd, int *pipe_index)
-// {
-// 	int	input_fd;
-// 	int	output_fd;
+int	exec_cmd(t_token *token, char **env)
+{
+	int	is_builtin;
+	int	err;
 
-// 	input_fd = STDIN_FILENO;
-// 	output_fd = STDOUT_FILENO;
-// 	if (token->prev)
-// 	{
-// 		if (token->prev->token == PIPE)
-// 			input_fd = pipes_fd[2 * (*pipe_index)];
-// 	}
-// 	if (token->next)
-// 	{
-// 		if (token->next->token == PIPE)
-// 		{
-// 			input_fd = pipes_fd[2 * (*pipe_index) + 1];
-// 			(*pipe_index)++;
-// 		}
-// 	}
-// 	if (token->prev)
-// 	{
-// 		check_redir(token->prev, &input_fd, &output_fd);
-// 		if (token->prev->prev)
-// 			check_redir(token->prev, &input_fd, &output_fd);
-// 	}
-// 	if (token->next)
-// 	{
-// 		check_redir(token->next, &input_fd, &output_fd);
-// 		if (token->next->next)
-// 			check_redir(token->next, &input_fd, &output_fd);
-// 	}
-
-// }
-
-// void	check_redir(t_token *token, int *input_fd, int *output_fd)
-// {
-// 	enum e_token type;
-
-// 	type = token->token;
-// 	if (type == INPUT)
-// 		input_fd = open(token->str, O_RDONLY);
-// 	else if (type == HERE_DOC)
-// 		input_fd = manage_here_doc(token->prev->str);
-// 	else if (type == OUTPUT_APPEND)
-// 		output_fd = open(token->str, O_WRONLY | O_APPEND | O_CREAT, 0644);
-// 	else if (type == OUTPUT_TRUNC)
-// 		output_fd = open(token->str, O_WRONLY | O_TRUNC | O_CREAT, 0644);
-// }
+	err = 0;
+	is_builtin = 0;
+	err = parse_builtins(token, &is_builtin);
+	(void) err;
+	if (is_builtin)
+	{
+		dprintf(STDERR_FILENO, "builtin found - %s\n", token->str);
+		return (err);
+	}
+	if (token->make_a_pipe)
+		pipe(token->pipe_fd);
+	token->pid = fork();
+	if (token->pid == 0)
+	{
+		if (token->fd_input != NULL)
+			dup2(*(token->fd_input), STDIN_FILENO);
+		if (token->fd_output != NULL)
+			dup2(*(token->fd_output), STDIN_FILENO);
+		execve(token->cmd[0], token->cmd, env);
+		exit(0);
+	}
+	return (0);
+}

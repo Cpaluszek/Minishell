@@ -25,9 +25,12 @@ typedef struct s_builtin {
 
 int		exec_start(t_global *shell);
 void	setup_redirections(t_token *tok);
+int		exec_token_list(t_token *token, char **env);
 int		exec_cmd(t_token *token, char **env);
 
 /*	Builtins	*/
+// Note: echo + env + pwd are found in usr/bin
+int		parse_builtins(t_token *token, int *is_builtin);
 int		ft_echo(t_token *token);
 int		ft_cd(t_token *token);
 int		ft_pwd(t_token *token);

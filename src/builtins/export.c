@@ -14,9 +14,12 @@
 // Multiple variables can be exported
 	// export a="1" b="2" c="3"
 #include "structs.h"
+#include <stdio.h>
+#include <unistd.h>
 
 int	ft_export(t_token *token)
 {
 	(void) token;
+	dprintf(STDERR_FILENO, "export execution\n");
 	return (0);
 }
