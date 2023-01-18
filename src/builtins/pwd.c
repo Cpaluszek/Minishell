@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:45 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 12:59:48 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:33:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 
 int	ft_pwd(t_token *token)
 {
-	
+	(void) token;
+	return (0);
 }

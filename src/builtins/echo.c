@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 10:15:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:30:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_echo(t_token *token)
 	}
 	if (new_line)
 		ft_putstr_fd("\n", STDOUT_FILENO);
+	return (0);
 }
 
 // Skip all "-n" and "-nnnnn"

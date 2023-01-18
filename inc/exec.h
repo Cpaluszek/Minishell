@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 13:25:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:19:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define EXEC_H
 
 # include "structs.h"
+# include <sys/wait.h>
+# include <fcntl.h>
+
 
 typedef struct s_builtin {
 	char	*name;

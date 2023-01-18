@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 13:46:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:30:18 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_cd(t_token *token)
 	char	*target;
 	int		err;
 
+	(void) err;
 	if (args_number(token->cmd) > 2)
 		return (1);
 	else if (args_number(token->cmd) == 1)
@@ -36,14 +37,16 @@ int	ft_cd(t_token *token)
 
 static int	cd_home(void)
 {
-	char	*home_path;
+	// char	*home_path;
 
 	// Todo: check in env for HOME
+	return (0);
 }
 
 static int	cd_old(void)
 {
-	char	*previous_path;
+	// char	*previous_path;
 
 	// Todo: search in env for OLDPWD
+	return (0);
 }

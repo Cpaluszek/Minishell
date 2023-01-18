@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 15:11:15 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:24:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	exec_token_list(t_block *block)
 	int		return_val;
 
 	tokens = block->token_list;
+	pipes_fd = NULL;
 	// Todo: create pipes
 	while (tokens != NULL)
 	{
@@ -61,9 +62,11 @@ int	exec_token_list(t_block *block)
 		}
 		tokens = tokens->next;
 	}
+	(void) return_val;
 	// Todo: close all pipes
 	while (waitpid(-1, NULL, 0) > 0)
 		;
+	return (0);
 }
 
 // Todo: protect dup2 + fork + malloc (error message ?)
@@ -73,6 +76,8 @@ int	exec_cmd(t_token *token, int *pipes_fd, int *pipe_index)
 {
 	int	pid;
 
+	(void) pipes_fd;
+	(void) pipe_index;
 	pid = fork();
 	if (pid == -1)
 		print_perror_exit("fork: ");
@@ -81,7 +86,7 @@ int	exec_cmd(t_token *token, int *pipes_fd, int *pipe_index)
 	token->cmd = find_exec(token->str);
 	if (token->cmd == NULL)
 		return (-1);
-	manage_redir_pipes(token, pipes_fd, pipe_index);
+	//manage_redir_pipes(token, pipes_fd, pipe_index);
 	execve(token->cmd[0], token->cmd, NULL);
 	ft_free_split(token->cmd);
 	exit (0);
@@ -91,52 +96,52 @@ int	exec_cmd(t_token *token, int *pipes_fd, int *pipe_index)
 // [cmd] [</>] [pipe]
 // [</>] [cmd] [pipe]
 // Note: if pipe + redir (redir wins ?)
-void	manage_redir_pipes(t_token *token, int *pipes_fd, int *pipe_index)
-{
-	int	input_fd;
-	int	output_fd;
+// void	manage_redir_pipes(t_token *token, int *pipes_fd, int *pipe_index)
+// {
+// 	int	input_fd;
+// 	int	output_fd;
 
-	input_fd = STDIN_FILENO;
-	output_fd = STDOUT_FILENO;
-	if (token->prev)
-	{
-		if (token->prev->token == PIPE)
-			input_fd = pipes_fd[2 * (*pipe_index)];
-	}
-	if (token->next)
-	{
-		if (token->next->token == PIPE)
-		{
-			input_fd = pipes_fd[2 * (*pipe_index) + 1];
-			(*pipe_index)++;
-		}
-	}
-	if (token->prev)
-	{
-		check_redir(token->prev, &input_fd, &output_fd);
-		if (token->prev->prev)
-			check_redir(token->prev, &input_fd, &output_fd);
-	}
-	if (token->next)
-	{
-		check_redir(token->next, &input_fd, &output_fd);
-		if (token->next->next)
-			check_redir(token->next, &input_fd, &output_fd);
-	}
+// 	input_fd = STDIN_FILENO;
+// 	output_fd = STDOUT_FILENO;
+// 	if (token->prev)
+// 	{
+// 		if (token->prev->token == PIPE)
+// 			input_fd = pipes_fd[2 * (*pipe_index)];
+// 	}
+// 	if (token->next)
+// 	{
+// 		if (token->next->token == PIPE)
+// 		{
+// 			input_fd = pipes_fd[2 * (*pipe_index) + 1];
+// 			(*pipe_index)++;
+// 		}
+// 	}
+// 	if (token->prev)
+// 	{
+// 		check_redir(token->prev, &input_fd, &output_fd);
+// 		if (token->prev->prev)
+// 			check_redir(token->prev, &input_fd, &output_fd);
+// 	}
+// 	if (token->next)
+// 	{
+// 		check_redir(token->next, &input_fd, &output_fd);
+// 		if (token->next->next)
+// 			check_redir(token->next, &input_fd, &output_fd);
+// 	}
 
-}
+// }
 
-void	check_redir(t_token *token, int *input_fd, int *output_fd)
-{
-	enum e_token type;
+// void	check_redir(t_token *token, int *input_fd, int *output_fd)
+// {
+// 	enum e_token type;
 
-	type = token->token;
-	if (type == INPUT)
-		input_fd = open(token->str, O_RDONLY);
-	else if (type == HERE_DOC)
-		input_fd = manage_here_doc(token->prev->str);
-	else if (type == OUTPUT_APPEND)
-		output_fd = open(token->str, O_WRONLY | O_APPEND | O_CREAT, 0644);
-	else if (type == OUTPUT_TRUNC)
-		output_fd = open(token->str, O_WRONLY | O_TRUNC | O_CREAT, 0644);
-}
+// 	type = token->token;
+// 	if (type == INPUT)
+// 		input_fd = open(token->str, O_RDONLY);
+// 	else if (type == HERE_DOC)
+// 		input_fd = manage_here_doc(token->prev->str);
+// 	else if (type == OUTPUT_APPEND)
+// 		output_fd = open(token->str, O_WRONLY | O_APPEND | O_CREAT, 0644);
+// 	else if (type == OUTPUT_TRUNC)
+// 		output_fd = open(token->str, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+// }

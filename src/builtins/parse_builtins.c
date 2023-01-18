@@ -6,12 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:31 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 13:27:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:28:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "exec.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 static int	search_builtins(t_token *token, t_builtin *arr, int *is_builtin);
@@ -41,7 +42,7 @@ static int	search_builtins(t_token *token, t_builtin *arr, int *is_builtin)
 	return_status = 0;
 	while (arr[i].name != NULL)
 	{
-		if (ft_strcmp(token->cmd[0], arr[i].name) == 0)
+		if (ft_strncmp(token->cmd[0], arr[i].name, ft_strlen(arr[i].name)) == 0)
 		{
 			*is_builtin = 1;
 			return_status = arr[i].builtin(token);

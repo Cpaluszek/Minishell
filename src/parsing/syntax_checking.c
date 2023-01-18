@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_checking.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/17 18:25:30 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:22:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	syntax_checking(t_global *shell)
 void	empty_token_assignation(t_token *token_list)
 {
 	t_token	*token;
-	int		len;
 
 	token = token_list;
 	while (token)
@@ -54,7 +53,6 @@ void	empty_token_assignation(t_token *token_list)
 	token = token_list;
 	while (token)
 	{
-		len = ft_strlen(token->str);
 		if (token->token <= 4 && token->next && token->next->token !=EMPTY)
 			token->space_link = false;
 		else if (token->token == CMD && token->str[0] != ' ')

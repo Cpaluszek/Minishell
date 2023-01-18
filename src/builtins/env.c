@@ -15,5 +15,6 @@
 
 int	ft_env(t_token *token)
 {
-	
+	(void) token;
+	return (0);
 }

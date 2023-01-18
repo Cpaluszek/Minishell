@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_modifications.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:30:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/18 12:39:39 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/18 16:23:41 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	transform_quote_token(t_global *shell)
 	token = token->next;
 	// while (token)
 	// {
-	// 	if (token->token == PIPE && token->next && \
+	// 	if (token->token == PIPE && token->next && 
 	// 		(token->next->token == QUOTE || token->next->token == DQUOTE))
 	// 		token->next->token = CMD;
 	// 	token = token->next;

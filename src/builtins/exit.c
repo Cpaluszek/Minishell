@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 13:25:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:32:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int	ft_exit(t_token *token)
 		exit(exit_value);
 	else if (!ft_isnum(token->cmd[1]))
 	{
-		ft_putstr_fd(STDERR_FILENO, "exit: numeric argument required");
+		ft_putstr_fd("exit: numeric argument required", STDERR_FILENO);
 		exit(255);
 	}
 	else if (args_number(token->cmd) > 2)
 	{
-		ft_putstr_fd(STDERR_FILENO, "exit: too many arguments");
+		ft_putstr_fd("exit: too many arguments", STDERR_FILENO);
 		return (1);
 	}
 	exit_value = ft_atoi(token->cmd[1]);

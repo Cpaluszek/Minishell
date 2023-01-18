@@ -1,6 +1,10 @@
 {
 	"files.associations": {
 		"stdlib.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"parsing.h": "c",
+		"exec.h": "c",
+		"structs.h": "c",
+		"fcntl.h": "c"
 	}
 }

@@ -32,15 +32,28 @@ PARSING_FILES	:=	central_parsing.c \
 
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \
-					find_exec.c
+					find_exec.c \
+					
+BUILTIN_DIR		:=	builtins
+BUILTIN_FILES	:=	parse_builtins.c \
+					builtins_utils.c \
+					cd.c \
+					echo.c \
+					env.c \
+					exit.c \
+					export.c \
+					pwd.c \
+					unset.c
 
 PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
 EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))
+BUILTIN_SRC		:= $(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILES))
 
 SRC_FILES		:=	main.c \
 					errors.c \
 					$(EXEC_SRC) \
-					$(PARSING_SRC)
+					$(PARSING_SRC) \
+					$(BUILTIN_SRC)
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
