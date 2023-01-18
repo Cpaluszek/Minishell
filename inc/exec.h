@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 15:08:31 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:25:01 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ int		ft_export(t_token *token);
 int		ft_unset(t_token *token);
 int		ft_env(t_token *token);
 int		ft_exit(t_token *token);
+
+/*	Utils	*/
+int		args_number(char **args);
 
 #endif

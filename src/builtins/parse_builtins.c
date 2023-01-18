@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:31 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 15:08:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:27:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static int	search_builtins(t_token *token, t_builtin *arr, int *is_builtin)
 		{
 			*is_builtin = 1;
 			return_status = arr[i].builtin(token);
-			// Todo: check return status code and print usage
+			if (return_status)
+				printf("%s\n", arr->usage);
 			return (return_status);
 		}
 		i++;

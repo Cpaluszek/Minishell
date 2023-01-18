@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 11:50:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:25:30 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 #include "errors.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include "exec.h"
 
 static int	ft_isnum(char *str);
-static int	args_number(char **args);
 
 // exit N
 // if N is not given - exit status code is the last executed command ($?)
@@ -59,14 +59,4 @@ static int	ft_isnum(char *str)
 		i++;
 	}
 	return (1);
-}
-
-static int	args_number(char **args)
-{
-	int	i;
-
-	i = 0;
-	while (args[i])
-		i++;
-	return (i);
 }
