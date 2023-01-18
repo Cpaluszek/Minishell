@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/14 11:03:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:25:30 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,49 @@
 // Optionnal parameter: exit status code
 // Check for valid exit code
 #include "structs.h"
+#include "libft.h"
+#include "errors.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include "exec.h"
 
-int	ft_exit(s_token *token)
+static int	ft_isnum(char *str);
+
+// exit N
+// if N is not given - exit status code is the last executed command ($?)
+// Todo: frees
+// Todo: if no args - return last command exit status
+int	ft_exit(t_token *token)
 {
-	
+	int	exit_value;
+
+	exit_value = 0;
+	if (args_number(token->cmd) < 2)
+		exit(exit_value);
+	else if (!ft_isnum(token->cmd[1]))
+	{
+		ft_putstr_fd(STDERR_FILENO, "exit: numeric argument required");
+		exit(255);
+	}
+	else if (args_number(token->cmd) > 2)
+	{
+		ft_putstr_fd(STDERR_FILENO, "exit: too many arguments");
+		return (1);
+	}
+	exit_value = ft_atoi(token->cmd[1]);
+	exit(exit_value);
+}
+
+static int	ft_isnum(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

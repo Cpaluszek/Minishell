@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.h                                           :+:      :+:    :+:   */
+/*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 10:00:02 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 11:11:26 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/01/17 11:07:38 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/01/17 11:08:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORS_H
-# define ERROR_H
+#include <stdio.h>
 
-void	print_perror_exit(char *str);
-void	print_perror(char *str);
+// Print error message from errno and exit program
+void	print_perror_exit(char *str)
+{
+	perror(str);
+	exit(1);
+}
 
-#endif
+// Print error message from errno
+void	print_perror(char *str)
+{
+	perror(str);
+}

@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.h                                           :+:      :+:    :+:   */
+/*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 10:00:02 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/17 11:11:26 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/01/18 13:24:00 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/01/18 13:25:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORS_H
-# define ERROR_H
+int	args_number(char **args)
+{
+	int	i;
 
-void	print_perror_exit(char *str);
-void	print_perror(char *str);
-
-#endif
+	i = 0;
+	while (args[i])
+		i++;
+	return (i);
+}
