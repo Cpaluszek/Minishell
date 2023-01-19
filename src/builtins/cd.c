@@ -20,6 +20,7 @@
 // static int	cd_home(void);
 // static int	cd_old(void);
 
+// Todo: test with directory without permissions
 int	ft_cd(t_token *token)
 {
 	(void) token;
