@@ -92,7 +92,12 @@ int	exec_cmd(t_token *token, char **env)
 		execve(token->cmd[0], token->cmd, env);
 		exit(0);
 	}
-	else if (token->make_a_pipe)
-		close(token->pipe_fd[1]);
+	else
+	{
+		if (token->make_a_pipe)
+			close(token->pipe_fd[1]);
+		if (token->prev && token->prev->make_a_pipe)
+			close(token->prev->pipe_fd[0]);
+	}
 	return (0);
 }
