@@ -62,22 +62,7 @@ int	exec_cmd(t_token *token, char **env)
 		exit (0);
 	}
 	if (token->pid == 0)
-	{
-		if (token->fd_input != NULL)
-		{
-			dup2(*(token->fd_input), STDIN_FILENO);
-			// dprintf(STDERR_FILENO, "%s: dup(%d, 0)\n",token->str, *(token->fd_input));
-			close(*(token->fd_input));
-		}
-		if (token->fd_output != NULL)
-		{
-			dup2(*(token->fd_output), STDOUT_FILENO);
-			// dprintf(STDERR_FILENO, "%s: dup(%d, 1)\n",token->str, *(token->fd_output));
-			close(*(token->fd_output));
-		}
-		execve(token->cmd[0], token->cmd, env);
-		exit(0);
-	}
+		exec_child(token, env);
 	else
 	{
 		if (token->make_a_pipe)

@@ -27,6 +27,7 @@ int		exec_start(t_global *shell);
 void	setup_redirections(t_token *tok);
 int		exec_token_list(t_token *token, char **env);
 int		exec_cmd(t_token *token, char **env);
+void	exec_child(t_token *token, char **env);
 
 /*	Builtins	*/
 // Note: echo + env + pwd are found in usr/bin

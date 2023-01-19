@@ -25,6 +25,7 @@ PARSING_FILES	:=	central_parsing.c \
 
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \
+					child.c \
 					redirections.c
 					
 BUILTIN_DIR		:=	builtins
