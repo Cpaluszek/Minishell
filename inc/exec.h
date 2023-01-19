@@ -13,24 +13,27 @@
 #ifndef EXEC_H
 # define EXEC_H
 
+// Todo: move includes closer to usage
 # include "structs.h"
 # include <sys/wait.h>
 # include <fcntl.h>
 
+int		exec_start(t_global *shell);
+void	setup_redirections(t_token *tok);
+int		exec_token_list(t_token *token, t_global *shell);
+int		exec_cmd(t_token *token, t_global *shell);
+void	exec_child(t_token *token, char **env);
+
+void	error_exit_exec(t_global *shell, char *err_msg);
+
+/*	Builtins	*/
+// Note: echo + env + pwd are found in usr/bin
 typedef struct s_builtin {
 	char	*name;
 	char	*usage;
 	int		(*builtin)(t_token *);
 }	t_builtin;
 
-int		exec_start(t_global *shell);
-void	setup_redirections(t_token *tok);
-int		exec_token_list(t_token *token, char **env);
-int		exec_cmd(t_token *token, char **env);
-void	exec_child(t_token *token, char **env);
-
-/*	Builtins	*/
-// Note: echo + env + pwd are found in usr/bin
 int		parse_builtins(t_token *token, int *is_builtin);
 int		ft_echo(t_token *token);
 int		ft_cd(t_token *token);
