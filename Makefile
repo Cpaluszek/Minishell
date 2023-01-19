@@ -24,7 +24,8 @@ PARSING_FILES	:=	central_parsing.c \
 					utils_parsing.c
 
 EXEC_DIR		:=	exec
-EXEC_FILES		:=	exec.c
+EXEC_FILES		:=	exec.c \
+					redirections.c
 					
 BUILTIN_DIR		:=	builtins
 BUILTIN_FILES	:=	parse_builtins.c \

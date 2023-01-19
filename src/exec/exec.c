@@ -22,20 +22,6 @@ int	exec_start(t_global *shell)
 	return (0);
 }
 
-void	setup_redirections(t_token *tok)
-{
-	while (tok)
-	{
-		if (tok->token == INPUT)
-			tok->fd_file = open(tok->str, O_RDONLY);
-		else if (tok->token == OUTPUT_TRUNC)
-			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-		else if (tok->token == OUTPUT_APPEND)
-			tok->fd_file = open(tok->str, O_RDONLY | O_CREAT | O_APPEND, 0644);
-		tok = tok->next;
-	}
-}
-
 int	exec_token_list(t_token *token, char **env)
 {
 	while (token)
@@ -80,13 +66,13 @@ int	exec_cmd(t_token *token, char **env)
 		if (token->fd_input != NULL)
 		{
 			dup2(*(token->fd_input), STDIN_FILENO);
-			dprintf(STDERR_FILENO, "%s: dup(%d, 0)\n",token->str, *(token->fd_input));
+			// dprintf(STDERR_FILENO, "%s: dup(%d, 0)\n",token->str, *(token->fd_input));
 			close(*(token->fd_input));
 		}
 		if (token->fd_output != NULL)
 		{
 			dup2(*(token->fd_output), STDOUT_FILENO);
-			dprintf(STDERR_FILENO, "%s: dup(%d, 1)\n",token->str, *(token->fd_output));
+			// dprintf(STDERR_FILENO, "%s: dup(%d, 1)\n",token->str, *(token->fd_output));
 			close(*(token->fd_output));
 		}
 		execve(token->cmd[0], token->cmd, env);
