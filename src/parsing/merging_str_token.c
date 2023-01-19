@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merging_str_token.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/18 10:02:13 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/19 13:18:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ t_token *token, char **redirection_str)
 	j = 0;
 	if (token->token == CMD)
 	{
-		while (token_str[i] == ' ')
+		while (token_str[i] && token_str[i] == ' ')
 			i++;
-		while (token_str[i + j] != ' ')
+		while (token_str[i + j] && token_str[i + j] != ' ')
 			j++;
 		new_str = ft_substr(token_str, i, j);
 		test_failed_malloc(shell, new_str);
