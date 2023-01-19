@@ -50,6 +50,7 @@ int	exec_token_list(t_token *token, char **env)
 }
 
 // Todo: recover builtins exit status
+// Note: some builtins need fork (echo)
 int	exec_cmd(t_token *token, char **env)
 {
 	int	is_builtin;
@@ -67,19 +68,31 @@ int	exec_cmd(t_token *token, char **env)
 		return (0);
 	}
 	if (token->make_a_pipe)
-	{
-		dprintf(STDERR_FILENO, "creating a pipe\n");
 		pipe(token->pipe_fd);
-	}
 	token->pid = fork();
+	if (token->pid == -1)
+	{
+		perror("fork error: ");
+		exit (0);
+	}
 	if (token->pid == 0)
 	{
 		if (token->fd_input != NULL)
-			dup2(*token->fd_input, STDIN_FILENO);
+		{
+			dup2(*(token->fd_input), STDIN_FILENO);
+			dprintf(STDERR_FILENO, "%s: dup(%d, 0)\n",token->str, *(token->fd_input));
+			close(*(token->fd_input));
+		}
 		if (token->fd_output != NULL)
-			dup2(*token->fd_output, STDIN_FILENO);
+		{
+			dup2(*(token->fd_output), STDOUT_FILENO);
+			dprintf(STDERR_FILENO, "%s: dup(%d, 1)\n",token->str, *(token->fd_output));
+			close(*(token->fd_output));
+		}
 		execve(token->cmd[0], token->cmd, env);
 		exit(0);
 	}
+	else if (token->make_a_pipe)
+		close(token->pipe_fd[1]);
 	return (0);
 }
