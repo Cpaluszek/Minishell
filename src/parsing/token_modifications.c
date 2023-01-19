@@ -100,12 +100,18 @@ static void	set_pipe_fd_to_command(t_token *token, int *fd_input, int *fd_output
 void	delete_pipe_token(t_global *shell)
 {
 	t_token *token;
+	t_token	*next;
 
 	token = shell->token_list;
 	while (token)
 	{
 		if (token->token == PIPE)
+		{
+			next = token->next;
 			remove_token(token);
-		token = token->next;
+			token = next;
+		}
+		else
+			token = token->next;
 	}
 }
