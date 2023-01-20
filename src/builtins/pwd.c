@@ -10,12 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// The pwd utility writes the absolute pathname of the current working directory
-// to the standard output.
 #include "structs.h"
 #include <stdio.h>
 #include <unistd.h>
 
+/**
+ * @brief writes the absolute pathname of the current working directory to STDOUT
+ * 
+ * @param token (void)
+ * @param shell (void)
+ * @return 1 on error, 0 otherwise
+ */
 int	ft_pwd(t_token *token, t_global *shell)
 {
 	char	*pwd;
