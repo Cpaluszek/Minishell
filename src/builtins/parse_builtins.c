@@ -15,36 +15,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int	search_builtins(t_token *token, t_builtin *arr, int *is_builtin);
+static int	search_builtins(t_token *token, t_builtin *arr, int *found, t_global *shell);
 
 // Note: some builtins are found in PATH
-int	parse_builtins(t_token *token, int *is_builtin)
+int	parse_builtins(t_token *token, int *is_builtin, t_global *shell)
 {
 	static t_builtin	arr[] = {
-	{"cd", "cd [directory]", &ft_cd},
-	{"/usr/bin/echo", "echo [-n] [arg...]", &ft_echo},
-	{"env", "env", &ft_env},
-	{"exit", "exit [num]", &ft_exit},
-	{"pwd", "pwd", &ft_pwd},
-	{"export", "export [name[=word]]", &ft_export},
-	{"unset", "unset [name]", &ft_unset},
-	{NULL, NULL, NULL}
+	{"cd", &ft_cd},
+	{"/usr/bin/echo", &ft_echo},
+	{"env", &ft_env},
+	{"exit", &ft_exit},
+	{"pwd", &ft_pwd},
+	{"export", &ft_export},
+	{"unset", &ft_unset},
+	{NULL, NULL}
 	};
 
-	return (search_builtins(token, arr, is_builtin));
+	return (search_builtins(token, arr, is_builtin, shell));
 }
 
-int	args_number(char **args)
-{
-	int	i;
-
-	i = 0;
-	while (args[i])
-		i++;
-	return (i);
-}
-
-static int	search_builtins(t_token *token, t_builtin *arr, int *is_builtin)
+static int	search_builtins(t_token *token, t_builtin *arr, int *found, t_global *shell)
 {
 	int	i;
 	int	return_status;
@@ -55,10 +45,8 @@ static int	search_builtins(t_token *token, t_builtin *arr, int *is_builtin)
 	{
 		if (ft_strncmp(token->cmd[0], arr[i].name, ft_strlen(arr[i].name)) == 0)
 		{
-			*is_builtin = 1;
-			return_status = arr[i].builtin(token);
-			if (return_status)
-				printf("%s\n", arr->usage);
+			*found = 1;
+			return_status = arr[i].builtin(token, shell);
 			return (return_status);
 		}
 		i++;

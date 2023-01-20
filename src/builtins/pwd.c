@@ -16,9 +16,10 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int	ft_pwd(t_token *token)
+int	ft_pwd(t_token *token, t_global *shell)
 {
 	(void) token;
+	(void) shell;
 	dprintf(STDERR_FILENO, "pwd execution\n");
 	return (0);
 }

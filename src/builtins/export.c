@@ -17,9 +17,10 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int	ft_export(t_token *token)
+int	ft_export(t_token *token, t_global *shell)
 {
 	(void) token;
+	(void) shell;
 	dprintf(STDERR_FILENO, "export execution\n");
 	return (0);
 }

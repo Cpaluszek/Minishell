@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 17:33:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:21:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,23 @@ int		exec_cmd(t_token *token, t_global *shell);
 void	exec_child(t_token *token, char **env);
 
 void	error_exit_exec(t_global *shell, char *err_msg);
+void	exit_exec(t_global *shell, int exit_code);
 
 /*	Builtins	*/
 // Note: echo + env + pwd are found in usr/bin
 typedef struct s_builtin {
 	char	*name;
-	char	*usage;
-	int		(*builtin)(t_token *);
+	int		(*builtin)(t_token *, t_global *);
 }	t_builtin;
 
-int		parse_builtins(t_token *token, int *is_builtin);
-int		ft_echo(t_token *token);
-int		ft_cd(t_token *token);
-int		ft_pwd(t_token *token);
-int		ft_export(t_token *token);
-int		ft_unset(t_token *token);
-int		ft_env(t_token *token);
-int		ft_exit(t_token *token);
+int		parse_builtins(t_token *token, int *is_builtin, t_global *shell);
+int		ft_echo(t_token *token, t_global *shell);
+int		ft_cd(t_token *token, t_global *shell);
+int		ft_pwd(t_token *token, t_global *shell);
+int		ft_export(t_token *token, t_global *shell);
+int		ft_unset(t_token *token, t_global *shell);
+int		ft_env(t_token *token, t_global *shell);
+int		ft_exit(t_token *token, t_global *shell);
 int		args_number(char **args);
 
 #endif

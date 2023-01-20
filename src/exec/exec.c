@@ -14,6 +14,7 @@
 #include "exec.h"
 #include <unistd.h>
 #include <stdio.h>
+#define COMMAND_NOT_FONUD 127
 
 static void	parent_close_pipes(t_token *token);
 
@@ -40,21 +41,19 @@ int	exec_token_list(t_token *token, t_global *shell)
 // Todo: recover builtins exit status
 // Todo: protect close
 // Note: some builtins need fork (echo)
+// Note: how to manage command not found ? continue exec line ?
 int	exec_cmd(t_token *token, t_global *shell)
 {
 	int	is_builtin;
 
 	is_builtin = 0;
-	parse_builtins(token, &is_builtin);
+	parse_builtins(token, &is_builtin, shell);
 	if (is_builtin)
-	{
-		//dprintf(STDERR_FILENO, "builtin found - %s\n", token->str);
 		return (0);
-	}
 	else if (access(token->cmd[0], X_OK) == -1)
 	{
-		perror(token->cmd[0]);
-		// Note: how to manage command not found ? continue exec line ?
+		g_status = COMMAND_NOT_FONUD;
+		ft_printf_fd(STDERR_FILENO, "command not found: %s\n", token->cmd[0]);
 		return (0);
 	}
 	if (token->make_a_pipe)

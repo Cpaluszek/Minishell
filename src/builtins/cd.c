@@ -21,9 +21,10 @@
 // static int	cd_old(void);
 
 // Todo: test with directory without permissions
-int	ft_cd(t_token *token)
+int	ft_cd(t_token *token, t_global *shell)
 {
 	(void) token;
+	(void) shell;
 	dprintf(STDERR_FILENO, "cd execution\n");
 	return (0);
 	// char	*target;

@@ -23,11 +23,12 @@ static int	echo_option(t_token *t, int *arg_i);
 // Todo: crash with e"cho" test
 // Note: parsing problem with echo "-n test"
 // Note: what is echo $$
-int	ft_echo(t_token *token)
+int	ft_echo(t_token *token, t_global *shell)
 {
 	int	arg_index;
 	int	new_line;
 
+	(void) shell;
 	arg_index = 1;
 	new_line = echo_option(token, &arg_index);
 	while (token->cmd[arg_index])

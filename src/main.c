@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/20 12:10:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:29:01 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv, char **env)
 	// Block control characters printing (^C, ^\) ->tcgetattr & tcsetattr
 	(void) argc;
 	(void) argv;
+	g_status = 0;
 	set_environment(&shell, env);
 	while (1)
 	{
@@ -40,7 +41,6 @@ int	main(int argc, char **argv, char **env)
 		token_list = shell.token_list;
 		print_command_line(token_list);
 		exec_start(&shell);
-		// printf("\n");
 	}
 	return (0);
 }
