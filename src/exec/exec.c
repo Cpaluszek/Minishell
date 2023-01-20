@@ -48,7 +48,7 @@ int	exec_cmd(t_token *token, t_global *shell)
 	parse_builtins(token, &is_builtin);
 	if (is_builtin)
 	{
-		dprintf(STDERR_FILENO, "builtin found - %s\n", token->str);
+		//dprintf(STDERR_FILENO, "builtin found - %s\n", token->str);
 		return (0);
 	}
 	else if (access(token->cmd[0], X_OK) == -1)

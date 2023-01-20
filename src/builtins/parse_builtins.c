@@ -22,7 +22,7 @@ int	parse_builtins(t_token *token, int *is_builtin)
 {
 	static t_builtin	arr[] = {
 	{"cd", "cd [directory]", &ft_cd},
-	{"echo", "echo [-n] [arg...]", &ft_echo},
+	{"/usr/bin/echo", "echo [-n] [arg...]", &ft_echo},
 	{"env", "env", &ft_env},
 	{"exit", "exit [num]", &ft_exit},
 	{"pwd", "pwd", &ft_pwd},

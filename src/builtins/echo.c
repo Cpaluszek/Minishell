@@ -16,53 +16,50 @@
 #include "structs.h"
 #include <unistd.h>
 #include <stdio.h>
-#define OPTION "-n"
+#define NL "-n"
 
-// static int	echo_option(t_token *token, int *i);
+static int	echo_option(t_token *t, int *arg_i);
+
 // Note: what is echo $$
 int	ft_echo(t_token *token)
 {
-	(void) token;
-	dprintf(STDERR_FILENO, "echo execution\n");
-	// int	i;
-	// int	new_line;
+	int	arg_index;
+	int	new_line;
 
-	// i = 1;
-	// new_line = echo_option(token, &i);
-	// while (token->cmd[i])
-	// {
-	// 	ft_putstr_fd(token->cmd[i], STDOUT_FILENO);
-	// 	if (token->cmd[i + 1])
-	// 		ft_putstr_fd(" ", STDOUT_FILENO);
-	// 	i++;
-	// }
-	// if (new_line)
-	// 	ft_putstr_fd("\n", STDOUT_FILENO);
+	arg_index = 1;
+	new_line = echo_option(token, &arg_index);
+	// dprintf(STDERR_FILENO, "ECHO: new line = %d\n", new_line);
+	while (token->cmd[arg_index])
+	{
+		ft_putstr_fd(token->cmd[arg_index], STDOUT_FILENO);
+		if (token->cmd[arg_index + 1])
+			ft_putstr_fd(" ", STDOUT_FILENO);
+		arg_index++;
+	}
+	if (new_line)
+		ft_putstr_fd("\n", STDOUT_FILENO);
 	return (0);
 }
 
-// // Skip all "-n" and "-nnnnn"
-// static int	echo_option(t_token *token, int *i)
-// {
-// 	int	new_line;
-// 	int	j;
+// Skip all "-n" and "-nnnnn"
+static int	echo_option(t_token *t, int *arg_i)
+{
+	int	new_line;
+	int	len;
+	int	j;
 
-// 	new_line = 1;
-// 	j = 0;
-// 	while (ft_strncmp(token->cmd[*i], OPTION, ft_strlen(OPTION)) == 0)
-// 	{
-// 		j += ft_strlen(OPTION);
-// 		while (token->cmd[*i][j])
-// 		{
-// 			if (token->cmd[*i][j] != 'n')
-// 			{
-// 				if (*i == 1)
-// 					return (1);
-// 				else
-// 					return (new_line);
-// 			}	
-// 		}
-// 		(*i)++;
-// 	}
-// 	return (new_line);
-// }
+	new_line = 1;
+	len = ft_strlen(NL);
+	while (t->cmd[*arg_i] && ft_strncmp(t->cmd[*arg_i], NL, len) == 0)
+	{
+		j = len;
+		while (t->cmd[*arg_i][j] && t->cmd[*arg_i][j] == 'n')
+			j++;
+		if (t->cmd[*arg_i][j] && t->cmd[*arg_i][j] != '\0')
+			return (new_line);
+		else if (*arg_i == 1)
+			new_line = 0;
+		(*arg_i)++;
+	}
+	return (new_line);
+}
