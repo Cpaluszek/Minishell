@@ -14,7 +14,7 @@
 #include "exec.h"
 #include <unistd.h>
 #include <stdio.h>
-#define COMMAND_NOT_FONUD 127
+#define COMMAND_NOT_FOUND 127
 
 static void	parent_close_pipes(t_token *token);
 
@@ -52,7 +52,7 @@ int	exec_cmd(t_token *token, t_global *shell)
 		return (0);
 	else if (access(token->cmd[0], X_OK) == -1)
 	{
-		g_status = COMMAND_NOT_FONUD;
+		g_status = COMMAND_NOT_FOUND;
 		ft_printf_fd(STDERR_FILENO, "command not found: %s\n", token->cmd[0]);
 		return (0);
 	}
