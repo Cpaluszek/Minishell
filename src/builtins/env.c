@@ -15,7 +15,13 @@
 #include "exec.h"
 #include <stdio.h>
 #include <unistd.h>
-
+/**
+ * @brief Print the environment
+ * 
+ * @param token (void)
+ * @param shell structure containing environment
+ * @return 1 if there is options or arguments
+ */
 int	ft_env(t_token *token, t_global *shell)
 {
 	int	i;
