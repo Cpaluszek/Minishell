@@ -18,8 +18,14 @@
 
 int	ft_pwd(t_token *token, t_global *shell)
 {
+	char	*pwd;
+
 	(void) token;
 	(void) shell;
-	dprintf(STDERR_FILENO, "pwd execution\n");
+	pwd = getcwd(NULL, 0);
+	if (pwd == NULL)
+		return (1);
+	printf("%s\n", pwd);
+	free(pwd);
 	return (0);
 }
