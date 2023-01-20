@@ -25,6 +25,7 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	str/ft_strlen.c \
  			   	str/ft_strlcpy.c \
  			   	str/ft_strlcat.c \
+ 			   	str/ft_strcmp.c \
  			   	str/ft_strncmp.c \
  			   	str/ft_strnstr.c \
  			   	str/ft_substr.c \
