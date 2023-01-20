@@ -20,6 +20,8 @@
 
 static int	echo_option(t_token *t, int *arg_i);
 
+// Todo: crash with e"cho" test
+// Note: parsing problem with echo "-n test"
 // Note: what is echo $$
 int	ft_echo(t_token *token)
 {
@@ -28,7 +30,6 @@ int	ft_echo(t_token *token)
 
 	arg_index = 1;
 	new_line = echo_option(token, &arg_index);
-	// dprintf(STDERR_FILENO, "ECHO: new line = %d\n", new_line);
 	while (token->cmd[arg_index])
 	{
 		ft_putstr_fd(token->cmd[arg_index], STDOUT_FILENO);
