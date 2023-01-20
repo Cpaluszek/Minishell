@@ -27,6 +27,7 @@
 // if N is not given - exit status code is the last executed command ($?)
 // Todo: frees
 // Todo: if no args - return last command exit status
+// Note: what happens when exit command is called with multiples commands in line ?
 int	ft_exit(t_token *token)
 {
 	(void) token;

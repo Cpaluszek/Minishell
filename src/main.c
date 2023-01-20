@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 17:11:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:56:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-char	*get_next_line(int fd);
+// char	*get_next_line(int fd);
 void	print_command_line(t_token *token_list);
 // NOTE: check argc error ?
 // Note: here_doc in a fork to manage CTRL-C

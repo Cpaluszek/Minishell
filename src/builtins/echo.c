@@ -19,7 +19,7 @@
 #define OPTION "-n"
 
 // static int	echo_option(t_token *token, int *i);
-
+// Note: what is echo $$
 int	ft_echo(t_token *token)
 {
 	(void) token;

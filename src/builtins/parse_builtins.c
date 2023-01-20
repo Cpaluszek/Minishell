@@ -17,6 +17,7 @@
 
 static int	search_builtins(t_token *token, t_builtin *arr, int *is_builtin);
 
+// Note: some builtins are found in PATH
 int	parse_builtins(t_token *token, int *is_builtin)
 {
 	static t_builtin	arr[] = {
