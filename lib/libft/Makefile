@@ -71,7 +71,8 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	lst/ft_lstlast.c \
  			   	lst/ft_lstdelone.c \
  			   	lst/ft_lstiter.c \
- 			   	lst/ft_lstmap.c
+ 			   	lst/ft_lstmap.c \
+				lst/ft_lstsort.c
 
 OBJ_DIR		:=	build/
 OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
