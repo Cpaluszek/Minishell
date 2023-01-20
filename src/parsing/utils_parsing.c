@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/18 09:24:13 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/20 11:56:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "parsing.h"
 #include "token_list_functions.h"
 
+// Todo: if line is only space -> don't add to history
 void	get_input(t_global *shell, char *prompt)
 {
 	char	*input;
