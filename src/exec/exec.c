@@ -47,7 +47,7 @@ int	exec_cmd(t_token *token, t_global *shell)
 	int	is_builtin;
 
 	is_builtin = 0;
-	parse_builtins(token, &is_builtin, shell);
+	g_status = parse_builtins(token, &is_builtin, shell);
 	if (is_builtin)
 		return (0);
 	else if (access(token->cmd[0], X_OK) == -1)
