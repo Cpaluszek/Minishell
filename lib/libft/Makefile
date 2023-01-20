@@ -77,7 +77,8 @@ OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
 
 # Compiler options
 CC			:=	gcc
-CC_FLAGS	:=	-Wextra -Werror -Wall
+DEBUG_FLAG	:= -g3
+CC_FLAGS	:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
 
 # define standard colors
 _END		:=	\x1b[0m

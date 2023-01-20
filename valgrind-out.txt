@@ -1,0 +1,281 @@
+==3447== Memcheck, a memory error detector
+==3447== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3447== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==3447== Command: /usr/bin/ls
+==3447== Parent PID: 3446
+==3447== 
+--3447-- 
+--3447-- Valgrind options:
+--3447--    --show-leak-kinds=all
+--3447--    --leak-check=full
+--3447--    --track-fds=yes
+--3447--    --trace-children=yes
+--3447--    --verbose
+--3447--    --show-mismatched-frees=yes
+--3447--    --read-var-info=yes
+--3447--    --suppressions=valgrind_ignore_leaks.txt
+--3447--    --log-file=valgrind-out.txt
+--3447-- Contents of /proc/version:
+--3447--   Linux version 5.15.79.1-microsoft-standard-WSL2 (oe-user@oe-host) (x86_64-msft-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #1 SMP Wed Nov 23 01:01:46 UTC 2022
+--3447-- 
+--3447-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--3447-- Page sizes: currently 4096, max supported 4096
+--3447-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--3447-- Reading syms from /usr/bin/ls
+--3447--    object doesn't have a symbol table
+--3447-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--3447--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
+--3447--   .. build-id is valid
+--3447-- warning: addVar: unknown size (buf)
+--3447-- warning: addVar: unknown size (buf)
+--3447-- warning: addVar: unknown size (buf)
+--3447-- warning: addVar: unknown size (buf)
+--3447-- warning: addVar: unknown size (buf)
+--3447-- warning: addVar: unknown size (buf)
+--3447-- warning: addVar: unknown size (buf)
+--3447-- warning: addVar: unknown size (loadcmds)
+--3447-- warning: addVar: unknown size (loadcmds)
+--3447-- warning: addVar: unknown size (loadcmds)
+--3447-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--3447--    object doesn't have a symbol table
+--3447--    object doesn't have a dynamic symbol table
+--3447-- Scheduler: using generic scheduler lock implementation.
+--3447-- Reading suppressions file: valgrind_ignore_leaks.txt
+--3447-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==3447== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-3447-by-noon-on-???
+==3447== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-3447-by-noon-on-???
+==3447== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-3447-by-noon-on-???
+==3447== 
+==3447== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==3447== don't want to do, unless you know exactly what you're doing,
+==3447== or are doing some strange experiment):
+==3447==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=3447 ...command...
+==3447== 
+==3447== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==3447==   /path/to/gdb /usr/bin/ls
+==3447== and then give GDB the following command
+==3447==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=3447
+==3447== --pid is optional if only one valgrind process is running
+==3447== 
+--3447-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--3447-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--3447-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--3447--    object doesn't have a symbol table
+--3447-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--3447--    object doesn't have a symbol table
+==3447== WARNING: new redirection conflicts with existing -- ignoring it
+--3447--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--3447--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--3447-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--3447-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--3447-- Reading syms from /usr/lib/x86_64-linux-gnu/libselinux.so.1
+--3447--    object doesn't have a symbol table
+--3447-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--3447--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
+--3447--   .. build-id is valid
+--3447-- Reading syms from /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.9.0
+--3447--    object doesn't have a symbol table
+--3447-- Reading syms from /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+--3447--   Considering /usr/lib/debug/.build-id/c0/f40155b3f8bf8c494fa800f9ab197ebe20ed6e.debug ..
+--3447--   .. build-id is valid
+--3447-- Reading syms from /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+--3447--   Considering /usr/lib/debug/.build-id/7b/4536f41cdaa5888408e82d0836e33dcf436466.debug ..
+--3447--   .. build-id is valid
+--3447-- REDIR: 0x491f480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f7b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e0a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e7e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x4920c50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x493bce0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x493b820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f5e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x493b7e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e1d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x493cf50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x493b860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491e630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x4927bb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f3d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x493b930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491eae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f6f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x4920c90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x491f8a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x49ac850 (libc.so.6:__memcpy_chk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x4a07500 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--3447-- REDIR: 0x49190e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--3447-- REDIR: 0x491efa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--3447-- REDIR: 0x4a03530 (libc.so.6:__memchr_avx2) redirected to 0x4840050 (memchr)
+--3447-- REDIR: 0x4a0a6e0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--3447-- REDIR: 0x491f2f0 (libc.so.6:strstr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--3447-- REDIR: 0x493a3f0 (libc.so.6:__strstr_sse2_unaligned) redirected to 0x4843c20 (strstr)
+--3447-- REDIR: 0x49196d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--3447-- REDIR: 0x4a02bd0 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+--3447-- REDIR: 0x4a076d0 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--3447-- REDIR: 0x4a03010 (libc.so.6:__strncmp_avx2) redirected to 0x483f670 (strncmp)
+--3447-- REDIR: 0x4a070e0 (libc.so.6:__strchr_avx2) redirected to 0x483ebf0 (index)
+--3447-- REDIR: 0x4a07310 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+--3447-- REDIR: 0x4a0a6c0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+--3447-- REDIR: 0x4919e80 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
+--3447-- REDIR: 0x4a040b4 (libc.so.6:__strcasecmp_l_avx) redirected to 0x483fab0 (strcasecmp_l)
+--3447-- REDIR: 0x4a09900 (libc.so.6:__stpcpy_avx2) redirected to 0x4842300 (stpcpy)
+--3447-- REDIR: 0x4a0ab60 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
+--3447-- REDIR: 0x4a07870 (libc.so.6:__strnlen_avx2) redirected to 0x483eee0 (strnlen)
+==3447== 
+==3447== FILE DESCRIPTORS: 3 open at exit.
+==3447== Open file descriptor 4: /mnt/d/Documents/SOFT/42/Minishell/valgrind-out.txt
+==3447==    <inherited from parent>
+==3447== 
+==3447== Open file descriptor 3: /mnt/d/Documents/SOFT/42/Minishell/valgrind-out.txt
+==3447==    <inherited from parent>
+==3447== 
+==3447== Open file descriptor 0: /dev/pts/0
+==3447==    <inherited from parent>
+==3447== 
+==3447== 
+==3447== HEAP SUMMARY:
+==3447==     in use at exit: 22,737 bytes in 17 blocks
+==3447==   total heap usage: 251 allocs, 234 frees, 79,398 bytes allocated
+==3447== 
+==3447== Searching for pointers to 17 not-freed blocks
+==3447== Checked 122,480 bytes
+==3447== 
+==3447== 56 bytes in 1 blocks are still reachable in loss record 1 of 8
+==3447==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3447==    by 0x11D8CC: ??? (in /usr/bin/ls)
+==3447==    by 0x11DAF8: ??? (in /usr/bin/ls)
+==3447==    by 0x11C890: ??? (in /usr/bin/ls)
+==3447==    by 0x10D8F6: ??? (in /usr/bin/ls)
+==3447==    by 0x48A3082: (below main) (libc-start.c:308)
+==3447== 
+==3447== 56 bytes in 1 blocks are still reachable in loss rec==3446== Invalid read of size 1
+==3446==    at 0x10B79B: not_only_spaces (utils_parsing.c:44)
+==3446==    by 0x10B6A4: get_input (utils_parsing.c:26)
+==3446==    by 0x109A80: parsing_initialization (central_parsing.c:40)
+==3446==    by 0x109A0C: central_parsing (central_parsing.c:27)
+==3446==    by 0x1093E7: main (main.c:39)
+==3446==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==3446== 
+==3446== 
+==3446== Process terminating with default action of signal 11 (SIGSEGV)
+==3446==  Access not within mapped region at address 0x0
+==3446==    at 0x10B79B: not_only_spaces (utils_parsing.c:44)
+==3446==    by 0x10B6A4: get_input (utils_parsing.c:26)
+==3446==    by 0x109A80: parsing_initialization (central_parsing.c:40)
+==3446==    by 0x109A0C: central_parsing (central_parsing.c:27)
+==3446==    by 0x1093E7: main (main.c:39)
+==3446==  If you believe this happened as a result of a stack
+==3446==  overflow in your program's main thread (unlikely but
+==3446==  possible), you can try to increase the size of the
+==3446==  main thread stack using the --main-stacksize= flag.
+==3446==  The main thread stack size used in this run was 8388608.
+==3446== 
+==3446== FILE DESCRIPTORS: 4 open at exit.
+==3446== Open file descriptor 3: /mnt/d/Documents/SOFT/42/Minishell/valgrind-out.txt
+==3446==    <inherited from parent>
+==3446== 
+==3446== Open file descriptor 2: /dev/pts/0
+==3446==    <inherited from parent>
+==3446== 
+==3446== Open file descriptor 1: /dev/pts/0
+==3446==    <inherited from parent>
+==3446== 
+==3446== Open file descriptor 0: /dev/pts/0
+==3446==    <inherited from parent>
+==3446== 
+==3446== 
+==3446== HEAP SUMMARY:
+==3446==     in use at exit: 212,465 bytes in 363 blocks
+==3446==   total heap usage: 598 allocs, 235 frees, 242,570 bytes allocated
+==3446== 
+==3446== Searching for pointers to 363 not-freed blocks
+==3446== Checked 213,448 bytes
+==3446== 
+==3446== 280 bytes in 1 blocks are still reachable in loss record 23 of 68
+==3446==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3446==    by 0x10C2C7: ft_tab_strdup (ft_tab_strdup.c:23)
+==3446==    by 0x10A16E: set_environment (init_and_reset_parsing.c:26)
+==3446==    by 0x1093B1: main (main.c:34)
+==3446== 
+==3446== 304 bytes in 1 blocks are still reachable in loss record 25 of 68
+==3446==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3446==    by 0x10C473: ft_calloc (ft_calloc.c:22)
+==3446==    by 0x10C0F5: ft_split_strings (ft_split.c:57)
+==3446==    by 0x10C03E: ft_split (ft_split.c:26)
+==3446==    by 0x10A24C: get_path (init_and_reset_parsing.c:53)
+==3446==    by 0x1093D0: main (main.c:38)
+==3446== 
+==3446== 544 bytes in 34 blocks are still reachable in loss record 28 of 68
+==3446==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3446==    by 0x10C775: ft_lstnew (ft_lstnew.c:19)
+==3446==    by 0x10A2C3: make_env_list (init_and_reset_parsing.c:69)
+==3446==    by 0x10A1A9: set_environment (init_and_reset_parsing.c:29)
+==3446==    by 0x1093B1: main (main.c:34)
+==3446== 
+==3446== 1,331 bytes in 37 blocks are still reachable in loss record 36 of 68
+==3446==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3446==    by 0x10BE5C: ft_substr (ft_substr.c:26)
+==3446==    by 0x10C1AC: ft_split_strings (ft_split.c:69)
+==3446==    by 0x10C03E: ft_split (ft_split.c:26)
+==3446==    by 0x10A24C: get_path (init_and_reset_parsing.c:53)
+==3446==    by 0x1093D0: main (main.c:38)
+==3446== 
+==3446== 1,331 bytes in 37 blocks are indirectly lost in loss record 37 of 68
+==3446==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3446==    by 0x10BE5C: ft_substr (ft_substr.c:26)
+==3446==    by 0x10C1AC: ft_split_strings (ft_split.c:69)
+==3446==    by 0x10C03E: ft_split (ft_split.c:26)
+==3446==    by 0x10A24C: get_path (init_and_reset_parsing.c:53)
+==3446==    by 0x1093D0: main (main.c:38)
+==3446== 
+==3446== 1,635 (304 direct, 1,331 indirect) bytes in 1 blocks are definitely lost in loss record 40 of 68
+==3446==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3446==    by 0x10C473: ft_calloc (ft_calloc.c:22)
+==3446==    by 0x10C0F5: ft_split_strings (ft_split.c:57)
+==3446==    by 0x10C03E: ft_split (ft_split.c:26)
+==3446==    by 0x10A24C: get_path (init_and_reset_parsing.c:53)
+==3446==    by 0x1093D0: main (main.c:38)
+==3446== 
+==3446== 3,741 bytes in 34 blocks are still reachable in loss record 43 of 68
+==3446==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3446==    by 0x10C8AB: ft_strdup (ft_strdup.c:23)
+==3446==    by 0x10C31A: ft_tab_strdup (ft_tab_strdup.c:29)
+==3446==    by 0x10A16E: set_environment (init_and_reset_parsing.c:26)
+==3446==    by 0x1093B1: main (main.c:34)
+==3446== 
+==3446== LEAK SUMMARY:
+==3446==    definitely lost: 304 bytes in 1 blocks
+==3446==    indirectly lost: 1,331 bytes in 37 blocks
+==3446==      possibly lost: 0 bytes in 0 blocks
+==3446==    still reachable: 6,200 bytes in 107 blocks
+==3446==         suppressed: 204,630 bytes in 218 blocks
+==3446== 
+==3446== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==3446== 
+==3446== 1 errors in context 1 of 2:
+==3446== Invalid read of size 1
+==3446==    at 0x10B79B: not_only_spaces (utils_parsing.c:44)
+==3446==    by 0x10B6A4: get_input (utils_parsing.c:26)
+==3446==    by 0x109A80: parsing_initialization (central_parsing.c:40)
+==3446==    by 0x109A0C: central_parsing (central_parsing.c:27)
+==3446==    by 0x1093E7: main (main.c:39)
+==3446==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==3446== 
+--3446-- 
+--3446-- used_suppression:     57 leak readline valgrind_ignore_leaks.txt:2 suppressed: 200,575 bytes in 214 blocks
+--3446-- used_suppression:      4 leak add_history valgrind_ignore_leaks.txt:8 suppressed: 4,055 bytes in 4 blocks
+==3446== 
+==3446== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
