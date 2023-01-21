@@ -5,4 +5,4 @@ NAME=minishell
 PID=$(ps -ef | grep ./$NAME | grep -v grep | awk '{print $2}')
 
 # Use the PID to list all the open file descriptors for the process
-lsof -p $PID -a -c $NAME
+lsof -p $PID
