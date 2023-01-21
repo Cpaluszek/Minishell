@@ -78,7 +78,7 @@ static void	add_env_variable(t_global *shell, char *cmd)
 	new_content = ft_strdup(cmd);
 	if (new_content == NULL)
 		error_exit_exec(shell, "Alloc error\n");
-	search_result = search_identifier(shell->env_list, cmd);
+	search_result = search_in_env(shell->env_list, cmd);
 	if (search_result == NULL)
 	{
 		new = ft_lstnew(new_content);

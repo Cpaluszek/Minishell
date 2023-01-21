@@ -17,42 +17,69 @@
 #include <unistd.h>
 #include <stdio.h>
 
-// static int	cd_home(void);
-// static int	cd_old(void);
+static void	update_oldpwd(t_global *shell);
+static char	*cd_home(t_global *shell);
+static char	*cd_old(t_global *shell);
 
 // Todo: test with directory without permissions
+// Todo: add cd ~, real cd is not searching in env
 int	ft_cd(t_token *token, t_global *shell)
 {
-	(void) token;
-	(void) shell;
-	dprintf(STDERR_FILENO, "cd execution\n");
-	return (0);
-	// char	*target;
-	// int		err;
+	char	*target;
 
-	// (void) err;
-	// if (args_number(token->cmd) > 2)
-	// 	return (1);
-	// else if (args_number(token->cmd) == 1)
-	// 	return (cd_home());
-	// target = token->cmd[1];
-	// if (target[0] == '-')
-	// 	return (cd_old());
-	// return (chdir(target));
+	if (args_number(token->cmd) > 2)
+	{
+		ft_printf_fd(STDERR_FILENO, "cd: too many arguments\n");
+		target = NULL;
+	}
+	else if (args_number(token->cmd) == 1)
+		target = cd_home(shell);
+	else if (ft_strcmp(token->cmd[1], "-") == 0)
+		target = cd_old(shell);
+	else
+		target = token->cmd[1];
+	if (target == NULL)
+		return (1);
+	if (chdir(target) == -1)
+	{
+		ft_printf_fd(STDERR_FILENO, \
+			"cd: %s: No such file or directory\n", target);
+		return (1);
+	}
+	update_oldpwd(shell);
+	return (0);
 }
 
-// static int	cd_home(void)
-// {
-// 	// char	*home_path;
+static void	update_oldpwd(t_global *shell)
+{
+	(void) shell;
+	printf("update OLDPWD\n");
+	// Todo: regenerate env
+}
 
-// 	// Todo: check in env for HOME
-// 	return (0);
-// }
+// Note: refacto in one function ?
+static char	*cd_home(t_global *shell)
+{
+	t_list	*home_var;
 
-// static int	cd_old(void)
-// {
-// 	// char	*previous_path;
+	home_var = search_in_env(shell->env_list, "HOME=");
+	if (home_var == NULL)
+	{
+		ft_printf_fd(STDERR_FILENO, "cd: HOME not set\n");
+		return (NULL);
+	}
+	return (home_var->content);
+}
 
-// 	// Todo: search in env for OLDPWD
-// 	return (0);
-// }
+static char *cd_old(t_global *shell)
+{
+	t_list	*old_var;
+
+	old_var = search_in_env(shell->env_list, "OLDPWD=");
+	if (old_var == NULL)
+	{
+		ft_printf_fd(STDERR_FILENO, "cd: OLDPWD not set\n");
+		return (NULL);
+	}
+	return (old_var->content);
+}

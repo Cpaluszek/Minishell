@@ -83,7 +83,7 @@ int	is_valid_identifier(char *str)
 	return (1);
 }
 
-t_list	*search_identifier(t_list *env_list, char *identifier)
+t_list	*search_in_env(t_list *env_list, char *identifier)
 {
 	char	*content;
 	int		len;

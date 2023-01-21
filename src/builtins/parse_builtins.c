@@ -19,6 +19,7 @@ static int	search_builtin(t_token *t, t_builtin *arr, int *found, t_global *s);
 
 // Note: some builtins are found in PATH
 // Todo: remove absolute PATH
+// Todo: test with pipes and builtins
 int	parse_builtins(t_token *token, int *is_builtin, t_global *shell)
 {
 	static t_builtin	arr[] = {
