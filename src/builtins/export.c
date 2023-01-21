@@ -23,7 +23,6 @@ static int		is_valid_identifier(char *str);
 static t_list	*search_identifier(t_list *env_list, char *identifier);
 static void		add_variable_to_env(t_global *shell, char *cmd);
 
-// Todo: regenerate char** env
 // Todo: exit code - test with bash3.2
 int	ft_export(t_token *token, t_global *shell)
 {
@@ -37,7 +36,6 @@ int	ft_export(t_token *token, t_global *shell)
 	i = 1;
 	while (token->cmd[i])
 	{
-		printf("env_list size=%d\n", ft_lstsize(shell->env_list));
 		if (!is_valid_identifier(token->cmd[i]))
 		{
 			ft_printf_fd(STDERR_FILENO, "export: `%s' not a valid identifier\n", \
@@ -51,7 +49,7 @@ int	ft_export(t_token *token, t_global *shell)
 		}
 		i++;
 	}
-
+	update_env(shell);
 	return (0);
 }
 
@@ -128,13 +126,11 @@ static void	add_variable_to_env(t_global *shell, char *cmd)
 	search_result = search_identifier(shell->env_list, cmd);
 	if (search_result == NULL)
 	{
-		printf("Add %s to env\n", new_content);
 		new = ft_lstnew(new_content);
 		ft_lstadd_back(&(shell->env_list), new);
 	}
 	else
 	{
-		printf("upate %s to %s\n", (char *)search_result->content, new_content);
 		free(search_result->content);
 		search_result->content = new_content;
 	}

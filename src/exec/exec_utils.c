@@ -15,6 +15,7 @@
 
 // Note: merge with error_exit_parsing ?
 // Todo: add exit code parameter
+// Todo: define error msgs
 void	error_exit_exec(t_global *shell, char *err_msg)
 {
 	ft_printf_fd(2, "%s", err_msg);

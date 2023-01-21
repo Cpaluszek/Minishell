@@ -44,6 +44,7 @@ int		ft_env(t_token *token, t_global *shell);
 int		ft_exit(t_token *token, t_global *shell);
 
 /*	Utils	*/
+void	update_env(t_global *shell);
 int		args_number(char **args);
 int		is_allowed_char(char c);
 int		cmp_str(void *data1, void *data2);

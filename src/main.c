@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/20 15:29:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 17:32:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char **argv, char **env)
 	while (1)
 	{
 		reset_commands(&shell);
+		// Todo: free previous path
 		shell.path = get_path(&shell, shell.env);
 		central_parsing(&shell, PROMPT);
 		token_list = shell.token_list;
