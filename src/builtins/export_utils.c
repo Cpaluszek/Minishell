@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:01:24 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 12:37:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 15:31:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	*copy_content_str(void *entry)
 	char	*str;
 
 	str = (char *)entry;
+	if (str == NULL)
+		return (NULL);
 	return (ft_strdup(str));
 }
 

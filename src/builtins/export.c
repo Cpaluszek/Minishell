@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 15:28:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 15:33:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int	is_valid_identifier(char *str)
 	return (1);
 }
 
-static t_list *search_identifier(t_list *env_list, char *identifier)
+static t_list	*search_identifier(t_list *env_list, char *identifier)
 {
 	char	*content;
 	int		len;
@@ -104,7 +104,7 @@ static t_list *search_identifier(t_list *env_list, char *identifier)
 		len = 0;
 		while (content[len] && content[len] != '=')
 			len++;
-		if (ft_strncmp(content, identifier, len) == 0)
+		if (ft_strncmp(content, identifier, len + 1) == 0)
 			return (env_list);
 		env_list = env_list->next;
 	}
