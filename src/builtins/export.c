@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 15:04:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 15:28:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 #include <stdio.h>
 #include <unistd.h>
 
-static void	print_sorted_env(t_global *shell);
-static int	is_valid_identifier(char *str);
-static char	*search_identifier(t_list *env_list, char *identifier);
-static void	add_variable_to_env(t_global *shell, char *cmd);
+static void		print_sorted_env(t_global *shell);
+static int		is_valid_identifier(char *str);
+static t_list	*search_identifier(t_list *env_list, char *identifier);
+static void		add_variable_to_env(t_global *shell, char *cmd);
 
 int	ft_export(t_token *token, t_global *shell)
 {
@@ -35,6 +35,7 @@ int	ft_export(t_token *token, t_global *shell)
 	i = 1;
 	while (token->cmd[i])
 	{
+		printf("env_list size=%d\n", ft_lstsize(shell->env_list));
 		if (!is_valid_identifier(token->cmd[i]))
 			ft_printf_fd(STDERR_FILENO, "export: `%s' not a valid identifier\n", \
 				token->cmd[i]);
@@ -42,6 +43,7 @@ int	ft_export(t_token *token, t_global *shell)
 			add_variable_to_env(shell, token->cmd[i]);
 		i++;
 	}
+
 	return (0);
 }
 
@@ -91,7 +93,7 @@ static int	is_valid_identifier(char *str)
 	return (1);
 }
 
-static char	*search_identifier(t_list *env_list, char *identifier)
+static t_list *search_identifier(t_list *env_list, char *identifier)
 {
 	char	*content;
 	int		len;
@@ -103,7 +105,7 @@ static char	*search_identifier(t_list *env_list, char *identifier)
 		while (content[len] && content[len] != '=')
 			len++;
 		if (ft_strncmp(content, identifier, len) == 0)
-			return (content);
+			return (env_list);
 		env_list = env_list->next;
 	}
 	return (NULL);
@@ -111,24 +113,24 @@ static char	*search_identifier(t_list *env_list, char *identifier)
 
 static void	add_variable_to_env(t_global *shell, char *cmd)
 {
-	char	*content;
-	char	*search_result;
+	char	*new_content;
+	t_list	*search_result;
 	t_list	*new;
 
-	content = ft_strdup(cmd);
-	if (content == NULL)
+	new_content = ft_strdup(cmd);
+	if (new_content == NULL)
 		error_exit_exec(shell, "Alloc error\n");
 	search_result = search_identifier(shell->env_list, cmd);
 	if (search_result == NULL)
 	{
-		printf("Add %s to env\n", content);
-		new = ft_lstnew(content);
+		printf("Add %s to env\n", new_content);
+		new = ft_lstnew(new_content);
 		ft_lstadd_back(&(shell->env_list), new);
 	}
 	else
 	{
-		printf("upate %s to %s\n", search_result, content);
-		free(search_result);
-		search_result = content;
+		printf("upate %s to %s\n", (char *)search_result->content, new_content);
+		free(search_result->content);
+		search_result->content = new_content;
 	}
 }
