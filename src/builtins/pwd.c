@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "structs.h"
+#include "exec.h"
 #include <stdio.h>
 #include <unistd.h>
 
@@ -27,13 +28,20 @@ int	ft_pwd(t_token *token, t_global *shell)
 
 	(void) token;
 	(void) shell;
-	pwd = getcwd(NULL, 0);
+	pwd = ft_getcwd();
 	if (pwd == NULL)
-	{
-		perror("getcwd() error");
 		return (1);
-	}
 	printf("%s\n", pwd);
 	free(pwd);
 	return (0);
+}
+
+char	*ft_getcwd(void)
+{
+	char	*pwd;
+
+	pwd = getcwd(NULL, 0);
+	if (pwd == NULL)
+		perror("getcwd() error");
+	return (pwd);
 }

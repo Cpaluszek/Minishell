@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 17:03:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 20:13:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static void	update_oldpwd(t_global *shell);
+static void	update_oldpwd(t_global *shell, char *old_pwd);
 static char	*cd_home(t_global *shell);
 static char	*cd_old(t_global *shell);
 
@@ -26,6 +26,7 @@ static char	*cd_old(t_global *shell);
 int	ft_cd(t_token *token, t_global *shell)
 {
 	char	*target;
+	char	*old_pwd;
 
 	if (args_number(token->cmd) > 2)
 	{
@@ -40,20 +41,32 @@ int	ft_cd(t_token *token, t_global *shell)
 		target = token->cmd[1];
 	if (target == NULL)
 		return (1);
+	old_pwd = ft_getcwd();
 	if (chdir(target) == -1)
 	{
 		ft_printf_fd(STDERR_FILENO, \
 			"cd: %s: No such file or directory\n", target);
+		free(old_pwd);
 		return (1);
 	}
-	update_oldpwd(shell);
+	update_oldpwd(shell, old_pwd);
 	return (0);
 }
 
-static void	update_oldpwd(t_global *shell)
+static void	update_oldpwd(t_global *shell, char *old_pwd)
 {
-	(void) shell;
-	printf("update OLDPWD\n");
+	char	*temp;
+	t_list	*oldpwd_var;
+
+	oldpwd_var = search_in_env(shell->env_list, "OLDPWD=");
+	if (oldpwd_var == NULL)
+		return ;
+	free(oldpwd_var->content);
+	temp = ft_strjoin("OLDPWD=", old_pwd);
+	if (temp == NULL)
+		error_exit_exec(shell, "Alloc fail\n");
+	free(old_pwd);
+	oldpwd_var->content = temp;
 	// Todo: regenerate env
 }
 

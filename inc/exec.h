@@ -44,6 +44,7 @@ int		ft_env(t_token *token, t_global *shell);
 int		ft_exit(t_token *token, t_global *shell);
 
 /*	Utils	*/
+char	*ft_getcwd(void);
 void	update_env(t_global *shell);
 int		args_number(char **args);
 t_list	*search_in_env(t_list *env_list, char *identifier);
