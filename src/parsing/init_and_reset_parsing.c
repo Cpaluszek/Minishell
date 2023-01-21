@@ -6,17 +6,19 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/18 17:12:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 11:02:20 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "token_list_functions.h"
-# include "parsing.h"
-# include "structs.h"
-# include "libft.h"
+#include "token_list_functions.h"
+#include "parsing.h"
+#include "structs.h"
+#include "libft.h"
 
 static t_list	*make_env_list(t_global *shell, char **env);
 
+// Todo: set minimal env when `env -i`
+// PWD - SHLVL=1 - _=/usr/bin/env
 void	set_environment(t_global *shell, char **env)
 {
 	shell->input = NULL;
