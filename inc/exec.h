@@ -46,7 +46,8 @@ int		ft_exit(t_token *token, t_global *shell);
 /*	Utils	*/
 void	update_env(t_global *shell);
 int		args_number(char **args);
-int		is_allowed_char(char c);
+t_list	*search_identifier(t_list *env_list, char *identifier);
+int		is_valid_identifier(char *str);
 int		cmp_str(void *data1, void *data2);
 void	*copy_content_str(void *entry);
 

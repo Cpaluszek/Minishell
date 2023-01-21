@@ -19,9 +19,7 @@
 #include <unistd.h>
 
 static void		print_sorted_env(t_global *shell);
-static int		is_valid_identifier(char *str);
-static t_list	*search_identifier(t_list *env_list, char *identifier);
-static void		add_variable_to_env(t_global *shell, char *cmd);
+static void		add_env_variable(t_global *shell, char *cmd);
 
 // Todo: exit code - test with bash3.2
 int	ft_export(t_token *token, t_global *shell)
@@ -44,7 +42,7 @@ int	ft_export(t_token *token, t_global *shell)
 		}
 		else
 		{
-			add_variable_to_env(shell, token->cmd[i]);
+			add_env_variable(shell, token->cmd[i]);
 			g_status = 0;
 		}
 		i++;
@@ -71,50 +69,9 @@ static void	print_sorted_env(t_global *shell)
 	ft_lstclear(&sorted_env, &free);
 }
 
-/**
- * @brief check if the input is a valid identifier. A valid identifier can only
- * 	contains letters, underscores and numbers and can't begin with a number
- * 
- * @param str export command argument
- * @return 0 if it's not valid, 1 otherwise
- */
-static int	is_valid_identifier(char *str)
-{
-	int	i;
 
-	if (ft_isdigit(str[0]))
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '=')
-			break ;
-		if (!is_allowed_char(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
-static t_list	*search_identifier(t_list *env_list, char *identifier)
-{
-	char	*content;
-	int		len;
-
-	while (env_list)
-	{
-		content = (char *)(env_list->content);
-		len = 0;
-		while (content[len] && content[len] != '=')
-			len++;
-		if (ft_strncmp(content, identifier, len + 1) == 0)
-			return (env_list);
-		env_list = env_list->next;
-	}
-	return (NULL);
-}
-
-static void	add_variable_to_env(t_global *shell, char *cmd)
+static void	add_env_variable(t_global *shell, char *cmd)
 {
 	char	*new_content;
 	t_list	*search_result;

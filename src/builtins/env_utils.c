@@ -58,7 +58,45 @@ void	*copy_content_str(void *entry)
 	return (ft_strdup(str));
 }
 
-int	is_allowed_char(char c)
+/**
+ * @brief check if the input is a valid identifier. A valid identifier can only
+ * 	contains letters, underscores and numbers and can't begin with a number
+ * 
+ * @param str export command argument
+ * @return 0 if it's not valid, 1 otherwise
+ */
+int	is_valid_identifier(char *str)
 {
-	return (ft_isalpha(c) || ft_isdigit(c) || c == '_');
+	int	i;
+
+	if (ft_isdigit(str[0]))
+		return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=')
+			break ;
+		if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && str[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+t_list	*search_identifier(t_list *env_list, char *identifier)
+{
+	char	*content;
+	int		len;
+
+	while (env_list)
+	{
+		content = (char *)(env_list->content);
+		len = 0;
+		while (content[len] && content[len] != '=')
+			len++;
+		if (ft_strncmp(content, identifier, len + 1) == 0)
+			return (env_list);
+		env_list = env_list->next;
+	}
+	return (NULL);
 }
