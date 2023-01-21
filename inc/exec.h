@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 12:03:11 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 12:38:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	error_exit_exec(t_global *shell, char *err_msg);
 void	exit_exec(t_global *shell, int exit_code);
 
 /*	Builtins	*/
-// Note: echo + env + pwd are found in usr/bin
+// Note: some builtins are found in PATH
 typedef struct s_builtin {
 	char	*name;
 	int		(*builtin)(t_token *, t_global *);
@@ -45,6 +45,7 @@ int		ft_exit(t_token *token, t_global *shell);
 
 /*	Utils	*/
 int		args_number(char **args);
+int		is_allowed_char(char c);
 int		cmp_str(void *data1, void *data2);
 void	*copy_content_str(void *entry);
 

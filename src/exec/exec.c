@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 17:36:48 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 12:26:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 static void	parent_close_pipes(t_token *token);
 
+// Todo: here_doc does not expand $var
 int	exec_start(t_global *shell)
 {
 	setup_redirections(shell->token_list);

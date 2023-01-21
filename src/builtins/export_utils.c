@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:01:24 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 12:03:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 12:37:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ void	*copy_content_str(void *entry)
 
 	str = (char *)entry;
 	return (ft_strdup(str));
+}
+
+int	is_allowed_char(char c)
+{
+	return (ft_isalpha(c) || ft_isdigit(c) || c == '_');
 }
