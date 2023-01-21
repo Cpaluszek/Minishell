@@ -14,7 +14,7 @@
 
 int	ft_strcmp(const char *first, const char *second)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	*s1;
 	unsigned char	*s2;
 
