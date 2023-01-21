@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 10:54:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 12:02:05 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include <unistd.h>
 
 static void	print_sorted_env(t_global *shell);
-static void	*copy_content_str(void *entry);
-static int	cmp_str(void *data1, void *data2);
 
 int	ft_export(t_token *token, t_global *shell)
 {
@@ -35,6 +33,7 @@ int	ft_export(t_token *token, t_global *shell)
 }
 
 // Todo: protect lstmap return
+// Todo: add `declare -x` prefix
 static void	print_sorted_env(t_global *shell)
 {
 	t_list	*sorted_env;
@@ -49,19 +48,4 @@ static void	print_sorted_env(t_global *shell)
 		current = current->next;
 	}
 	ft_lstclear(&sorted_env, &free);
-}
-
-static int	cmp_str(void *data1, void *data2)
-{
-	if (data1 && data2)
-		return (ft_strcmp((char *)data1, (char *)data2));
-	return (0);
-}
-
-static void	*copy_content_str(void *entry)
-{
-	char	*str;
-
-	str = (char *)entry;
-	return (ft_strdup(str));
 }

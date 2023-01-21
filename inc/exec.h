@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/20 15:21:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 12:03:11 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_builtin {
 	int		(*builtin)(t_token *, t_global *);
 }	t_builtin;
 
-int		parse_builtins(t_token *token, int *is_builtin, t_global *shell);
+int		parse_builtins(t_token *token, int*is_builtin, t_global *shell);
 int		ft_echo(t_token *token, t_global *shell);
 int		ft_cd(t_token *token, t_global *shell);
 int		ft_pwd(t_token *token, t_global *shell);
@@ -42,6 +42,10 @@ int		ft_export(t_token *token, t_global *shell);
 int		ft_unset(t_token *token, t_global *shell);
 int		ft_env(t_token *token, t_global *shell);
 int		ft_exit(t_token *token, t_global *shell);
+
+/*	Utils	*/
 int		args_number(char **args);
+int		cmp_str(void *data1, void *data2);
+void	*copy_content_str(void *entry);
 
 #endif

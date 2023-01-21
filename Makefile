@@ -36,6 +36,7 @@ BUILTIN_FILES	:=	parse_builtins.c \
 					env.c \
 					exit.c \
 					export.c \
+					export_utils.c \
 					pwd.c \
 					unset.c
 
