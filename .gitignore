@@ -2,3 +2,4 @@ build/
 minishell
 lib/libft/libft.a
 valgrind-out.txt
+minishell.dSYM/
