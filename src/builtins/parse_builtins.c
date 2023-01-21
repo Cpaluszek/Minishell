@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:31 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 17:02:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 10:59:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,19 @@
 static int	search_builtins(t_token *token, t_builtin *arr, int *found, t_global *shell);
 
 // Note: some builtins are found in PATH
+// Todo: remove absolute PATH
 int	parse_builtins(t_token *token, int *is_builtin, t_global *shell)
 {
 	static t_builtin	arr[] = {
 	{"cd", &ft_cd},
+	{"/usr/bin/cd", &ft_cd},
 	{"/usr/bin/echo", &ft_echo},
+	{"/bin/echo", &ft_echo},
+	{"env", &ft_env},
 	{"/usr/bin/env", &ft_env},
 	{"exit", &ft_exit},
 	{"pwd", &ft_pwd},
+	{"/bin/pwd", &ft_pwd},
 	{"export", &ft_export},
 	{"unset", &ft_unset},
 	{NULL, NULL}
