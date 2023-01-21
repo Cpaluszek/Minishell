@@ -29,7 +29,10 @@ int	ft_pwd(t_token *token, t_global *shell)
 	(void) shell;
 	pwd = getcwd(NULL, 0);
 	if (pwd == NULL)
+	{
+		perror("getcwd() error");
 		return (1);
+	}
 	printf("%s\n", pwd);
 	free(pwd);
 	return (0);
