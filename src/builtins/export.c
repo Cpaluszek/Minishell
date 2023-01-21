@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:51:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 10:54:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,6 @@ static void	print_sorted_env(t_global *shell)
 	t_list	*current;
 
 	sorted_env = ft_lstmap(shell->env_list, &copy_content_str, &free);
-	// Debug
-
-	current = sorted_env;
-	while (current)
-	{
-		printf("%s\n", (char *)current->content);
-		current = current->next;
-	}
-	printf("------------------------------\n");
-	// ---
 	ft_lstsort(&sorted_env, &cmp_str);
 	current = sorted_env;
 	while (current)
@@ -75,6 +65,3 @@ static void	*copy_content_str(void *entry)
 	str = (char *)entry;
 	return (ft_strdup(str));
 }
-
-
-
