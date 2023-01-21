@@ -23,6 +23,8 @@ static int		is_valid_identifier(char *str);
 static t_list	*search_identifier(t_list *env_list, char *identifier);
 static void		add_variable_to_env(t_global *shell, char *cmd);
 
+// Todo: regenerate char** env
+// Todo: exit code - test with bash3.2
 int	ft_export(t_token *token, t_global *shell)
 {
 	int		i;
@@ -37,10 +39,16 @@ int	ft_export(t_token *token, t_global *shell)
 	{
 		printf("env_list size=%d\n", ft_lstsize(shell->env_list));
 		if (!is_valid_identifier(token->cmd[i]))
+		{
 			ft_printf_fd(STDERR_FILENO, "export: `%s' not a valid identifier\n", \
 				token->cmd[i]);
+			g_status = 1;
+		}
 		else
+		{
 			add_variable_to_env(shell, token->cmd[i]);
+			g_status = 0;
+		}
 		i++;
 	}
 
@@ -65,16 +73,13 @@ static void	print_sorted_env(t_global *shell)
 	ft_lstclear(&sorted_env, &free);
 }
 
-/*	Invalid identifiers
-*	Can only contains letters (Upper/Lower), underscores, numbers
-*	Can't begin with a number
-*	Can't be the same as reserved words:
-*		! - { - } - case - do - done - elif - else - esac
-*		fi - for - function - if - in - select - then
-*		until - while
-*	Error: `export: <variable-name>: not a valid identifier`
-*/
-// Todo: check reserved words
+/**
+ * @brief check if the input is a valid identifier. A valid identifier can only
+ * 	contains letters, underscores and numbers and can't begin with a number
+ * 
+ * @param str export command argument
+ * @return 0 if it's not valid, 1 otherwise
+ */
 static int	is_valid_identifier(char *str)
 {
 	int	i;
