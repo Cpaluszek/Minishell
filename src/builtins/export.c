@@ -69,8 +69,6 @@ static void	print_sorted_env(t_global *shell)
 	ft_lstclear(&sorted_env, &free);
 }
 
-
-
 static void	add_env_variable(t_global *shell, char *cmd)
 {
 	char	*new_content;

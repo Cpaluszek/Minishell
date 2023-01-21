@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int	search_builtins(t_token *token, t_builtin *arr, int *found, t_global *shell);
+static int	search_builtin(t_token *t, t_builtin *arr, int *found, t_global *s);
 
 // Note: some builtins are found in PATH
 // Todo: remove absolute PATH
@@ -36,10 +36,10 @@ int	parse_builtins(t_token *token, int *is_builtin, t_global *shell)
 	{NULL, NULL}
 	};
 
-	return (search_builtins(token, arr, is_builtin, shell));
+	return (search_builtin(token, arr, is_builtin, shell));
 }
 
-static int	search_builtins(t_token *token, t_builtin *arr, int *found, t_global *shell)
+static int	search_builtin(t_token *t, t_builtin *arr, int *found, t_global *s)
 {
 	int	i;
 	int	return_status;
@@ -48,10 +48,10 @@ static int	search_builtins(t_token *token, t_builtin *arr, int *found, t_global 
 	return_status = 0;
 	while (arr[i].name != NULL)
 	{
-		if (ft_strncmp(token->cmd[0], arr[i].name, ft_strlen(arr[i].name)) == 0)
+		if (ft_strncmp(t->cmd[0], arr[i].name, ft_strlen(arr[i].name)) == 0)
 		{
 			*found = 1;
-			return_status = arr[i].builtin(token, shell);
+			return_status = arr[i].builtin(t, s);
 			return (return_status);
 		}
 		i++;
