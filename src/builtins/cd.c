@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 20:13:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/21 20:14:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	update_oldpwd(t_global *shell, char *old_pwd)
 		error_exit_exec(shell, "Alloc fail\n");
 	free(old_pwd);
 	oldpwd_var->content = temp;
-	// Todo: regenerate env
+	update_env(shell);
 }
 
 // Note: refacto in one function ?
