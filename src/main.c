@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/22 12:38:55 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/22 18:00:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,29 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <signal.h>
 
 void	print_command_line(t_token *token_list);
+void	set_interactive_signals(t_global *shell);
+
 // NOTE: check argc error ?
 // Note: here_doc in a fork to manage CTRL-C
 		// Todo: free previous path on loop reset
 int	main(int argc, char **argv, char **env)
 {
-	t_global	shell;
-	t_token		*token_list;
-	// Manage signals
-		// Intercept SIGQUIT (^\)
-		// Ignore SIGERM SIGHUP, SIGTSTP, SIGTTOU
-	// Block control characters printing (^C, ^\) ->tcgetattr & tcsetattr
+	t_global		shell;
+	t_token			*token_list;
+
 	(void) argc;
 	(void) argv;
-	g_status = 0;
+	g_status = EXIT_SUCCESS;
+	init_shell_attr(&shell);
 	set_environment(&shell, env);
 	while (1)
 	{
 		reset_commands(&shell);
 		shell.path = get_path(&shell, shell.env);
+		set_interactive_signals(&shell);
 		central_parsing(&shell, PROMPT);
 		token_list = shell.token_list;
 		print_command_line(token_list);

@@ -14,18 +14,21 @@
 #include "exec.h"
 #include <unistd.h>
 #include <stdio.h>
-#define COMMAND_NOT_FOUND 127
 
 static void	parent_close_pipes(t_token *token);
 
 // Todo: here_doc does not expand $var
 int	exec_start(t_global *shell)
 {
+	// Todo: test stay on interactive attr
+	// Remove interactive shell attributes
+	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
 	setup_redirections(shell->token_list);
 	exec_token_list(shell->token_list, shell);
 	return (0);
 }
 
+// Todo: signals and child status code
 int	exec_token_list(t_token *token, t_global *shell)
 {
 	while (token)
@@ -34,6 +37,7 @@ int	exec_token_list(t_token *token, t_global *shell)
 			exec_cmd(token, shell);
 		token = token->next;
 	}
+	// set_exec_signals();
 	while (waitpid(-1, NULL, 0) > 0)
 		;
 	return (0);
@@ -41,7 +45,7 @@ int	exec_token_list(t_token *token, t_global *shell)
 
 // Todo: recover builtins exit status
 // Todo: protect close
-// Note: some builtins need fork (echo)
+// Note: some builtins need fork to works with pipes
 // Note: how to manage command not found ? continue exec line ?
 int	exec_cmd(t_token *token, t_global *shell)
 {

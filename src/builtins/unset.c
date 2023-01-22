@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:48 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/22 11:57:59 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/22 16:36:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	ft_unset(t_token *token, t_global *shell)
 		{
 			ft_printf_fd(STDERR, "unset: `%s' not a valid identifier\n", \
 				token->cmd[i]);
-			g_status = 1;
+			g_status = EXIT_FAILURE;
 		}
 		else
 		{
 			remove_env_variable(shell, token->cmd[i]);
-			g_status = 0;
+			g_status = EXIT_SUCCESS;
 		}
 		i++;
 	}

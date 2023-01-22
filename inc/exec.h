@@ -15,12 +15,15 @@
 
 // Todo: move includes closer to usage
 # include "structs.h"
+# include <signal.h>
 # include <sys/wait.h>
 # include <fcntl.h>
 
 # define STDIN	0
 # define STDOUT	1
 # define STDERR	2
+
+# define COMMAND_NOT_FOUND 127
 
 int		exec_start(t_global *shell);
 void	setup_redirections(t_token *tok);
@@ -30,6 +33,14 @@ void	exec_child(t_token *token, char **env);
 
 void	error_exit_exec(t_global *shell, char *err_msg);
 void	exit_exec(t_global *shell, int exit_code);
+
+/*	Signals	*/
+void	init_shell_attr(t_global *shell);
+void	set_interactive_signals(t_global *shell);
+void	set_exec_signals(void);
+void	handle_sigquit(int sign);
+void	handle_abort_input(int sign);
+void	handle_exec_signals(int sign);
 
 /*	Builtins	*/
 // Note: some builtins are found in PATH

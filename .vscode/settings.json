@@ -6,6 +6,7 @@
 		"exec.h": "c",
 		"structs.h": "c",
 		"fcntl.h": "c",
-		"token_list_functions.h": "c"
+		"token_list_functions.h": "c",
+		"wait.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 18:33:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/22 17:09:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include <stdbool.h>
+# include <termios.h>
 # include "libft.h"
 
 # define SYNTAX_ERROR -1
@@ -22,6 +23,7 @@
 # define UNCOMPLETED 2
 
 // Note: where to put global var ?
+// Note: add extern keyword ?
 int	g_status;
 
 enum e_link {
@@ -76,16 +78,18 @@ typedef struct s_token {
 	int				exit_status;
 }	t_token;
 
-typedef struct s_global{
-	t_list	*env_list;
-	char	**path;
-	char	**env;
-	char	*input;
-	char	*input_completed;
-	t_block	*block_list;
-	t_token	*token_list;
-	int		last_exit_status;
-	int		command_line;
+typedef struct s_global {
+	t_list			*env_list;
+	char			**path;
+	char			**env;
+	char			*input;
+	char			*input_completed;
+	t_block			*block_list;
+	t_token			*token_list;
+	int				last_exit_status;
+	int				command_line;
+	struct termios	saved_attr;
+	struct termios	custom_attr;
 }	t_global;
 
 #endif

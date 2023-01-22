@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/21 13:31:14 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/22 16:24:14 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static t_list	*make_env_list(t_global *shell, char **env);
 
 // Todo: set minimal env when `env -i`
-// PWD - SHLVL=1 - _=/usr/bin/env
+	// PWD - SHLVL=1 - _=/usr/bin/env
 void	set_environment(t_global *shell, char **env)
 {
 	shell->input = NULL;

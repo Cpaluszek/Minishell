@@ -38,12 +38,12 @@ int	ft_export(t_token *token, t_global *shell)
 		{
 			ft_printf_fd(STDERR, "export: `%s' not a valid identifier\n", \
 				token->cmd[i]);
-			g_status = 1;
+			g_status = EXIT_FAILURE;
 		}
 		else
 		{
 			add_env_variable(shell, token->cmd[i]);
-			g_status = 0;
+			g_status = EXIT_SUCCESS;
 		}
 		i++;
 	}
