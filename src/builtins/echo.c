@@ -14,6 +14,7 @@
 // Option -n: print without trailing newline
 // The echo utility exits 0 on success, and >0 if an error occurs.
 #include "structs.h"
+#include "exec.h"
 #include <unistd.h>
 #include <stdio.h>
 #define NL "-n"
@@ -33,13 +34,13 @@ int	ft_echo(t_token *token, t_global *shell)
 	new_line = echo_option(token, &arg_index);
 	while (token->cmd[arg_index])
 	{
-		ft_putstr_fd(token->cmd[arg_index], STDOUT_FILENO);
+		ft_putstr_fd(token->cmd[arg_index], STDOUT);
 		if (token->cmd[arg_index + 1])
-			ft_putstr_fd(" ", STDOUT_FILENO);
+			ft_putstr_fd(" ", STDOUT);
 		arg_index++;
 	}
 	if (new_line)
-		ft_putstr_fd("\n", STDOUT_FILENO);
+		ft_putstr_fd("\n", STDOUT);
 	return (0);
 }
 

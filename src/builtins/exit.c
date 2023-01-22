@@ -33,18 +33,18 @@ int	ft_exit(t_token *token, t_global *shell)
 {
 	int	exit_value;
 
-	ft_putstr_fd(EXIT_MSG, STDIN_FILENO);
+	ft_putstr_fd(EXIT_MSG, STDOUT);
 	if (args_number(token->cmd) < 2)
 		exit(g_status);
 	else if (!ft_isnum(token->cmd[1]))
 	{
-		ft_printf_fd(STDERR_FILENO, \
+		ft_printf_fd(STDERR, \
 			"exit: %s: numeric argument required\n", token->cmd[1]);
 		exit_exec(shell, CODE_NON_NUM);
 	}
 	else if (args_number(token->cmd) > 2)
 	{
-		ft_putstr_fd("exit: too many arguments\n", STDERR_FILENO);
+		ft_putstr_fd("exit: too many arguments\n", STDERR);
 		return (1);
 	}
 	exit_value = ft_atoi(token->cmd[1]);

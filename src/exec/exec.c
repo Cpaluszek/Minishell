@@ -54,7 +54,7 @@ int	exec_cmd(t_token *token, t_global *shell)
 	else if (access(token->cmd[0], X_OK) == -1)
 	{
 		g_status = COMMAND_NOT_FOUND;
-		ft_printf_fd(STDERR_FILENO, "command not found: %s\n", token->cmd[0]);
+		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
 		return (0);
 	}
 	if (token->make_a_pipe)

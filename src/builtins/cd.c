@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/22 11:53:14 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/22 11:55:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_cd(t_token *token, t_global *shell)
 
 	if (args_number(token->cmd) > 2)
 	{
-		ft_printf_fd(STDERR_FILENO, "cd: too many arguments\n");
+		ft_printf_fd(STDERR, "cd: too many arguments\n");
 		target = NULL;
 	}
 	else if (args_number(token->cmd) == 1)
@@ -47,8 +47,7 @@ int	ft_cd(t_token *token, t_global *shell)
 	old_pwd = ft_getcwd();
 	if (chdir(target) == -1)
 	{
-		ft_printf_fd(STDERR_FILENO, \
-			"cd: %s: No such file or directory\n", target);
+		ft_printf_fd(STDERR, "cd: %s: No such file or directory\n", target);
 		free(old_pwd);
 		return (1);
 	}
@@ -81,7 +80,7 @@ static char	*cd_home(t_global *shell)
 	home_var = search_in_env(shell->env_list, HOME_VAR);
 	if (home_var == NULL)
 	{
-		ft_printf_fd(STDERR_FILENO, "cd: HOME not set\n");
+		ft_printf_fd(STDERR, "cd: HOME not set\n");
 		return (NULL);
 	}
 	return (home_var->content);
@@ -94,7 +93,7 @@ static char	*cd_old(t_global *shell)
 	old_var = search_in_env(shell->env_list, OLDPWD_VAR);
 	if (old_var == NULL)
 	{
-		ft_printf_fd(STDERR_FILENO, "cd: OLDPWD not set\n");
+		ft_printf_fd(STDERR, "cd: OLDPWD not set\n");
 		return (NULL);
 	}
 	return (old_var->content);

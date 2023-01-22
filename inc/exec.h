@@ -18,6 +18,10 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 
+# define STDIN	0
+# define STDOUT	1
+# define STDERR	2
+
 int		exec_start(t_global *shell);
 void	setup_redirections(t_token *tok);
 int		exec_token_list(t_token *token, t_global *shell);

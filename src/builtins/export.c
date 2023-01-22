@@ -36,7 +36,7 @@ int	ft_export(t_token *token, t_global *shell)
 	{
 		if (!is_valid_identifier(token->cmd[i]))
 		{
-			ft_printf_fd(STDERR_FILENO, "export: `%s' not a valid identifier\n", \
+			ft_printf_fd(STDERR, "export: `%s' not a valid identifier\n", \
 				token->cmd[i]);
 			g_status = 1;
 		}
