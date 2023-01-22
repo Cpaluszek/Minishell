@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 17:32:15 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/22 12:38:55 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-// char	*get_next_line(int fd);
 void	print_command_line(t_token *token_list);
 // NOTE: check argc error ?
 // Note: here_doc in a fork to manage CTRL-C
+		// Todo: free previous path on loop reset
 int	main(int argc, char **argv, char **env)
 {
 	t_global	shell;
@@ -36,7 +36,6 @@ int	main(int argc, char **argv, char **env)
 	while (1)
 	{
 		reset_commands(&shell);
-		// Todo: free previous path
 		shell.path = get_path(&shell, shell.env);
 		central_parsing(&shell, PROMPT);
 		token_list = shell.token_list;
@@ -45,55 +44,6 @@ int	main(int argc, char **argv, char **env)
 	}
 	return (0);
 }
-
-// PROBLEME DANS LES FD IN ET OUT, difference de 4 chaque fois dans l'adresse, sinon fonctionne. ATTENTION ane pas commencer
-// par des quotes en debut de commande ou juste apres un pipe : risque de SEGFAULT non resolu;
-
-// void	short_test_exec(t_global *shell)
-// {
-// 	t_token *token;
-// 	t_token *first;
-// 	// int		status;
-
-// 	first = shell->token_list;
-// 	token = first;
-// 	while (token)
-// 	{
-// 		if (token->token <= 1)
-// 			token->fd_file = open(token->str, O_RDONLY);
-// 		else if (token->token <= 3 && token->token >= 2)
-// 			token->fd_file = open(token->str, O_WRONLY | O_TRUNC | O_CREAT, 0000644);
-// 		token = token->next;
-// 	}
-// 	token = first;
-// 	while (token)
-// 	{
-// 		if (token->token == CMD)
-// 		{
-// 			if (token->make_a_pipe == true)
-// 				pipe(token->pipe_fd);
-// 			token->pid = fork();
-// 			if (token->pid == 0)
-// 			{
-// 				if (token->fd_input)
-// 					dup2(*token->fd_input, STDIN_FILENO);
-// 				if (token->fd_output)
-// 					dup2(*token->fd_output, STDOUT_FILENO);
-// 				if (execve(token->cmd[0], token->cmd, shell->env) == -1)
-// 					exit(0);
-// 			}
-// 		}
-// 		wait(NULL);
-// 		token = token->next;
-// 	}
-// 	token = first;
-// 	// while (token)
-// 	// {
-// 	// 	if (token->token == CMD)
-// 	// 		waitpid(token->pid, &status, 0);
-// 	// 	token = token->next;
-// 	// }
-// }
 
 void	print_command_line(t_token *token_list)
 {
@@ -123,25 +73,3 @@ void	print_command_line(t_token *token_list)
 	}
 	printf("\n");
 }
-
-/*
-	Function that will get each line read in the standard input.
-*/
-// char	*get_next_line(int fd)
-// {
-// 	char	buffer[1001];
-// 	char	*line;
-
-// 	ft_bzero(buffer, 1001);
-// 	line = ft_calloc(1, sizeof(char));
-// 	read(fd, buffer, 1000);
-// 	while (!ft_strrchr(buffer, '\n') && ft_strlen(buffer))
-// 	{
-// 		line = ft_strjoin_free_s1(line, buffer);
-// 		ft_bzero(buffer, 1001);
-// 		read(STDIN_FILENO, buffer, 1000);
-// 	}
-// 	line = ft_strjoin_free_s1(line, buffer);
-// 	return (line);
-// }
-
