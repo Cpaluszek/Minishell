@@ -87,17 +87,12 @@ _WHITE			:=	\x1b[37m
 # 		RULES			#
 #########################
 
-all: build_libs $(NAME)
+all: $(NAME)
 
-build_libs:
+$(LIB_PATHS): force
 	@$(foreach lib, $(LIB_NAMES), \
 		@$(MAKE) $(lib); \
 	)
-
-echo:
-	@echo $(LIB_NAMES)
-	@echo $(LIBS)
-	@echo $(LIB_LD)
 
 $(NAME): $(LIB_PATHS) $(OBJS)
 	@$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
@@ -125,4 +120,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re build_libs
+.PHONY: all clean fclean re force
