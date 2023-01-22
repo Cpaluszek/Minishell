@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 20:14:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/22 11:53:14 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include "exec.h"
 #include <unistd.h>
 #include <stdio.h>
+
+#define HOME_VAR	"HOME="
+#define OLDPWD_VAR	"OLDPWD="
 
 static void	update_oldpwd(t_global *shell, char *old_pwd);
 static char	*cd_home(t_global *shell);
@@ -58,11 +61,11 @@ static void	update_oldpwd(t_global *shell, char *old_pwd)
 	char	*temp;
 	t_list	*oldpwd_var;
 
-	oldpwd_var = search_in_env(shell->env_list, "OLDPWD=");
+	oldpwd_var = search_in_env(shell->env_list, OLDPWD_VAR);
 	if (oldpwd_var == NULL)
 		return ;
 	free(oldpwd_var->content);
-	temp = ft_strjoin("OLDPWD=", old_pwd);
+	temp = ft_strjoin(OLDPWD_VAR, old_pwd);
 	if (temp == NULL)
 		error_exit_exec(shell, "Alloc fail\n");
 	free(old_pwd);
@@ -75,7 +78,7 @@ static char	*cd_home(t_global *shell)
 {
 	t_list	*home_var;
 
-	home_var = search_in_env(shell->env_list, "HOME=");
+	home_var = search_in_env(shell->env_list, HOME_VAR);
 	if (home_var == NULL)
 	{
 		ft_printf_fd(STDERR_FILENO, "cd: HOME not set\n");
@@ -84,11 +87,11 @@ static char	*cd_home(t_global *shell)
 	return (home_var->content);
 }
 
-static char *cd_old(t_global *shell)
+static char	*cd_old(t_global *shell)
 {
 	t_list	*old_var;
 
-	old_var = search_in_env(shell->env_list, "OLDPWD=");
+	old_var = search_in_env(shell->env_list, OLDPWD_VAR);
 	if (old_var == NULL)
 	{
 		ft_printf_fd(STDERR_FILENO, "cd: OLDPWD not set\n");
