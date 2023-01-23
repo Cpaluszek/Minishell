@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:35:28 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:41:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "exec.h"
 
 // Todo: execve fail
+// Todo: protect dup2
 void	exec_child(t_token *token, char **env)
 {
 	if (token->fd_input != NULL)
