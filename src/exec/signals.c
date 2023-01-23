@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:38:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:52:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	handle_sigquit(int sign)
  * 
  * @param sign signal code
  */
+// Todo: problem with double prompt on command interrupt
 void	handle_abort_input(int sign)
 {
 	rl_replace_line("", 0);

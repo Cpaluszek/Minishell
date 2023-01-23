@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:31:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:44:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ static void	parent_close_pipes(t_token *token);
 // Todo: here_doc does not expand $var
 int	exec_start(t_global *shell)
 {
-	// Todo: test stay on interactive attr
-	// Remove interactive shell attributes
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
 	setup_redirections(shell->token_list);
 	exec_token_list(shell->token_list, shell);
 	return (0);
 }
 
-// Todo: signals and child status code
+// Todo: child status code
 int	exec_token_list(t_token *token, t_global *shell)
 {
 	while (token)
