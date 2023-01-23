@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 13:56:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:34:14 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	exec_token_list(t_token *token, t_global *shell)
 
 // Todo: recover builtins exit status
 // Note: some builtins need fork to works with pipes
-// Note: how to manage command not found ? continue exec line ?
 void	exec_cmd(t_token *token, t_global *shell)
 {
 	int	is_builtin;

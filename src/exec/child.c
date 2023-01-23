@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 13:48:34 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:35:05 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,5 @@ int	exec_child(t_token *token, char **env)
 	}
 	execve(token->cmd[0], token->cmd, env);
 	perror(ERR_EXEC);
-	// Todo: execve fail
 	return (2);
 }

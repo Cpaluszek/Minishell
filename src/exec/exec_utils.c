@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 11:54:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:35:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "token_list_functions.h"
 
 // Note: merge with error_exit_parsing ?
-// Todo: add exit code parameter
-// Todo: define error msgs
 void	error_exit_exec(t_global *shell, char *err_msg)
 {
 	ft_printf_fd(2, "%s", err_msg);
