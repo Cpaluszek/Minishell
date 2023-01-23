@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 13:22:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:28:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	handle_interactive_sigquit(int signum, siginfo_t *info, void *context)
 	rl_redisplay();
 }
 
-// Todo: problem with double prompt on command interrupt
-
 /**
  * @brief signal handler: ctrl-C interactive mode
  * Clear the current line, and show a new prompt
@@ -49,6 +47,14 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context)
 	g_status = 128 + signum;
 }
 
+/**
+ * @brief signal handler: ctrl-C execution mode
+ * Kill the running process and give the prompt back
+ * 
+ * @param signum signal code
+ * @param info additional information about the signal
+ * @param context additional information about the signal
+ */
 void	handle_execution_sigint(int signum, siginfo_t *info, void *context)
 {
 	(void) info;
@@ -57,6 +63,14 @@ void	handle_execution_sigint(int signum, siginfo_t *info, void *context)
 	g_status = 128 + signum;
 }
 
+/**
+ * @brief signal handler: ctrl-\ execution mode
+ * Kill the running process and give the prompt back
+ * 
+ * @param signum signal code
+ * @param info additional information about the signal
+ * @param context additional information about the signal
+ */
 void	handle_execution_sigquit(int signum, siginfo_t *info, void *context)
 {
 	(void) info;
