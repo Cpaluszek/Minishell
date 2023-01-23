@@ -53,12 +53,14 @@ SRC_FILES		:=	main.c \
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 LIB_NAMES		:=	lib/libft
-LIBS			:=	$(subst lib,-l,$(notdir $(LIB_NAMES)))
-LIB_LD			:=	$(foreach lib,$(LIB_NAMES),-L$(lib))
-LIB_PATHS		:=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
-LIB_HEADERS		:=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
+LIBS			=	$(subst lib,-l,$(notdir $(LIB_NAMES)))
+LIB_LD			=	$(foreach lib,$(LIB_NAMES),-L$(lib))
+LIB_PATHS		=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
+LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
 
-LIBS			+= -lreadline
+LIBS			+=	-lreadline
+LIB_LD			+=	-L ~/.brew/opt/readline/lib
+LIB_HEADERS		+=	-I ~/.brew/opt/readline/include
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
