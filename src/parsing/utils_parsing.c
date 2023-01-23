@@ -6,13 +6,16 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/20 11:56:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 10:47:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parsing.h"
+#include "exec.h"
 #include "token_list_functions.h"
+
+static void	exit_parsing_from_signal(t_global *shell);
 
 // Todo: if line is only space -> don't add to history
 void	get_input(t_global *shell, char *prompt)
@@ -24,10 +27,12 @@ void	get_input(t_global *shell, char *prompt)
 	{
 		ft_free(input);
 		input = readline(prompt);
+		if (input == NULL)
+			exit_parsing_from_signal(shell);
 		if (!not_only_spaces(input) && ft_strlen(input) && \
 			shell->command_line == BEGIN)
 			add_history(input);
-		if (!(input == NULL || ft_strlen(input) == 0 || !not_only_spaces(input)))
+		if (!(ft_strlen(input) == 0 || !not_only_spaces(input)))
 			break ;
 	}
 	ft_free(shell->input);
@@ -66,4 +71,18 @@ void	error_exit_parsing(t_global *shell, char *err_msg)
 	ft_free(shell->input);
 	ft_free(shell->input_completed);
 	exit(EXIT_FAILURE);
+}
+
+static void	exit_parsing_from_signal(t_global *shell)
+{
+	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
+	rl_clear_history();
+	printf("exit\n");
+	ft_free_split(shell->env);
+	ft_free_split(shell->path);
+	ft_lstclear_token(&shell->token_list);
+	ft_lstclear(&shell->env_list, free);
+	ft_free(shell->input);
+	ft_free(shell->input_completed);
+	exit(g_status);
 }
