@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 12:38:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:20:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ void	exit_exec(t_global *shell, int exit_code);
 /*	Signals	*/
 void	init_shell_attr(t_global *shell);
 void	set_interactive_signals(t_global *shell);
-void	set_exec_signals(void);
 void	handle_sigquit(int sign);
 void	handle_abort_input(int sign);
-void	handle_exec_signals(int sign);
 
 /*	Builtins	*/
 // Note: some builtins are found in PATH

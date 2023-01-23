@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 12:26:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:20:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	exec_token_list(t_token *token, t_global *shell)
 			exec_cmd(token, shell);
 		token = token->next;
 	}
-	// set_exec_signals();
 	while (waitpid(-1, NULL, 0) > 0)
 		;
 	return (0);
