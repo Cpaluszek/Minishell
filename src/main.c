@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 13:09:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:26:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int	main(int argc, char **argv, char **env)
 		reset_commands(&shell);
 		shell.path = get_path(&shell, shell.env);
 		set_interactive_signals(&shell);
-		central_parsing(&shell, PROMPT);
+		if (g_status == 0)
+			central_parsing(&shell, PROMPT);
+		else
+			central_parsing(&shell, PROMPT_ERR);
 		token_list = shell.token_list;
 		print_command_line(token_list);
 		exec_start(&shell);

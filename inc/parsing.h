@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:57:09 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:29:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include "structs.h"
 # include "errors.h"
 
-# define PROMPT	"minishell-0.1$ "
+# define PROMPT		"\033[34mminishell-0.1 \033[32m\033[1m>\033[0m "
+# define PROMPT_ERR	"\033[34mminishell-0.1 \033[31m\033[1m>\033[0m "
 
 char	**get_path(t_global *shell, char **env);
 int		new_token(t_token **list, char *str, int len, enum e_token type);
