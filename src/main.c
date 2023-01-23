@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:37:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:09:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "exec.h"
 
 void	print_command_line(t_token *token_list);
-void	set_interactive_signals(t_global *shell);
 
 // NOTE: check argc error ?
 // Note: here_doc in a fork to manage CTRL-C

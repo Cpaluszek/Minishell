@@ -27,6 +27,7 @@ EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \
 					child.c \
 					signals.c \
+					signals_handlers.c \
 					redirections.c \
 					exec_utils.c
 					

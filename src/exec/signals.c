@@ -6,13 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:52:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:27:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "structs.h"
-#include <readline/readline.h>
 
 // Todo: switch to sigaction instead of signal
 // Note make a header for signals / Input management ?
@@ -24,36 +23,24 @@ void	init_shell_attr(t_global *shell)
 }
 
 // Update interactive mode signals
-// Todo: replace param with void
 void	set_interactive_signals(t_global *shell)
 {
+	struct sigaction	sa;
+
 	tcsetattr(STDIN, TCSAFLUSH, &shell->custom_attr);
-	signal(SIGINT, handle_abort_input);
-	signal(SIGQUIT, handle_sigquit);
+	sa.sa_sigaction = handle_interactive_sigquit;
+	sigaction(SIGQUIT, &sa, NULL);
+	sa.sa_sigaction = handle_abort_input;
+	sigaction(SIGINT, &sa, NULL);
 }
 
-/**
- * @brief signal handler: ctrl-D interactive mode
- * 
- * @param sign signal code
- */
-void	handle_sigquit(int sign)
+// Note: in execution mode ctrl-D with bash will close the shell after execution
+void	set_execution_signals(void)
 {
-	(void) sign;
-	rl_redisplay();
-}
+	struct sigaction	sa;
 
-/**
- * @brief signal handler: ctrl-C interactive mode
- * 
- * @param sign signal code
- */
-// Todo: problem with double prompt on command interrupt
-void	handle_abort_input(int sign)
-{
-	rl_replace_line("", 0);
-	write(1, "\n", 1);
-	rl_on_new_line();
-	rl_redisplay();
-	g_status = 128 + sign;
+	sa.sa_sigaction = handle_execution_sigint;
+	sigaction(SIGINT, &sa, NULL);
+	sa.sa_sigaction = handle_execution_sigquit;
+	sigaction(SIGQUIT, &sa, NULL);
 }

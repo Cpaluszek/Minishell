@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:39:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:22:00 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ void	exit_exec(t_global *shell, int exit_code);
 */
 void	init_shell_attr(t_global *shell);
 void	set_interactive_signals(t_global *shell);
-void	handle_sigquit(int sign);
-void	handle_abort_input(int sign);
+void	set_execution_signals(void);
+void	handle_interactive_sigquit(int signum, siginfo_t *info, void *context);
+void	handle_abort_input(int signum, siginfo_t *info, void *context);
+void	handle_execution_sigint(int signum, siginfo_t *info, void *context);
+void	handle_execution_sigquit(int signum, siginfo_t *info, void *context);
 
 /*
 	--------- Builtins functions -----------
