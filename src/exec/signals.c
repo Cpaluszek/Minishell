@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/22 18:00:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:15:11 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ void	set_interactive_signals(t_global *shell)
 
 void	handle_sigquit(int sign)
 {
-	//dprintf(STDERR_FILENO, "handle sigquit: %d\n", sign);
 	(void) sign;
+	rl_redisplay();
 }
 
 // Interactive mode - ctrl-C
 void	handle_abort_input(int sign)
 {
-	//dprintf(STDERR_FILENO, "handle abort input: %d\n", sign);
 	rl_replace_line("", 0);
 	write(1, "\n", 1);
 	rl_on_new_line();

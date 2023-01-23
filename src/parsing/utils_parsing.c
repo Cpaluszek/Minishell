@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/23 10:47:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:11:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	error_exit_parsing(t_global *shell, char *err_msg)
 	exit(EXIT_FAILURE);
 }
 
+// Todo: print "exit" on the prompt line and not below
 static void	exit_parsing_from_signal(t_global *shell)
 {
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
