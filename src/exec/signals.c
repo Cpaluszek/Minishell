@@ -6,14 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 13:27:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:34:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "structs.h"
 
-// Todo: switch to sigaction instead of signal
 // Note make a header for signals / Input management ?
 void	init_shell_attr(t_global *shell)
 {

@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/19 13:34:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:01:55 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "structs.h"
 
-void	setup_redirections(t_token *tok)
+void	setup_all_redirections(t_token *tok)
 {
 	while (tok)
 	{
@@ -25,4 +25,22 @@ void	setup_redirections(t_token *tok)
 			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
 		tok = tok->next;
 	}
+}
+
+void	close_all_redirections(t_token *tok)
+{
+	while (tok)
+	{
+		if (tok->token == INPUT || tok->token == OUTPUT_APPEND || \
+			tok->token == OUTPUT_TRUNC)
+			close(tok->fd_file);
+		tok = tok->next;
+	}
+}
+
+void	close_redirections(t_token *tok)
+{
+	if (tok->token == INPUT || tok->token == OUTPUT_APPEND || \
+			tok->token == OUTPUT_TRUNC)
+		close(tok->fd_file);
 }

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 13:19:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:56:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	parent_close_pipes(t_token *token);
 int	exec_start(t_global *shell)
 {
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
-	setup_redirections(shell->token_list);
+	setup_all_redirections(shell->token_list);
 	exec_token_list(shell->token_list, shell);
 	return (0);
 }
@@ -27,6 +27,9 @@ int	exec_start(t_global *shell)
 // Todo: child status code
 int	exec_token_list(t_token *token, t_global *shell)
 {
+	t_token	*head;
+
+	head = token;
 	while (token)
 	{
 		if (token->token == CMD)
@@ -36,36 +39,49 @@ int	exec_token_list(t_token *token, t_global *shell)
 	set_execution_signals();
 	while (waitpid(-1, NULL, 0) > 0)
 		;
+	close_all_redirections(head);
 	return (0);
 }
 
 // Todo: recover builtins exit status
-// Todo: protect close
 // Note: some builtins need fork to works with pipes
 // Note: how to manage command not found ? continue exec line ?
-int	exec_cmd(t_token *token, t_global *shell)
+void	exec_cmd(t_token *token, t_global *shell)
 {
 	int	is_builtin;
 
 	is_builtin = 0;
 	g_status = parse_builtins(token, &is_builtin, shell);
 	if (is_builtin)
-		return (0);
+		return ;
 	else if (access(token->cmd[0], X_OK) == -1)
 	{
 		g_status = COMMAND_NOT_FOUND;
 		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
-		return (0);
+		return ;
 	}
-	if (token->make_a_pipe)
-		pipe(token->pipe_fd);
+	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
+	{
+		perror(ERR_PIPE);
+		close_all_redirections(shell->token_list);
+		error_exit_exec(shell, ERR_FORK);
+	}
 	token->pid = fork();
 	if (token->pid == -1)
+	{
+		perror(ERR_FORK);
+		close_all_redirections(shell->token_list);
 		error_exit_exec(shell, ERR_FORK);
+	}
 	if (token->pid == 0)
-		exec_child(token, shell->env);
+	{
+		if (exec_child(token, shell->env))
+		{
+			close_redirections(token);
+			exit(EXIT_FAILURE);
+		}
+	}
 	parent_close_pipes(token);
-	return (0);
 }
 
 static void	parent_close_pipes(t_token *token)
