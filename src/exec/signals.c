@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:33:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:38:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 // Todo: switch to sigaction instead of signal
 // Note make a header for signals / Input management ?
-// Interactive mode - ctrl-D
 void	init_shell_attr(t_global *shell)
 {
 	tcgetattr(STDIN_FILENO, &shell->saved_attr);

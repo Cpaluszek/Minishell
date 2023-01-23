@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:36:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:37:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv, char **env)
 		print_command_line(token_list);
 		exec_start(&shell);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 void	print_command_line(t_token *token_list)

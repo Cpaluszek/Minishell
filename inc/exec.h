@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:32:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:39:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,17 @@ void	exec_child(t_token *token, char **env);
 void	error_exit_exec(t_global *shell, char *err_msg);
 void	exit_exec(t_global *shell, int exit_code);
 
-/*	Signals	*/
+/*
+	--------- Signals functions -----------
+*/
 void	init_shell_attr(t_global *shell);
 void	set_interactive_signals(t_global *shell);
 void	handle_sigquit(int sign);
 void	handle_abort_input(int sign);
 
-/*	Builtins	*/
-// Note: some builtins are found in PATH
+/*
+	--------- Builtins functions -----------
+*/
 typedef struct s_builtin {
 	char	*name;
 	int		(*builtin)(t_token *, t_global *);
@@ -59,7 +62,9 @@ int		ft_unset(t_token *token, t_global *shell);
 int		ft_env(t_token *token, t_global *shell);
 int		ft_exit(t_token *token, t_global *shell);
 
-/*	Utils	*/
+/*
+	--------- Utils functions -----------
+*/
 char	*ft_getcwd(void);
 void	update_env(t_global *shell);
 int		args_number(char **args);
