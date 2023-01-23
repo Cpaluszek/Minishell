@@ -6,12 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:36 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:32:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:47:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Print a list of environement variables
-#include "structs.h"
+#include "minishell.h"
 #include "exec.h"
 
 /**

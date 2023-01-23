@@ -6,12 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:01:55 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:49:09 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
-#include "structs.h"
+#include "minishell.h"
 
 void	setup_all_redirections(t_token *tok)
 {

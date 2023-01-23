@@ -6,11 +6,11 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:35:05 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:48:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "minishell.h"
 #include "exec.h"
 
 int	exec_child(t_token *token, char **env)

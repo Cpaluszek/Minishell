@@ -6,11 +6,11 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:45 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:33:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:48:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "minishell.h"
 #include "exec.h"
 
 /**

@@ -3,21 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:07:09 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/16 18:52:37 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:47:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-// Note: printf can is authorized
-# include <stdio.h>
+# include "structs.h"
 
-// Note: readline includes - all useful ?
+# define STDIN	0
+# define STDOUT	1
+# define STDERR	2
 
-# include "libft.h"
+void	free_structs(t_global *shell);
+void	error_exit_shell(t_global *shell, char *err_msg);
+void	exit_shell(t_global *shell, int exit_code);
+void	exit_shell_from_signal(t_global *shell);
 
 #endif

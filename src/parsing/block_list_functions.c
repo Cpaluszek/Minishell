@@ -6,13 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/23 11:34:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:49:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "minishell.h"
 #include "token_list_functions.h"
-#include "libft.h"
 
 void	ft_lstadd_back_block(t_block **lst, t_block *new)
 {

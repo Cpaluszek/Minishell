@@ -6,12 +6,11 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/23 11:35:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:50:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
-#include "libft.h"
+#include "minishell.h"
 #include "token_list_functions.h"
 #include "parsing.h"
 

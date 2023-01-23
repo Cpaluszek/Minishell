@@ -6,12 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 13:34:15 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:49:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
-#include "structs.h"
+#include "minishell.h"
 
 // Note make a header for signals / Input management ?
 void	init_shell_attr(t_global *shell)

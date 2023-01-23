@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:29:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:57:09 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_token	*quote_parsing(char *str);
 t_token	*token_parsing(t_token *token_list);
 void	get_input(t_global *shell, char *prompt);
 void	test_failed_malloc(t_global *shell, void *content);
-void	error_exit_parsing(t_global *shell, char *err_msg);
 void	token_dollar_expand_and_str_merging(t_global *shell);
 void	transform_quote_token(t_global *shell);
 void	set_environment(t_global *shell, char **env);

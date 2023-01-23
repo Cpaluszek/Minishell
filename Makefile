@@ -47,6 +47,7 @@ EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))
 BUILTIN_SRC		:= $(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILES))
 
 SRC_FILES		:=	main.c \
+					utils.c \
 					$(EXEC_SRC) \
 					$(PARSING_SRC) \
 					$(BUILTIN_SRC)

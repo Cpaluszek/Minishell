@@ -6,12 +6,11 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:30:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:55:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "structs.h"
+#include "minishell.h"
 #include "exec.h"
 
 void	update_env(t_global *shell)
@@ -23,7 +22,7 @@ void	update_env(t_global *shell)
 	ft_free_split(shell->env);
 	shell->env = malloc(sizeof(char *) * (ft_lstsize(shell->env_list) + 1));
 	if (shell->env == NULL)
-		error_exit_exec(shell, ERR_MALLOC);
+		error_exit_shell(shell, ERR_MALLOC);
 	i = 0;
 	env_list = shell->env_list;
 	while (env_list)
@@ -32,7 +31,7 @@ void	update_env(t_global *shell)
 		if (dup == NULL)
 		{
 			ft_free_split(shell->env);
-			error_exit_exec(shell, ERR_MALLOC);
+			error_exit_shell(shell, ERR_MALLOC);
 		}
 		shell->env[i] = dup;
 		i++;

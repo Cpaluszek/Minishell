@@ -6,15 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:33:12 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:56:58 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Exit the shell
 // Optionnal parameter: exit status code
 // Check for valid exit code
-#include "structs.h"
-#include "libft.h"
+#include "minishell.h"
 #include "exec.h"
 #define EXIT_MSG "exit\n"
 #define CODE_NON_NUM 2
@@ -37,7 +36,7 @@ int	ft_exit(t_token *token, t_global *shell)
 	{
 		ft_printf_fd(STDERR, \
 			"exit: %s: numeric argument required\n", token->cmd[1]);
-		exit_exec(shell, CODE_NON_NUM);
+		exit_shell(shell, CODE_NON_NUM);
 	}
 	else if (args_number(token->cmd) > 2)
 	{
@@ -45,7 +44,7 @@ int	ft_exit(t_token *token, t_global *shell)
 		return (1);
 	}
 	exit_value = ft_atoi(token->cmd[1]);
-	exit_exec(shell, exit_value);
+	exit_shell(shell, exit_value);
 	return (0);
 }
 

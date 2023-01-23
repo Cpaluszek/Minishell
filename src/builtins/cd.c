@@ -6,13 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:32:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:55:11 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // change current working directory
 // only with relative or absolute path
-#include "structs.h"
+#include "minishell.h"
 #include "exec.h"
 
 #define HOME_VAR	"HOME="
@@ -64,7 +64,7 @@ static void	update_oldpwd(t_global *shell, char *old_pwd)
 	free(oldpwd_var->content);
 	temp = ft_strjoin(OLDPWD_VAR, old_pwd);
 	if (temp == NULL)
-		error_exit_exec(shell, ERR_MALLOC);
+		error_exit_shell(shell, ERR_MALLOC);
 	free(old_pwd);
 	oldpwd_var->content = temp;
 	update_env(shell);

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 13:53:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:55:20 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ void	close_redirections(t_token *tok);
 int		exec_token_list(t_token *token, t_global *shell);
 void	exec_cmd(t_token *token, t_global *shell);
 int		exec_child(t_token *token, char **env);
-
-void	error_exit_exec(t_global *shell, char *err_msg);
-void	exit_exec(t_global *shell, int exit_code);
 
 /*
 	--------- Signals functions -----------

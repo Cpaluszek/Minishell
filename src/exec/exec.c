@@ -6,11 +6,11 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:34:14 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:54:48 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "minishell.h"
 #include "exec.h"
 
 static void	parent_close_pipes(t_token *token);
@@ -63,14 +63,14 @@ void	exec_cmd(t_token *token, t_global *shell)
 	{
 		perror(ERR_PIPE);
 		close_all_redirections(shell->token_list);
-		error_exit_exec(shell, ERR_FORK);
+		error_exit_shell(shell, ERR_FORK);
 	}
 	token->pid = fork();
 	if (token->pid == -1)
 	{
 		perror(ERR_FORK);
 		close_all_redirections(shell->token_list);
-		error_exit_exec(shell, ERR_FORK);
+		error_exit_shell(shell, ERR_FORK);
 	}
 	if (token->pid == 0)
 	{

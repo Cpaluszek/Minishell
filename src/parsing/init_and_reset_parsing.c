@@ -6,14 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/22 16:24:14 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:56:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "token_list_functions.h"
 #include "parsing.h"
-#include "structs.h"
-#include "libft.h"
+#include "minishell.h"
 
 static t_list	*make_env_list(t_global *shell, char **env);
 
@@ -27,7 +26,7 @@ void	set_environment(t_global *shell, char **env)
 	shell->input_completed = NULL;
 	shell->env = ft_tab_strdup(env);
 	if (!shell->env)
-		error_exit_parsing(shell, ERR_MALLOC);
+		error_exit_shell(shell, ERR_MALLOC);
 	shell->env_list = make_env_list(shell, env);
 }
 
@@ -54,7 +53,7 @@ char	**get_path(t_global *shell, char **env)
 		return (NULL);
 	cmd_path = ft_split(&path[5], ':');
 	if (!(cmd_path))
-		error_exit_parsing(shell, ERR_MALLOC);
+		error_exit_shell(shell, ERR_MALLOC);
 	return (cmd_path);
 }
 
@@ -73,7 +72,7 @@ static t_list	*make_env_list(t_global *shell, char **env)
 		if (!env_str)
 		{
 			ft_lstclear(&env_list, free);
-			error_exit_parsing(shell, ERR_MALLOC);
+			error_exit_shell(shell, ERR_MALLOC);
 		}
 		ft_lstadd_back(&env_list, env_str);
 		i++;

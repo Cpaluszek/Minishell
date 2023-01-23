@@ -6,11 +6,11 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:48 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:33:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:48:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "minishell.h"
 #include "exec.h"
 
 static void	remove_env_variable(t_global *shell, char *cmd);
