@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:55:11 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:39:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,22 @@
 #define HOME_VAR	"HOME="
 #define OLDPWD_VAR	"OLDPWD="
 
+static int	change_directory(t_global *shell, char *target);
 static void	update_oldpwd(t_global *shell, char *old_pwd);
 static char	*cd_home(t_global *shell);
 static char	*cd_old(t_global *shell);
 
-// Todo: test with directory without permissions
 // Todo: add cd ~, real cd is not searching in env
 int	ft_cd(t_token *token, t_global *shell)
 {
 	char	*target;
-	char	*old_pwd;
 
 	if (args_number(token->cmd) > 2)
 	{
 		ft_printf_fd(STDERR, "cd: too many arguments\n");
 		target = NULL;
 	}
-	else if (args_number(token->cmd) == 1)
+	else if (args_number(token->cmd) == 1 || ft_strcmp(token->cmd[1], "~") == 0)
 		target = cd_home(shell);
 	else if (ft_strcmp(token->cmd[1], "-") == 0)
 		target = cd_old(shell);
@@ -42,14 +41,25 @@ int	ft_cd(t_token *token, t_global *shell)
 		target = token->cmd[1];
 	if (target == NULL)
 		return (1);
+	return (change_directory(shell, target));
+}
+
+static int	change_directory(t_global *shell, char *target)
+{
+	char	*old_pwd;
+
 	old_pwd = ft_getcwd();
+	printf("oldpwd: %s\n", old_pwd);
+	printf("change dir to: %s\n", target);
 	if (chdir(target) == -1)
 	{
-		ft_printf_fd(STDERR, "cd: %s: No such file or directory\n", target);
+		ft_printf_fd(STDERR, "cd: %s: ", target);
+		perror("");
 		free(old_pwd);
 		return (1);
 	}
 	update_oldpwd(shell, old_pwd);
+	// Todo: update PWD
 	return (0);
 }
 
