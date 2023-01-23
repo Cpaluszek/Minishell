@@ -6,13 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/22 11:57:31 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:35:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "exec.h"
-#include <unistd.h>
 
 // Todo: execve fail
 void	exec_child(t_token *token, char **env)

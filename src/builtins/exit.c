@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 15:26:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:33:12 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 // Check for valid exit code
 #include "structs.h"
 #include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
 #include "exec.h"
 #define EXIT_MSG "exit\n"
 #define CODE_NON_NUM 2

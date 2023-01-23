@@ -6,17 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/22 18:00:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:36:58 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parsing.h"
 #include "exec.h"
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <signal.h>
 
 void	print_command_line(t_token *token_list);
 void	set_interactive_signals(t_global *shell);
@@ -51,7 +47,7 @@ void	print_command_line(t_token *token_list)
 {
 	int	i;
 	int	*fd_in;
-	int *fd_out;
+	int	*fd_out;
 
 	printf("\n\n------------COMMAND LINE ------------\n\n");
 	while (token_list)

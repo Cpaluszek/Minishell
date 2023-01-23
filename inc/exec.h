@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:20:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:32:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 # define EXEC_H
 
 // Todo: move includes closer to usage
-# include "structs.h"
+# include <stdio.h>
+# include <unistd.h>
 # include <signal.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include "structs.h"
+# include "errors.h"
 
 # define STDIN	0
 # define STDOUT	1

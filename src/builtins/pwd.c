@@ -6,14 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:45 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 17:00:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:33:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "exec.h"
-#include <stdio.h>
-#include <unistd.h>
 
 /**
  * @brief writes the absolute pathname of the current working directory to STDOUT

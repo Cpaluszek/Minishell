@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tab_strdup.c                                    :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 11:07:44 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/23 11:32:45 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/01/23 11:25:43 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/01/23 11:27:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef ERRORS_H
+# define ERRORS_H
 
-char	**ft_tab_strdup(char **tab)
-{
-	int		i;
-	int		size;
-	char	**tab_dup;
+# define ERR_SYNTAX "syntax error near unexpected token "
+# define ERR_DOLLAR "ambiguous redirect\n"
+# define ERR_MALLOC "Error with malloc(3)\n"
+# define ERR_FORK	"Error with fork()\n"
 
-	size = ft_size_tab(tab);
-	tab_dup = malloc(sizeof(char *) * (size + 1));
-	if (!tab_dup)
-		return (NULL);
-	i = 0;
-	while (tab[i])
-	{
-		tab_dup[i] = ft_strdup(tab[i]);
-		if (!tab_dup[i])
-			return (ft_free_split(tab_dup));
-		i++;
-	}
-	tab_dup[i] = NULL;
-	return (tab_dup);
-}
+#endif

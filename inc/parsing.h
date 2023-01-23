@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 10:01:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:29:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,16 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "structs.h"
+# include "errors.h"
 
 # define PROMPT	"minishell-0.1$ "
-# define ERR_SYNTAX "syntax error near unexpected token "
-# define ERR_DOLLAR "ambiguous redirect\n"
-# define ERR_MALLOC "Error with malloc(3)\n"
 
-char 	**get_path(t_global *shell, char **env);
+char	**get_path(t_global *shell, char **env);
 int		new_token(t_token **list, char *str, int len, enum e_token type);
 int		not_only_spaces(char *line);
 int		syntax_checking(t_global *shell);
 int		central_parsing(t_global *shell, char *prompt);
-t_token *quote_parsing(char *str);
+t_token	*quote_parsing(char *str);
 t_token	*token_parsing(t_token *token_list);
 void	get_input(t_global *shell, char *prompt);
 void	test_failed_malloc(t_global *shell, void *content);

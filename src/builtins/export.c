@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 15:33:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:33:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 	// export a="1" b="2" c="3"
 #include "structs.h"
 #include "exec.h"
-#include <stdio.h>
-#include <unistd.h>
 
 static void		print_sorted_env(t_global *shell);
 static void		add_env_variable(t_global *shell, char *cmd);
@@ -77,7 +75,7 @@ static void	add_env_variable(t_global *shell, char *cmd)
 
 	new_content = ft_strdup(cmd);
 	if (new_content == NULL)
-		error_exit_exec(shell, "Alloc error\n");
+		error_exit_exec(shell, ERR_MALLOC);
 	search_result = search_in_env(shell->env_list, cmd);
 	if (search_result == NULL)
 	{

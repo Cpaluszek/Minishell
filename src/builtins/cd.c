@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/22 11:55:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:32:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 // only with relative or absolute path
 #include "structs.h"
 #include "exec.h"
-#include <unistd.h>
-#include <stdio.h>
 
 #define HOME_VAR	"HOME="
 #define OLDPWD_VAR	"OLDPWD="
@@ -66,7 +64,7 @@ static void	update_oldpwd(t_global *shell, char *old_pwd)
 	free(oldpwd_var->content);
 	temp = ft_strjoin(OLDPWD_VAR, old_pwd);
 	if (temp == NULL)
-		error_exit_exec(shell, "Alloc fail\n");
+		error_exit_exec(shell, ERR_MALLOC);
 	free(old_pwd);
 	oldpwd_var->content = temp;
 	update_env(shell);

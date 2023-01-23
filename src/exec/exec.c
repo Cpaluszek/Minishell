@@ -6,14 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 11:20:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:31:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "exec.h"
-#include <unistd.h>
-#include <stdio.h>
 
 static void	parent_close_pipes(t_token *token);
 
@@ -64,7 +62,7 @@ int	exec_cmd(t_token *token, t_global *shell)
 		pipe(token->pipe_fd);
 	token->pid = fork();
 	if (token->pid == -1)
-		error_exit_exec(shell, "fork error: ");
+		error_exit_exec(shell, ERR_FORK);
 	if (token->pid == 0)
 		exec_child(token, shell->env);
 	parent_close_pipes(token);

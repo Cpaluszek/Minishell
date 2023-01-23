@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/21 17:10:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:30:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	update_env(t_global *shell)
 	ft_free_split(shell->env);
 	shell->env = malloc(sizeof(char *) * (ft_lstsize(shell->env_list) + 1));
 	if (shell->env == NULL)
-		error_exit_exec(shell, "Alloc error");
+		error_exit_exec(shell, ERR_MALLOC);
 	i = 0;
 	env_list = shell->env_list;
 	while (env_list)
@@ -32,7 +32,7 @@ void	update_env(t_global *shell)
 		if (dup == NULL)
 		{
 			ft_free_split(shell->env);
-			error_exit_exec(shell, "Alloc error");
+			error_exit_exec(shell, ERR_MALLOC);
 		}
 		shell->env[i] = dup;
 		i++;

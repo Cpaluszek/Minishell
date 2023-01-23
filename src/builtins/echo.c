@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 17:04:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:32:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 // The echo utility exits 0 on success, and >0 if an error occurs.
 #include "structs.h"
 #include "exec.h"
-#include <unistd.h>
-#include <stdio.h>
 #define NL "-n"
 
 static int	echo_option(t_token *t, int *arg_i);

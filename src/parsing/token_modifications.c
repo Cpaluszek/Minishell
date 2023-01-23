@@ -6,12 +6,11 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:30:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/18 16:23:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:34:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-#include <stdio.h>
 
 static void	set_pipe_fd_to_command(t_token *token, int *fd_input, int *fd_output);
 
