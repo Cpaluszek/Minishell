@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 10:07:09 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:47:15 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/01/20 16:39:42 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/01/20 16:39:42 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "structs.h"
+int	ft_strcmp(const char *first, const char *second)
+{
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-# define STDIN	0
-# define STDOUT	1
-# define STDERR	2
-
-void	free_structs(t_global *shell);
-void	error_exit_shell(t_global *shell, char *err_msg);
-void	exit_shell(t_global *shell, int exit_code);
-void	exit_shell_from_signal(t_global *shell);
-
-#endif
+	i = 0;
+	s1 = (unsigned char *) first;
+	s2 = (unsigned char *) second;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}

@@ -15,9 +15,6 @@
 
 int	ft_print_decimal_fd(const int nb, int fd)
 {
-	int				len;
-
-	len = 0;
 	if (nb >= 0)
 		return (ft_print_unsigned_int_fd(nb, fd));
 	write(fd, "-", 1);

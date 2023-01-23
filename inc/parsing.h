@@ -3,35 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 12:09:14 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/23 17:29:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
+# include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "structs.h"
+# include "errors.h"
 
-# define PROMPT	"minishell-0.1$ "
-# define ERR_SYNTAX "syntax error near unexpected token "
-# define ERR_DOLLAR "ambiguous redirect\n"
-# define ERR_MALLOC "Error with malloc(3)\n"
+# define PROMPT		"\033[34mminishell-0.1 \033[32m\033[1m>\033[0m "
+# define PROMPT_ERR	"\033[34mminishell-0.1 \033[31m\033[1m>\033[0m "
 
-char 	**get_path(t_global *shell, char **env);
+char	**get_path(t_global *shell, char **env);
 int		new_token(t_token **list, char *str, int len, enum e_token type);
 int		not_only_spaces(char *line);
 int		syntax_checking(t_global *shell);
 int		central_parsing(t_global *shell, char *prompt);
-t_token *quote_parsing(char *str);
+t_token	*quote_parsing(char *str);
 t_token	*token_parsing(t_token *token_list);
 void	get_input(t_global *shell, char *prompt);
 void	test_failed_malloc(t_global *shell, void *content);
-void	error_exit_parsing(t_global *shell, char *err_msg);
 void	token_dollar_expand_and_str_merging(t_global *shell);
 void	transform_quote_token(t_global *shell);
 void	set_environment(t_global *shell, char **env);

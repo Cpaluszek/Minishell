@@ -25,6 +25,7 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	str/ft_strlen.c \
  			   	str/ft_strlcpy.c \
  			   	str/ft_strlcat.c \
+ 			   	str/ft_strcmp.c \
  			   	str/ft_strncmp.c \
  			   	str/ft_strnstr.c \
  			   	str/ft_substr.c \
@@ -70,14 +71,16 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	lst/ft_lstlast.c \
  			   	lst/ft_lstdelone.c \
  			   	lst/ft_lstiter.c \
- 			   	lst/ft_lstmap.c
+ 			   	lst/ft_lstmap.c \
+				lst/ft_lstsort.c
 
 OBJ_DIR		:=	build/
 OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
 
 # Compiler options
 CC			:=	gcc
-CC_FLAGS	:=	-Wextra -Werror -Wall
+DEBUG_FLAG	:= -g3
+CC_FLAGS	:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
 
 # define standard colors
 _END		:=	\x1b[0m

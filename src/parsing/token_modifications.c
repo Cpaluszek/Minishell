@@ -6,12 +6,11 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:30:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/18 16:19:23 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/23 21:25:27 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-#include <stdio.h>
 
 static void	set_pipe_fd_to_command(t_token *token, int *fd_input, int *fd_output);
 void	print_command_line(t_token *token_list);
@@ -41,7 +40,7 @@ void	transform_quote_token(t_global *shell)
 	token = token->next;
 	// while (token)
 	// {
-	// 	if (token->token == PIPE && token->next && \
+	// 	if (token->token == PIPE && token->next && 
 	// 		(token->next->token == QUOTE || token->next->token == DQUOTE))
 	// 		token->next->token = CMD;
 	// 	token = token->next;
@@ -109,12 +108,18 @@ static void	set_pipe_fd_to_command(t_token *token, int *fd_input, int *fd_output
 void	delete_pipe_token(t_global *shell)
 {
 	t_token *token;
+	t_token	*next;
 
 	token = shell->token_list;
 	while (token)
 	{
 		if (token->token == PIPE)
+		{
+			next = token->next;
 			remove_token(token);
-		token = token->next;
+			token = next;
+		}
+		else
+			token = token->next;
 	}
 }

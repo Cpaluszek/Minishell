@@ -6,114 +6,50 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/18 16:23:26 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/23 21:27:02 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parsing.h"
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <unistd.h>
+#include "exec.h"
 
-char	*get_next_line(int fd);
 void	print_command_line(t_token *token_list);
-void	short_test_exec(t_global *shell);
+
 // NOTE: check argc error ?
 // Note: here_doc in a fork to manage CTRL-C
+		// Todo: free previous path on loop reset
 int	main(int argc, char **argv, char **env)
 {
-	t_global	shell;
-	t_token		*token_list;
-	// Manage signals
-		// Intercept SIGQUIT (^\)
-		// Ignore SIGERM SIGHUP, SIGTSTP, SIGTTOU
-	// Block control characters printing (^C, ^\) ->tcgetattr & tcsetattr
+	t_global		shell;
+	t_token			*token_list;
 
-	// Manage env -> store env in file (unlink at the end)
-	// Get PATH from env
 	(void) argc;
 	(void) argv;
+	g_status = EXIT_SUCCESS;
+	init_shell_attr(&shell);
 	set_environment(&shell, env);
 	while (1)
 	{
 		reset_commands(&shell);
 		shell.path = get_path(&shell, shell.env);
-		central_parsing(&shell, PROMPT);
+		set_interactive_signals(&shell);
+		if (g_status == 0)
+			central_parsing(&shell, PROMPT);
+		else
+			central_parsing(&shell, PROMPT_ERR);
 		token_list = shell.token_list;
-		// while (token_list)
-		// {
-		// 	printf("{ [%s]:[%s], SL(%d)} -> ", token_list->token_str, token_list->str, token_list->space_link);
-		// 	token_list = token_list->next;
-		// }
 		print_command_line(token_list);
-		short_test_exec(&shell);
-		
-		printf("\n");
-		// Lexically analyze
-
-		// Parse
-
-		// Execute
+		exec_start(&shell);
 	}
-
-	return (0);
-}
-
-// PROBLEME DANS LES FD IN ET OUT, difference de 4 chaque fois dans l'adresse, sinon fonctionne. ATTENTION ane pas commencer
-// par des quotes en debut de commande ou juste apres un pipe : risque de SEGFAULT non resolu;
-
-void	short_test_exec(t_global *shell)
-{
-	t_token *token;
-	t_token *first;
-	// int		status;
-
-	first = shell->token_list;
-	token = first;
-	while (token)
-	{
-		if (token->token <= 1)
-			token->fd_file = open(token->str, O_RDONLY);
-		else if (token->token <= 3 && token->token >= 2)
-			token->fd_file = open(token->str, O_WRONLY | O_TRUNC | O_CREAT, 0000644);
-		token = token->next;
-	}
-	token = first;
-	while (token)
-	{
-		if (token->token == CMD)
-		{
-			if (token->make_a_pipe == true)
-				pipe(token->pipe_fd);
-			token->pid = fork();
-			if (token->pid == 0)
-			{
-				if (token->fd_input)
-					dup2(*token->fd_input, STDIN_FILENO);
-				if (token->fd_output)
-					dup2(*token->fd_output, STDOUT_FILENO);
-				if (execve(token->cmd[0], token->cmd, shell->env) == -1)
-					exit(0);
-			}
-		}
-		token = token->next;
-	}
-	token = first;
-	sleep(2);
-	// while (token)
-	// {
-	// 	if (token->token == CMD)
-	// 		waitpid(token->pid, &status, 0);
-	// 	token = token->next;
-	// }
+	return (EXIT_SUCCESS);
 }
 
 void	print_command_line(t_token *token_list)
 {
 	int	i;
 	int	*fd_in;
-	int *fd_out;
+	int	*fd_out;
 
 	printf("\n\n------------COMMAND LINE ------------\n\n");
 	while (token_list)
@@ -135,27 +71,5 @@ void	print_command_line(t_token *token_list)
 		}
 		token_list = token_list->next;
 	}
-	printf("\n\n\n");
+	printf("\n");
 }
-
-/*
-	Function that will get each line read in the standard input.
-*/
-// char	*get_next_line(int fd)
-// {
-// 	char	buffer[1001];
-// 	char	*line;
-
-// 	ft_bzero(buffer, 1001);
-// 	line = ft_calloc(1, sizeof(char));
-// 	read(fd, buffer, 1000);
-// 	while (!ft_strrchr(buffer, '\n') && ft_strlen(buffer))
-// 	{
-// 		line = ft_strjoin_free_s1(line, buffer);
-// 		ft_bzero(buffer, 1001);
-// 		read(STDIN_FILENO, buffer, 1000);
-// 	}
-// 	line = ft_strjoin_free_s1(line, buffer);
-// 	return (line);
-// }
-

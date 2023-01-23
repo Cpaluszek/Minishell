@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tab_strdup.c                                    :+:      :+:    :+:   */
+/*   ft_lstsort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 11:07:44 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/23 11:32:45 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/01/20 21:28:05 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/01/20 21:36:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_tab_strdup(char **tab)
+void	ft_lstsort(t_list **lst, int (*cmp)())
 {
 	int		i;
+	int		j;
 	int		size;
-	char	**tab_dup;
+	t_list	*current;
+	void	*temp;
 
-	size = ft_size_tab(tab);
-	tab_dup = malloc(sizeof(char *) * (size + 1));
-	if (!tab_dup)
-		return (NULL);
+	size = ft_lstsize(*lst);
 	i = 0;
-	while (tab[i])
+	while (i < size)
 	{
-		tab_dup[i] = ft_strdup(tab[i]);
-		if (!tab_dup[i])
-			return (ft_free_split(tab_dup));
+		j = 0;
+		current = *lst;
+		while (j < size - 1 - i)
+		{
+			if ((*cmp)(current->content, current->next->content) > 0)
+			{
+				temp = current->content;
+				current->content = current->next->content;
+				current->next->content = temp;
+			}
+			current = current->next;
+			j++;
+		}
 		i++;
 	}
-	tab_dup[i] = NULL;
-	return (tab_dup);
 }

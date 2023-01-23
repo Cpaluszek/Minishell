@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   central_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/18 13:53:32 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/23 11:47:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	central_parsing(t_global *shell, char *prompt)
 {
 	if (shell->command_line == SYNTAX_ERROR)
 		return (1);
-	if (shell->command_line ==  COMPLETED)
+	if (shell->command_line == COMPLETED)
 		return (0);
 	parsing_initialization(shell, prompt);
 	if (syntax_checking(shell))
@@ -36,7 +36,7 @@ int	central_parsing(t_global *shell, char *prompt)
 static void	parsing_initialization(t_global *shell, char *prompt)
 {
 	t_token	*token_list;
-	
+
 	get_input(shell, prompt);
 	token_list = quote_parsing(shell->input);
 	token_list = token_parsing(token_list);
@@ -58,7 +58,7 @@ static void	parsing_finalization(t_global *shell)
 
 static int	uncompleted_line(t_global *shell)
 {
-	t_token *last_token;
+	t_token	*last_token;
 
 	last_token = ft_lstlast_token(shell->token_list);
 	if (last_token->token == PIPE || last_token->token == AND \

@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   token_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/17 18:20:52 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:50:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
-#include "libft.h"
+#include "minishell.h"
 #include "token_list_functions.h"
 #include "parsing.h"
-#include <stdio.h>
 
 void			insert_token_list(t_token *token_list, t_token *splitted_token_list);
 t_token			*create_sub_token_list(char *str);

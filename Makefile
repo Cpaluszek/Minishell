@@ -24,34 +24,53 @@ PARSING_FILES	:=	central_parsing.c \
 					utils_parsing.c
 
 EXEC_DIR		:=	exec
-EXEC_FILES		:=	#exec.c
+EXEC_FILES		:=	exec.c \
+					child.c \
+					signals.c \
+					signals_handlers.c \
+					redirections.c \
+					exec_utils.c
+					
+BUILTIN_DIR		:=	builtins
+BUILTIN_FILES	:=	parse_builtins.c \
+					cd.c \
+					echo.c \
+					env.c \
+					exit.c \
+					export.c \
+					env_utils.c \
+					pwd.c \
+					unset.c
 
 PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
 EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))
+BUILTIN_SRC		:= $(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILES))
 
 SRC_FILES		:=	main.c \
+					utils.c \
 					$(EXEC_SRC) \
-					$(PARSING_SRC)
-SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-					
+					$(PARSING_SRC) \
+					$(BUILTIN_SRC)
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 LIB_NAMES		:=	lib/libft
-LIBS			:=	$(subst lib,-l,$(notdir $(LIB_NAMES)))
-LIB_LD			:=	$(foreach lib,$(LIB_NAMES),-L$(lib))
-LIB_PATHS		:=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
-LIB_HEADERS		:=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
+LIBS			=	$(subst lib,-l,$(notdir $(LIB_NAMES)))
+LIB_LD			=	$(foreach lib,$(LIB_NAMES),-L$(lib))
+LIB_PATHS		=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
+LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
 
-LIBS			+= -lreadline
+LIBS			+=	-lreadline
+LIB_LD			+=	-L ~/.brew/opt/readline/lib
+LIB_HEADERS		+=	-I ~/.brew/opt/readline/include
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
 
 # Compiler options
 CC				:=	cc
-CC_FLAGS		:=	-Wextra -Werror -Wall
-DEBUG_FLAG		:=	-g3 -fsanitize=address
+DEBUG_FLAG		:=	-g3 #-fsanitize=address
+CC_FLAGS		:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
 
 MAKE			:=	make -C
 
@@ -73,17 +92,12 @@ _WHITE			:=	\x1b[37m
 # 		RULES			#
 #########################
 
-all: build_libs $(NAME)
+all: $(NAME)
 
-build_libs:
+$(LIB_PATHS): force
 	@$(foreach lib, $(LIB_NAMES), \
 		@$(MAKE) $(lib); \
 	)
-
-echo:
-	@echo $(LIB_NAMES)
-	@echo $(LIBS)
-	@echo $(LIB_LD)
 
 $(NAME): $(LIB_PATHS) $(OBJS)
 	@$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
@@ -111,4 +125,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re build_libs
+.PHONY: all clean fclean re force

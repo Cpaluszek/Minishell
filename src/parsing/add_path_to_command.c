@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:59:33 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/18 08:21:38 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/23 14:55:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "minishell.h"
 #include "parsing.h"
-#include "unistd.h"
+#include <unistd.h>
 
 int	find_path(char **cmd, char **path);
 
@@ -34,7 +34,7 @@ void	add_path_to_command_token(t_global *shell)
 			(access(token_list->cmd[0], X_OK) != 0))
 		{
 			if (find_path(token_list->cmd, shell->path) == -1)
-				error_exit_parsing(shell, ERR_MALLOC);
+				error_exit_shell(shell, ERR_MALLOC);
 		}
 		token_list = token_list->next;
 	}

@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   block_list_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/17 16:12:31 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:49:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "minishell.h"
 #include "token_list_functions.h"
-#include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
 
 void	ft_lstadd_back_block(t_block **lst, t_block *new)
 {
