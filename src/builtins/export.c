@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/24 10:22:14 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:56:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 static void		print_sorted_env(t_global *shell);
 static void		add_env_variable(t_global *shell, char *cmd);
 
-// Todo: exit code - test with bash3.2
 int	ft_export(t_token *token, t_global *shell)
 {
 	int		i;

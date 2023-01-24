@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 15:39:31 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:02:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	update_oldpwd(t_global *shell, char *old_pwd);
 static char	*cd_home(t_global *shell);
 static char	*cd_old(t_global *shell);
 
-// Todo: add cd ~, real cd is not searching in env
 int	ft_cd(t_token *token, t_global *shell)
 {
 	char	*target;
@@ -84,6 +83,7 @@ static void	update_oldpwd(t_global *shell, char *old_pwd)
 static char	*cd_home(t_global *shell)
 {
 	t_list	*home_var;
+	char	*target;
 
 	home_var = search_in_env(shell->env_list, HOME_VAR);
 	if (home_var == NULL)
@@ -91,12 +91,14 @@ static char	*cd_home(t_global *shell)
 		ft_printf_fd(STDERR, "cd: HOME not set\n");
 		return (NULL);
 	}
-	return (home_var->content);
+	target = home_var->content + ft_strlen(HOME_VAR);
+	return (target);
 }
 
 static char	*cd_old(t_global *shell)
 {
 	t_list	*old_var;
+	char	*target;
 
 	old_var = search_in_env(shell->env_list, OLDPWD_VAR);
 	if (old_var == NULL)
@@ -104,5 +106,6 @@ static char	*cd_old(t_global *shell)
 		ft_printf_fd(STDERR, "cd: OLDPWD not set\n");
 		return (NULL);
 	}
-	return (old_var->content);
+	target = old_var->content + ft_strlen(OLDPWD_VAR);
+	return (target);
 }

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:48 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/24 10:27:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:56:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 static void	remove_env_variable(t_global *shell, char *cmd);
 
-// Todo: check error status code bash3.2
 int	ft_unset(t_token *token, t_global *shell)
 {
 	int		i;
