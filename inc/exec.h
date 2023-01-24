@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/24 10:08:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:28:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,21 @@
 # define STDERR	2
 
 # define COMMAND_NOT_FOUND 127
+# define HERE_DOC_TMP	".heredoc.tmp"
 
 int		exec_start(t_global *shell);
-void	setup_all_redirections(t_token *tok);
-void	close_all_redirections(t_token *tok);
-void	close_redirections(t_token *tok);
 int		exec_token_list(t_token *token, t_global *shell);
 void	exec_cmd(t_token *token, t_global *shell);
 int		exec_child(t_token *token, char **env);
 void	parent_close_pipes(t_token *token);
+
+/*
+	--------- Redirections functions -----------
+*/
+void	here_doc(t_global *shell, t_token *token);
+void	setup_all_redirections(t_global *shell, t_token *tok);
+void	close_all_redirections(t_token *tok);
+void	close_redirections(t_token *tok);
 
 /*
 	--------- Signals functions -----------

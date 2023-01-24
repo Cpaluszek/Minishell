@@ -6,19 +6,25 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:49:09 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:08:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "minishell.h"
 
-void	setup_all_redirections(t_token *tok)
+// Todo: Protect opens
+void	setup_all_redirections(t_global *shell, t_token *tok)
 {
 	while (tok)
 	{
 		if (tok->token == INPUT)
 			tok->fd_file = open(tok->str, O_RDONLY);
+		else if (tok->token == HERE_DOC)
+		{
+			here_doc(shell, tok);
+			tok->fd_file = open(HERE_DOC_TMP, O_RDONLY);
+		}
 		else if (tok->token == OUTPUT_TRUNC)
 			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		else if (tok->token == OUTPUT_APPEND)
@@ -27,13 +33,20 @@ void	setup_all_redirections(t_token *tok)
 	}
 }
 
+// Todo: protect close
 void	close_all_redirections(t_token *tok)
 {
 	while (tok)
 	{
 		if (tok->token == INPUT || tok->token == OUTPUT_APPEND || \
 			tok->token == OUTPUT_TRUNC)
+		{
 			close(tok->fd_file);
+		}
+		else if (tok->token == HERE_DOC)
+		{
+			unlink(HERE_DOC_TMP);
+		}
 		tok = tok->next;
 	}
 }

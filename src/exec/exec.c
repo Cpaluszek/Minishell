@@ -6,19 +6,18 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/24 10:15:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:12:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "exec.h"
 
-// Todo: here_doc does not expand $var
 // Todo: protect tcsetattr and tcgetattr with isatty
 int	exec_start(t_global *shell)
 {
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
-	setup_all_redirections(shell->token_list);
+	setup_all_redirections(shell, shell->token_list);
 	exec_token_list(shell->token_list, shell);
 	close_all_redirections(shell->token_list);
 	return (0);

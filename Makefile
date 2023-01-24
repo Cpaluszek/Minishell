@@ -29,6 +29,7 @@ EXEC_FILES		:=	exec.c \
 					signals.c \
 					signals_handlers.c \
 					redirections.c \
+					here_doc.c \
 					exec_utils.c
 					
 BUILTIN_DIR		:=	builtins
