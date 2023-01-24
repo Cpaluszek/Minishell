@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:37:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:53:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:41:55 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ void	exit_shell(t_global *shell, int exit_code)
 	exit(exit_code);
 }
 
-// Todo: print "exit" on the prompt line and not below
 void	exit_shell_from_signal(t_global *shell)
 {
 	tcsetattr(0, TCSANOW, &shell->saved_attr);
-	rl_clear_history();
 	printf("exit\n");
+	rl_clear_history();
 	free_structs(shell);
 	exit(g_status);
 }
