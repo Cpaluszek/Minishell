@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:55:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:22:14 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ static void		add_env_variable(t_global *shell, char *cmd);
 int	ft_export(t_token *token, t_global *shell)
 {
 	int		i;
+	int		ret_value;
 
+	ret_value = 0;
 	if (args_number(token->cmd) == 1)
 	{
 		print_sorted_env(shell);
-		return (0);
+		return (ret_value);
 	}
 	i = 1;
 	while (token->cmd[i])
@@ -36,17 +38,14 @@ int	ft_export(t_token *token, t_global *shell)
 		{
 			ft_printf_fd(STDERR, "export: `%s' not a valid identifier\n", \
 				token->cmd[i]);
-			g_status = EXIT_FAILURE;
+			ret_value = EXIT_FAILURE;
 		}
 		else
-		{
 			add_env_variable(shell, token->cmd[i]);
-			g_status = EXIT_SUCCESS;
-		}
 		i++;
 	}
 	update_env(shell);
-	return (0);
+	return (ret_value);
 }
 
 // Todo: protect lstmap return

@@ -6,14 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 17:35:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:15:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "exec.h"
-
-static void	parent_close_pipes(t_token *token);
 
 // Todo: here_doc does not expand $var
 // Todo: protect tcsetattr and tcgetattr with isatty
@@ -22,10 +20,10 @@ int	exec_start(t_global *shell)
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
 	setup_all_redirections(shell->token_list);
 	exec_token_list(shell->token_list, shell);
+	close_all_redirections(shell->token_list);
 	return (0);
 }
 
-// Todo: child status code
 int	exec_token_list(t_token *token, t_global *shell)
 {
 	t_token	*head;
@@ -38,25 +36,40 @@ int	exec_token_list(t_token *token, t_global *shell)
 		token = token->next;
 	}
 	set_execution_signals();
-	while (waitpid(-1, NULL, 0) > 0)
-		;
-	close_all_redirections(head);
+	token = head;
+	while (token)
+	{
+		if (token->token == CMD)
+		{
+			if (token->pid > 0 && token->exit_status != COMMAND_NOT_FOUND)
+			{
+				waitpid(token->pid, &token->exit_status, 0);
+				token->exit_status = WEXITSTATUS(token->exit_status);
+			}
+			g_status = token->exit_status;
+			printf("%s -> %d\n", token->cmd[0], g_status);
+		}
+		token = token->next;
+	}
 	return (0);
 }
 
-// Todo: recover builtins exit status
 // Note: some builtins need fork to works with pipes
 void	exec_cmd(t_token *token, t_global *shell)
 {
 	int	is_builtin;
 
 	is_builtin = 0;
-	g_status = parse_builtins(token, &is_builtin, shell);
+	token->exit_status = parse_builtins(token, &is_builtin, shell);
 	if (is_builtin)
+	{
+		printf("builtin return = %d\n", token->exit_status);
 		return ;
+	}
 	else if (access(token->cmd[0], X_OK) == -1)
 	{
 		g_status = COMMAND_NOT_FOUND;
+		token->exit_status = COMMAND_NOT_FOUND;
 		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
 		return ;
 	}
@@ -82,12 +95,4 @@ void	exec_cmd(t_token *token, t_global *shell)
 		}
 	}
 	parent_close_pipes(token);
-}
-
-static void	parent_close_pipes(t_token *token)
-{
-	if (token->make_a_pipe)
-		close(token->pipe_fd[1]);
-	if (token->prev && token->prev->make_a_pipe)
-		close(token->prev->pipe_fd[0]);
 }

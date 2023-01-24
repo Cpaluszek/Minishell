@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:48 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:48:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:27:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static void	remove_env_variable(t_global *shell, char *cmd);
 int	ft_unset(t_token *token, t_global *shell)
 {
 	int		i;
+	int		ret_value;
 
+	ret_value = 0;
 	i = 1;
 	while (token->cmd[i])
 	{
@@ -27,16 +29,13 @@ int	ft_unset(t_token *token, t_global *shell)
 		{
 			ft_printf_fd(STDERR, "unset: `%s' not a valid identifier\n", \
 				token->cmd[i]);
-			g_status = EXIT_FAILURE;
+			ret_value = EXIT_FAILURE;
 		}
 		else
-		{
 			remove_env_variable(shell, token->cmd[i]);
-			g_status = EXIT_SUCCESS;
-		}
 		i++;
 	}
-	return (0);
+	return (ret_value);
 }
 
 static void	remove_env_variable(t_global *shell, char *cmd)
