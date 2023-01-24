@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/24 13:12:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:16:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	exec_token_list(t_token *token, t_global *shell)
 	t_token	*head;
 
 	head = token;
+	set_execution_signals();
 	while (token)
 	{
 		if (token->token == CMD)
 			exec_cmd(token, shell);
 		token = token->next;
 	}
-	set_execution_signals();
 	token = head;
 	while (token)
 	{

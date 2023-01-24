@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:49:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:24:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	set_interactive_signals(t_global *shell)
 	struct sigaction	sa;
 
 	tcsetattr(STDIN, TCSAFLUSH, &shell->custom_attr);
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART;
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 	sa.sa_sigaction = handle_interactive_sigquit;
 	sigaction(SIGQUIT, &sa, NULL);
 	sa.sa_sigaction = handle_abort_input;
@@ -38,6 +42,11 @@ void	set_execution_signals(void)
 {
 	struct sigaction	sa;
 
+	dprintf(STDERR, "set execution signals\n");
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART;
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 	sa.sa_sigaction = handle_execution_sigint;
 	sigaction(SIGINT, &sa, NULL);
 	sa.sa_sigaction = handle_execution_sigquit;
