@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:07:09 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:47:15 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:06:34 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define STDIN	0
 # define STDOUT	1
 # define STDERR	2
+
+int	g_status;
 
 void	free_structs(t_global *shell);
 void	error_exit_shell(t_global *shell, char *err_msg);

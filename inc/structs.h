@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/22 17:09:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:06:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@
 # define BEGIN 0
 # define COMPLETED 1
 # define UNCOMPLETED 2
-
-// Note: where to put global var ?
-// Note: add extern keyword ?
-int	g_status;
 
 enum e_link {
 	NO_LINK = 0,
