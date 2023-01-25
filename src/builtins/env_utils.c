@@ -6,12 +6,39 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:55:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:55:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "exec.h"
+#define INVALID_ID_SET "=?_:{}[]"
+
+/**
+ * @brief check if the input is a valid identifier. A valid identifier can only
+ * 	contains letters, underscores and numbers and can't begin with a number
+ * 
+ * @param str export command argument
+ * @return 0 if it's not valid, 1 otherwise
+ */
+int	is_valid_identifier(char *str)
+{
+	int		i;
+	char	*space_position;
+
+	if (ft_isdigit(str[0]))
+		return (0);
+	i = 0;
+	space_position = ft_strchr(str, '=');
+	while (str + i < space_position)
+	{
+		if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && \
+			ft_strchr(INVALID_ID_SET, str[i]) != NULL)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 void	update_env(t_global *shell)
 {
@@ -55,31 +82,6 @@ void	*copy_content_str(void *entry)
 	if (str == NULL)
 		return (NULL);
 	return (ft_strdup(str));
-}
-
-/**
- * @brief check if the input is a valid identifier. A valid identifier can only
- * 	contains letters, underscores and numbers and can't begin with a number
- * 
- * @param str export command argument
- * @return 0 if it's not valid, 1 otherwise
- */
-int	is_valid_identifier(char *str)
-{
-	int	i;
-
-	if (ft_isdigit(str[0]))
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '=')
-			break ;
-		if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && str[i] != '_')
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 t_list	*search_in_env(t_list *env_list, char *identifier)

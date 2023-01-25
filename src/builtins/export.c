@@ -6,17 +6,16 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/24 15:56:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:56:41 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Add variable to environment
-// Multiple variables can be exported
-	// export a="1" b="2" c="3"
 #include "minishell.h"
 #include "exec.h"
+#define EXPORT_PREFIX	"declare -x "
 
 static void		print_sorted_env(t_global *shell);
+static void		print_env_variable(char *str);
 static void		add_env_variable(t_global *shell, char *cmd);
 
 int	ft_export(t_token *token, t_global *shell)
@@ -59,10 +58,30 @@ static void	print_sorted_env(t_global *shell)
 	current = sorted_env;
 	while (current)
 	{
-		printf("%s\n", (char *)current->content);
+		print_env_variable((char *)current->content);
 		current = current->next;
 	}
 	ft_lstclear(&sorted_env, &free);
+}
+
+static void	print_env_variable(char *str)
+{
+	int	i;
+
+	i = 0;
+	ft_putstr_fd(EXPORT_PREFIX, STDOUT);
+	while (str[i] && str[i] != '=')
+		write(STDOUT, &str[i++], 1);
+	if (!str[i])
+	{
+		write(STDOUT, "\n", 1);
+		return ;
+	}
+	write(STDOUT, &str[i++], 1);
+	write(STDOUT, "\"", 1);
+	while (str[i])
+		write(STDOUT, &str[i++], 1);
+	write(STDOUT, "\"\n", 2);
 }
 
 static void	add_env_variable(t_global *shell, char *cmd)
