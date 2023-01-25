@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merging_str_token.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/19 13:18:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:11:45 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	token_dollar_expand_and_str_merging(t_global *shell)
 		token = token->next;
 	}
 	token = shell->token_list;
+	empty_token_assignation(token); // checker si premier elem est une commande que ca ne fait pas de byug
 	while (token)
 	{
 		if (token->token == CMD)
@@ -85,7 +86,9 @@ static void	merge_redirection(t_global *shell, t_token *token_list)
 		token = token->next;
 		if (temp->token == CMD)
 			joining_with_space_truncature(shell, temp, &str);
-		else if (temp->token == QUOTE || temp->token == DQUOTE)
+		if (temp->token == CMD && not_only_spaces(temp->str) != -1)
+			break ;
+		if (temp->token == QUOTE || temp->token == DQUOTE)
 		{
 			str = ft_strjoin_and_free(str, temp->str);
 			test_failed_malloc(shell, str);

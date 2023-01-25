@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/23 14:56:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:12:15 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	get_input(t_global *shell, char *prompt)
 		input = readline(prompt);
 		if (input == NULL)
 			exit_shell_from_signal(shell);
-		if (!not_only_spaces(input) && ft_strlen(input) && \
+		if (not_only_spaces(input) == -1 && ft_strlen(input) && \
 			shell->command_line == BEGIN)
 			add_history(input);
-		if (!(ft_strlen(input) == 0 || !not_only_spaces(input)))
+		if ((ft_strlen(input) && not_only_spaces(input) >= 0))
 			break ;
 	}
 	ft_free(shell->input);
@@ -44,13 +44,13 @@ int	not_only_spaces(char *line)
 {
 	int	i;
 
-	i = 0;
-	while (line[i])
-		if (line[i++] != ' ')
+	i = -1;
+	while (line[++i])
+		if (line[i] != ' ')
 			return (i);
 	if (line[i] == '\n')
 		return (i);
-	return (0);
+	return (-1);
 }
 
 void	test_failed_malloc(t_global *shell, void *content)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/23 14:49:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:36:12 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@ int	quote_parsing2(t_token **token_list, char **str, char quote)
 	i++;
 	if (quote == '"' && new_token(token_list, &str_quote[1], i - 2, DQUOTE))
 		return (1);
-	else if (quote == '\'' && new_token(token_list, &str_quote[1], i - 2, QUOTE))
+	else if (quote == '\'' && new_token(token_list, \
+		&str_quote[1], i - 2, QUOTE))
 		return (1);
 	*str = &str_quote[i];
 	return (0);
 }
+
 static void	setting_space_links(t_token *token_list)
 {
 	int		len;
@@ -81,6 +83,7 @@ static void	setting_space_links(t_token *token_list)
 		token_list = token_list->next;
 	}
 }
+
 int	new_token(t_token **list, char *str, int len, enum e_token type)
 {
 	char	*instruction;

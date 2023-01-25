@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:48:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:33:25 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "exec.h"
-
+// TODO : checker l'acces au fichier : si fd = -1 -> 
+// TODO : erreur pour closing file
 int	exec_child(t_token *token, char **env)
 {
 	if (token->fd_input != NULL)

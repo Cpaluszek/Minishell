@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   token_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/23 14:50:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:46:07 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token_list_functions.h"
 #include "parsing.h"
+#include <stdio.h>
 
 void			insert_token_list(t_token *token_list, t_token *splitted_token_list);
 t_token			*create_sub_token_list(char *str);
@@ -30,6 +31,7 @@ t_token	*token_parsing(t_token *token_list)
 		if (temp->token == EMPTY && temp->str[0])
 		{
 			splitted_token_list = create_sub_token_list(temp->str);// ajouter une fonction de protection de malloc
+			// dprintf(1, "OK - SPLITTED Token List\n");
 			insert_token_list(temp, splitted_token_list);
 			del = temp;
 			temp = temp->next;
@@ -52,6 +54,10 @@ t_token	*create_sub_token_list(char *str)
 
 	token_list = NULL;
 	i = not_only_spaces(str);
+	if (i != -1)
+		str = &str[i];
+	i = 0;
+	// dprintf(1, "OKsubtoken %d\n", i);
 	while (str[i])
 	{
 		while (str[i] && !ft_is_inside(str[i], "<>|\n"))
@@ -84,7 +90,7 @@ enum e_token which_token(char *str)
 	{
 		if (str[1] && str[1] == '<')
 			return (HERE_DOC);
-		return (INPUT);	
+		return (INPUT);
 	}
 	else if (*str == '|')
 		return (PIPE);
@@ -100,6 +106,7 @@ void	insert_token_list(t_token *token_list, t_token *splitted_token_list)
 		token_list->prev->next = splitted_token_list;
 		splitted_token_list->prev = token_list->prev;
 	}
+	// dprintf(1, "OK3, %p \n", splitted_token_list);//, token_list->token);
 	last_splitted_token = ft_lstlast_token(splitted_token_list);
 	last_splitted_token->next = token_list->next;
 	if (token_list->next)

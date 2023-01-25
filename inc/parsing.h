@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 17:29:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:43:49 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	add_info_to_command_token(t_global *shell);
 void	delete_pipe_token(t_global *shell);
 void	reset_commands(t_global	*shell);
 void	remove_token(t_token *token);
+void	empty_token_assignation(t_token *token_list);
 
 #endif
