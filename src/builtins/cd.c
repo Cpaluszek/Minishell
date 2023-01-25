@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 14:18:53 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:03:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 // only with relative or absolute path
 #include "minishell.h"
 #include "exec.h"
+#include <dirent.h>
 
 #define HOME_VAR	"HOME="
 #define OLDPWD_VAR	"OLDPWD="
@@ -22,17 +23,17 @@
 static int	change_directory(t_global *shell, char *target);
 static void	update_var(t_global *shell, char *new, char *var);
 static char	*cd_env_var(t_global *shell, char *var_name);
+static int	check_pipes_in_token_list(t_token *token);
 
 // Todo: problem with OLDPWD sometimes not present in env
 int	ft_cd(t_token *token, t_global *shell)
 {
 	char	*target;
+	DIR		*dir_access;
 
+	target = NULL;
 	if (args_number(token->cmd) > 2)
-	{
 		ft_printf_fd(STDERR, "cd: too many arguments\n");
-		target = NULL;
-	}
 	else if (args_number(token->cmd) == 1 || ft_strcmp(token->cmd[1], "~") == 0)
 		target = cd_env_var(shell, HOME_VAR);
 	else if (ft_strcmp(token->cmd[1], "-") == 0)
@@ -40,7 +41,17 @@ int	ft_cd(t_token *token, t_global *shell)
 	else
 		target = token->cmd[1];
 	if (target == NULL)
-		return (1);
+		return (EXIT_FAILURE);
+	if (check_pipes_in_token_list(token))
+	{
+		dir_access = opendir(target);
+		if (dir_access == NULL)
+		{
+			ft_printf_fd(STDERR, "cd: %s: ", target);
+			return (perror(""), EXIT_FAILURE);
+		}
+		return (closedir(dir_access), EXIT_SUCCESS);
+	}
 	return (change_directory(shell, target));
 }
 
@@ -100,4 +111,25 @@ static char	*cd_env_var(t_global *shell, char *var_name)
 	}
 	target = var->content + ft_strlen(var_name);
 	return (target);
+}
+
+static int	check_pipes_in_token_list(t_token *token)
+{
+	t_token	*origin;
+
+	origin = token;
+	while (token)
+	{
+		if (token->make_a_pipe)
+			return (1);
+		token = token->next;
+	}
+	token = origin;
+	while (token)
+	{
+		if (token->make_a_pipe)
+			return (1);
+		token = token->prev;
+	}
+	return (0);
 }
