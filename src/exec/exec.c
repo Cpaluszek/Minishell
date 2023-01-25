@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 14:14:45 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:09:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,25 @@ void	exec_cmd(t_token *token, t_global *shell)
 {
 	int	is_builtin;
 
+	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
+	{
+		perror(ERR_PIPE);
+		close_all_redirections(shell->token_list);
+		error_exit_shell(shell, ERR_FORK);
+	}
 	is_builtin = 0;
 	token->exit_status = parse_builtins(token, &is_builtin, shell);
 	if (is_builtin)
+	{
+		parent_close_pipes(token);
 		return ;
+	}
 	else if (access(token->cmd[0], X_OK) == -1)
 	{
 		g_status = COMMAND_NOT_FOUND;
 		token->exit_status = COMMAND_NOT_FOUND;
 		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
 		return ;
-	}
-	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
-	{
-		perror(ERR_PIPE);
-		close_all_redirections(shell->token_list);
-		error_exit_shell(shell, ERR_FORK);
 	}
 	token->pid = fork();
 	if (token->pid == -1)

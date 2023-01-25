@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:47:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:17:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,13 @@ int	ft_echo(t_token *token, t_global *shell)
 	int	arg_index;
 	int	new_line;
 
-	(void) shell;
+	token->pid = fork();
+	if (token->pid == -1)
+		error_exit_shell(shell, ERR_FORK);
+	if (token->pid != 0)
+		return (0);
+	if (dup_fds(token))
+		exit(EXIT_FAILURE);
 	arg_index = 1;
 	new_line = echo_option(token, &arg_index);
 	while (token->cmd[arg_index])
@@ -39,7 +45,7 @@ int	ft_echo(t_token *token, t_global *shell)
 	}
 	if (new_line)
 		ft_putstr_fd("\n", STDOUT);
-	return (0);
+	exit (0);
 }
 
 // Skip all "-n" and "-nnnnn"

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 13:31:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:16:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	here_doc(t_global *shell, t_token *token);
 void	setup_all_redirections(t_global *shell, t_token *tok);
 void	close_all_redirections(t_token *tok);
 void	close_redirections(t_token *tok);
+int		dup_fds(t_token *token);
 
 /*
 	--------- Signals functions -----------
