@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/24 15:24:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:21:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	set_execution_signals(void)
 {
 	struct sigaction	sa;
 
-	dprintf(STDERR, "set execution signals\n");
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	signal(SIGINT, SIG_DFL);
