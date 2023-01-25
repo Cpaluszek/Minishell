@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 10:56:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:46:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int	ft_export(t_token *token, t_global *shell)
 	return (ret_value);
 }
 
-// Todo: protect lstmap return
-// Todo: add `declare -x` prefix
 static void	print_sorted_env(t_global *shell)
 {
 	t_list	*sorted_env;
 	t_list	*current;
 
 	sorted_env = ft_lstmap(shell->env_list, &copy_content_str, &free);
+	if (sorted_env == NULL)
+		error_exit_shell(shell, ERR_MALLOC);
 	ft_lstsort(&sorted_env, &cmp_str);
 	current = sorted_env;
 	while (current)
