@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 11:56:34 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:57:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 static void	get_here_doc_input(t_global *shell, char *delim, int file);
 static void	here_doc_write_error(t_global *shell, char *delim, int file);
+static char	*check_for_expand(t_global *shell, char *buff);
 
 // Note: how to manage here_doc file error ?
 // Todo: multiple here_docs will not work
@@ -52,6 +53,7 @@ static void	get_here_doc_input(t_global *shell, char *delim, int file)
 		if (buff == NULL || ft_strnstr(buff, delim, ft_strlen(buff)) == buff)
 			break ;
 		// Todo: expand $var just before write
+		buff = check_for_expand(shell, buff);
 		if (write(file, buff, ft_strlen(buff)) == -1)
 		{
 			free(buff);
@@ -68,4 +70,40 @@ static void	here_doc_write_error(t_global *shell, char *delim, int file)
 	if (close(file) == -1)
 		perror(ERR_CLOSE);
 	error_exit_shell(shell, ERR_WRITE);
+}
+
+static char	*check_for_expand(t_global *shell, char *buff)
+{
+	char	**split_buff;
+	char	*dollar_pos;
+	int		i;
+
+	split_buff = ft_split(buff, ' ');
+	if (split_buff == NULL)
+	{
+		free(buff);
+		error_exit_shell(shell, ERR_MALLOC);
+	}
+	i = 0;
+	while (split_buff[i])
+	{
+		dollar_pos = ft_strchr(split_buff[i], '$');
+		if (dollar_pos != NULL)
+		{
+			split_buff[i] = expand_env_var(shell, split_buff[i] + 1);
+		}
+		i++;
+	}
+	i = 0;
+	while (split_buff[i])
+	{
+		buff = ft_strjoin_and_free(buff, split_buff[i++]);
+		if (buff == NULL)
+		{
+			ft_free_split(split_buff);
+			error_exit_shell(shell, ERR_MALLOC);
+		}
+	}
+	ft_free_split(split_buff);
+	return (buff);
 }

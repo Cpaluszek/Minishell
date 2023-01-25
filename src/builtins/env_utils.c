@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 11:52:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:00:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,20 @@ t_list	*search_in_env(t_list *env_list, char *identifier)
 		env_list = env_list->next;
 	}
 	return (NULL);
+}
+
+// Todo: move function to another file - common with parsing
+char	*expand_env_var(t_global *shell, char *identifier)
+{
+	t_list	*env_var;
+	char	*value;
+
+	env_var = search_in_env(shell->env_list, identifier);
+	if (env_var == NULL)
+		return (identifier);
+	value = ft_strchr((char *)(env_var->content), '=');
+	if (value == NULL)
+		return (ft_strdup(""));
+	free(identifier);
+	return (ft_strdup(value));
 }
