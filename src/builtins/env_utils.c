@@ -6,12 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 11:49:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:52:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "exec.h"
+#include "errors.h"
 #define INVALID_ID_SET "=?_:{}[]"
 
 /**
