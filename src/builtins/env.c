@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:36 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 15:23:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:24:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ int	ft_env(t_token *token, t_global *shell)
 		printf("%s\n", shell->env[i]);
 		i++;
 	}
-	exit (0);
+	exit(EXIT_SUCCESS);
 }

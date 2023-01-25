@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:45 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:48:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:25:01 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,19 @@ int	ft_pwd(t_token *token, t_global *shell)
 {
 	char	*pwd;
 
-	(void) token;
-	(void) shell;
+	token->pid = fork();
+	if (token->pid == -1)
+		error_exit_shell(shell, ERR_FORK);
+	if (token->pid != 0)
+		return (EXIT_SUCCESS);
+	if (dup_fds(token))
+		exit(EXIT_FAILURE);
 	pwd = ft_getcwd();
 	if (pwd == NULL)
 		return (1);
 	printf("%s\n", pwd);
 	free(pwd);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
 
 char	*ft_getcwd(void)
