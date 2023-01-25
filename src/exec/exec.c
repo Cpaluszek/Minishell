@@ -6,29 +6,32 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 15:09:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:30:00 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "exec.h"
 
+static void	exec_token_list(t_token *token, t_global *shell);
+static int	check_for_builtins(t_token *token, t_global *shell);
+
 // Todo: protect tcsetattr and tcgetattr with isatty
 int	exec_start(t_global *shell)
 {
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
 	setup_all_redirections(shell, shell->token_list);
+	set_execution_signals();
 	exec_token_list(shell->token_list, shell);
 	close_all_redirections(shell->token_list);
 	return (0);
 }
 
-int	exec_token_list(t_token *token, t_global *shell)
+static void	exec_token_list(t_token *token, t_global *shell)
 {
 	t_token	*head;
 
 	head = token;
-	set_execution_signals();
 	while (token)
 	{
 		if (token->token == CMD)
@@ -49,48 +52,38 @@ int	exec_token_list(t_token *token, t_global *shell)
 		}
 		token = token->next;
 	}
-	return (0);
 }
 
-// Note: some builtins need fork to works with pipes
 void	exec_cmd(t_token *token, t_global *shell)
 {
-	int	is_builtin;
-
 	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
-	{
-		perror(ERR_PIPE);
-		close_all_redirections(shell->token_list);
-		error_exit_shell(shell, ERR_FORK);
-	}
-	is_builtin = 0;
-	token->exit_status = parse_builtins(token, &is_builtin, shell);
-	if (is_builtin)
-	{
-		parent_close_pipes(token);
+		exec_cmd_error(shell, ERR_PIPE);
+	if (check_for_builtins(token, shell))
 		return ;
-	}
 	else if (access(token->cmd[0], X_OK) == -1)
 	{
-		g_status = COMMAND_NOT_FOUND;
 		token->exit_status = COMMAND_NOT_FOUND;
 		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
 		return ;
 	}
 	token->pid = fork();
 	if (token->pid == -1)
+		exec_cmd_error(shell, ERR_FORK);
+	if (token->pid == 0 && exec_child(token, shell->env))
 	{
-		perror(ERR_FORK);
-		close_all_redirections(shell->token_list);
-		error_exit_shell(shell, ERR_FORK);
-	}
-	if (token->pid == 0)
-	{
-		if (exec_child(token, shell->env))
-		{
-			close_redirections(token);
-			exit(EXIT_FAILURE);
-		}
+		close_redirections(token);
+		exit(EXIT_FAILURE);
 	}
 	parent_close_pipes(token);
+}
+
+static int	check_for_builtins(t_token *token, t_global *shell)
+{
+	int	is_builtin;
+
+	is_builtin = 0;
+	token->exit_status = parse_builtins(token, &is_builtin, shell);
+	if (is_builtin)
+		parent_close_pipes(token);
+	return (is_builtin);
 }

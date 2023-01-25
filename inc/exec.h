@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 15:16:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:28:00 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define HERE_DOC_TMP	".heredoc.tmp"
 
 int		exec_start(t_global *shell);
-int		exec_token_list(t_token *token, t_global *shell);
 void	exec_cmd(t_token *token, t_global *shell);
 int		exec_child(t_token *token, char **env);
 void	parent_close_pipes(t_token *token);
@@ -82,6 +81,7 @@ t_list	*search_in_env(t_list *env_list, char *identifier);
 int		is_valid_identifier(char *str);
 int		cmp_str(void *data1, void *data2);
 void	*copy_content_str(void *entry);
+void	exec_cmd_error(t_global *shell, char *err);
 
 char	*expand_env_var(t_global *shell, char *identifier);
 
