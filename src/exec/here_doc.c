@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 11:47:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:56:34 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #define HERE_DOC_PROMPT	"> "
 
 static void	get_here_doc_input(t_global *shell, char *delim, int file);
+static void	here_doc_write_error(t_global *shell, char *delim, int file);
 
 // Note: how to manage here_doc file error ?
 // Todo: multiple here_docs will not work
@@ -46,12 +47,7 @@ static void	get_here_doc_input(t_global *shell, char *delim, int file)
 	while (1)
 	{
 		if (write(STDOUT, HERE_DOC_PROMPT, ft_strlen(HERE_DOC_PROMPT)) == -1)
-		{
-			free(delim);
-			if (close(file) == -1)
-				perror(ERR_CLOSE);
-			error_exit_shell(shell, ERR_WRITE);
-		}
+			here_doc_write_error(shell, delim, file);
 		buff = get_next_line(STDIN);
 		if (buff == NULL || ft_strnstr(buff, delim, ft_strlen(buff)) == buff)
 			break ;
@@ -59,12 +55,17 @@ static void	get_here_doc_input(t_global *shell, char *delim, int file)
 		if (write(file, buff, ft_strlen(buff)) == -1)
 		{
 			free(buff);
-			free(delim);
-			if (close(file) == -1)
-				perror(ERR_CLOSE);
-			error_exit_shell(shell, ERR_WRITE);
+			here_doc_write_error(shell, delim, file);
 		}
 		free(buff);
 	}
 	free(buff);
+}
+
+static void	here_doc_write_error(t_global *shell, char *delim, int file)
+{
+	free(delim);
+	if (close(file) == -1)
+		perror(ERR_CLOSE);
+	error_exit_shell(shell, ERR_WRITE);
 }
