@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 11:46:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:21:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "exec.h"
 #define EXPORT_PREFIX	"declare -x "
 
-static void		print_sorted_env(t_global *shell);
+static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);
 static void		add_env_variable(t_global *shell, char *cmd);
 
@@ -26,7 +26,7 @@ int	ft_export(t_token *token, t_global *shell)
 	ret_value = 0;
 	if (args_number(token->cmd) == 1)
 	{
-		print_sorted_env(shell);
+		print_sorted_env(token, shell);
 		return (ret_value);
 	}
 	i = 1;
@@ -46,11 +46,18 @@ int	ft_export(t_token *token, t_global *shell)
 	return (ret_value);
 }
 
-static void	print_sorted_env(t_global *shell)
+static void	print_sorted_env(t_token *token, t_global *shell)
 {
 	t_list	*sorted_env;
 	t_list	*current;
 
+	token->pid = fork();
+	if (token->pid == -1)
+		error_exit_shell(shell, ERR_FORK);
+	if (token->pid != 0)
+		return ;
+	if (dup_fds(token))
+		exit(EXIT_FAILURE);
 	sorted_env = ft_lstmap(shell->env_list, &copy_content_str, &free);
 	if (sorted_env == NULL)
 		error_exit_shell(shell, ERR_MALLOC);
@@ -62,6 +69,7 @@ static void	print_sorted_env(t_global *shell)
 		current = current->next;
 	}
 	ft_lstclear(&sorted_env, &free);
+	exit(EXIT_SUCCESS);
 }
 
 static void	print_env_variable(char *str)

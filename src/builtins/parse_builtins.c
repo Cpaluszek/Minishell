@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:31 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 15:15:10 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:22:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static int	search_builtin(t_token *t, t_builtin *arr, int *found, t_global *s);
 // Todo: remove absolute PATH
 // Todo: test with pipes and builtins
 // Fork needed for :
-// - echo
-// - export with no params
 // - env
 // - pwd
 int	parse_builtins(t_token *token, int *is_builtin, t_global *shell)
