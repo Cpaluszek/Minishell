@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 10:55:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:49:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,23 +65,6 @@ void	update_env(t_global *shell)
 		env_list = env_list->next;
 	}
 	shell->env[i] = NULL;
-}
-
-int	cmp_str(void *data1, void *data2)
-{
-	if (data1 && data2)
-		return (ft_strcmp((char *)data1, (char *)data2));
-	return (0);
-}
-
-void	*copy_content_str(void *entry)
-{
-	char	*str;
-
-	str = (char *)entry;
-	if (str == NULL)
-		return (NULL);
-	return (ft_strdup(str));
 }
 
 t_list	*search_in_env(t_list *env_list, char *identifier)
