@@ -5,8 +5,16 @@
 # Folders and names
 NAME			:=	minishell
 
-HEADERS			:=	inc
-HEADERS_FILES	:=	minishell.h
+HEADERS_DIR			:=	inc
+HEADERS_FILES	:=	minishell.h \
+					structs.h \
+					errors.h \
+					env.h \
+					exec.h \
+					parsing.h \
+					token_list_functions.h
+
+HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:=	src
 
@@ -110,10 +118,10 @@ $(NAME): $(LIB_PATHS) $(OBJS)
 	@$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
 	@echo "> $(NAME) Done!\n"
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS) $(HEADERS)/$(HEADERS_FILES)
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS) $(HEADERS)
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) -I$(HEADERS) $(LIB_HEADERS) -c $< -o $@
+	@$(CC) $(CC_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 
 # clean commands
 clean:
