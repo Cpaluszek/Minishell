@@ -19,7 +19,8 @@
 static char	*search_var_env(t_list *env_list, char *name, int len);
 static void	alloc_error_in_expand(t_global *shell, char *buff, char *ret);
 
-// Todo: check for $?
+// Todo: check for $? - and $ alone
+// Note: in here_doc quotes doesn't matter, but in parsing its different
 char	*check_for_expand(t_global *shell, char *buff)
 {
 	char	*pos;
