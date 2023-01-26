@@ -6,18 +6,19 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 15:21:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/26 09:50:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "env.h"
 #include "exec.h"
 #define EXPORT_PREFIX	"declare -x "
 
 static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);
-static void		add_env_variable(t_global *shell, char *cmd);
 
+// Todo: unclosed quotes should not work
 int	ft_export(t_token *token, t_global *shell)
 {
 	int		i;
@@ -90,26 +91,4 @@ static void	print_env_variable(char *str)
 	while (str[i])
 		write(STDOUT, &str[i++], 1);
 	write(STDOUT, "\"\n", 2);
-}
-
-static void	add_env_variable(t_global *shell, char *cmd)
-{
-	char	*new_content;
-	t_list	*search_result;
-	t_list	*new;
-
-	new_content = ft_strdup(cmd);
-	if (new_content == NULL)
-		error_exit_shell(shell, ERR_MALLOC);
-	search_result = search_in_env(shell->env_list, cmd);
-	if (search_result == NULL)
-	{
-		new = ft_lstnew(new_content);
-		ft_lstadd_back(&(shell->env_list), new);
-	}
-	else
-	{
-		free(search_result->content);
-		search_result->content = new_content;
-	}
 }

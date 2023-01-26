@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 17:28:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/26 09:47:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,9 @@ int		ft_exit(t_token *token, t_global *shell);
 	--------- Utils functions -----------
 */
 char	*ft_getcwd(void);
-void	update_env(t_global *shell);
 int		args_number(char **args);
-t_list	*search_in_env(t_list *env_list, char *identifier);
-int		is_valid_identifier(char *str);
 int		cmp_str(void *data1, void *data2);
 void	*copy_content_str(void *entry);
 void	exec_cmd_error(t_global *shell, char *err);
-
-char	*expand_env_var(t_global *shell, char *identifier);
 
 #endif

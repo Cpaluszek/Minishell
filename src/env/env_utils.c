@@ -6,11 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 14:00:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/26 09:52:59 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "libft.h"
 #include "errors.h"
 #define INVALID_ID_SET "=?_:{}[]"
 
@@ -85,18 +86,24 @@ t_list	*search_in_env(t_list *env_list, char *identifier)
 	return (NULL);
 }
 
-// Todo: move function to another file - common with parsing
-char	*expand_env_var(t_global *shell, char *identifier)
+void	add_env_variable(t_global *shell, char *new_var)
 {
-	t_list	*env_var;
-	char	*value;
+	char	*new_content;
+	t_list	*search_result;
+	t_list	*new;
 
-	env_var = search_in_env(shell->env_list, identifier);
-	if (env_var == NULL)
-		return (identifier);
-	value = ft_strchr((char *)(env_var->content), '=');
-	if (value == NULL)
-		return (ft_strdup(""));
-	free(identifier);
-	return (ft_strdup(value));
+	new_content = ft_strdup(new_var);
+	if (new_content == NULL)
+		error_exit_shell(shell, ERR_MALLOC);
+	search_result = search_in_env(shell->env_list, new_var);
+	if (search_result == NULL)
+	{
+		new = ft_lstnew(new_content);
+		ft_lstadd_back(&(shell->env_list), new);
+	}
+	else
+	{
+		free(search_result->content);
+		search_result->content = new_content;
+	}
 }

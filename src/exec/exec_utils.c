@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 17:30:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:31:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	parent_close_pipes(t_token *token)
 		close(token->prev->pipe_fd[0]);
 }
 
-// Note: will probably need one more parameter for the token list, with different blocks
+// Note: will probably need one more parameter for the token list,
+// with different blocks
 void	exec_cmd_error(t_global *shell, char *err)
 {
 	perror(err);

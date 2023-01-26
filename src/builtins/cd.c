@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 17:03:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/26 09:51:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 // only with relative or absolute path
 #include "minishell.h"
 #include "exec.h"
+#include "env.h"
 #include <dirent.h>
 
 #define HOME_VAR	"HOME="

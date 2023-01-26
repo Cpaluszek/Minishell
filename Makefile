@@ -40,19 +40,24 @@ BUILTIN_FILES	:=	parse_builtins.c \
 					exit.c \
 					export.c \
 					builtins_utils.c \
-					env_utils.c \
 					pwd.c \
 					unset.c
+
+ENV_DIR			:=	env
+ENV_FILES		:=	env_expand.c \
+					env_utils.c
 
 PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
 EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))
 BUILTIN_SRC		:= $(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILES))
+ENV_SRC			:= $(addprefix $(ENV_DIR)/, $(ENV_FILES))
 
 SRC_FILES		:=	main.c \
 					utils.c \
 					$(EXEC_SRC) \
 					$(PARSING_SRC) \
-					$(BUILTIN_SRC)
+					$(BUILTIN_SRC) \
+					$(ENV_SRC)
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
