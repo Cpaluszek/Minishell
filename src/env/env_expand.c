@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:44:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/26 15:17:14 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:39:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ char	*check_for_expand(t_global *shell, char *buff)
 	{
 		pos = ft_strchr(buff, '$');
 		if (pos == NULL)
+		{
+			if (ret == NULL)
+				return (buff);
 			break ;
+		}
 		if (ret == NULL)
 		{
 			ret = ft_strndup(buff, pos - buff);
@@ -52,7 +56,6 @@ char	*check_for_expand(t_global *shell, char *buff)
 				alloc_error_in_expand(shell, buff, ret);
 		}
 		pos += len + 1;
-		buff += len + 1;
 		len = 0;
 		while (pos[len] && pos[len] != '$')
 			len++;
@@ -63,7 +66,7 @@ char	*check_for_expand(t_global *shell, char *buff)
 		ft_free(temp);
 		if (ret == NULL)
 			alloc_error_in_expand(shell, buff, ret);
-		buff += len;
+		buff = pos + len;
 	}
 	return (ret);
 }
