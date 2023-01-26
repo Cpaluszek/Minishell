@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/26 09:52:59 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:46:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,15 @@ void	update_env(t_global *shell)
 	shell->env[i] = NULL;
 }
 
-t_list	*search_in_env(t_list *env_list, char *identifier)
+// TODO: check $?
+/**
+ * @brief Search in env for variable `name`
+ * 
+ * @param env_list list of env variables
+ * @param name variable name with `=`. Example `HOME=`
+ * @return t_list* list element containing `name` or `NULL` 
+ */
+t_list	*search_in_env(t_list *env_list, char *name)
 {
 	char	*content;
 	int		len;
@@ -79,7 +87,7 @@ t_list	*search_in_env(t_list *env_list, char *identifier)
 		len = 0;
 		while (content[len] && content[len] != '=')
 			len++;
-		if (ft_strncmp(content, identifier, len + 1) == 0)
+		if (ft_strncmp(content, name, len + 1) == 0)
 			return (env_list);
 		env_list = env_list->next;
 	}
