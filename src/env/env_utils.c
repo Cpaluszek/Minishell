@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/26 13:46:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:38:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	update_env(t_global *shell)
 	shell->env[i] = NULL;
 }
 
-// TODO: check $?
 /**
  * @brief Search in env for variable `name`
  * 
@@ -78,16 +77,17 @@ void	update_env(t_global *shell)
  */
 t_list	*search_in_env(t_list *env_list, char *name)
 {
-	char	*content;
+	char	*s;
 	int		len;
 
+	len = 0;
+	while (name[len] && name[len] != '=')
+		len++;
 	while (env_list)
 	{
-		content = (char *)(env_list->content);
-		len = 0;
-		while (content[len] && content[len] != '=')
-			len++;
-		if (ft_strncmp(content, name, len + 1) == 0)
+		s = (char *)(env_list->content);
+		if (ft_strncmp(s, name, len) == 0 && \
+			(s[len] == '\0' || s[len] == '=' || s[len] == '\n'))
 			return (env_list);
 		env_list = env_list->next;
 	}
@@ -107,10 +107,17 @@ void	add_env_variable(t_global *shell, char *new_var)
 	if (search_result == NULL)
 	{
 		new = ft_lstnew(new_content);
+		if (new == NULL)
+		{
+			free(new_content);
+			error_exit_shell(shell, ERR_MALLOC);
+		}
 		ft_lstadd_back(&(shell->env_list), new);
 	}
 	else
 	{
+		if (ft_strchr(new_var, '=') == NULL)
+			return (free(new_content));
 		free(search_result->content);
 		search_result->content = new_content;
 	}
