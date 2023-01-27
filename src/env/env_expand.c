@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:44:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/27 13:22:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:47:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@
 
 #define VAR_LIMITER "$ \n\"\'"
 
-static char	*replace_var_env(t_global *shell, char *ret, char **pos, int len);
+static char	*replace_var_env(t_list *env_lst, char *ret, char **pos, int len);
 static char	*copy_until_next(t_global *sh, char *buff, char *ret, char **pos);
 static char	*init_ret_str(t_global *shell, char *buff, char *pos);
 static void	alloc_error_in_expand(t_global *shell, char *buff, char *ret);
 
-// Todo: check for $? - and $ alone
-// Note: in here_doc quotes doesn't matter, but in parsing its different
+// Note: quotes doesn't matter in here_doc, but not in parsing
 char	*check_for_expand(t_global *shell, char *buff)
 {
 	char	*pos;
@@ -37,7 +36,7 @@ char	*check_for_expand(t_global *shell, char *buff)
 			break ;
 		if (ret == NULL)
 			ret = init_ret_str(shell, buff, pos);
-		ret = replace_var_env(shell, ret, &pos, 0);
+		ret = replace_var_env(shell->env_list, ret, &pos, 0);
 		if (ret == NULL)
 			alloc_error_in_expand(shell, buff, ret);
 		ret = copy_until_next(shell, buff, ret, &pos);
@@ -45,6 +44,31 @@ char	*check_for_expand(t_global *shell, char *buff)
 	if (ret == NULL)
 		return (buff);
 	return (ret);
+}
+
+static char	*replace_var_env(t_list *env_lst, char *ret, char **pos, int len)
+{
+	char	*temp;
+	char	*content;
+
+	temp = NULL;
+	while ((*pos)[len + 1] && ft_strchr(VAR_LIMITER, (*pos)[len + 1]) == NULL)
+		len++;
+	if (len == 0)
+		temp = ft_strdup("$");
+	else if ((*pos)[1] == '?')
+		temp = ft_itoa(g_status);
+	if (temp == NULL && (len == 0 || (*pos)[1] == '?'))
+		return (ft_free(ret), NULL);
+	while (env_lst && len > 0 && temp == NULL)
+	{
+		content = (char *)env_lst->content;
+		if (ft_strncmp(content, (*pos) + 1, len) == 0 && content[len] == '=')
+			temp = content + len + 1;
+		env_lst = env_lst->next;
+	}
+	*pos += len + 1;
+	return (ft_strjoin_and_free(ret, temp));
 }
 
 static char	*copy_until_next(t_global *sh, char *buff, char *ret, char **pos)
@@ -63,35 +87,6 @@ static char	*copy_until_next(t_global *sh, char *buff, char *ret, char **pos)
 	if (ret == NULL)
 		alloc_error_in_expand(sh, buff, ret);
 	*pos += len;
-	return (ret);
-}
-
-static char	*replace_var_env(t_global *shell, char *ret, char **pos, int len)
-{
-	char	*content;
-	char	*temp;
-	t_list	*lst;
-
-	temp = NULL;
-	lst = shell->env_list;
-	while ((*pos)[len + 1] && ft_strchr(VAR_LIMITER, (*pos)[len + 1]) == NULL)
-		len++;
-	if ((*pos)[1] == '?')
-	{
-		temp = ft_itoa(g_status);
-		if (temp == NULL)
-			return (ft_free(ret), NULL);
-	}
-	while (lst && temp == NULL)
-	{
-		content = (char *)(lst->content);
-		if (ft_strncmp(content, (*pos) + 1, len) == 0 && content[len] == '=')
-			temp = content + len + 1;
-		lst = lst->next;
-	}
-	if (temp != NULL)
-		ret = ft_strjoin_and_free(ret, temp);
-	*pos += len + 1;
 	return (ret);
 }
 
