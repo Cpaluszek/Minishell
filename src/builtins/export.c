@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/27 13:53:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:43:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static void		print_env_variable(char *str);
 // Todo: unclosed quotes should not work
 // test export a" a' a\ a% a^ a& a* a( a)
 // Todo: test export a=$truc
-// Note: export a - when `a` as already a content should not work
-// `export a` then `export a=test` BUG
 int	ft_export(t_token *token, t_global *shell)
 {
 	int		i;

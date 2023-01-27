@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 15:24:45 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:43:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static int	echo_option(t_token *t, int *arg_i);
 
 // Todo: crash with e"cho" test
 // Note: parsing problem with echo "-n test"
-// Note: what is echo $$
 int	ft_echo(t_token *token, t_global *shell)
 {
 	int	arg_index;

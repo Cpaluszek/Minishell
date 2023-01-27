@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/23 15:34:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:44:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ char	**get_path(t_global *shell, char **env)
 	return (cmd_path);
 }
 
-// Note: dup env[i] - to free boths ?
 static t_list	*make_env_list(t_global *shell, char **env)
 {
 	t_list	*env_list;

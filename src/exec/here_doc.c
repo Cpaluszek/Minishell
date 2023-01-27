@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/27 12:57:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:43:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	get_here_doc_input(t_global *shell, char *delim, int file);
 static void	here_doc_write_error(t_global *shell, char *delim, int file);
 
 // Note: how to manage here_doc file error ?
-// Todo: multiple here_docs will not work
 // Note: not expand dollars in delimiter
 // Todo: reset signals for here_doc + setattr
 void	here_doc(t_global *shell, t_token *token)
