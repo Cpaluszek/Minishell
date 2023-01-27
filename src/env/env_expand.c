@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:44:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/27 13:12:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:16:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 #define VAR_LIMITER "$ \n\"\'"
 
 static char	*replace_var_env(t_global *shell, char *ret, char **pos);
-static void	alloc_error_in_expand(t_global *shell, char *buff, char *ret);
 static char	*copy_until_next(t_global *sh, char *buff, char *ret, char **pos);
+static char	*init_ret_str(t_global *shell, char *buff, char *pos);
+static void	alloc_error_in_expand(t_global *shell, char *buff, char *ret);
 
 // Todo: check for $? - and $ alone
 // Note: in here_doc quotes doesn't matter, but in parsing its different
@@ -35,11 +36,7 @@ char	*check_for_expand(t_global *shell, char *buff)
 		if (pos == NULL)
 			break ;
 		if (ret == NULL)
-		{
-			ret = ft_strndup(buff, pos - buff);
-			if (ret == NULL)
-				alloc_error_in_expand(shell, buff, NULL);
-		}
+			ret = init_ret_str(shell, buff, pos);
 		ret = replace_var_env(shell, ret, &pos);
 		if (ret == NULL)
 			alloc_error_in_expand(shell, buff, ret);
@@ -47,6 +44,16 @@ char	*check_for_expand(t_global *shell, char *buff)
 	}
 	if (ret == NULL)
 		return (buff);
+	return (ret);
+}
+
+static char	*init_ret_str(t_global *shell, char *buff, char *pos)
+{
+	char	*ret;
+
+	ret = ft_strndup(buff, pos - buff);
+	if (ret == NULL)
+		alloc_error_in_expand(shell, buff, NULL);
 	return (ret);
 }
 
