@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/27 14:38:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:47:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	update_env(t_global *shell)
  * @brief Search in env for variable `name`
  * 
  * @param env_list list of env variables
- * @param name variable name with `=`. Example `HOME=`
+ * @param name variable name w/o `=`
  * @return t_list* list element containing `name` or `NULL` 
  */
 t_list	*search_in_env(t_list *env_list, char *name)
