@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/27 09:24:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:27:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	here_doc(t_global *shell, t_token *token)
 	if (delimiter == NULL)
 		error_exit_shell(shell, ERR_MALLOC);
 	get_here_doc_input(shell, delimiter, file);
-	free(delimiter);
+	ft_free(delimiter);
 	if (close(file) == -1)
 		perror(ERR_CLOSE);
 }
@@ -54,17 +54,17 @@ static void	get_here_doc_input(t_global *shell, char *delim, int file)
 		buff = check_for_expand(shell, buff);
 		if (write(file, buff, ft_strlen(buff)) == -1)
 		{
-			free(buff);
+			ft_free(buff);
 			here_doc_write_error(shell, delim, file);
 		}
-		free(buff);
+		ft_free(buff);
 	}
-	free(buff);
+	ft_free(buff);
 }
 
 static void	here_doc_write_error(t_global *shell, char *delim, int file)
 {
-	free(delim);
+	ft_free(delim);
 	if (close(file) == -1)
 		perror(ERR_CLOSE);
 	error_exit_shell(shell, ERR_WRITE);

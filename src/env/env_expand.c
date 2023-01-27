@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:44:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/26 16:39:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:52:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #define VAR_LIMITER "$ \n\"\'"
 
-static char	*search_var_env(t_list *env_list, char *name, int len);
+static char	*replace_var_env(t_global *shell, char *ret, char *pos, int *len);
 static void	alloc_error_in_expand(t_global *shell, char *buff, char *ret);
 
 // Todo: check for $? - and $ alone
@@ -34,11 +34,7 @@ char	*check_for_expand(t_global *shell, char *buff)
 	{
 		pos = ft_strchr(buff, '$');
 		if (pos == NULL)
-		{
-			if (ret == NULL)
-				return (buff);
 			break ;
-		}
 		if (ret == NULL)
 		{
 			ret = ft_strndup(buff, pos - buff);
@@ -46,16 +42,9 @@ char	*check_for_expand(t_global *shell, char *buff)
 				alloc_error_in_expand(shell, buff, NULL);
 		}
 		buff = pos;
-		len = 0;
-		while (pos[len + 1] && ft_strchr(VAR_LIMITER, pos[len + 1]) == NULL)
-			len++;
-		temp = search_var_env(shell->env_list, pos + 1, len);
-		if (temp != NULL)
-		{
-			ret = ft_strjoin_and_free(ret, temp);
-			if (ret == NULL)
-				alloc_error_in_expand(shell, buff, ret);
-		}
+		ret = replace_var_env(shell, ret, pos, &len);
+		if (ret == NULL)
+			alloc_error_in_expand(shell, buff, ret);
 		pos += len + 1;
 		len = 0;
 		while (pos[len] && pos[len] != '$')
@@ -69,6 +58,34 @@ char	*check_for_expand(t_global *shell, char *buff)
 			alloc_error_in_expand(shell, buff, ret);
 		buff = pos + len;
 	}
+	if (ret == NULL)
+		return (buff);
+	return (ret);
+}
+
+static char	*replace_var_env(t_global *shell, char *ret, char *pos, int *len)
+{
+	char	*content;
+	char	*temp;
+	t_list	*lst;
+
+	*len = 0;
+	temp = NULL;
+	lst = shell->env_list;
+	while (pos[*len + 1] && ft_strchr(VAR_LIMITER, pos[*len + 1]) == NULL)
+		(*len)++;
+	while (lst)
+	{
+		content = (char *)(lst->content);
+		if (ft_strncmp(content, pos + 1, *len) == 0 && content[*len] == '=')
+		{
+			temp = content + *len + 1;
+			break ;
+		}
+		lst = lst->next;
+	}
+	if (temp != NULL)
+		ret = ft_strjoin_and_free(ret, temp);
 	return (ret);
 }
 
@@ -77,18 +94,4 @@ static void	alloc_error_in_expand(t_global *shell, char *buff, char *ret)
 	ft_free(ret);
 	ft_free(buff);
 	error_exit_shell(shell, ERR_MALLOC);
-}
-
-static char	*search_var_env(t_list *env_list, char *name, int len)
-{
-	char	*content;
-
-	while (env_list)
-	{
-		content = (char *)(env_list->content);
-		if (ft_strncmp(content, name, len) == 0 && content[len] == '=')
-			return (content + len + 1);
-		env_list = env_list->next;
-	}
-	return (NULL);
 }
