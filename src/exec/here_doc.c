@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/26 15:31:34 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 09:24:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	here_doc(t_global *shell, t_token *token)
 		perror(ERR_CLOSE);
 }
 
-// Todo: expand $ after input
 static void	get_here_doc_input(t_global *shell, char *delim, int file)
 {
 	char	*buff;
@@ -52,7 +51,6 @@ static void	get_here_doc_input(t_global *shell, char *delim, int file)
 		buff = get_next_line(STDIN);
 		if (buff == NULL || ft_strnstr(buff, delim, ft_strlen(buff)) == buff)
 			break ;
-		// Todo: expand $var just before write
 		buff = check_for_expand(shell, buff);
 		if (write(file, buff, ft_strlen(buff)) == -1)
 		{

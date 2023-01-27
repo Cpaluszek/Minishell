@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/26 11:45:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/27 09:43:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);
 
-// Todo: unclosed quotes should not wor
+// Todo: unclosed quotes should not work
+// test export a" a' a\ a% a^ a& a* a( a)
 // Todo: test export a=$truc
 int	ft_export(t_token *token, t_global *shell)
 {
