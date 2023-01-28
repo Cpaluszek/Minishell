@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 14:14:45 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:00:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 static void	exec_token_list(t_token *token, t_global *shell);
 static int	check_for_builtins(t_token *token, t_global *shell);
 
+// Todo: attention a `./ls | cat -e` qui ne doit executer que le local
+// Todo: test max amount of pipes
 // Todo: protect tcsetattr and tcgetattr with isatty
+// Todo: test `rm -rf *`
 int	exec_start(t_global *shell)
 {
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);

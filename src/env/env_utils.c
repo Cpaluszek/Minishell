@@ -6,14 +6,15 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/27 14:47:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:08:09 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "libft.h"
 #include "errors.h"
-#define INVALID_ID_SET "=?_:{}[]"
+#define INVALID_ID_SET	"=?_:{}[]"
+#define CONCAT_VAR		"+="
 
 /**
  * @brief check if the input is a valid identifier. A valid identifier can only
@@ -113,12 +114,23 @@ void	add_env_variable(t_global *shell, char *new_var)
 			error_exit_shell(shell, ERR_MALLOC);
 		}
 		ft_lstadd_back(&(shell->env_list), new);
+		return ;
 	}
-	else
-	{
-		if (ft_strchr(new_var, '=') == NULL)
-			return (free(new_content));
-		free(search_result->content);
-		search_result->content = new_content;
-	}
+	if (ft_strchr(new_var, '=') == NULL)
+		return (free(new_content));
+	free(search_result->content);
+	search_result->content = new_content;
+}
+
+void	concat_env_variable(t_global *shell, char *var, t_list *search)
+{
+	char	*concat;
+	char	*new_content;
+
+	concat = ft_strnstr(var, CONCAT_VAR, ft_strlen(var));
+	concat += ft_strlen(CONCAT_VAR);
+	new_content = ft_strjoin_and_free(search->content, concat);
+	if (new_content == NULL)
+		error_exit_shell(shell, ERR_MALLOC);
+	search->content = new_content;
 }

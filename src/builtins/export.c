@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 14:12:59 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:01:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #include "env.h"
 #include "exec.h"
 #define EXPORT_PREFIX	"declare -x "
+#define CONCAT_VAR		"+="
 
 static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);
+static void		concat_or_add_var(t_global *shell, char *new);
 
 // Todo: unclosed quotes should not work
 int	ft_export(t_token *token, t_global *shell)
@@ -40,11 +42,40 @@ int	ft_export(t_token *token, t_global *shell)
 			ret_value = EXIT_FAILURE;
 		}
 		else
-			add_env_variable(shell, token->cmd[i]);
+			concat_or_add_var(shell, token->cmd[i]);
 		i++;
 	}
 	update_env(shell);
 	return (ret_value);
+}
+
+static void	concat_or_add_var(t_global *shell, char *new)
+{
+	t_list	*search_result;
+	char	*content;
+	int		i;
+	int		j;
+
+	content = malloc(sizeof(char) * ft_strlen(new));
+	if (content == NULL)
+		error_exit_shell(shell, ERR_MALLOC);
+	i = 0;
+	j = 0;
+	while (new[i])
+	{
+		if (!(new[i] == '+' && i == j))
+			content[j++] = new[i];
+		i++;
+	}
+	search_result = search_in_env(shell->env_list, content);
+	if (ft_strchr(new, '=') < ft_strnstr(new, CONCAT_VAR, ft_strlen(new)) || \
+		search_result == NULL)
+	{
+		add_env_variable(shell, content);
+		return (free(content));
+	}
+	free(content);
+	concat_env_variable(shell, new, search_result);
 }
 
 static void	print_sorted_env(t_token *token, t_global *shell)

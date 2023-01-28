@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:44:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/27 13:47:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:25:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "errors.h"
 #include "env.h"
 
-#define VAR_LIMITER "$ \n\"\'"
+// Todo: test + de conneries
 
 static char	*replace_var_env(t_list *env_lst, char *ret, char **pos, int len);
 static char	*copy_until_next(t_global *sh, char *buff, char *ret, char **pos);
