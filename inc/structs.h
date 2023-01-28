@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 11:12:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:41:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # define BEGIN 0
 # define COMPLETED 1
 # define UNCOMPLETED 2
+
+# define STDIN	0
+# define STDOUT	1
+# define STDERR	2
 
 int	g_status;
 

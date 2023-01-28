@@ -6,13 +6,11 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:28:18 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:29:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:33:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exec.h"
-#include <readline/readline.h>
-
+#include "input.h"
 /**
  * @brief signal handler: ctrl-C here_doc
  * Stop the here_doc child process and give the prompt back

@@ -6,12 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:27:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:38:10 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exec.h"
 #include "minishell.h"
+#include "input.h"
 
 // Todo: protect all tcsetattr and get return
 // Todo: check also isatty

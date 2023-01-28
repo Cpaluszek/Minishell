@@ -10,6 +10,7 @@
 		"wait.h": "c",
 		"readline.h": "c",
 		"history.h": "c",
-		"stdbool.h": "c"
+		"stdbool.h": "c",
+		"input.h": "c"
 	}
 }

@@ -6,12 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:00:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:37:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "minishell.h"
+#include "input.h"
 
 // Todo: Protect opens
 int	setup_all_redirections(t_global *shell, t_token *tok)

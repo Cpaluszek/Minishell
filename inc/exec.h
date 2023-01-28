@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:25:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:41:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,10 @@
 // Todo: move includes closer to usage
 # include <stdio.h>
 # include <unistd.h>
-# include <signal.h>
 # include <sys/wait.h>
 # include <fcntl.h>
 # include "structs.h"
 # include "errors.h"
-
-# define STDIN	0
-# define STDOUT	1
-# define STDERR	2
 
 # define COMMAND_NOT_FOUND 127
 # define HERE_DOC_TMP	".heredoc.tmp"
@@ -37,25 +32,10 @@ void	parent_close_pipes(t_token *token);
 /*
 	--------- Redirections functions -----------
 */
-int		here_doc(t_global *shell, t_token *token);
 int		setup_all_redirections(t_global *shell, t_token *tok);
 void	close_all_redirections(t_token *tok);
 void	close_redirections(t_token *tok);
 int		dup_fds(t_token *token);
-
-/*
-	--------- Signals functions -----------
-*/
-void	init_shell_attr(t_global *shell);
-void	set_interactive_signals(t_global *shell);
-void	set_execution_signals(void);
-void	set_here_doc_signals(void);
-void	handle_interactive_sigquit(int signum, siginfo_t *info, void *context);
-void	handle_abort_input(int signum, siginfo_t *info, void *context);
-void	handle_execution_sigint(int signum, siginfo_t *info, void *context);
-void	handle_execution_sigquit(int signum, siginfo_t *info, void *context);
-void	handle_here_doc_sigint(int signum, siginfo_t *info, void *context);
-void	handle_here_doc_sigquit(int signum, siginfo_t *info, void *context);
 
 /*
 	--------- Builtins functions -----------

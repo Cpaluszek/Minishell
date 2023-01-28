@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:29:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:40:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "minishell.h"
 #include "env.h"
-#include <readline/readline.h>
+#include "input.h"
 
 #define HERE_DOC_PROMPT	"> "
 

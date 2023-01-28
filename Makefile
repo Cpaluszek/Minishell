@@ -12,7 +12,8 @@ HEADERS_FILES	:=	minishell.h \
 					env.h \
 					exec.h \
 					parsing.h \
-					token_list_functions.h
+					token_list_functions.h \
+					input.h
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
@@ -34,11 +35,7 @@ PARSING_FILES	:=	central_parsing.c \
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \
 					child.c \
-					signals.c \
-					signals_handlers.c \
-					here_doc_signals_handlers.c \
 					redirections.c \
-					here_doc.c \
 					exec_utils.c
 					
 BUILTIN_DIR		:=	builtins
@@ -52,6 +49,12 @@ BUILTIN_FILES	:=	parse_builtins.c \
 					pwd.c \
 					unset.c
 
+INPUT_DIR		:=	input
+INPUT_FILES		:=	signals.c \
+					signals_handlers.c \
+					here_doc_signals_handlers.c \
+					here_doc.c
+
 ENV_DIR			:=	env
 ENV_FILES		:=	env_expand.c \
 					env_utils.c
@@ -59,6 +62,7 @@ ENV_FILES		:=	env_expand.c \
 PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
 EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))
 BUILTIN_SRC		:= $(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILES))
+INPUT_SRC		:= $(addprefix $(INPUT_DIR)/, $(INPUT_FILES))
 ENV_SRC			:= $(addprefix $(ENV_DIR)/, $(ENV_FILES))
 
 SRC_FILES		:=	main.c \
@@ -66,6 +70,7 @@ SRC_FILES		:=	main.c \
 					$(EXEC_SRC) \
 					$(PARSING_SRC) \
 					$(BUILTIN_SRC) \
+					$(INPUT_SRC) \
 					$(ENV_SRC)
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))

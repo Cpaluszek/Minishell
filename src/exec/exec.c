@@ -6,12 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:17:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:35:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "exec.h"
+#include "input.h"
 
 static void	exec_token_list(t_token *token, t_global *shell);
 static int	check_for_builtins(t_token *token, t_global *shell);
