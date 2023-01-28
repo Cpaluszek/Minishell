@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 11:56:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:25:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context);
 void	handle_execution_sigint(int signum, siginfo_t *info, void *context);
 void	handle_execution_sigquit(int signum, siginfo_t *info, void *context);
 void	handle_here_doc_sigint(int signum, siginfo_t *info, void *context);
+void	handle_here_doc_sigquit(int signum, siginfo_t *info, void *context);
 
 /*
 	--------- Builtins functions -----------

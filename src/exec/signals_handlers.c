@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 11:39:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:29:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,4 @@ void	handle_execution_sigquit(int signum, siginfo_t *info, void *context)
 	(void) context;
 	printf("Quit: %d\n", signum);
 	g_status = 128 + signum;
-}
-
-/**
- * @brief signal handler: ctrl-C here_doc
- * Stop the here_doc child process and give the prompt back
- * 
- * @param signum signal code
- * @param info additional information about the signal
- * @param context additional information about the signal
- */
-void	handle_here_doc_sigint(int signum, siginfo_t *info, void *context)
-{
-	(void) info;
-	(void) context;
-	(void) signum;
-	write(1, "\n", 1);
-	exit(1);
 }

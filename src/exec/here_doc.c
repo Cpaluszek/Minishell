@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:00:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:29:46 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ static void	here_doc_write_error(t_global *shell, char *delim, int file);
 // Note: not expand dollars in delimiter
 int	here_doc(t_global *shell, t_token *token)
 {
-	int		exit_status;
+	int					exit_status;
+	struct sigaction	sa;
 
+	sa.sa_flags = SA_RESTART;
+	sa.sa_sigaction = handle_here_doc_sigquit;
+	sigaction(SIGQUIT, &sa, NULL);
 	token->pid = fork();
 	if (token->pid == -1)
 		error_exit_shell(shell, ERR_FORK);
@@ -36,6 +40,7 @@ int	here_doc(t_global *shell, t_token *token)
 	token->exit_status = WEXITSTATUS(exit_status);
 	g_status = WEXITSTATUS(exit_status);
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
+	set_execution_signals();
 	return (token->exit_status);
 }
 

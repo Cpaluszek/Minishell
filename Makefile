@@ -36,6 +36,7 @@ EXEC_FILES		:=	exec.c \
 					child.c \
 					signals.c \
 					signals_handlers.c \
+					here_doc_signals_handlers.c \
 					redirections.c \
 					here_doc.c \
 					exec_utils.c
