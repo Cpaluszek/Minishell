@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/27 14:44:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 09:44:42 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static t_list	*make_env_list(t_global *shell, char **env)
 	i = 0;
 	while (env[i])
 	{
-		temp = ft_strdup(env[i]);
+		temp = ft_strdup(env[i++]);
 		if (!temp)
 		{
 			ft_lstclear(&env_list, free);
@@ -77,11 +77,11 @@ static t_list	*make_env_list(t_global *shell, char **env)
 		env_str = ft_lstnew(temp);
 		if (!env_str)
 		{
+			free(temp);
 			ft_lstclear(&env_list, free);
 			error_exit_shell(shell, ERR_MALLOC);
 		}
 		ft_lstadd_back(&env_list, env_str);
-		i++;
 	}
 	return (env_list);
 }
