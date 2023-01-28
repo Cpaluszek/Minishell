@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:35:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:14:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	exec_token_list(t_token *token, t_global *shell)
 	}
 }
 
-// Todo: Check token->pipe_fd != -1
 void	exec_cmd(t_token *token, t_global *shell)
 {
 	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
