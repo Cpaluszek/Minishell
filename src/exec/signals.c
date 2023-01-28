@@ -6,12 +6,15 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 14:21:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 11:39:12 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "minishell.h"
+
+// Todo: protect all tcsetattr and get return
+// Todo: check also isatty
 
 // Note make a header for signals / Input management ?
 void	init_shell_attr(t_global *shell)
@@ -50,4 +53,21 @@ void	set_execution_signals(void)
 	sigaction(SIGINT, &sa, NULL);
 	sa.sa_sigaction = handle_execution_sigquit;
 	sigaction(SIGQUIT, &sa, NULL);
+}
+
+void	set_here_doc_signals(void)
+{
+	struct sigaction	sa;
+	// struct termios		attr;
+
+	// tcgetattr(STDIN, &attr);
+	// attr.c_lflag &= ECHO;
+	// attr.c_cc[VMIN] = 1;
+	// attr.c_cc[VTIME] = 0;
+	// tcsetattr(STDIN, TCSANOW, &attr);
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART;
+	signal(SIGINT, SIG_DFL);
+	sa.sa_sigaction = handle_here_doc_sigint;
+	sigaction(SIGINT, &sa, NULL);
 }

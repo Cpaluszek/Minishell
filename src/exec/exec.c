@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 17:30:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 10:35:12 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	check_for_builtins(t_token *token, t_global *shell);
 int	exec_start(t_global *shell)
 {
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
-	setup_all_redirections(shell, shell->token_list);
 	set_execution_signals();
+	setup_all_redirections(shell, shell->token_list);
 	exec_token_list(shell->token_list, shell);
 	close_all_redirections(shell->token_list);
 	return (0);

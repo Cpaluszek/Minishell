@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/26 09:47:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 11:39:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ int		dup_fds(t_token *token);
 void	init_shell_attr(t_global *shell);
 void	set_interactive_signals(t_global *shell);
 void	set_execution_signals(void);
+void	set_here_doc_signals(void);
 void	handle_interactive_sigquit(int signum, siginfo_t *info, void *context);
 void	handle_abort_input(int signum, siginfo_t *info, void *context);
 void	handle_execution_sigint(int signum, siginfo_t *info, void *context);
 void	handle_execution_sigquit(int signum, siginfo_t *info, void *context);
+void	handle_here_doc_sigint(int signum, siginfo_t *info, void *context);
 
 /*
 	--------- Builtins functions -----------
