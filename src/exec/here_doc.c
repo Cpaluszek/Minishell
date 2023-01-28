@@ -6,13 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 10:53:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:00:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "minishell.h"
 #include "env.h"
+#include <readline/readline.h>
 
 #define HERE_DOC_PROMPT	"> "
 
@@ -22,28 +23,20 @@ static void	here_doc_write_error(t_global *shell, char *delim, int file);
 
 // Note: how to manage here_doc file error ?
 // Note: not expand dollars in delimiter
-// Todo: reset signals for here_doc + setattr
-void	here_doc(t_global *shell, t_token *token)
+int	here_doc(t_global *shell, t_token *token)
 {
-	char	*delimiter;
 	int		exit_status;
 
-	delimiter = ft_strjoin(token->str, "\n");
-	if (delimiter == NULL)
-		error_exit_shell(shell, ERR_MALLOC);
 	token->pid = fork();
 	if (token->pid == -1)
-	{
-		free(delimiter);
 		error_exit_shell(shell, ERR_FORK);
-	}
 	if (token->pid == 0)
-		here_doc_child(shell, delimiter);
+		here_doc_child(shell, token->str);
 	waitpid(token->pid, &exit_status, 0);
+	token->exit_status = WEXITSTATUS(exit_status);
 	g_status = WEXITSTATUS(exit_status);
-	printf("Here_doc child exit status: %d\n", WEXITSTATUS(exit_status));
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
-	ft_free(delimiter);
+	return (token->exit_status);
 }
 
 static void	here_doc_child(t_global *shell, char *delim)
@@ -60,22 +53,20 @@ static void	here_doc_child(t_global *shell, char *delim)
 	exit(0);
 }
 
-static void	get_here_doc_input(t_global *shell, char *delim, int file)
+static void	get_here_doc_input(t_global *shell, char *delim, int fd)
 {
 	char	*buff;
 
 	while (1)
 	{
-		if (write(STDOUT, HERE_DOC_PROMPT, ft_strlen(HERE_DOC_PROMPT)) == -1)
-			here_doc_write_error(shell, delim, file);
-		buff = get_next_line(STDIN);
+		buff = readline(HERE_DOC_PROMPT);
 		if (buff == NULL || ft_strnstr(buff, delim, ft_strlen(buff)) == buff)
 			break ;
 		buff = check_for_expand(shell, buff);
-		if (write(file, buff, ft_strlen(buff)) == -1)
+		if (write(fd, buff, ft_strlen(buff)) == -1 || write(fd, "\n", 1) == -1)
 		{
 			ft_free(buff);
-			here_doc_write_error(shell, delim, file);
+			here_doc_write_error(shell, delim, fd);
 		}
 		ft_free(buff);
 	}

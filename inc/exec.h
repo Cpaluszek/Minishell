@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 11:39:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 11:56:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	parent_close_pipes(t_token *token);
 /*
 	--------- Redirections functions -----------
 */
-void	here_doc(t_global *shell, t_token *token);
-void	setup_all_redirections(t_global *shell, t_token *tok);
+int		here_doc(t_global *shell, t_token *token);
+int		setup_all_redirections(t_global *shell, t_token *tok);
 void	close_all_redirections(t_token *tok);
 void	close_redirections(t_token *tok);
 int		dup_fds(t_token *token);

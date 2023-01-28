@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 10:35:12 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:01:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	exec_start(t_global *shell)
 {
 	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
 	set_execution_signals();
-	setup_all_redirections(shell, shell->token_list);
-	exec_token_list(shell->token_list, shell);
+	if (setup_all_redirections(shell, shell->token_list) != 1)
+		exec_token_list(shell->token_list, shell);
 	close_all_redirections(shell->token_list);
 	return (0);
 }
@@ -54,6 +54,7 @@ static void	exec_token_list(t_token *token, t_global *shell)
 	}
 }
 
+// Todo: Check token->pipe_fd != -1
 void	exec_cmd(t_token *token, t_global *shell)
 {
 	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
