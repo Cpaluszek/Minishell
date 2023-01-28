@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:37:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:12:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "minishell.h"
 #include "input.h"
 
-// Todo: Protect opens
+// Todo: test opens protection - unexisiting files or w/o permissions
 int	setup_all_redirections(t_global *shell, t_token *tok)
 {
 	while (tok)

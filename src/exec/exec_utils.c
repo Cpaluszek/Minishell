@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 17:31:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:11:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #include "minishell.h"
 #include <unistd.h>
 
-// Note: protect close ?
 void	parent_close_pipes(t_token *token)
 {
 	if (token->make_a_pipe)
-		close(token->pipe_fd[1]);
+		if (close(token->pipe_fd[1]) == -1)
+			perror(ERR_CLOSE);
 	if (token->prev && token->prev->make_a_pipe)
-		close(token->prev->pipe_fd[0]);
+		if (close(token->prev->pipe_fd[0]) == -1)
+			perror(ERR_CLOSE);
 }
 
 // Note: will probably need one more parameter for the token list,
@@ -49,20 +50,24 @@ int	dup_fds(t_token *token)
 		if (dup2(*(token->fd_input), STDIN) == -1)
 		{
 			perror(ERR_DUP2);
-			close(*(token->fd_input));
+			if (close(*(token->fd_input)) == -1)
+				perror(ERR_CLOSE);
 			return (EXIT_FAILURE);
 		}
-		close(*(token->fd_input));
+		if (close(*(token->fd_input)) == -1)
+			perror(ERR_CLOSE);
 	}
 	if (token->fd_output != NULL)
 	{
 		if (dup2(*(token->fd_output), STDOUT) == -1)
 		{
 			perror(ERR_DUP2);
-			close(*(token->fd_output));
+			if (close(*(token->fd_output)) == -1)
+				perror(ERR_CLOSE);
 			return (EXIT_FAILURE);
 		}
-		close(*(token->fd_output));
+		if (close(*(token->fd_output)) == -1)
+			perror(ERR_CLOSE);
 	}
 	return (0);
 }

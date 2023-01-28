@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:38:10 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:08:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // Todo: protect all tcsetattr and get return
 // Todo: check also isatty
 
-// Note make a header for signals / Input management ?
 void	init_shell_attr(t_global *shell)
 {
 	tcgetattr(STDIN_FILENO, &shell->saved_attr);
