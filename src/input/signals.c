@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 12:57:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:59:55 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_shell_attr(t_global *shell)
 {
 	if (tcgetattr(STDIN, &shell->saved_attr) == -1)
 		perror(ERR_TCGET);
-	if (tcgetattr(STDIN, &shell->custom_attr) == -1)	
+	if (tcgetattr(STDIN, &shell->custom_attr) == -1)
 		perror(ERR_TCGET);
 	shell->custom_attr.c_lflag &= ECHO;
 }
