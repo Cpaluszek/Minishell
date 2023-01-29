@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 12:55:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 13:48:11 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	here_doc_write_error(t_global *shell, char *delim, int file);
 
 // Note: how to manage here_doc file error ?
 // Note: not expand dollars in delimiter
+// Todo: remove extra /n with ctrl-C
 int	here_doc(t_global *shell, t_token *token)
 {
 	int					exit_status;
@@ -66,7 +67,7 @@ static void	get_here_doc_input(t_global *shell, char *delim, int fd)
 	while (1)
 	{
 		buff = readline(HERE_DOC_PROMPT);
-		if (buff == NULL || ft_strnstr(buff, delim, ft_strlen(buff)) == buff)
+		if (buff == NULL || ft_strcmp(buff, delim) == 0)
 			break ;
 		buff = check_for_expand(shell, buff);
 		if (write(fd, buff, ft_strlen(buff)) == -1 || write(fd, "\n", 1) == -1)
