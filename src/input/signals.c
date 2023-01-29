@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 12:59:55 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 13:52:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_shell_attr(t_global *shell)
 	shell->custom_attr.c_lflag &= ECHO;
 }
 
+// Todo: remove perror with isatty and tcsetattr
 // Update interactive mode signals
 void	set_interactive_signals(t_global *shell)
 {
