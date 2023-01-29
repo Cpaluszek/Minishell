@@ -6,24 +6,27 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/24 10:36:12 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 18:31:21 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include "libft.h"
 #include "token_list_functions.h"
+#include "parsing.h"
 
-int			quote_parsing2(t_token **token_list, char **str, char quote);
+static void	quote_parsing2(t_global *shell, char **str, char quote);
 static void	setting_space_links(t_token *token_list);
-int			new_token(t_token **list, char *str, int len, enum e_token type);
 
-t_token	*quote_parsing(char *str)
+/**
+ * @brief Parse Input with simple and double quote.
+ * 
+ * @param str The user input.
+ * @return A chain list of token of 3 types (quote, double quote and normal).
+ */
+void	quote_parsing(t_global *shell, char *str)
 {
 	int		i;
-	t_token	*token_list;
 
-	token_list = NULL;
 	i = 0;
 	while (str[i] == ' ')
 		i++;
@@ -31,21 +34,19 @@ t_token	*quote_parsing(char *str)
 	{
 		while (str[i] && str[i] != '"' && str[i] != '\'')
 			i++;
-		if (i != 0 && new_token(&token_list, str, i, EMPTY))
-			return (NULL);
+		if (i != 0)
+			new_token(shell, str, i, EMPTY);
 		if (!str[i])
 			break ;
 		str = &str[i];
-		if ((*str == '"' || *str == '\'') && \
-			quote_parsing2(&token_list, &str, *str))
-			return (NULL);
+		if (*str == '"' || *str == '\'')
+			quote_parsing2(shell, &str, *str);
 		i = 0;
 	}
-	setting_space_links(token_list);
-	return (token_list);
+	setting_space_links(shell->token_list);
 }
 
-int	quote_parsing2(t_token **token_list, char **str, char quote)
+static void	quote_parsing2(t_global *shell, char **str, char quote)
 {
 	int		i;
 	char	*str_quote;
@@ -55,13 +56,11 @@ int	quote_parsing2(t_token **token_list, char **str, char quote)
 	while (str_quote[i] != quote) //CHECK : pas de protection ici pour le \0 mais les quotes sont toujours censees etre fermees;
 		i++;
 	i++;
-	if (quote == '"' && new_token(token_list, &str_quote[1], i - 2, DQUOTE))
-		return (1);
-	else if (quote == '\'' && new_token(token_list, \
-		&str_quote[1], i - 2, QUOTE))
-		return (1);
+	if (quote == '"')
+		new_token(shell, &str_quote[1], i - 2, DQUOTE);
+	else if (quote == '\'')
+		new_token(shell, &str_quote[1], i - 2, QUOTE);
 	*str = &str_quote[i];
-	return (0);
 }
 
 static void	setting_space_links(t_token *token_list)
@@ -84,7 +83,7 @@ static void	setting_space_links(t_token *token_list)
 	}
 }
 
-int	new_token(t_token **list, char *str, int len, enum e_token type)
+void	new_token(t_global *shell, char *str, int len, enum e_token type)
 {
 	char	*instruction;
 	t_token	*new;
@@ -93,20 +92,9 @@ int	new_token(t_token **list, char *str, int len, enum e_token type)
 	if (str)
 	{	
 		instruction = ft_strndup(str, len);
-		if (!instruction)
-		{	
-			// TODO : dprintf en sortie d'erreur d'une rreur de malloc
-			ft_lstclear_token(list);
-			return(1);
-		}
+		test_failed_malloc(shell, instruction);
 	}
 	new = ft_lstnew_token(instruction, type);
-	if (!new)
-	{
-		// TODO : dprintf en sortie d'erreur d'une rreur de malloc
-		ft_lstclear_token(list);
-		return(1);
-	}
-	ft_lstadd_back_token(list, new);
-	return (0);
+	test_failed_malloc(shell, new);
+	ft_lstadd_back_token(&shell->token_list, new);
 }

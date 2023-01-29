@@ -19,8 +19,10 @@ PARSING_FILES	:=	central_parsing.c \
 					token_list_functions.c \
 					block_list_functions.c \
 					token_parsing.c \
-					token_modifications.c \
+					set_fd_for_each_command_token.c \
 					merging_str_token.c \
+					merge_command.c \
+					split_command_token.c \
 					utils_parsing.c
 
 EXEC_DIR		:=	exec

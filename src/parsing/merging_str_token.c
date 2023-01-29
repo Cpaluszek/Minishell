@@ -1,76 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merging_str_token.c                                :+:      :+:    :+:   */
+/*   merging_str_token2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/25 12:11:45 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 16:50:24 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "token_list_functions.h"
 #include "libft.h"
+#include <stdio.h>
 
-static void	merge_command(t_global *shell, t_token *token_list);
-static void	merge_redirection(t_global *shell, t_token *token_list);
-static void	joining_with_space_truncature(t_global *shell, \
-t_token *token, char **redirection_str);
-void	remove_token(t_token *token);
+static void	find_and_merge_linked_token(t_global *shell);
+static void	merge_linked_token(t_global *shell, t_token *token_list);
+static void	merge_redirection(t_global *shell);
 
-void	token_dollar_expand_and_str_merging(t_global *shell)
+void	token_merging(t_global *shell)
+{
+	split_command_token(shell);
+	// dprintf(1,"\nAFTER_SPLITTING");
+	// print_command_line(shell->token_list);
+	find_and_merge_linked_token(shell);
+	// dprintf(1,"\nBEFORE MERGE REDIRECTION");
+	// print_command_line(shell->token_list);
+	merge_redirection(shell);
+	// dprintf(1,"\nBEFORE MERGE COMMAND");
+	// print_command_line(shell->token_list);
+	merge_command(shell);
+}
+
+static void	find_and_merge_linked_token(t_global *shell)
 {
 	t_token	*token;
 
 	token = shell->token_list;
 	while (token)
 	{
-		if (token->token <= 3)
-			merge_redirection(shell, token);
-		token = token->next;
-	}
-	token = shell->token_list;
-	empty_token_assignation(token); // checker si premier elem est une commande que ca ne fait pas de byug
-	while (token)
-	{
-		if (token->token == CMD)
-		{
-			merge_command(shell, token);
-			token->cmd = ft_split(token->str, ' ');
-			test_failed_malloc(shell, token->cmd);
-		}
+		if (token->token > PIPE && token->space_link == false)
+			merge_linked_token(shell, token);
 		token = token->next;
 	}
 }
 
-static void	merge_command(t_global *shell, t_token *token_list)
-{
-	t_token	*token;
-	t_token	*temp;
-	char	*str;
-
-	str = token_list->str;
-	token = token_list->next;
-	while (token && token->token != PIPE)
-	{
-		if (token->token == CMD || token->token == QUOTE || \
-			token->token == DQUOTE)
-		{
-			str = ft_strjoin_and_free(str, token->str);
-			test_failed_malloc(shell, str);
-			temp = token;
-			token = token->next;
-			remove_token(temp);
-		}
-		else
-			token = token->next;
-	}
-	token_list->str = str;
-}
-
-static void	merge_redirection(t_global *shell, t_token *token_list)
+static void	merge_linked_token(t_global *shell, t_token *token_list)
 {
 	t_token	*token;
 	t_token	*temp;
@@ -84,56 +60,31 @@ static void	merge_redirection(t_global *shell, t_token *token_list)
 		space_link = token->space_link;
 		temp = token;
 		token = token->next;
-		if (temp->token == CMD)
-			joining_with_space_truncature(shell, temp, &str);
-		if (temp->token == CMD && not_only_spaces(temp->str) != -1)
-			break ;
-		if (temp->token == QUOTE || temp->token == DQUOTE)
-		{
-			str = ft_strjoin_and_free(str, temp->str);
-			test_failed_malloc(shell, str);
-			remove_token(temp);
-		}
+		str = ft_strjoin_and_free(str, temp->str);
+		test_failed_malloc(shell, str);
+		remove_token(temp);
 		if (space_link == true)
 			break ;
 	}
 	token_list->str = str;
 }
 
-static void	joining_with_space_truncature(t_global *shell, \
-t_token *token, char **redirection_str)
+static void	merge_redirection(t_global *shell)
 {
-	char	*token_str;
-	char	*new_str;
-	int		i;
-	int		j;
+	t_token	*token;
+	t_token	*temp;
 
-	token_str = token->str;
-	i = 0;
-	j = 0;
-	if (token->token == CMD)
+	token = shell->token_list;
+	while (token)
 	{
-		while (token_str[i] && token_str[i] == ' ')
-			i++;
-		while (token_str[i + j] && token_str[i + j] != ' ')
-			j++;
-		new_str = ft_substr(token_str, i, j);
-		test_failed_malloc(shell, new_str);
-		*redirection_str = ft_strjoin_and_free(*redirection_str, new_str);
-		test_failed_malloc(shell, *redirection_str);
-		free(new_str);
-		new_str = ft_substr(token_str, j + i, ft_strlen(token->str));
-		test_failed_malloc(shell, new_str);
-		free(token_str);
-		token->str = new_str;
+		if (token->token <= 3)
+		{
+			token->str = ft_strdup(token->next->str);
+			test_failed_malloc(shell, token->str);
+			temp = token->next;
+			remove_token(temp);
+		}
+		token = token->next;
 	}
 }
 
-void	remove_token(t_token *token)
-{
-	if (token->prev)
-		token->prev->next = token->next;
-	if (token->next)
-		token->next->prev = token->prev;
-	ft_lstdelone_token(token);
-}

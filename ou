@@ -1,0 +1,1936 @@
+total 184
+-rw-r--r--   1 Teiki  staff      0 25 jan 20:15  ou 
+drwxr-xr-x  20 Teiki  staff    640 25 jan 20:15 .
+drwxr-xr-x  16 Teiki  staff    512 15 jan 10:30 ..
+drwxr-xr-x  15 Teiki  staff    480 25 jan 12:17 .git
+-rw-r--r--   1 Teiki  staff     66 13 jan 16:50 .gitattributes
+-rw-r--r--   1 Teiki  staff     67 23 jan 21:24 .gitignore
+drwxr-xr-x   3 Teiki  staff     96 23 jan 21:24 .vscode
+-rw-r--r--   1 Teiki  staff   2749 23 jan 21:24 Makefile
+drwxr-xr-x   7 Teiki  staff    224 25 jan 10:46 build
+drwxr-xr-x   8 Teiki  staff    256 23 jan 21:24 inc
+drwxr-xr-x   3 Teiki  staff     96 18 jan 14:00 lib
+-rwxr-xr-x   1 Teiki  staff    194 23 jan 21:24 lsof.sh
+-rwxr-xr-x   1 Teiki  staff  63032 25 jan 19:24 minishell
+-rwxrwxrwx   1 Teiki  staff      0 27 jan 08:44 ou
+-rw-r--r--   1 Teiki  staff      0 25 jan 20:10 out
+-rw-r--r--   1 Teiki  staff      0 27 jan 08:44 out2
+-rw-r--r--   1 Teiki  staff   1154 13 jan 16:50 readme.md
+-rwxr-xr-x   1 Teiki  staff    532 23 jan 21:24 run.sh
+drwxr-xr-x   7 Teiki  staff    224 23 jan 21:24 src
+-rw-r--r--   1 Teiki  staff    111 23 jan 21:24 valgrind_ignore_leaks.txt
+
+./.git:
+total 80
+drwxr-xr-x   15 Teiki  staff    480 25 jan 12:17 .
+drwxr-xr-x   20 Teiki  staff    640 25 jan 20:15 ..
+-rw-r--r--    1 Teiki  staff     67 25 jan 12:17 COMMIT_EDITMSG
+-rw-r--r--    1 Teiki  staff    328 23 jan 21:27 FETCH_HEAD
+-rw-r--r--    1 Teiki  staff     25 23 jan 21:19 HEAD
+-rw-r--r--    1 Teiki  staff     41 23 jan 21:27 ORIG_HEAD
+-rw-r--r--    1 Teiki  staff    374 13 jan 17:17 config
+-rw-r--r--    1 Teiki  staff     73 13 jan 16:50 description
+drwxr-xr-x   13 Teiki  staff    416 13 jan 16:50 hooks
+-rw-r--r--    1 Teiki  staff  11229 25 jan 12:17 index
+drwxr-xr-x    3 Teiki  staff     96 13 jan 16:50 info
+drwxr-xr-x    4 Teiki  staff    128 13 jan 16:50 logs
+drwxr-xr-x  183 Teiki  staff   5856 25 jan 12:17 objects
+-rw-r--r--    1 Teiki  staff    182 13 jan 16:50 packed-refs
+drwxr-xr-x    5 Teiki  staff    160 13 jan 16:50 refs
+
+./.git/hooks:
+total 96
+drwxr-xr-x  13 Teiki  staff   416 13 jan 16:50 .
+drwxr-xr-x  15 Teiki  staff   480 25 jan 12:17 ..
+-rwxr-xr-x   1 Teiki  staff   478 13 jan 16:50 applypatch-msg.sample
+-rwxr-xr-x   1 Teiki  staff   896 13 jan 16:50 commit-msg.sample
+-rwxr-xr-x   1 Teiki  staff  3327 13 jan 16:50 fsmonitor-watchman.sample
+-rwxr-xr-x   1 Teiki  staff   189 13 jan 16:50 post-update.sample
+-rwxr-xr-x   1 Teiki  staff   424 13 jan 16:50 pre-applypatch.sample
+-rwxr-xr-x   1 Teiki  staff  1638 13 jan 16:50 pre-commit.sample
+-rwxr-xr-x   1 Teiki  staff  1348 13 jan 16:50 pre-push.sample
+-rwxr-xr-x   1 Teiki  staff  4898 13 jan 16:50 pre-rebase.sample
+-rwxr-xr-x   1 Teiki  staff   544 13 jan 16:50 pre-receive.sample
+-rwxr-xr-x   1 Teiki  staff  1492 13 jan 16:50 prepare-commit-msg.sample
+-rwxr-xr-x   1 Teiki  staff  3610 13 jan 16:50 update.sample
+
+./.git/info:
+total 8
+drwxr-xr-x   3 Teiki  staff   96 13 jan 16:50 .
+drwxr-xr-x  15 Teiki  staff  480 25 jan 12:17 ..
+-rw-r--r--   1 Teiki  staff  240 13 jan 16:50 exclude
+
+./.git/logs:
+total 16
+drwxr-xr-x   4 Teiki  staff   128 13 jan 16:50 .
+drwxr-xr-x  15 Teiki  staff   480 25 jan 12:17 ..
+-rw-r--r--   1 Teiki  staff  4320 25 jan 12:17 HEAD
+drwxr-xr-x   4 Teiki  staff   128 13 jan 16:50 refs
+
+./.git/logs/refs:
+total 0
+drwxr-xr-x  4 Teiki  staff  128 13 jan 16:50 .
+drwxr-xr-x  4 Teiki  staff  128 13 jan 16:50 ..
+drwxr-xr-x  4 Teiki  staff  128 13 jan 16:53 heads
+drwxr-xr-x  3 Teiki  staff   96 13 jan 16:50 remotes
+
+./.git/logs/refs/heads:
+total 16
+drwxr-xr-x  4 Teiki  staff   128 13 jan 16:53 .
+drwxr-xr-x  4 Teiki  staff   128 13 jan 16:50 ..
+-rw-r--r--  1 Teiki  staff  2154 25 jan 12:17 jlitaudo
+-rw-r--r--  1 Teiki  staff   577 23 jan 21:01 main
+
+./.git/logs/refs/remotes:
+total 0
+drwxr-xr-x  3 Teiki  staff   96 13 jan 16:50 .
+drwxr-xr-x  4 Teiki  staff  128 13 jan 16:50 ..
+drwxr-xr-x  6 Teiki  staff  192 18 jan 08:09 origin
+
+./.git/logs/refs/remotes/origin:
+total 32
+drwxr-xr-x  6 Teiki  staff   192 18 jan 08:09 .
+drwxr-xr-x  3 Teiki  staff    96 13 jan 16:50 ..
+-rw-r--r--  1 Teiki  staff   213 13 jan 16:50 HEAD
+-rw-r--r--  1 Teiki  staff   354 23 jan 21:01 cpalusze
+-rw-r--r--  1 Teiki  staff  1561 25 jan 12:19 jlitaudo
+-rw-r--r--  1 Teiki  staff   527 23 jan 21:01 main
+
+./.git/objects:
+total 0
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 .
+drwxr-xr-x   15 Teiki  staff   480 25 jan 12:17 ..
+drwxr-xr-x    4 Teiki  staff   128 18 jan 13:59 01
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:17 02
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 04
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 06
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 07
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 08
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 09
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 0a
+drwxr-xr-x    6 Teiki  staff   192 15 jan 16:34 0b
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 0f
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 11
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 12
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:16 13
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 14
+drwxr-xr-x    4 Teiki  staff   128 18 jan 14:00 15
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:16 16
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 17
+drwxr-xr-x    5 Teiki  staff   160 23 jan 21:27 18
+drwxr-xr-x    6 Teiki  staff   192 15 jan 16:35 19
+drwxr-xr-x    6 Teiki  staff   192 25 jan 12:16 1a
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 1c
+drwxr-xr-x    6 Teiki  staff   192 15 jan 16:34 1d
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 1e
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 1f
+drwxr-xr-x    4 Teiki  staff   128 18 jan 13:59 21
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 22
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 23
+drwxr-xr-x    3 Teiki  staff    96 18 jan 13:59 25
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 26
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 27
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 28
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 29
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 2a
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:16 2b
+drwxr-xr-x    5 Teiki  staff   160 16 jan 00:17 2c
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 2d
+drwxr-xr-x    3 Teiki  staff    96 18 jan 16:25 30
+drwxr-xr-x    4 Teiki  staff   128 15 jan 19:42 31
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 32
+drwxr-xr-x    3 Teiki  staff    96 23 jan 21:24 33
+drwxr-xr-x    4 Teiki  staff   128 13 jan 17:15 36
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 39
+drwxr-xr-x    5 Teiki  staff   160 15 jan 19:42 3a
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 3b
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:17 3c
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 3d
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:16 3e
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 40
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 42
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 44
+drwxr-xr-x    5 Teiki  staff   160 18 jan 13:59 45
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 46
+drwxr-xr-x    3 Teiki  staff    96 13 jan 17:16 47
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 48
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 49
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 4c
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 4e
+drwxr-xr-x    6 Teiki  staff   192 15 jan 16:35 50
+drwxr-xr-x    5 Teiki  staff   160 16 jan 00:17 51
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 52
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 53
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 55
+drwxr-xr-x    4 Teiki  staff   128 23 jan 21:25 56
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 58
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 59
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 5a
+drwxr-xr-x    5 Teiki  staff   160 23 jan 21:27 5b
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 5c
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:16 5e
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:35 60
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 61
+drwxr-xr-x    3 Teiki  staff    96 18 jan 13:59 62
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 63
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 64
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 65
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 67
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:35 68
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 6a
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:17 6b
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:17 6c
+drwxr-xr-x    3 Teiki  staff    96 18 jan 14:00 6d
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 6e
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 6f
+drwxr-xr-x    3 Teiki  staff    96 18 jan 13:59 70
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 71
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:16 72
+drwxr-xr-x    6 Teiki  staff   192 25 jan 12:16 73
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 74
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 75
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 76
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 77
+drwxr-xr-x    5 Teiki  staff   160 15 jan 19:42 78
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 79
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 7a
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 7c
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 7f
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 80
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 82
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:17 85
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 86
+drwxr-xr-x    4 Teiki  staff   128 18 jan 14:00 87
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:17 89
+drwxr-xr-x    3 Teiki  staff    96 18 jan 16:26 8d
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:35 8e
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 8f
+drwxr-xr-x    3 Teiki  staff    96 23 jan 21:27 90
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 91
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:16 92
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 94
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 95
+drwxr-xr-x    6 Teiki  staff   192 18 jan 13:59 96
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 97
+drwxr-xr-x    3 Teiki  staff    96 13 jan 17:16 98
+drwxr-xr-x    5 Teiki  staff   160 18 jan 13:59 99
+drwxr-xr-x    5 Teiki  staff   160 23 jan 21:24 9c
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 9e
+drwxr-xr-x    7 Teiki  staff   224 15 jan 19:42 a0
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 a1
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 a2
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 a4
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 a5
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 a7
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 a8
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 aa
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 ab
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 ad
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 b0
+drwxr-xr-x    6 Teiki  staff   192 23 jan 21:27 b2
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 b4
+drwxr-xr-x    3 Teiki  staff    96 13 jan 17:15 b5
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:35 b6
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 b7
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 b8
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:17 b9
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 bb
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:17 bd
+drwxr-xr-x    6 Teiki  staff   192 18 jan 14:00 bf
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 c0
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 c2
+drwxr-xr-x    5 Teiki  staff   160 15 jan 19:42 c3
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:35 c4
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 c8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 c9
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:16 cb
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 cd
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:17 ce
+drwxr-xr-x    3 Teiki  staff    96 18 jan 13:59 cf
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:16 d1
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 d2
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 d3
+drwxr-xr-x    7 Teiki  staff   224 25 jan 12:16 d4
+drwxr-xr-x    4 Teiki  staff   128 15 jan 19:42 d5
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 d7
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 db
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 dc
+drwxr-xr-x    3 Teiki  staff    96 13 jan 17:16 dd
+drwxr-xr-x    6 Teiki  staff   192 18 jan 13:59 df
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 e0
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 e1
+drwxr-xr-x    5 Teiki  staff   160 16 jan 00:17 e2
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 e3
+drwxr-xr-x    6 Teiki  staff   192 25 jan 12:16 e4
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 e5
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:16 e6
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 e7
+drwxr-xr-x    3 Teiki  staff    96 18 jan 16:26 e9
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 ea
+drwxr-xr-x    5 Teiki  staff   160 16 jan 00:17 eb
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 ec
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 f0
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 f4
+drwxr-xr-x    5 Teiki  staff   160 18 jan 13:59 f5
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 f6
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 f7
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:17 f9
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 fa
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:17 fb
+drwxr-xr-x    4 Teiki  staff   128 18 jan 16:26 fe
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 ff
+drwxr-xr-x    2 Teiki  staff    64 13 jan 16:50 info
+drwxr-xr-x    6 Teiki  staff   192 23 jan 21:01 pack
+
+./.git/objects/01:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   761 18 jan 13:59 65b85f3ad3c95a332c9654ad397636044418e1
+-r--r--r--    1 Teiki  staff   343 15 jan 16:34 b318ccbe08675081f6ec6f3404eb89af19741b
+
+./.git/objects/02:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   223 25 jan 12:17 23d187587b2ed1a73dd50edab8e755f281aad8
+-r--r--r--    1 Teiki  staff   226 13 jan 17:16 5b0fbb6a320dacfbff6711a6e6c5a92fcf0731
+-r--r--r--    1 Teiki  staff   239 18 jan 16:26 f1b3ade6848b12fe7a844650f4ccdb8c07840a
+
+./.git/objects/04:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   443 15 jan 16:34 25ccf1b67031bdd0ef31f88d15bff255006b40
+-r--r--r--    1 Teiki  staff   324 15 jan 16:34 bd593597ea97d30ac1c2703378d0d7715b1ede
+
+./.git/objects/06:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   374 15 jan 16:34 20cde5d30b29f9a29083e2f4980e9ae0fc3f3f
+-r--r--r--    1 Teiki  staff   453 15 jan 16:34 3576760edf7cf3997fe190a9a8a7fd0459ec35
+-r--r--r--    1 Teiki  staff   300 13 jan 16:50 822900d874f6f1772a8bd7fcf825e88e151f72
+
+./.git/objects/07:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   308 15 jan 16:34 448b1518e2484158f049b7e488a894a4e76360
+
+./.git/objects/08:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   628 15 jan 16:34 fd434722df91cdc3e5933fbc0cbb1cc4691856
+
+./.git/objects/09:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   301 15 jan 16:34 8bfdfeee8ddca6a53be471eae07b493a01a7bc
+
+./.git/objects/0a:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   511 13 jan 16:50 228ab70c52116c4b1ef3823597169ff306bc44
+
+./.git/objects/0b:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   645 15 jan 16:34 14e9b59f93baef08278639b89931be2334903c
+-r--r--r--    1 Teiki  staff   483 15 jan 16:34 bbf89f4418248d15325f5e7239306a7abe9c6d
+-r--r--r--    1 Teiki  staff   386 15 jan 16:34 beec966373ed1146cb1d13f347a90c1987498b
+-r--r--r--    1 Teiki  staff   114 13 jan 16:50 fc65433e25dc4712cc6f3e2fb651364acb2787
+
+./.git/objects/0f:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1061 15 jan 16:35 833a46aa9158e12c76d8a03222ad9264558db1
+
+./.git/objects/11:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   353 15 jan 16:34 915f78f985e4bdbe83a8259117701449d8e649
+
+./.git/objects/12:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   307 15 jan 16:34 658967a54ba8b47e787ae2686616a2fca5e952
+
+./.git/objects/13:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   377 15 jan 16:34 0a57f22dd8565ed5c682cf1a131666dcb1465f
+-r--r--r--    1 Teiki  staff  1376 25 jan 12:16 787be8a727c2c312346c36ae2ce829c893f2c1
+-r--r--r--    1 Teiki  staff   340 15 jan 16:34 bea7361947cacc04e31b53b5a7170bb485ac83
+
+./.git/objects/14:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1545 15 jan 16:34 581c488e49657f1ae40c6fdeb60264c6517452
+-r--r--r--    1 Teiki  staff   347 15 jan 16:34 a14ae7c9d64fd642b910d3dd9000f52da65ef0
+
+./.git/objects/15:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 18 jan 14:00 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   145 18 jan 14:00 27b430331bd0a54f8681c284f5f5f4961d16fa
+-r--r--r--    1 Teiki  staff   335 15 jan 16:34 8de8cdfc16077a980bcf44ad98d0be7a725646
+
+./.git/objects/16:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   594 25 jan 12:16 2613796d8e76e2a6e037869db0c116a0c98b67
+-r--r--r--    1 Teiki  staff   362 15 jan 16:34 6784db14d45160e01cd4e1704e254b8d69aa27
+
+./.git/objects/17:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   239 13 jan 16:50 2593ab2a00a1919fe1ad6bb10ee3295705c6fb
+
+./.git/objects/18:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 23 jan 21:27 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   611 13 jan 16:50 71680d5483917573f417cb7621c9100c751cc9
+-r--r--r--    1 Teiki  staff   318 15 jan 16:34 9c4ae08ac8b6f722661c7e7bfd2e98a29f2042
+-r--r--r--    1 Teiki  staff   873 23 jan 21:27 b8d908f6bdef32ff5da34340dcd80b1cf6e6e1
+
+./.git/objects/19:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   648 15 jan 16:34 3a56e1b803dd1650f33fad27d3345b82cc6f89
+-r--r--r--    1 Teiki  staff   382 15 jan 16:34 402861bcdca0de84f22a469f64ecef5d7d303d
+-r--r--r--    1 Teiki  staff   193 13 jan 16:50 8dd94a8577836dcfa3e9f5305a003218ced3e1
+-r--r--r--    1 Teiki  staff    56 15 jan 16:35 e24349de71d4c45eb9faa072e7dda54be5ecc3
+
+./.git/objects/1a:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   375 15 jan 16:34 1a0be30502338ea693078d6252e7659809d900
+-r--r--r--    1 Teiki  staff   970 18 jan 16:25 cc9160fb28ed3214bac882ea1c9265f10a60ea
+-r--r--r--    1 Teiki  staff   654 25 jan 12:16 ddfa47e460a6ade030228db262fe2e467abdd0
+-r--r--r--    1 Teiki  staff   504 15 jan 16:34 fba05bd11427e518c672abb3dfa2667675d0a1
+
+./.git/objects/1c:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    48 13 jan 16:50 a3914c48da0a96e61752d62d67cddb8a1b3af0
+-r--r--r--    1 Teiki  staff   465 15 jan 16:34 d78fbbad10832f7782423cad3efbbb12df9993
+-r--r--r--    1 Teiki  staff   254 13 jan 16:50 de6a7cd9ee1573b22a91b9f9d23f46388a015c
+
+./.git/objects/1d:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   338 15 jan 16:34 2801777103d0097a54f7b8e3f575d652047f7c
+-r--r--r--    1 Teiki  staff   251 13 jan 16:50 379c406f62958c287d61a73a4af96552485e46
+-r--r--r--    1 Teiki  staff   479 15 jan 16:34 5bec244da790e87ef52815cee4895673a52142
+-r--r--r--    1 Teiki  staff   179 13 jan 16:50 9445a859141ad579d816359cc2e51e2e7a5a7c
+
+./.git/objects/1e:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   248 13 jan 16:50 f3331f589bff5b8c1ce9ccbc5724e35a685b9d
+
+./.git/objects/1f:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   174 15 jan 16:35 612a8d24ca5b639d15cc6b5ac53ae4d4bddf44
+
+./.git/objects/21:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   851 18 jan 13:59 9bcdb98ecd0a1336ea43c1763edafb4c95c2ff
+-r--r--r--    1 Teiki  staff   216 13 jan 16:50 f746c061660075b109b93e00f4a9b5fe30f71f
+
+./.git/objects/22:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   391 15 jan 16:34 472751d8e0b1da31aed209226ed9ddf7e29890
+-r--r--r--    1 Teiki  staff   351 15 jan 16:34 b95e39a64cbb117a3dc68f4c65357a03d78dff
+
+./.git/objects/23:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    51 13 jan 16:50 306734f2bd97c70203d356e5aa13c987a9f9cc
+-r--r--r--    1 Teiki  staff   377 15 jan 16:34 dc7a41b7f642234e7c578a76798702b7cef421
+
+./.git/objects/25:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1042 18 jan 13:59 89adaa28d6d6d569d0e20f078e7120f27a14ad
+
+./.git/objects/26:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   107 13 jan 16:50 4822f7e5b99333ee85e25ccc99de9151ea9d0e
+-r--r--r--    1 Teiki  staff   350 15 jan 16:34 7e21b7db87005fba04dd3cdcfd038d0288d881
+
+./.git/objects/27:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1063 15 jan 16:35 3d052a6a5a1595370af0b18945c9b08ce5a714
+
+./.git/objects/28:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    50 13 jan 16:50 09d4061429a621fb249478f408ba34b2ab4dbe
+
+./.git/objects/29:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   414 15 jan 16:34 3c65c309d4b0d07e836009edc2552b90dda7e1
+-r--r--r--    1 Teiki  staff   191 13 jan 16:50 67e3f9230d2507dd55c095b93a2dc9fe249edc
+-r--r--r--    1 Teiki  staff   380 15 jan 16:34 ce110cc9bbad913dd2558884843b7154b56ea1
+
+./.git/objects/2a:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   654 13 jan 16:50 3fd2279c181a2761b5e97a523caa5066d8fbde
+
+./.git/objects/2b:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   785 15 jan 16:34 1386f681f96a28ed2539267d5cbe5f588d458a
+-r--r--r--    1 Teiki  staff   700 25 jan 12:16 3b90b87d79cc2b8f57a8ef191cbc55d2365904
+-r--r--r--    1 Teiki  staff   335 15 jan 16:34 c8c8193d8176af114009ffd038f00cd99530a0
+
+./.git/objects/2c:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1009 16 jan 00:17 4b6af113ff1bb4d3e8630e396f827ca9503c94
+-r--r--r--    1 Teiki  staff   440 15 jan 16:34 4fbb168cd68feb076a117cea4b37cacbbe67e2
+-r--r--r--    1 Teiki  staff    51 13 jan 16:50 5a8aec6f08ed1517fe7e8ccdfd743d710a7f9b
+
+./.git/objects/2d:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   416 15 jan 19:42 07a52ccc0eb69510d09714efd89613dac992d8
+
+./.git/objects/30:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 18 jan 16:25 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1758 18 jan 16:25 7e1a5e73f840fcac5ecfb62bf952c3c2ad7540
+
+./.git/objects/31:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1602 15 jan 16:34 537e9935f5350115583185f0143f31bab2002c
+-r--r--r--    1 Teiki  staff   205 15 jan 19:42 6b882d3495a2a8c3bac3881e76b756167d5b3b
+
+./.git/objects/32:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    51 13 jan 16:50 307a45fba1d7b8a1482c53e8b8a4e9158ef593
+-r--r--r--    1 Teiki  staff   570 13 jan 16:50 d8960b2e209be51dadef10732c1a0db36d5ab6
+
+./.git/objects/33:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 23 jan 21:24 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1413 23 jan 21:24 57c32f34ee0a8503ef5455d644560beb1b398b
+
+./.git/objects/36:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 13 jan 17:15 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    50 13 jan 16:50 22236e7447a0c26488aa4bd16f4caddba55a33
+-r--r--r--    1 Teiki  staff   597 13 jan 17:15 9eb3b90565bcc8492a0179eac618ac39732b17
+
+./.git/objects/39:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   364 15 jan 16:34 24016d47bec8b9d492fb2b214d6a8bbe85d72a
+-r--r--r--    1 Teiki  staff   210 13 jan 16:50 882af8239d01c47b619716d4ce1f24ba0880c4
+
+./.git/objects/3a:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   168 15 jan 19:42 07709d212b12cfb1c3acbe9c476ae4b238c411
+-r--r--r--    1 Teiki  staff   310 15 jan 16:34 294eddddef1a0385f69a1945918af6911e255a
+-r--r--r--    1 Teiki  staff   382 15 jan 16:34 2cb9667d69d1f72b5d404b10f4a5af51b6aa4e
+
+./.git/objects/3b:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   324 15 jan 16:34 9bdb3a38a2277a51e7e60434bfa5b0ec806b2b
+
+./.git/objects/3c:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   311 15 jan 16:34 5e4f771dcb79ae17069c9e1acfa1b33b52b9fa
+-r--r--r--    1 Teiki  staff   176 25 jan 12:17 fe97b0db9f0d969018acc11d5e9db39759dc14
+
+./.git/objects/3d:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   349 15 jan 16:34 2725c815b928ac0d0faac57ed637f15d7de540
+
+./.git/objects/3e:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   149 13 jan 16:50 60d469c50a4a11a2282206ad9a9f90aa2b9761
+-r--r--r--    1 Teiki  staff  1076 25 jan 12:16 b34c230b4f8a3debde47cb3b8e77710b17de09
+-r--r--r--    1 Teiki  staff    51 13 jan 16:50 b8714a575b49f833cee9d0a34ea9cbdf107ecf
+
+./.git/objects/40:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   284 13 jan 16:50 538955ff8ff9fed3d0fd8a8b6fd68ea6a82728
+-r--r--r--    1 Teiki  staff   476 15 jan 16:34 83f3e67e64081fddcf5d7dd424cd082738847b
+
+./.git/objects/42:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   300 13 jan 16:50 a03f90ae18a6bf00b28baef46bbd7a99c52ebb
+
+./.git/objects/44:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   558 15 jan 16:34 2dbbdbebe6808d1db1d6b6bff0444c87be8815
+-r--r--r--    1 Teiki  staff   332 15 jan 16:34 caf1d2dd0c755ae03fe043fdaaaa9188b2e214
+-r--r--r--    1 Teiki  staff   430 15 jan 16:34 e174fe8d14565b09c3a095d183f462d21ccb0d
+
+./.git/objects/45:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   828 18 jan 13:59 21c850b3f615ba7cce40ee6f628e10537a8857
+-r--r--r--    1 Teiki  staff   202 15 jan 16:35 317e43b70c3a5885971e27a17668d028937e30
+-r--r--r--    1 Teiki  staff   219 13 jan 16:50 7ceeb32c2426262e59aedcd259941c2ea807a7
+
+./.git/objects/46:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   396 15 jan 16:34 803c6c81bef45a041a3060570eebdc790ede6e
+-r--r--r--    1 Teiki  staff   362 15 jan 16:34 880c87bf3bef54af8006913e9ef1664483ff54
+-r--r--r--    1 Teiki  staff   276 15 jan 16:34 a89e485c61188ed16a2e3379c4258570853f2f
+
+./.git/objects/47:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 17:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   301 13 jan 17:16 38f3782d53aec4ee557f454dfefb548212c144
+
+./.git/objects/48:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   193 13 jan 16:50 684ff0f1d30761472b1bc5c205acc1b45c58c2
+-r--r--r--    1 Teiki  staff   219 13 jan 16:50 fb7902a8d47c45be1c18bfaaec7100cc8e2325
+
+./.git/objects/49:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    55 13 jan 16:50 4f0ee4bbcc42fe7aa5d3ac71c033d66587f352
+
+./.git/objects/4c:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   626 15 jan 16:34 ed6f11208efbc6329f19a2bdf94ee3982ccbdc
+
+./.git/objects/4e:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   402 15 jan 16:34 682af6340d66d90fcedf1cf83873d056c96aa2
+
+./.git/objects/50:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   335 15 jan 16:34 23cd700a357c76a81f2045ca70a391e4a9340b
+-r--r--r--    1 Teiki  staff   299 15 jan 16:35 63c2bb80816caaba40e801a4284c59fde96be1
+-r--r--r--    1 Teiki  staff   218 13 jan 16:50 8a4a902194b74de8ac1eb92434c3636962e307
+-r--r--r--    1 Teiki  staff   676 15 jan 16:34 93c7985380c14451499f2db824494853fe5660
+
+./.git/objects/51:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    56 15 jan 16:35 01e0358606940dbd4e97942c2eb171045bfa3f
+-r--r--r--    1 Teiki  staff  1186 16 jan 00:17 8d9afbaec3eb51242b081a40db4d1a8d707a6d
+-r--r--r--    1 Teiki  staff   301 13 jan 16:50 eb4dc84510c591bf118f265d2e7f512e7055a1
+
+./.git/objects/52:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   309 15 jan 16:34 09365ac75ab38d2e4bd330dfd9df1c84307a1b
+
+./.git/objects/53:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   238 13 jan 16:50 1509c08adc0c66174d6a5d269cf95f9daaade9
+-r--r--r--    1 Teiki  staff   311 15 jan 16:34 3211d57c52943f6ca332e42a9958bd31d250a3
+-r--r--r--    1 Teiki  staff   351 15 jan 16:34 f7b79f2672365f4981aacd1448405904aa015e
+
+./.git/objects/55:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   445 15 jan 16:34 868a582f88cbde0ebcb446e026240298453535
+-r--r--r--    1 Teiki  staff   366 15 jan 16:34 a3e705c970a225bc30eb1d2a47f017f776afb2
+
+./.git/objects/56:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 23 jan 21:25 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   992 23 jan 21:25 ce3e46fd026f7b446750b0a45c46577dd9f838
+-r--r--r--    1 Teiki  staff   422 15 jan 16:34 f72694a229df51f78539bc4bb1fe8c5f20b3c9
+
+./.git/objects/58:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1098 16 jan 00:17 f5578b297b847317388c2b686e84b791614e26
+
+./.git/objects/59:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   435 15 jan 16:34 5fab864af40c8f51a5168ad9d3863f207a3c5d
+-r--r--r--    1 Teiki  staff   302 15 jan 16:34 a0c23dccce67bb2ca1807072fcce929832949b
+
+./.git/objects/5a:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   829 16 jan 00:17 0cf63cfa98dc8e26138f15ea6c20c4c0953806
+
+./.git/objects/5b:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 23 jan 21:27 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   226 23 jan 21:27 6e87a126c375f78bdf44309e20f593fb3777ae
+-r--r--r--    1 Teiki  staff   354 13 jan 16:50 a7f188bb9db964c2bb0374906117d79fc2ddfb
+-r--r--r--    1 Teiki  staff   503 15 jan 16:34 bc553be6cb878352f7bf46f952b94af7db96a1
+
+./.git/objects/5c:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   391 15 jan 16:34 1d5a0e3b18136b7b658fd2f5eff8e84e301f76
+
+./.git/objects/5e:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   692 25 jan 12:16 a7c359c6945254ec58b9feb61205be32425875
+
+./.git/objects/60:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   521 15 jan 16:34 662aa3823aadd8539e842c23925fe7112b95cc
+-r--r--r--    1 Teiki  staff   194 15 jan 16:35 94d895dc8d3cd95e8527f37b9132ec740fa401
+
+./.git/objects/61:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   373 15 jan 16:34 074d721292ba6128acc1698c5bff6c09fbba24
+
+./.git/objects/62:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   872 18 jan 13:59 4d570a4209cfdaa1a30e2f81be199c112fcf79
+
+./.git/objects/63:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   629 13 jan 16:50 f1ecf3b657e7ca97325e60c8a2283abf2d09eb
+
+./.git/objects/64:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   238 13 jan 16:50 cffc51d50f1556c728a3822732a0592557a66d
+
+./.git/objects/65:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   309 15 jan 16:34 89eff4499ba2cff265556ac73aa190ae18affd
+
+./.git/objects/67:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   159 13 jan 16:50 09799e0c791692d44cd7e7f8abc09b035be029
+
+./.git/objects/68:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   357 15 jan 16:34 36a27b1f0eff4394df47b5c83ce2c4d20d2437
+-r--r--r--    1 Teiki  staff    85 15 jan 16:35 bdb445c4bc688da9b42b07014a37bf4dc69e43
+
+./.git/objects/6a:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   195 13 jan 16:50 bfa31e384cdaad444d40d081ffb045d5734f23
+
+./.git/objects/6b:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1757 18 jan 13:59 3fc15ad9f72f47de5e870d5fb102dc9fe289b0
+-r--r--r--    1 Teiki  staff    52 25 jan 12:17 52207eb08cd8f07e78f317c5394bd0d18ea305
+
+./.git/objects/6c:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   654 15 jan 16:34 d83869935a44fd6d45a34481ae84410f70e1bd
+-r--r--r--    1 Teiki  staff   414 25 jan 12:17 ee160de945c63379bbada4859e2de703df2af9
+
+./.git/objects/6d:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 18 jan 14:00 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   212 18 jan 14:00 c02bab27ce3e0cef0121f4d55576bdf2a7f6be
+
+./.git/objects/6e:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   437 15 jan 16:34 aa5a66d90dd74ece4bc164646ea0a302f04cb8
+
+./.git/objects/6f:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    59 13 jan 16:50 9509c88bed7080d496fc5e1d87a9315e30549d
+
+./.git/objects/70:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   782 18 jan 13:59 169d2d3f1935fb8a17fc533f3c390623a50675
+
+./.git/objects/71:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   691 15 jan 16:34 c2f247e2c3fb9f29c536198ee986b375b93382
+
+./.git/objects/72:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   917 25 jan 12:16 c21c61ae7bfa40e43637482390730d82fa274a
+
+./.git/objects/73:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   505 15 jan 16:34 311914a9fb0ec426ffaafecb32118b792f4b8a
+-r--r--r--    1 Teiki  staff   651 15 jan 19:42 328b81dc98fdb7ef4decaada4b1fb87a01b73d
+-r--r--r--    1 Teiki  staff    85 13 jan 16:50 775b606f2b17be3afbabd9c2cc83012b68cca6
+-r--r--r--    1 Teiki  staff   503 25 jan 12:16 956c3d1462c71e9b53a6c6ed85eef6309ffced
+
+./.git/objects/74:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   446 15 jan 16:34 695476fa32d554545a3985170e3227c7ed3aa7
+
+./.git/objects/75:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   941 15 jan 19:42 57bd6d78559c6f1b7da94ca880c881510796bc
+
+./.git/objects/76:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   450 15 jan 16:34 03acd4d8aae0327df5b5ecde24261a16b0dcf1
+
+./.git/objects/77:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   473 15 jan 16:34 da188f24fbaa98a6539a19c9ca655551af3887
+
+./.git/objects/78:
+total 48
+drwxr-xr-x    5 Teiki  staff    160 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff   5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    774 15 jan 19:42 3f50e99d53735cca30ae45e15f96a9c9aaed91
+-r--r--r--    1 Teiki  staff    175 15 jan 16:35 91c18f113f6241a051be658b629a0bcfd32cac
+-r--r--r--    1 Teiki  staff  14046 15 jan 16:34 c1bde513444b2cc68a1b23388424d53067df7f
+
+./.git/objects/79:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   525 15 jan 16:34 034e8c17c058046857169a2ce8824ed33950be
+-r--r--r--    1 Teiki  staff   150 13 jan 16:50 654fdfd012efa7ea79d92a00ec9a0d4f7354ff
+
+./.git/objects/7a:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   194 16 jan 00:17 4aaa252c33f90bc9f31f1340f797d76b53fdd9
+
+./.git/objects/7c:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   215 13 jan 16:50 5f970496a2403a02242bd8db307318aeb2723c
+-r--r--r--    1 Teiki  staff   357 15 jan 16:34 da58555c3b24484374b5e3a43b2722da184afc
+
+./.git/objects/7f:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   199 13 jan 16:50 2331f846674636aa4c8dafe03b00bdffb8ea59
+-r--r--r--    1 Teiki  staff   150 13 jan 16:50 735b603817157c696fd78b347d098873bb5069
+
+./.git/objects/80:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   349 15 jan 16:34 0ed5d0c3eaa26e11fc46da17e9efcaa4b757b7
+
+./.git/objects/82:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   193 16 jan 00:17 0a2c03d3081561a696e055bd6762e94c619371
+-r--r--r--    1 Teiki  staff   383 15 jan 16:34 601b26c2007673cf92009b1e83b9b620ce7233
+
+./.git/objects/85:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   214 25 jan 12:17 0bac21a5bc7361ed29b9b3ca1723e065ac13c2
+
+./.git/objects/86:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   300 13 jan 16:50 d2c6aa706d03f7dcc925ca0690e7f2ee646990
+-r--r--r--    1 Teiki  staff   218 13 jan 16:50 ebdc37d03808c53738c6b34177046d00a995fc
+
+./.git/objects/87:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 18 jan 14:00 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   172 15 jan 16:35 7f0b243dcf914290dd9c3cc11ae5e292372861
+-r--r--r--    1 Teiki  staff   271 18 jan 14:00 c5408c6a99eba0f2a42e3f495faf56dc96f4ac
+
+./.git/objects/89:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   381 25 jan 12:17 859edfaa7d626fb1eb2d0237ffc44493bc54aa
+
+./.git/objects/8d:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 18 jan 16:26 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   146 18 jan 16:26 1e06037ccc7c7d47053aba5ba2e378c093fab5
+
+./.git/objects/8e:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   365 13 jan 16:50 03c52827c8500b67f2a2b4b257f79590dd1958
+-r--r--r--    1 Teiki  staff   167 15 jan 16:35 116295c92a7b6b0a293941e6d80b9e461220b3
+-r--r--r--    1 Teiki  staff   332 15 jan 16:34 d51c9129da62496c35af451d516cd0203f50c6
+
+./.git/objects/8f:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   450 15 jan 16:34 ef3fb74e2c3b698df73a9b4ab76130108b2071
+
+./.git/objects/90:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 23 jan 21:27 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   175 23 jan 21:27 42ba862823a1e7cd62df36ced16afe5f97b824
+
+./.git/objects/91:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   190 16 jan 00:17 688a2528119a240bad07219ccc009c94f91c63
+
+./.git/objects/92:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   370 15 jan 16:34 231db86f1a6c6e0a18a4b5924b97390f25afd7
+-r--r--r--    1 Teiki  staff  1115 25 jan 12:16 bf02fe51f5b214870ffb9754451a448a569d38
+
+./.git/objects/94:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   489 15 jan 16:34 02769966763888a3eb20f94f55bbe5f7e94ffd
+-r--r--r--    1 Teiki  staff  1106 15 jan 16:34 7a635e4cd819a84776278d8462c25e728c95e3
+
+./.git/objects/95:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1091 16 jan 00:17 2a46cfdfc02621018fca28183b5be8afbf0941
+
+./.git/objects/96:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   416 15 jan 16:34 0662a7c6274186b76868a8eb9102bbc5521159
+-r--r--r--    1 Teiki  staff   846 18 jan 13:59 1217003e45172c9cdee8a55d8439224b477aae
+-r--r--r--    1 Teiki  staff   523 15 jan 16:34 6109271e1ad0260ebddcbec622e05e92e3c3b5
+-r--r--r--    1 Teiki  staff  1044 15 jan 16:34 905d964e8a8f92fcac07db9dd07c078a0f9fda
+
+./.git/objects/97:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   357 15 jan 16:34 bccb088fbbd2fa400a7c14eb50d667937b0c76
+
+./.git/objects/98:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 17:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   150 13 jan 17:16 a285d8d177f1d4bbbbc95fcc8c68497d5e8273
+
+./.git/objects/99:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1004 18 jan 13:59 07c0eaf57baf8839d96fbeaebe8e8cb9094e17
+-r--r--r--    1 Teiki  staff   415 16 jan 00:17 21f736d26435abc27073c02b708f94685f852c
+-r--r--r--    1 Teiki  staff   345 15 jan 16:34 2380ca46dad7b5d91b80fb71b6be30f7ac7893
+
+./.git/objects/9c:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 23 jan 21:24 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   190 13 jan 16:50 2f27eeb9c80de180d854a1634274fe52bf41d1
+-r--r--r--    1 Teiki  staff  1029 23 jan 21:24 afd94c8cadf2b0766a97a3a20569c561a4dc3d
+-r--r--r--    1 Teiki  staff   386 15 jan 16:34 f3eefcff39a1ab6bd9a5bc61174ae54fa4d139
+
+./.git/objects/9e:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   186 13 jan 16:50 83a8c5b9fc52cd5a599c68f4acc60d60407994
+
+./.git/objects/a0:
+total 40
+drwxr-xr-x    7 Teiki  staff   224 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   319 15 jan 16:34 19ccd96b5989a58b2ea8942c04753218c6bc69
+-r--r--r--    1 Teiki  staff   926 15 jan 19:42 260ffd933ccc0b01c751e2cc604aef0e78e0a7
+-r--r--r--    1 Teiki  staff   409 15 jan 16:34 35201de9bfd1a78b13ce7c1d38901172965fba
+-r--r--r--    1 Teiki  staff   705 15 jan 16:34 6c1832b91301d1b8652a6a571fb9c2499b53dd
+-r--r--r--    1 Teiki  staff   206 13 jan 16:50 a38288c3ec36d40d3e337b7f3b2f523d6d449f
+
+./.git/objects/a1:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   361 15 jan 16:34 461440f6139b2dc916ecafcf8b1ca0a2e5b55b
+
+./.git/objects/a2:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   239 13 jan 16:50 3c5e8f345074bd213d6eb77a81e494d5e875c7
+
+./.git/objects/a4:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1253 15 jan 19:42 fde5ae4ea91015f7f110a03c39375e7d78edd6
+
+./.git/objects/a5:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   194 13 jan 16:50 9d3a8bd7400f91a4b52867747f905e57b99cdf
+
+./.git/objects/a7:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    83 13 jan 16:50 b10c37e082083c25103b2a0566b52e977f438d
+
+./.git/objects/a8:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   195 13 jan 16:50 06a0701b6a8d4f14d984c47a289e85fecca7c8
+
+./.git/objects/aa:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1060 16 jan 00:17 4269e1a76bc00f735f67dd7c425003a1ab1963
+-r--r--r--    1 Teiki  staff   286 13 jan 16:50 493888820e8bca5244d58af569719bcddfeb5d
+
+./.git/objects/ab:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1257 16 jan 00:17 1d89f2aa7b8a616f0df59c2d0cf6ca25c03823
+-r--r--r--    1 Teiki  staff   432 15 jan 16:34 3f515b5e43f4206b515f42594d455c8100fa15
+
+./.git/objects/ad:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   548 15 jan 16:34 df46456aa45191a4b49e787af7fc5bb7501d4b
+-r--r--r--    1 Teiki  staff   573 13 jan 16:50 e9b7b1c2f3240b5238e001e58c93ef9bfe7ac9
+
+./.git/objects/b0:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   317 15 jan 16:34 886a913469a9c378daec701de46b6f3ceaf2c4
+-r--r--r--    1 Teiki  staff   206 13 jan 16:50 ee8ec0c1c97064a02d07c128811976b2ec8cb9
+-r--r--r--    1 Teiki  staff   218 13 jan 16:50 fd5ee81af79cf45c21130124c3aa05c81730d1
+
+./.git/objects/b2:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 23 jan 21:27 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   414 23 jan 21:27 425df750550f092be009887c8d7afdeb8f1071
+-r--r--r--    1 Teiki  staff   639 15 jan 19:42 44702b723274ecfab9dc5699e882794ea81b62
+-r--r--r--    1 Teiki  staff   222 18 jan 14:00 a668e9cbab4cf8359791fe97ce89dc15ee5f85
+-r--r--r--    1 Teiki  staff   325 15 jan 16:34 e2c5df27df6d92eb87f651f370690580aae4a3
+
+./.git/objects/b4:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    49 13 jan 16:50 afa789cc220dae0a27ee5e7ecf7dfb7d4e0f10
+
+./.git/objects/b5:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 17:15 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   234 13 jan 17:15 58604b8ef8777c47cbcca81ae41f9a6b350d02
+
+./.git/objects/b6:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   306 13 jan 16:50 bb7806417d043218144d0a6a208fb65e91c1f7
+-r--r--r--    1 Teiki  staff   386 15 jan 16:35 c276c7270a676d84ec499b1a508ac1bbf0a78b
+
+./.git/objects/b7:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    58 13 jan 16:50 5fadc9951639944902407b8587df87ac058349
+-r--r--r--    1 Teiki  staff    55 13 jan 16:50 623ab1671f31de0f8f48ef8e134ed9b6cf6149
+
+./.git/objects/b8:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   297 15 jan 16:35 f2ce39b1578e553f00bed878d141a5ac030d77
+
+./.git/objects/b9:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   213 25 jan 12:17 2e925d44520b39497a329512731efa10a5dbbf
+-r--r--r--    1 Teiki  staff   559 15 jan 16:34 8387b040fb06a815505fec77172c745f57acd0
+-r--r--r--    1 Teiki  staff   380 23 jan 21:27 e891fcb82991ac46c588393b101e659ff6022b
+
+./.git/objects/bb:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   351 15 jan 16:34 1803cc851d3978957b350b2ff4668df89cbac6
+
+./.git/objects/bd:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   144 25 jan 12:17 aef183516df07f5cf645620f39ccc4bf2dcf68
+
+./.git/objects/bf:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 18 jan 14:00 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   414 18 jan 14:00 1521261d5a18567922478ba0918c25b87ab941
+-r--r--r--    1 Teiki  staff   484 15 jan 16:34 7e43bc740ae0fec345f3f17a066cd184b7efba
+-r--r--r--    1 Teiki  staff   405 15 jan 16:34 93a85c2488b81905f8fe5c1c5525e8c6d93c3c
+-r--r--r--    1 Teiki  staff   379 15 jan 16:34 aa18532cfcb6488c4073946acf3451ba1b9428
+
+./.git/objects/c0:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   189 13 jan 16:50 1d328891d2e4a55939559a538178f495383733
+-r--r--r--    1 Teiki  staff   319 15 jan 16:34 2b3279874f98a33c22a2d0ba1ef12f1cb9da07
+
+./.git/objects/c2:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1083 15 jan 19:42 2fc374fa7171d7f91c160a385c2ed6eb94a925
+
+./.git/objects/c3:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   194 15 jan 19:42 7196872731be46d982e8081d86a1bab160754a
+-r--r--r--    1 Teiki  staff   802 15 jan 19:42 bb821bf03122f63e60c540dcf78c0d57c4e291
+-r--r--r--    1 Teiki  staff   424 15 jan 16:34 ec41da47ba041122f4120fc32c82ead2678e43
+
+./.git/objects/c4:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   163 15 jan 16:35 325efdcf1c49f14b5ef44c505ecfd80043383f
+-r--r--r--    1 Teiki  staff   366 15 jan 16:34 8700c7b0ca86b685d73d2ea17a455834c0f78e
+-r--r--r--    1 Teiki  staff   413 15 jan 16:34 989c3887ebe588dd3827f899af53c6e358d518
+
+./.git/objects/c8:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   350 15 jan 19:42 8b86bdb3ebf303b1843a1b8fa2ef1c1a5b5b5e
+
+./.git/objects/c9:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   367 15 jan 16:34 29dd53ac0f51042c677915928e4613129277d8
+
+./.git/objects/cb:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1136 25 jan 12:16 e287fcbae442e1daaa039dcfdbf0c6c20f9b9a
+
+./.git/objects/cd:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   399 16 jan 00:17 6566acda61e5bbaae1dd7a0512f368c68b8915
+-r--r--r--    1 Teiki  staff   307 15 jan 16:34 a875c36360af2900c1308f175dc42a88d65bb5
+
+./.git/objects/ce:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   187 25 jan 12:17 a4dc94593d7bb3b96f972e37ffc7994320e6ea
+
+./.git/objects/cf:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   728 18 jan 13:59 f5a23e2e2153e20405c3c9963c6eb54e4ebd02
+
+./.git/objects/d1:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   561 15 jan 16:34 2d3c14c2fe881702b437ea57632514110a2d21
+-r--r--r--    1 Teiki  staff   325 25 jan 12:16 411377a132e5a255f1bbd708621533f31bea97
+
+./.git/objects/d2:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   151 13 jan 16:50 28cff28136e7f4e438e49c7ce9a9d9983945a8
+
+./.git/objects/d3:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   654 16 jan 00:17 80ea96cbc67b30fd752858121076f8de1a066b
+
+./.git/objects/d4:
+total 40
+drwxr-xr-x    7 Teiki  staff   224 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    32 13 jan 16:50 4612b88879fee923082ebbd1b4641fd43989d9
+-r--r--r--    1 Teiki  staff   383 15 jan 16:34 46622a1a6b11ae9c06bb26c9e7a04087fc957b
+-r--r--r--    1 Teiki  staff   354 15 jan 16:35 874dd886864a6cc2bcfba128e1e2bb9fdef2de
+-r--r--r--    1 Teiki  staff   356 15 jan 16:34 cf9123c6e9fefb30f1a074805ab9e54cab8e66
+-r--r--r--    1 Teiki  staff   665 25 jan 12:16 ec43a326af456711ee736080e259b9e870b193
+
+./.git/objects/d5:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   988 15 jan 19:42 71e5d1647495e31f4bbb8820c516a9941e9a2b
+-r--r--r--    1 Teiki  staff  1166 15 jan 19:42 a1993dbf5f130f910525bffe1295f184074894
+
+./.git/objects/d7:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   632 13 jan 16:50 c0c3a7136ac2cc1ded89e597343cff3b7f463a
+-r--r--r--    1 Teiki  staff   495 15 jan 16:34 d1a35073557ce7655435896fe1b71f5f47af5b
+
+./.git/objects/db:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   317 15 jan 16:34 b3fee79f3b743e75a55c0fada3e8e0672ede54
+-r--r--r--    1 Teiki  staff   119 13 jan 16:50 fdc0d7d0f7a79da67736827e2ec44a509dc1f1
+
+./.git/objects/dc:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   327 15 jan 16:34 1bb08eb4dd51f497b7a4a611da95a64b8f5691
+
+./.git/objects/dd:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 13 jan 17:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    83 13 jan 17:16 3ca4de03d48b7a8436f26959d38ec655c69b9d
+
+./.git/objects/df:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   323 15 jan 16:34 33517a10c7c072e9820a3817b5983e8d31bdca
+-r--r--r--    1 Teiki  staff   372 15 jan 16:34 6b9dfbbcc9fd03883c75caa5fc2bb80b5cab6d
+-r--r--r--    1 Teiki  staff  1040 18 jan 13:59 b0e44eb3ba849d16ab89a9181ea73b0589150d
+-r--r--r--    1 Teiki  staff    76 13 jan 16:50 e0770424b2a19faf507a501ebfc23be8f54e7b
+
+./.git/objects/e0:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   322 15 jan 16:34 62e79933606fac751e356dc9be1f1af183317c
+
+./.git/objects/e1:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   501 15 jan 16:34 07e09e8ae7c122ce44560c1eaedb2d78b52c5c
+-r--r--r--    1 Teiki  staff  1006 16 jan 00:17 f4155e22fafb862b1509a15894e39a3cb9e457
+
+./.git/objects/e2:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   941 16 jan 00:17 09f33eccb0581bbee7d6f9021e58aa450f3ab3
+-r--r--r--    1 Teiki  staff   373 15 jan 16:34 21d4d012420c2184ac8852268dc3a4a572fb14
+-r--r--r--    1 Teiki  staff   217 13 jan 16:50 23eb1e817464a565f19db1e25c401334af42b9
+
+./.git/objects/e3:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   402 15 jan 16:34 9245aaa1ea9b15e9bab723f768c8c129acaf10
+
+./.git/objects/e4:
+total 32
+drwxr-xr-x    6 Teiki  staff   192 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1048 25 jan 12:16 6f692f707e7d473504ba3acc89141802895472
+-r--r--r--    1 Teiki  staff   446 15 jan 16:34 7474d1338713b021c132230e3b7a13f9a73086
+-r--r--r--    1 Teiki  staff   197 13 jan 16:50 d0b579ab0ec4ffbb1736c78feb267b9ed0aaaf
+-r--r--r--    1 Teiki  staff   435 15 jan 16:34 fb4d05eecd747359d0df89c7780b80672d1c0a
+
+./.git/objects/e5:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   346 15 jan 16:34 ab6e0ddd6d9b58acaed594ae02595865913d51
+
+./.git/objects/e6:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:16 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   883 25 jan 12:16 2bd3f48ae5808ef3f8d2d3695929448ea8dbd3
+-r--r--r--    1 Teiki  staff    15 13 jan 16:50 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+-r--r--r--    1 Teiki  staff   256 13 jan 16:50 a028cc214f890a010a962e7a1b3f8ae2e57c22
+
+./.git/objects/e7:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   346 15 jan 16:34 193a1f848f786809aa0c8aef8bf1269bd3ed32
+-r--r--r--    1 Teiki  staff   420 15 jan 16:34 6834e5d48f9e1d6638ccb3770395b6ffaede35
+
+./.git/objects/e9:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 18 jan 16:26 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   414 18 jan 16:26 40bcb20bfa80ffaea94926cfb5c77b726f7f6a
+
+./.git/objects/ea:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   500 15 jan 16:34 2cb2afb33cb934f416593493b0121a5397a807
+-r--r--r--    1 Teiki  staff   626 15 jan 16:34 8c8caf102521c945f4bf563383c6df953428ce
+
+./.git/objects/eb:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   827 16 jan 00:17 73b49e0074685a8455f9e539a13e91390f4f0e
+-r--r--r--    1 Teiki  staff   283 15 jan 16:34 9e2d57d6ace581f850aa52c2fd9c302fe2022c
+-r--r--r--    1 Teiki  staff   191 13 jan 16:50 d8d7660d647efa1d95668171f891f395df4142
+
+./.git/objects/ec:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    62 13 jan 16:50 3552ffd1bbfdaed50a52caa2dc6d6b5e750254
+-r--r--r--    1 Teiki  staff   310 15 jan 16:34 5ddf8315e55eedff08eac5e5db025c12e14e32
+
+./.git/objects/f0:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 16:35 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   391 15 jan 16:35 ddb11b474a3adb033b6be989758cf7f699dca0
+
+./.git/objects/f4:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 16 jan 00:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   411 15 jan 16:34 51d125e4ac86a51cabcf96dcf0102b17a9c4c4
+-r--r--r--    1 Teiki  staff   224 16 jan 00:17 94046498b856b347a7f12074c425754889398e
+
+./.git/objects/f5:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 18 jan 13:59 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   893 18 jan 13:59 2de7649191d02de73fe60ca588970367ca13ec
+-r--r--r--    1 Teiki  staff   810 13 jan 16:50 70a4672b3b99ed40a0c3574a953c774381de91
+-r--r--r--    1 Teiki  staff   168 15 jan 19:42 e2a37799a99ee1f916169528cd9242a8e630ca
+
+./.git/objects/f6:
+total 8
+drwxr-xr-x    3 Teiki  staff    96 15 jan 19:42 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff  1069 15 jan 19:42 c3c0e5892909d610945ba4fbaede0ed2e20056
+
+./.git/objects/f7:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   213 13 jan 16:50 abfd1de5caed06ed805b5d4768e2dbd8e47527
+-r--r--r--    1 Teiki  staff   416 15 jan 16:34 b489180ea60eeed0d5a00e585767737bed4240
+
+./.git/objects/f9:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   751 25 jan 12:17 7484b0625e572d271fbbb9a1b2ff0548bdf3d0
+-r--r--r--    1 Teiki  staff   381 15 jan 16:34 a6bf8e298fbd8442f5f7d6ba78408e3f524929
+-r--r--r--    1 Teiki  staff   164 15 jan 16:35 b01200ee6ecf9ca41a888404f40ae014af4301
+
+./.git/objects/fa:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 15 jan 16:34 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   377 15 jan 16:34 3f391b624c3aca40a43ebd8de92d60863fa7b1
+-r--r--r--    1 Teiki  staff    51 13 jan 16:50 54b5f5a4fff82044e6fb0d7f48960ebf1aa7da
+
+./.git/objects/fb:
+total 24
+drwxr-xr-x    5 Teiki  staff   160 25 jan 12:17 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   953 25 jan 12:16 21604ed9df1bbf52dd159b50034c601f581766
+-r--r--r--    1 Teiki  staff   480 15 jan 16:34 9e340a2cb1d316bfada394674f46bc2b86753e
+-r--r--r--    1 Teiki  staff    47 25 jan 12:17 b0db1c026117deda45a4713488a2ecb26d728a
+
+./.git/objects/fe:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 18 jan 16:26 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   970 16 jan 00:17 9abc7638f8cdab48cba8852572bfc5103d943d
+-r--r--r--    1 Teiki  staff   271 18 jan 16:26 fb4bd40680b8458d4732138463a0486a8e628f
+
+./.git/objects/ff:
+total 16
+drwxr-xr-x    4 Teiki  staff   128 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff   300 13 jan 16:50 3ad521ed6a56fe819c70c580127ef595f99187
+-r--r--r--    1 Teiki  staff   283 13 jan 16:50 c77de19b13bf90ee50c4b0c67c7f342faca236
+
+./.git/objects/info:
+total 0
+drwxr-xr-x    2 Teiki  staff    64 13 jan 16:50 .
+drwxr-xr-x  183 Teiki  staff  5856 25 jan 12:17 ..
+
+./.git/objects/pack:
+total 400
+drwxr-xr-x    6 Teiki  staff     192 23 jan 21:01 .
+drwxr-xr-x  183 Teiki  staff    5856 25 jan 12:17 ..
+-r--r--r--    1 Teiki  staff    7680 18 jan 08:09 pack-0e10d8586ae63907f9de38db757b48ebe43d5693.idx
+-r--r--r--    1 Teiki  staff   57256 18 jan 08:09 pack-0e10d8586ae63907f9de38db757b48ebe43d5693.pack
+-r--r--r--    1 Teiki  staff   20336 23 jan 21:01 pack-55c3cb8bfd030daa97863036b1c82720f0f3c147.idx
+-r--r--r--    1 Teiki  staff  115376 23 jan 21:27 pack-55c3cb8bfd030daa97863036b1c82720f0f3c147.pack
+
+./.git/refs:
+total 0
+drwxr-xr-x   5 Teiki  staff  160 13 jan 16:50 .
+drwxr-xr-x  15 Teiki  staff  480 25 jan 12:17 ..
+drwxr-xr-x   4 Teiki  staff  128 25 jan 12:17 heads
+drwxr-xr-x   3 Teiki  staff   96 13 jan 16:50 remotes
+drwxr-xr-x   2 Teiki  staff   64 13 jan 16:50 tags
+
+./.git/refs/heads:
+total 16
+drwxr-xr-x  4 Teiki  staff  128 25 jan 12:17 .
+drwxr-xr-x  5 Teiki  staff  160 13 jan 16:50 ..
+-rw-r--r--  1 Teiki  staff   41 25 jan 12:17 jlitaudo
+-rw-r--r--  1 Teiki  staff   41 23 jan 21:01 main
+
+./.git/refs/remotes:
+total 0
+drwxr-xr-x  3 Teiki  staff   96 13 jan 16:50 .
+drwxr-xr-x  5 Teiki  staff  160 13 jan 16:50 ..
+drwxr-xr-x  6 Teiki  staff  192 25 jan 12:19 origin
+
+./.git/refs/remotes/origin:
+total 32
+drwxr-xr-x  6 Teiki  staff  192 25 jan 12:19 .
+drwxr-xr-x  3 Teiki  staff   96 13 jan 16:50 ..
+-rw-r--r--  1 Teiki  staff   30 13 jan 16:50 HEAD
+-rw-r--r--  1 Teiki  staff   41 23 jan 21:01 cpalusze
+-rw-r--r--  1 Teiki  staff   41 25 jan 12:19 jlitaudo
+-rw-r--r--  1 Teiki  staff   41 23 jan 21:01 main
+
+./.git/refs/tags:
+total 0
+drwxr-xr-x  2 Teiki  staff   64 13 jan 16:50 .
+drwxr-xr-x  5 Teiki  staff  160 13 jan 16:50 ..
+
+./.vscode:
+total 8
+drwxr-xr-x   3 Teiki  staff   96 23 jan 21:24 .
+drwxr-xr-x  20 Teiki  staff  640 25 jan 20:15 ..
+-rw-r--r--   1 Teiki  staff  233 23 jan 21:24 settings.json
+
+./build:
+total 32
+drwxr-xr-x   7 Teiki  staff   224 25 jan 10:46 .
+drwxr-xr-x  20 Teiki  staff   640 25 jan 20:15 ..
+drwxr-xr-x  11 Teiki  staff   352 25 jan 10:46 builtins
+drwxr-xr-x   8 Teiki  staff   256 25 jan 10:46 exec
+-rw-r--r--   1 Teiki  staff  6292 25 jan 10:46 main.o
+drwxr-xr-x  13 Teiki  staff   416 25 jan 19:24 parsing
+-rw-r--r--   1 Teiki  staff  5904 25 jan 10:46 utils.o
+
+./build/builtins:
+total 144
+drwxr-xr-x  11 Teiki  staff   352 25 jan 10:46 .
+drwxr-xr-x   7 Teiki  staff   224 25 jan 10:46 ..
+-rw-r--r--   1 Teiki  staff  7488 25 jan 10:46 cd.o
+-rw-r--r--   1 Teiki  staff  5884 25 jan 10:46 echo.o
+-rw-r--r--   1 Teiki  staff  4776 25 jan 10:46 env.o
+-rw-r--r--   1 Teiki  staff  7172 25 jan 10:46 env_utils.o
+-rw-r--r--   1 Teiki  staff  5652 25 jan 10:46 exit.o
+-rw-r--r--   1 Teiki  staff  6636 25 jan 10:46 export.o
+-rw-r--r--   1 Teiki  staff  6392 25 jan 10:46 parse_builtins.o
+-rw-r--r--   1 Teiki  staff  5076 25 jan 10:46 pwd.o
+-rw-r--r--   1 Teiki  staff  5828 25 jan 10:46 unset.o
+
+./build/exec:
+total 80
+drwxr-xr-x  8 Teiki  staff   256 25 jan 10:46 .
+drwxr-xr-x  7 Teiki  staff   224 25 jan 10:46 ..
+-rw-r--r--  1 Teiki  staff  3740 25 jan 10:46 child.o
+-rw-r--r--  1 Teiki  staff  7072 25 jan 10:46 exec.o
+-rw-r--r--  1 Teiki  staff  2092 25 jan 10:46 exec_utils.o
+-rw-r--r--  1 Teiki  staff  4136 25 jan 10:46 redirections.o
+-rw-r--r--  1 Teiki  staff  6944 25 jan 10:46 signals.o
+-rw-r--r--  1 Teiki  staff  4832 25 jan 10:46 signals_handlers.o
+
+./build/parsing:
+total 176
+drwxr-xr-x  13 Teiki  staff   416 25 jan 19:24 .
+drwxr-xr-x   7 Teiki  staff   224 25 jan 10:46 ..
+-rw-r--r--   1 Teiki  staff  5728 25 jan 10:46 add_path_to_command.o
+-rw-r--r--   1 Teiki  staff  5308 25 jan 10:46 block_list_functions.o
+-rw-r--r--   1 Teiki  staff  6776 25 jan 10:46 central_parsing.o
+-rw-r--r--   1 Teiki  staff  6876 25 jan 10:46 init_and_reset_parsing.o
+-rw-r--r--   1 Teiki  staff  8168 25 jan 19:24 merging_str_token.o
+-rw-r--r--   1 Teiki  staff  5772 25 jan 10:46 quote_parsing.o
+-rw-r--r--   1 Teiki  staff  7396 25 jan 10:46 syntax_checking.o
+-rw-r--r--   1 Teiki  staff  6236 25 jan 10:46 token_list_functions.o
+-rw-r--r--   1 Teiki  staff  7552 25 jan 10:46 token_modifications.o
+-rw-r--r--   1 Teiki  staff  5700 25 jan 10:46 token_parsing.o
+-rw-r--r--   1 Teiki  staff  6052 25 jan 10:46 utils_parsing.o
+
+./inc:
+total 48
+drwxr-xr-x   8 Teiki  staff   256 23 jan 21:24 .
+drwxr-xr-x  20 Teiki  staff   640 25 jan 20:15 ..
+-rw-r--r--   1 Teiki  staff  1243 23 jan 21:24 errors.h
+-rw-r--r--   1 Teiki  staff  2824 23 jan 21:24 exec.h
+-rw-r--r--   1 Teiki  staff  1204 23 jan 21:24 minishell.h
+-rw-r--r--   1 Teiki  staff  2046 25 jan 10:43 parsing.h
+-rw-r--r--   1 Teiki  staff  2286 23 jan 21:24 structs.h
+-rw-r--r--   1 Teiki  staff  1559 18 jan 14:00 token_list_functions.h
+
+./lib:
+total 0
+drwxr-xr-x   3 Teiki  staff   96 18 jan 14:00 .
+drwxr-xr-x  20 Teiki  staff  640 25 jan 20:15 ..
+drwxr-xr-x   8 Teiki  staff  256 25 jan 10:46 libft
+
+./lib/libft:
+total 368
+drwxr-xr-x  8 Teiki  staff     256 25 jan 10:46 .
+drwxr-xr-x  3 Teiki  staff      96 18 jan 14:00 ..
+-rw-r--r--  1 Teiki  staff    2887 23 jan 21:24 Makefile
+-rw-r--r--  1 Teiki  staff    6245 18 jan 14:00 README.md
+drwxr-xr-x  8 Teiki  staff     256 18 jan 14:01 build
+drwxr-xr-x  3 Teiki  staff      96 23 jan 21:24 inc
+-rw-r--r--  1 Teiki  staff  175232 25 jan 10:46 libft.a
+drwxr-xr-x  8 Teiki  staff     256 18 jan 14:00 src
+
+./lib/libft/build:
+total 0
+drwxr-xr-x   8 Teiki  staff  256 18 jan 14:01 .
+drwxr-xr-x   8 Teiki  staff  256 25 jan 10:46 ..
+drwxr-xr-x   8 Teiki  staff  256 25 jan 10:46 checker
+drwxr-xr-x   8 Teiki  staff  256 25 jan 10:46 io
+drwxr-xr-x  12 Teiki  staff  384 25 jan 10:46 lst
+drwxr-xr-x  11 Teiki  staff  352 25 jan 10:46 mem
+drwxr-xr-x  26 Teiki  staff  832 25 jan 10:46 str
+drwxr-xr-x   3 Teiki  staff   96 25 jan 10:46 utils
+
+./lib/libft/build/checker:
+total 48
+drwxr-xr-x  8 Teiki  staff   256 25 jan 10:46 .
+drwxr-xr-x  8 Teiki  staff   256 18 jan 14:01 ..
+-rw-r--r--  1 Teiki  staff  2108 25 jan 10:46 ft_isalnum.o
+-rw-r--r--  1 Teiki  staff  2056 25 jan 10:46 ft_isalpha.o
+-rw-r--r--  1 Teiki  staff  2008 25 jan 10:46 ft_isascii.o
+-rw-r--r--  1 Teiki  staff  2008 25 jan 10:46 ft_isdigit.o
+-rw-r--r--  1 Teiki  staff  2008 25 jan 10:46 ft_isprint.o
+-rw-r--r--  1 Teiki  staff  2104 25 jan 10:46 ft_isspace.o
+
+./lib/libft/build/io:
+total 32
+drwxr-xr-x   8 Teiki  staff   256 25 jan 10:46 .
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:01 ..
+drwxr-xr-x  11 Teiki  staff   352 25 jan 10:46 ft_printf
+-rw-r--r--   1 Teiki  staff  2096 25 jan 10:46 ft_putchar_fd.o
+-rw-r--r--   1 Teiki  staff  2340 25 jan 10:46 ft_putendl_fd.o
+-rw-r--r--   1 Teiki  staff  2476 25 jan 10:46 ft_putnbr_fd.o
+-rw-r--r--   1 Teiki  staff  2200 25 jan 10:46 ft_putstr_fd.o
+drwxr-xr-x   3 Teiki  staff    96 25 jan 10:46 gnl
+
+./lib/libft/build/io/ft_printf:
+total 72
+drwxr-xr-x  11 Teiki  staff   352 25 jan 10:46 .
+drwxr-xr-x   8 Teiki  staff   256 25 jan 10:46 ..
+-rw-r--r--   1 Teiki  staff  3784 25 jan 10:46 ft_pick_conversion_fd.o
+-rw-r--r--   1 Teiki  staff  2348 25 jan 10:46 ft_print_decimal_fd.o
+-rw-r--r--   1 Teiki  staff  3060 25 jan 10:46 ft_print_hex_fd.o
+-rw-r--r--   1 Teiki  staff  2748 25 jan 10:46 ft_print_pointer_fd.o
+-rw-r--r--   1 Teiki  staff  2772 25 jan 10:46 ft_print_size_t_base_fd.o
+-rw-r--r--   1 Teiki  staff  2420 25 jan 10:46 ft_print_string_fd.o
+-rw-r--r--   1 Teiki  staff  2384 25 jan 10:46 ft_print_unsigned_int_fd.o
+-rw-r--r--   1 Teiki  staff  3664 25 jan 10:46 ft_printf.o
+-rw-r--r--   1 Teiki  staff  3684 25 jan 10:46 ft_printf_fd.o
+
+./lib/libft/build/io/gnl:
+total 16
+drwxr-xr-x  3 Teiki  staff    96 25 jan 10:46 .
+drwxr-xr-x  8 Teiki  staff   256 25 jan 10:46 ..
+-rw-r--r--  1 Teiki  staff  5736 25 jan 10:46 get_next_line.o
+
+./lib/libft/build/lst:
+total 80
+drwxr-xr-x  12 Teiki  staff   384 25 jan 10:46 .
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:01 ..
+-rw-r--r--   1 Teiki  staff  2388 25 jan 10:46 ft_lstadd_back.o
+-rw-r--r--   1 Teiki  staff  2200 25 jan 10:46 ft_lstadd_front.o
+-rw-r--r--   1 Teiki  staff  2416 25 jan 10:46 ft_lstclear.o
+-rw-r--r--   1 Teiki  staff  2288 25 jan 10:46 ft_lstdelone.o
+-rw-r--r--   1 Teiki  staff  2276 25 jan 10:46 ft_lstiter.o
+-rw-r--r--   1 Teiki  staff  2216 25 jan 10:46 ft_lstlast.o
+-rw-r--r--   1 Teiki  staff  2748 25 jan 10:46 ft_lstmap.o
+-rw-r--r--   1 Teiki  staff  2296 25 jan 10:46 ft_lstnew.o
+-rw-r--r--   1 Teiki  staff  2264 25 jan 10:46 ft_lstsize.o
+-rw-r--r--   1 Teiki  staff  2716 25 jan 10:46 ft_lstsort.o
+
+./lib/libft/build/mem:
+total 72
+drwxr-xr-x  11 Teiki  staff   352 25 jan 10:46 .
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:01 ..
+-rw-r--r--   1 Teiki  staff  2448 25 jan 10:46 ft_bzero.o
+-rw-r--r--   1 Teiki  staff  2616 25 jan 10:46 ft_calloc.o
+-rw-r--r--   1 Teiki  staff  1972 25 jan 10:46 ft_free.o
+-rw-r--r--   1 Teiki  staff  2264 25 jan 10:46 ft_free_split.o
+-rw-r--r--   1 Teiki  staff  2592 25 jan 10:46 ft_memchr.o
+-rw-r--r--   1 Teiki  staff  2736 25 jan 10:46 ft_memcmp.o
+-rw-r--r--   1 Teiki  staff  2596 25 jan 10:46 ft_memcpy.o
+-rw-r--r--   1 Teiki  staff  2720 25 jan 10:46 ft_memmove.o
+-rw-r--r--   1 Teiki  staff  2580 25 jan 10:46 ft_memset.o
+
+./lib/libft/build/str:
+total 200
+drwxr-xr-x  26 Teiki  staff   832 25 jan 10:46 .
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:01 ..
+-rw-r--r--   1 Teiki  staff  2616 25 jan 10:46 ft_atoi.o
+-rw-r--r--   1 Teiki  staff  2184 25 jan 10:46 ft_is_inside.o
+-rw-r--r--   1 Teiki  staff  3304 25 jan 10:46 ft_itoa.o
+-rw-r--r--   1 Teiki  staff  2472 25 jan 10:46 ft_size_tab.o
+-rw-r--r--   1 Teiki  staff  4632 25 jan 10:46 ft_split.o
+-rw-r--r--   1 Teiki  staff  2324 25 jan 10:46 ft_strchr.o
+-rw-r--r--   1 Teiki  staff  2800 25 jan 10:46 ft_strcmp.o
+-rw-r--r--   1 Teiki  staff  2720 25 jan 10:46 ft_strdup.o
+-rw-r--r--   1 Teiki  staff  2632 25 jan 10:46 ft_striteri.o
+-rw-r--r--   1 Teiki  staff  3004 25 jan 10:46 ft_strjoin.o
+-rw-r--r--   1 Teiki  staff  2212 25 jan 10:46 ft_strjoin_and_free.o
+-rw-r--r--   1 Teiki  staff  2976 25 jan 10:46 ft_strlcat.o
+-rw-r--r--   1 Teiki  staff  2736 25 jan 10:46 ft_strlcpy.o
+-rw-r--r--   1 Teiki  staff  2468 25 jan 10:46 ft_strlen.o
+-rw-r--r--   1 Teiki  staff  2776 25 jan 10:46 ft_strmapi.o
+-rw-r--r--   1 Teiki  staff  2768 25 jan 10:46 ft_strncmp.o
+-rw-r--r--   1 Teiki  staff  2880 25 jan 10:46 ft_strndup.o
+-rw-r--r--   1 Teiki  staff  2944 25 jan 10:46 ft_strnstr.o
+-rw-r--r--   1 Teiki  staff  2316 25 jan 10:46 ft_strrchr.o
+-rw-r--r--   1 Teiki  staff  3752 25 jan 10:46 ft_strtrim.o
+-rw-r--r--   1 Teiki  staff  2984 25 jan 10:46 ft_substr.o
+-rw-r--r--   1 Teiki  staff  2536 25 jan 10:46 ft_tab_strdup.o
+-rw-r--r--   1 Teiki  staff  1996 25 jan 10:46 ft_tolower.o
+-rw-r--r--   1 Teiki  staff  1996 25 jan 10:46 ft_toupper.o
+
+./lib/libft/build/utils:
+total 8
+drwxr-xr-x  3 Teiki  staff    96 25 jan 10:46 .
+drwxr-xr-x  8 Teiki  staff   256 18 jan 14:01 ..
+-rw-r--r--  1 Teiki  staff  2064 25 jan 10:46 swap_int.o
+
+./lib/libft/inc:
+total 16
+drwxr-xr-x  3 Teiki  staff    96 23 jan 21:24 .
+drwxr-xr-x  8 Teiki  staff   256 25 jan 10:46 ..
+-rw-r--r--  1 Teiki  staff  4511 25 jan 10:32 libft.h
+
+./lib/libft/src:
+total 0
+drwxr-xr-x   8 Teiki  staff  256 18 jan 14:00 .
+drwxr-xr-x   8 Teiki  staff  256 25 jan 10:46 ..
+drwxr-xr-x   8 Teiki  staff  256 18 jan 14:00 checker
+drwxr-xr-x   8 Teiki  staff  256 18 jan 14:00 io
+drwxr-xr-x  12 Teiki  staff  384 23 jan 21:24 lst
+drwxr-xr-x  11 Teiki  staff  352 23 jan 21:24 mem
+drwxr-xr-x  27 Teiki  staff  864 25 jan 10:30 str
+drwxr-xr-x   3 Teiki  staff   96 18 jan 14:00 utils
+
+./lib/libft/src/checker:
+total 48
+drwxr-xr-x  8 Teiki  staff   256 18 jan 14:00 .
+drwxr-xr-x  8 Teiki  staff   256 18 jan 14:00 ..
+-rw-r--r--  1 Teiki  staff   980 18 jan 14:00 ft_isalnum.c
+-rw-r--r--  1 Teiki  staff   998 18 jan 14:00 ft_isalpha.c
+-rw-r--r--  1 Teiki  staff   968 18 jan 14:00 ft_isascii.c
+-rw-r--r--  1 Teiki  staff   970 18 jan 14:00 ft_isdigit.c
+-rw-r--r--  1 Teiki  staff   969 18 jan 14:00 ft_isprint.c
+-rw-r--r--  1 Teiki  staff  1034 18 jan 14:00 ft_isspace.c
+
+./lib/libft/src/io:
+total 32
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:00 .
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:00 ..
+drwxr-xr-x  11 Teiki  staff   352 23 jan 21:24 ft_printf
+-rw-r--r--   1 Teiki  staff   996 18 jan 14:00 ft_putchar_fd.c
+-rw-r--r--   1 Teiki  staff  1055 18 jan 14:00 ft_putendl_fd.c
+-rw-r--r--   1 Teiki  staff  1158 18 jan 14:00 ft_putnbr_fd.c
+-rw-r--r--   1 Teiki  staff  1033 18 jan 14:00 ft_putstr_fd.c
+drwxr-xr-x   3 Teiki  staff    96 18 jan 14:00 gnl
+
+./lib/libft/src/io/ft_printf:
+total 72
+drwxr-xr-x  11 Teiki  staff   352 23 jan 21:24 .
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:00 ..
+-rw-r--r--   1 Teiki  staff  1565 18 jan 14:00 ft_pick_conversion_fd.c
+-rw-r--r--   1 Teiki  staff  1110 23 jan 21:24 ft_print_decimal_fd.c
+-rw-r--r--   1 Teiki  staff  1265 18 jan 14:00 ft_print_hex_fd.c
+-rw-r--r--   1 Teiki  staff  1108 18 jan 14:00 ft_print_pointer_fd.c
+-rw-r--r--   1 Teiki  staff  1172 18 jan 14:00 ft_print_size_t_base_fd.c
+-rw-r--r--   1 Teiki  staff  1110 18 jan 14:00 ft_print_string_fd.c
+-rw-r--r--   1 Teiki  staff  1138 18 jan 14:00 ft_print_unsigned_int_fd.c
+-rw-r--r--   1 Teiki  staff  1350 18 jan 14:00 ft_printf.c
+-rw-r--r--   1 Teiki  staff  1348 18 jan 14:00 ft_printf_fd.c
+
+./lib/libft/src/io/gnl:
+total 8
+drwxr-xr-x  3 Teiki  staff    96 18 jan 14:00 .
+drwxr-xr-x  8 Teiki  staff   256 18 jan 14:00 ..
+-rw-r--r--  1 Teiki  staff  2803 18 jan 14:00 get_next_line.c
+
+./lib/libft/src/lst:
+total 80
+drwxr-xr-x  12 Teiki  staff   384 23 jan 21:24 .
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:00 ..
+-rw-r--r--   1 Teiki  staff  1133 18 jan 14:00 ft_lstadd_back.c
+-rw-r--r--   1 Teiki  staff   996 18 jan 14:00 ft_lstadd_front.c
+-rw-r--r--   1 Teiki  staff  1113 18 jan 14:00 ft_lstclear.c
+-rw-r--r--   1 Teiki  staff  1047 18 jan 14:00 ft_lstdelone.c
+-rw-r--r--   1 Teiki  staff  1066 18 jan 14:00 ft_lstiter.c
+-rw-r--r--   1 Teiki  staff  1008 18 jan 14:00 ft_lstlast.c
+-rw-r--r--   1 Teiki  staff  1395 18 jan 14:00 ft_lstmap.c
+-rw-r--r--   1 Teiki  staff  1089 18 jan 14:00 ft_lstnew.c
+-rw-r--r--   1 Teiki  staff  1031 18 jan 14:00 ft_lstsize.c
+-rw-r--r--   1 Teiki  staff  1367 23 jan 21:24 ft_lstsort.c
+
+./lib/libft/src/mem:
+total 72
+drwxr-xr-x  11 Teiki  staff   352 23 jan 21:24 .
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:00 ..
+-rw-r--r--   1 Teiki  staff  1029 18 jan 14:00 ft_bzero.c
+-rw-r--r--   1 Teiki  staff  1157 23 jan 21:24 ft_calloc.c
+-rw-r--r--   1 Teiki  staff   995 18 jan 14:00 ft_free.c
+-rw-r--r--   1 Teiki  staff  1076 23 jan 21:24 ft_free_split.c
+-rw-r--r--   1 Teiki  staff  1111 18 jan 14:00 ft_memchr.c
+-rw-r--r--   1 Teiki  staff  1222 18 jan 14:00 ft_memcmp.c
+-rw-r--r--   1 Teiki  staff  1153 18 jan 14:00 ft_memcpy.c
+-rw-r--r--   1 Teiki  staff  1245 18 jan 14:00 ft_memmove.c
+-rw-r--r--   1 Teiki  staff  1063 18 jan 14:00 ft_memset.c
+
+./lib/libft/src/str:
+total 200
+drwxr-xr-x  27 Teiki  staff   864 25 jan 10:30 .
+drwxr-xr-x   8 Teiki  staff   256 18 jan 14:00 ..
+-rw-r--r--   1 Teiki  staff  1237 18 jan 14:00 ft_atoi.c
+-rw-r--r--   1 Teiki  staff  1043 18 jan 14:00 ft_is_inside.c
+-rw-r--r--   1 Teiki  staff  1681 18 jan 14:00 ft_itoa.c
+-rw-r--r--   1 Teiki  staff  1970 25 jan 19:29 ft_merge_tab.c
+-rw-r--r--   1 Teiki  staff  1028 25 jan 10:10 ft_size_tab.c
+-rw-r--r--   1 Teiki  staff  2135 18 jan 14:00 ft_split.c
+-rw-r--r--   1 Teiki  staff  1074 18 jan 14:00 ft_strchr.c
+-rw-r--r--   1 Teiki  staff  1168 23 jan 21:24 ft_strcmp.c
+-rw-r--r--   1 Teiki  staff  1174 18 jan 14:00 ft_strdup.c
+-rw-r--r--   1 Teiki  staff  1086 18 jan 14:00 ft_striteri.c
+-rw-r--r--   1 Teiki  staff  1388 18 jan 14:00 ft_strjoin.c
+-rw-r--r--   1 Teiki  staff  1370 18 jan 14:00 ft_strjoin_and_free.c
+-rw-r--r--   1 Teiki  staff  1369 18 jan 14:00 ft_strlcat.c
+-rw-r--r--   1 Teiki  staff  1141 18 jan 14:00 ft_strlcpy.c
+-rw-r--r--   1 Teiki  staff  1035 18 jan 14:00 ft_strlen.c
+-rw-r--r--   1 Teiki  staff  1172 18 jan 14:00 ft_strmapi.c
+-rw-r--r--   1 Teiki  staff  1190 18 jan 14:00 ft_strncmp.c
+-rw-r--r--   1 Teiki  staff  1240 18 jan 14:00 ft_strndup.c
+-rw-r--r--   1 Teiki  staff  1257 18 jan 14:00 ft_strnstr.c
+-rw-r--r--   1 Teiki  staff  1094 18 jan 14:00 ft_strrchr.c
+-rw-r--r--   1 Teiki  staff  1654 18 jan 14:00 ft_strtrim.c
+-rw-r--r--   1 Teiki  staff  1320 18 jan 14:00 ft_substr.c
+-rw-r--r--   1 Teiki  staff  1259 23 jan 21:24 ft_tab_strdup.c
+-rw-r--r--   1 Teiki  staff   989 18 jan 14:00 ft_tolower.c
+-rw-r--r--   1 Teiki  staff   989 18 jan 14:00 ft_toupper.c
+
+./lib/libft/src/utils:
+total 8
+drwxr-xr-x  3 Teiki  staff   96 18 jan 14:00 .
+drwxr-xr-x  8 Teiki  staff  256 18 jan 14:00 ..
+-rw-r--r--  1 Teiki  staff  972 18 jan 14:00 swap_int.c
+
+./src:
+total 16
+drwxr-xr-x   7 Teiki  staff   224 23 jan 21:24 .
+drwxr-xr-x  20 Teiki  staff   640 25 jan 20:15 ..
+drwxr-xr-x  11 Teiki  staff   352 23 jan 21:24 builtins
+drwxr-xr-x   8 Teiki  staff   256 23 jan 21:24 exec
+-rw-r--r--   1 Teiki  staff  2375 24 jan 20:33 main.c
+drwxr-xr-x  14 Teiki  staff   448 27 jan 08:39 parsing
+-rw-r--r--   1 Teiki  staff  1676 23 jan 21:28 utils.c
+
+./src/builtins:
+total 72
+drwxr-xr-x  11 Teiki  staff   352 23 jan 21:24 .
+drwxr-xr-x   7 Teiki  staff   224 23 jan 21:24 ..
+-rw-r--r--   1 Teiki  staff  3031 23 jan 21:24 cd.c
+-rw-r--r--   1 Teiki  staff  2071 23 jan 21:24 echo.c
+-rw-r--r--   1 Teiki  staff  1348 23 jan 21:24 env.c
+-rw-r--r--   1 Teiki  staff  2567 23 jan 21:24 env_utils.c
+-rw-r--r--   1 Teiki  staff  1969 23 jan 21:24 exit.c
+-rw-r--r--   1 Teiki  staff  2525 23 jan 21:24 export.c
+-rw-r--r--   1 Teiki  staff  1917 23 jan 21:24 parse_builtins.c
+-rw-r--r--   1 Teiki  staff  1424 23 jan 21:24 pwd.c
+-rw-r--r--   1 Teiki  staff  1973 23 jan 21:24 unset.c
+
+./src/exec:
+total 48
+drwxr-xr-x  8 Teiki  staff   256 23 jan 21:24 .
+drwxr-xr-x  7 Teiki  staff   224 23 jan 21:24 ..
+-rw-r--r--  1 Teiki  staff  1515 24 jan 10:33 child.c
+-rw-r--r--  1 Teiki  staff  2659 23 jan 21:24 exec.c
+-rw-r--r--  1 Teiki  staff   979 23 jan 21:24 exec_utils.c
+-rw-r--r--  1 Teiki  staff  1669 23 jan 21:24 redirections.c
+-rw-r--r--  1 Teiki  staff  1764 23 jan 21:24 signals.c
+-rw-r--r--  1 Teiki  staff  2602 23 jan 21:29 signals_handlers.c
+
+./src/parsing:
+total 88
+drwxr-xr-x  14 Teiki  staff   448 27 jan 08:39 .
+drwxr-xr-x   7 Teiki  staff   224 23 jan 21:24 ..
+-rw-r--r--   1 Teiki  staff  2087 23 jan 21:24 add_path_to_command.c
+-rw-r--r--   1 Teiki  staff  1944 23 jan 21:24 block_list_functions.c
+-rw-r--r--   1 Teiki  staff  3002 24 jan 20:22 central_parsing.c
+-rw-r--r--   1 Teiki  staff     0 27 jan 08:39 expand_variables.c
+-rw-r--r--   1 Teiki  staff  2642 23 jan 21:24 init_and_reset_parsing.c
+-rw-r--r--   1 Teiki  staff  4058 25 jan 20:24 merging_str_token.c
+-rw-r--r--   1 Teiki  staff  3150 24 jan 10:36 quote_parsing.c
+-rw-r--r--   1 Teiki  staff  3365 25 jan 10:43 syntax_checking.c
+-rw-r--r--   1 Teiki  staff  2861 23 jan 21:24 token_list_functions.c
+-rw-r--r--   1 Teiki  staff  3229 24 jan 20:03 token_modifications.c
+-rw-r--r--   1 Teiki  staff  3242 24 jan 10:46 token_parsing.c
+-rw-r--r--   1 Teiki  staff  1896 24 jan 10:12 utils_parsing.c

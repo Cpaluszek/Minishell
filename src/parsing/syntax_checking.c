@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/25 10:43:48 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 16:02:23 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ void	empty_token_assignation(t_token *token_list)
 		token = token->next;
 	}
 	token = token_list;
-	while (token)
-	{
-		if (token->token <= 4 && token->next && token->next->token != EMPTY)
-			token->space_link = false;
-		else if (token->token == CMD && token->str[0] != ' ')
-			token->space_link = false;
-		token = token->next;
-	}
+	// while (token)
+	// {
+	// 	if (token->token <= 4 && token->next && token->next->token != EMPTY)
+	// 		token->space_link = false;
+	// 	else if (token->token == CMD && token->str[0] != ' ')
+	// 		token->space_link = false;
+	// 	token = token->next;
+	// }
 	remove_empty_token(token_list);
 	// dprintf(1, "OK EMPTY REMOVED\n");
 }

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:05:26 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/25 10:37:15 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/28 23:11:25 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static int	tab_copy(char **dest, char **src, int len);
 char	**ft_merge_tab(char **tab1, char **tab2)
 {
 	char	**merged_tab;
-	int		i;
-	int		j;
 	int		size_tab1;
 	int		size_tab2;
 
@@ -38,7 +36,7 @@ char	**ft_merge_tab(char **tab1, char **tab2)
 		return (NULL);
 	if (tab_copy(merged_tab, tab1, 0))
 		return (NULL);
-	if (tab_copy(merged_tab, tab2, size_tab2))
+	if (tab_copy(merged_tab, tab2, size_tab1))
 		return (NULL);
 	ft_free_split(tab1);
 	return (merged_tab);
@@ -49,6 +47,8 @@ static int	tab_copy(char **dest, char **src, int len)
 {
 	int	i;
 
+	if (!src)
+		return (0);
 	i = 0;
 	while (src[i])
 	{

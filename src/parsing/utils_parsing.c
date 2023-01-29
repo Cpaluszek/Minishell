@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/24 10:12:15 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 17:59:09 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ void	get_input(t_global *shell, char *prompt)
 	ft_free(shell->input);
 	shell->input = input;
 	shell->input_completed = ft_strjoin_and_free(shell->input_completed, input);
-	if (!shell->input_completed)
-		error_exit_shell(shell, ERR_MALLOC);
+	test_failed_malloc(shell, shell->input_completed);
 }
 
 int	not_only_spaces(char *line)
@@ -57,4 +56,13 @@ void	test_failed_malloc(t_global *shell, void *content)
 {
 	if (!content)
 		error_exit_shell(shell, ERR_MALLOC);
+}
+
+void	remove_token(t_token *token)
+{
+	if (token->prev)
+		token->prev->next = token->next;
+	if (token->next)
+		token->next->prev = token->prev;
+	ft_lstdelone_token(token);
 }
