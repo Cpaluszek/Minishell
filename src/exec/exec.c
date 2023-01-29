@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 12:56:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 13:44:34 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	exec_token_list(t_token *token, t_global *shell)
 }
 
 // Todo: too much fork - bash does not exit
+// Todo: test ./Makefile
 static void	exec_cmd(t_token *token, t_global *shell)
 {
 	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
@@ -68,9 +69,9 @@ static void	exec_cmd(t_token *token, t_global *shell)
 		return ;
 	else if (access(token->cmd[0], X_OK) == -1)
 	{
-		close_token_pipes(token);
 		token->exit_status = COMMAND_NOT_FOUND;
 		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
+		close_token_pipes(token);
 		return ;
 	}
 	token->pid = fork();
