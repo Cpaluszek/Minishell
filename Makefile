@@ -126,16 +126,13 @@ $(LIB_PATHS): force
 
 $(NAME): $(LIB_PATHS) $(OBJS)
 	@$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
-	@echo "> $(NAME) Done!\n"
 
 -include $(DEPS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS)
 	@mkdir -p $(@D)
-	@echo "$(_GREEN)compiling: $<$(_END)"
 	@$(CC) $(CC_FLAGS) $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 
-# clean commands
 clean: banner
 	@$(foreach lib, $(LIB_NAMES), \
 		@$(MAKE) $(lib) clean; \
@@ -147,7 +144,6 @@ fclean: clean
 	@$(foreach lib, $(LIB_NAMES), \
 		@$(MAKE) $(lib) fclean; \
 	)
-	@echo "remove $(NAME)"
 	@rm -rf $(NAME)
 
 re: fclean all
