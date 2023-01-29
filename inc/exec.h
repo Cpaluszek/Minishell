@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 10:25:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:11:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 # define HERE_DOC_TMP	".heredoc.tmp"
 
 int		exec_start(t_global *shell);
-void	exec_cmd(t_token *token, t_global *shell);
 int		exec_child(t_token *token, char **env);
 void	parent_close_pipes(t_token *token);
+void	close_token_pipes(t_token *token);
 
 /*
 	--------- Redirections functions -----------
@@ -61,6 +61,6 @@ char	*ft_getcwd(void);
 int		args_number(char **args);
 int		cmp_str(void *data1, void *data2);
 void	*copy_content_str(void *entry);
-void	exec_cmd_error(t_global *shell, char *err);
+void	exec_cmd_error(t_global *shell, char *err, t_token *token);
 
 #endif
