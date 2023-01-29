@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:41:07 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 22:58:45 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 23:28:01 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	merge_command(t_global *shell)
 	while (token)
 	{
 		i = 0;
-		if (token->token > PIPE)
+		if (token->token > CLOSE_PAR)
 		{
 			first_cmd = token;
 			first_cmd->token = CMD;
 			first_cmd->token_str = "CMD";
-			while (token && token->token != PIPE)
+			while (token && (token->token < PIPE || token->token > CLOSE_PAR))
 			{
-				if (token->token > PIPE)
+				if (token->token > CLOSE_PAR)
 					i++;
 				token = token->next;
 			}
@@ -56,7 +56,7 @@ t_token *first_cmd,	int size_cmd_tab)
 	test_failed_malloc(shell, first_cmd->cmd[0]);
 	token = first_cmd->next;
 	i = 1;
-	while (token && token->token != PIPE)
+	while (token && (token->token < PIPE || token->token > CLOSE_PAR))
 	{
 		if (token->token == CMD || token->token == QUOTE || \
 			token->token == DQUOTE)

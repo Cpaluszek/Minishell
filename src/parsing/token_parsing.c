@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 19:47:06 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 23:21:09 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_token	*create_sub_token_list(t_global *shell, char *str)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] && !ft_is_inside(str[i], "<>|\n"))
+		while (str[i] && !ft_is_inside(str[i], "<>|&()\n"))
 			i++;
 		if (i != 0 && new_token(&token_list, str, i, CMD))
 			error_exit_shell(shell, ERR_MALLOC);
@@ -83,8 +83,16 @@ static enum e_token	which_token(char *str)
 			return (HERE_DOC);
 		return (INPUT);
 	}
-	else if (*str == '|')
+	else if (*str == '|' && str[1] && str[1] != '|')
 		return (PIPE);
+	else if (*str == '|' && str[1] && str[1] == '|')
+		return (OR);
+	else if (*str == '&' && str[1] && str[1] == '&')
+		return (AND);
+	else if (*str == '(')
+		return (OPEN_PAR);
+	else if (*str == ')')
+		return (CLOSE_PAR);
 	return (NEW_LINE);
 }
 

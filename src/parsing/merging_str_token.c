@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merging_str_token2.c                               :+:      :+:    :+:   */
+/*   merging_str_token.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/29 16:50:24 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 23:22:43 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	find_and_merge_linked_token(t_global *shell)
 	token = shell->token_list;
 	while (token)
 	{
-		if (token->token > PIPE && token->space_link == false)
+		if (token->token > CLOSE_PAR && token->space_link == false)
 			merge_linked_token(shell, token);
 		token = token->next;
 	}
@@ -55,7 +55,7 @@ static void	merge_linked_token(t_global *shell, t_token *token_list)
 
 	str = token_list->str;
 	token = token_list->next;
-	while (token && token->token > PIPE)
+	while (token && token->token > CLOSE_PAR)
 	{
 		space_link = token->space_link;
 		temp = token;
