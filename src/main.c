@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 14:08:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:13:25 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 
 void	print_command_line(t_token *token_list);
 
-// NOTE: check argc error ?
-		// Todo: free previous path on loop reset
+// Todo: free previous path on loop reset
 // Todo: parsing need to update g_status in case of parsing error ?
 int	main(int argc, char **argv, char **env)
 {
