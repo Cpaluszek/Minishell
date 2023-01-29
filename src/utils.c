@@ -6,12 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:37:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/24 15:41:55 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:56:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token_list_functions.h"
+#include "errors.h"
+#include <unistd.h>
 #include <stdio.h>
 #include <readline/readline.h>
 
@@ -39,7 +41,8 @@ void	exit_shell(t_global *shell, int exit_code)
 
 void	exit_shell_from_signal(t_global *shell)
 {
-	tcsetattr(0, TCSANOW, &shell->saved_attr);
+	if (isatty(STDIN) && tcsetattr(0, TCSANOW, &shell->saved_attr) == -1)
+		perror(ERR_TCSET);
 	printf("exit\n");
 	rl_clear_history();
 	free_structs(shell);

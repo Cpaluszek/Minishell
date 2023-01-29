@@ -6,20 +6,20 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 14:08:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:57:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "input.h"
-
-// Todo: protect all tcsetattr and get return
-// Todo: check also isatty
+#include "errors.h"
 
 void	init_shell_attr(t_global *shell)
 {
-	tcgetattr(STDIN_FILENO, &shell->saved_attr);
-	tcgetattr(STDIN_FILENO, &shell->custom_attr);
+	if (tcgetattr(STDIN, &shell->saved_attr) == -1)
+		perror(ERR_TCGET);
+	if (tcgetattr(STDIN, &shell->custom_attr) == -1)	
+		perror(ERR_TCGET);
 	shell->custom_attr.c_lflag &= ECHO;
 }
 
@@ -28,7 +28,8 @@ void	set_interactive_signals(t_global *shell)
 {
 	struct sigaction	sa;
 
-	tcsetattr(STDIN, TCSAFLUSH, &shell->custom_attr);
+	if (isatty(STDIN) && tcsetattr(STDIN, TCSAFLUSH, &shell->custom_attr) == -1)
+		perror(ERR_TCSET);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	signal(SIGINT, SIG_DFL);
@@ -59,9 +60,14 @@ void	set_here_doc_signals(void)
 	struct sigaction	sa;
 	struct termios		attr;
 
-	tcgetattr(STDIN, &attr);
-	attr.c_lflag &= ECHO;
-	tcsetattr(STDIN, TCSANOW, &attr);
+	if (tcgetattr(STDIN, &attr) == -1)
+		perror(ERR_TCGET);
+	else
+	{
+		attr.c_lflag &= ECHO;
+		if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &attr) == -1)
+			perror(ERR_TCSET);
+	}
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	signal(SIGINT, SIG_DFL);

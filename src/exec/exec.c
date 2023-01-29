@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 12:11:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:56:58 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static void	exec_cmd(t_token *token, t_global *shell);
 
 // Todo: attention a `./ls | cat -e` qui ne doit executer que le local
 // Todo: test max amount of pipes
-// Todo: protect tcsetattr and tcgetattr with isatty
 // Todo: test `rm -rf *`
 // Todo: test permissions on redirections
 int	exec_start(t_global *shell)
 {
-	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
+	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
+		perror(ERR_TCSET);
 	set_execution_signals();
 	if (setup_all_redirections(shell, shell->token_list) != 1)
 		exec_token_list(shell->token_list, shell);
@@ -59,6 +59,7 @@ static void	exec_token_list(t_token *token, t_global *shell)
 	}
 }
 
+// Todo: too much fork - bash does not exit
 static void	exec_cmd(t_token *token, t_global *shell)
 {
 	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
