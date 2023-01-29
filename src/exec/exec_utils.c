@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 14:11:47 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 10:40:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include "minishell.h"
 #include <unistd.h>
 
+// Note: some close are missing
 void	parent_close_pipes(t_token *token)
 {
-	if (token->make_a_pipe)
-		if (close(token->pipe_fd[1]) == -1)
-			perror(ERR_CLOSE);
+	if (token->make_a_pipe && close(token->pipe_fd[1]) == -1)
+		perror(ERR_CLOSE);
 	if (token->prev && token->prev->make_a_pipe)
 		if (close(token->prev->pipe_fd[0]) == -1)
 			perror(ERR_CLOSE);
