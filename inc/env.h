@@ -16,7 +16,7 @@
 # include "libft.h"
 # include "structs.h"
 
-# define VAR_LIMITER "$ \n\"\'|*=-+/%.,?!@#^&[]{}_:;<>"
+# define VAR_LIMITER "$ \n\"\'|*=-+/%.,!@#^&[]{}_:;<>"
 
 void	update_env(t_global *shell);
 t_list	*search_in_env(t_list *env_list, char *identifier);
