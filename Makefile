@@ -117,7 +117,7 @@ _WHITE			:=	\x1b[37m
 # 		RULES			#
 #########################
 
-all: $(NAME)
+all: banner $(NAME)
 
 $(LIB_PATHS): force
 	@$(foreach lib, $(LIB_NAMES), \
@@ -136,7 +136,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS)
 	@$(CC) $(CC_FLAGS) $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 
 # clean commands
-clean:
+clean: banner
 	@$(foreach lib, $(LIB_NAMES), \
 		@$(MAKE) $(lib) clean; \
 	)
@@ -152,4 +152,13 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re force
+banner:
+	@echo ""
+	@echo "        _       _ __ _          _ _ "
+	@echo "  /\/\ (_)_ __ (_) _\ |__   ___| | |"
+	@echo " /    \| | '_ \| \ \| '_ \ / _ \ | |"
+	@echo "/ /\/\ \ | | | | |\ \ | | |  __/ | |"
+	@echo "\/    \/_|_| |_|_\__/_| |_|\___|_|_|"
+	@echo ""
+
+.PHONY: all clean fclean re force banner
