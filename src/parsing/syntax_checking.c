@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/29 16:02:23 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 22:52:52 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,10 @@ int		print_syntax_error(t_global *shell, char *str);
 int	syntax_checking(t_global *shell)
 {
 	t_token	*token;
-	// t_token	*token_list;
 
 
 	token = shell->token_list;
-	// dprintf(1, "BEGIN OF SYNTAX CHECK\n");
 	empty_token_assignation(token);
-	// token_list = token;
-	// while (token_list)
-	// {
-	// 	dprintf(1, "{ [%d]:[%s]} -> ", token_list->token, token_list->str);
-	// 	token_list = token_list->next;
-	// }
 	if (token->token == PIPE)
 		return (print_syntax_error(shell, "|"));
 	while (token)
@@ -45,7 +37,6 @@ int	syntax_checking(t_global *shell)
 			return (print_syntax_error(shell, "newline"));
 		token = token->next;
 	}
-	// dprintf(1, "END OF SYNTAX CHECK --> OK\n");
 	return (0);
 }
 
@@ -61,16 +52,13 @@ void	empty_token_assignation(t_token *token_list)
 		token = token->next;
 	}
 	token = token_list;
-	// while (token)
-	// {
-	// 	if (token->token <= 4 && token->next && token->next->token != EMPTY)
-	// 		token->space_link = false;
-	// 	else if (token->token == CMD && token->str[0] != ' ')
-	// 		token->space_link = false;
-	// 	token = token->next;
-	// }
+	while (token)
+	{
+		if (token->token <= 4 && token->next && token->next->token != EMPTY)
+			token->space_link = false;
+		token = token->next;
+	}
 	remove_empty_token(token_list);
-	// dprintf(1, "OK EMPTY REMOVED\n");
 }
 
 void	remove_empty_token(t_token *token)

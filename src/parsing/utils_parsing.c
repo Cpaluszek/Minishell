@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/29 17:59:09 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:46:36 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,23 @@ void	remove_token(t_token *token)
 	if (token->next)
 		token->next->prev = token->prev;
 	ft_lstdelone_token(token);
+}
+
+void	insert_token_list(t_global *shell, t_token *token, \
+t_token *splitted_token_list)
+{
+	t_token	*last_splitted_token;
+
+	last_splitted_token = ft_lstlast_token(splitted_token_list);
+	last_splitted_token->next = token->next;
+	if (token->next)
+		token->next->prev = last_splitted_token;
+	last_splitted_token->space_link = token->space_link;
+	if (token->prev)
+	{
+		token->prev->next = splitted_token_list;
+		splitted_token_list->prev = token->prev;
+	}
+	else
+		shell->token_list = splitted_token_list;
 }

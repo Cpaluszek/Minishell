@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:44:08 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 16:58:34 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:46:18 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "token_list_functions.h"
 
 static void	insert_temp_cmd_list(t_global *shell, t_token *token, char **cmd);
-static void	insert_token_list(t_global *shell, t_token *token, \
-t_token *splitted_token_list);
 
 void	split_command_token(t_global *shell)
 {
@@ -58,23 +56,4 @@ static void	insert_temp_cmd_list(t_global *shell, t_token *token, char **cmd)
 		i++;
 	}
 	insert_token_list(shell, token, new_cmd_list);
-}
-
-static void	insert_token_list(t_global *shell, t_token *token, \
-t_token *splitted_token_list)
-{
-	t_token	*last_splitted_token;
-
-	last_splitted_token = ft_lstlast_token(splitted_token_list);
-	last_splitted_token->next = token->next;
-	if (token->next)
-		token->next->prev = last_splitted_token;
-	last_splitted_token->space_link = token->space_link;
-	if (token->prev)
-	{
-		token->prev->next = splitted_token_list;
-		splitted_token_list->prev = token->prev;
-	}
-	else
-		shell->token_list = splitted_token_list;
 }

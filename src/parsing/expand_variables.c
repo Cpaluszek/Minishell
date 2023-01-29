@@ -6,11 +6,12 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:39:22 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/27 11:02:35 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 22:59:45 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "libft.h"
 
 void	expand_variables(t_global *shell)
 {

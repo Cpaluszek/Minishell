@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:41:07 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 16:42:52 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 22:58:45 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	merge_command(t_global *shell)
 				token = token->next;
 			}
 			merge_all_cmd_token_between_pipe(shell, first_cmd, i);
-			// dprintf(1,"\nAFTER ONE MERGE COMMAND (i = %d)", i);
-			// print_command_line(shell->token_list);
 		}
 		else
 			token = token->next;

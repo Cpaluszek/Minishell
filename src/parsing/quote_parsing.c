@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 18:31:21 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 18:50:02 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 static void	quote_parsing2(t_global *shell, char **str, char quote);
 static void	setting_space_links(t_token *token_list);
+static void	new_token(t_global *shell, char *str, int len, enum e_token type);
 
 /**
  * @brief Parse Input with simple and double quote.
@@ -83,7 +84,7 @@ static void	setting_space_links(t_token *token_list)
 	}
 }
 
-void	new_token(t_global *shell, char *str, int len, enum e_token type)
+static void	new_token(t_global *shell, char *str, int len, enum e_token type)
 {
 	char	*instruction;
 	t_token	*new;

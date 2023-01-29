@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 18:35:37 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:47:58 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,15 @@ int	central_parsing(t_global *shell, char *prompt)
 
 static void	parsing_initialization(t_global *shell, char *prompt)
 {
-	// t_token	*token_list;
-
 	get_input(shell, prompt);
 	quote_parsing(shell, shell->input);
-	print_command_line(shell->token_list);
-	// token_list = token_parsing(shell, shell->token_list);
-	// ft_lstadd_back_token(&shell->token_list, token_list);
-	// dprintf(1, "\nAFTER TOKEN PARSING\n");
-	// print_command_line(shell->token_list);
+	token_parsing(shell);
 }
 
 static void	parsing_finalization(t_global *shell)
 {
-	t_token *token;
-	t_token *token_list;
+	t_token	*token;
+	t_token	*token_list;
 
 	token = shell->token_list;
 	token_list = token;

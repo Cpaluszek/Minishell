@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 18:23:42 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:46:34 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	reset_commands(t_global	*shell);
 void	empty_token_assignation(t_token *token_list);
 int		syntax_checking(t_global *shell);
 void	quote_parsing(t_global *shell, char *str);
-t_token	*token_parsing(t_token *token_list);
+void	token_parsing(t_global *shell);
 /*
 	---------------- PARSING FINALIZATION ---------------------
 */
@@ -50,11 +50,12 @@ void	delete_pipe_token(t_global *shell);
 */
 
 char	**get_path(t_global *shell, char **env);
-void	new_token(t_global *shell, char *str, int len, enum e_token type);
 int		not_only_spaces(char *line);
 void	get_input(t_global *shell, char *prompt);
 void	remove_token(t_token *token);
 void	print_command_line(t_token *token_list);
 void	test_failed_malloc(t_global *shell, void *content);
+void	insert_token_list(t_global *shell, t_token *token, \
+t_token *splitted_token_list);
 
 #endif

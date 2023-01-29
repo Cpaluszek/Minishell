@@ -6,64 +6,55 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/24 10:46:07 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 19:47:06 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token_list_functions.h"
 #include "parsing.h"
-#include <stdio.h>
 
-void			insert_token_list(t_token *token_list, t_token *splitted_token_list);
-t_token			*create_sub_token_list(char *str);
-enum e_token	which_token(char *str);
+static t_token		*create_sub_token_list(t_global *shell, char *str);
+static enum e_token	which_token(char *str);
+static int			new_token(t_token **token_list, char *str, \
+int len, enum e_token type);
 
-t_token	*token_parsing(t_token *token_list)
+void	token_parsing(t_global *shell)
 {
 	t_token	*temp;
 	t_token	*del;
 	t_token	*splitted_token_list;
 
-	temp = token_list;
+	temp = shell->token_list;
 	while (temp)
 	{
 		if (temp->token == EMPTY && temp->str[0])
 		{
-			splitted_token_list = create_sub_token_list(temp->str);// ajouter une fonction de protection de malloc
-			// dprintf(1, "OK - SPLITTED Token List\n");
-			insert_token_list(temp, splitted_token_list);
+			splitted_token_list = create_sub_token_list(shell, temp->str);
+			insert_token_list(shell, temp, splitted_token_list);
 			del = temp;
 			temp = temp->next;
 			ft_lstdelone_token(del);
-			token_list = splitted_token_list;
 		}
 		else
 			temp = temp->next;
 	}
-	while (token_list->prev)
-		token_list = token_list->prev;
-	return (token_list);
 }
 
-t_token	*create_sub_token_list(char *str)
+static t_token	*create_sub_token_list(t_global *shell, char *str)
 {
 	int				i;
 	enum e_token	token;
 	t_token			*token_list;
 
 	token_list = NULL;
-	i = not_only_spaces(str);
-	if (i != -1)
-		str = &str[i];
 	i = 0;
-	// dprintf(1, "OKsubtoken %d\n", i);
 	while (str[i])
 	{
 		while (str[i] && !ft_is_inside(str[i], "<>|\n"))
 			i++;
 		if (i != 0 && new_token(&token_list, str, i, CMD))
-			return (NULL);
+			error_exit_shell(shell, ERR_MALLOC);
 		if (!str[i])
 			break ;
 		token = which_token(&str[i]);
@@ -71,20 +62,20 @@ t_token	*create_sub_token_list(char *str)
 		if (token == HERE_DOC || token == OUTPUT_APPEND)
 			i++;
 		if (new_token(&token_list, NULL, 0, token))
-			return (NULL);
+			error_exit_shell(shell, ERR_MALLOC);
 		str = &str[i];
 		i = 0;
 	}
 	return (token_list);
 }
 
-enum e_token which_token(char *str)
+static enum e_token	which_token(char *str)
 {
 	if (*str == '>')
 	{
 		if (str[1] && str[1] == '>')
 			return (OUTPUT_APPEND);
-		return (OUTPUT_TRUNC);	
+		return (OUTPUT_TRUNC);
 	}
 	else if (*str == '<')
 	{
@@ -97,19 +88,28 @@ enum e_token which_token(char *str)
 	return (NEW_LINE);
 }
 
-void	insert_token_list(t_token *token_list, t_token *splitted_token_list)
+static int	new_token(t_token **token_list, char *str, \
+int len, enum e_token type)
 {
-	t_token	*last_splitted_token;
+	char	*instruction;
+	t_token	*new;
 
-	if (token_list->prev)
-	{
-		token_list->prev->next = splitted_token_list;
-		splitted_token_list->prev = token_list->prev;
+	instruction = NULL;
+	if (str)
+	{	
+		instruction = ft_strndup(str, len);
+		if (!instruction)
+		{
+			ft_lstclear_token(token_list);
+			return (1);
+		}
 	}
-	// dprintf(1, "OK3, %p \n", splitted_token_list);//, token_list->token);
-	last_splitted_token = ft_lstlast_token(splitted_token_list);
-	last_splitted_token->next = token_list->next;
-	if (token_list->next)
-		token_list->next->prev = last_splitted_token;
-	last_splitted_token->space_link = token_list->space_link;
+	new = ft_lstnew_token(instruction, type);
+	if (!new)
+	{
+		ft_lstclear_token(token_list);
+		return (1);
+	}
+	ft_lstadd_back_token(token_list, new);
+	return (0);
 }
