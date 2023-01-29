@@ -5,7 +5,7 @@
 # Folders and names
 NAME			:=	minishell
 
-HEADERS_DIR			:=	inc
+HEADERS_DIR		:=	inc
 HEADERS_FILES	:=	minishell.h \
 					structs.h \
 					errors.h \
@@ -87,11 +87,15 @@ LIB_HEADERS		+=	-I ~/.brew/opt/readline/include
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
+DEPS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.d)
+CCDEFS			:=	NAME=\"$(NAME)\"
 
 # Compiler options
 CC				:=	cc
 DEBUG_FLAG		:=	-g3 #-fsanitize=address
 CC_FLAGS		:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
+CC_DEPS_FLAGS	:=	-MP -MMD
+CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))
 
 MAKE			:=	make -C
 
@@ -124,10 +128,12 @@ $(NAME): $(LIB_PATHS) $(OBJS)
 	@$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
 	@echo "> $(NAME) Done!\n"
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS) $(HEADERS)
+-include $(DEPS)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS)
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
+	@$(CC) $(CC_FLAGS) $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 
 # clean commands
 clean:
