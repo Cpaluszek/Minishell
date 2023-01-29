@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/29 22:52:52 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 23:59:31 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	syntax_checking(t_global *shell)
 
 	token = shell->token_list;
 	empty_token_assignation(token);
-	if (token->token == PIPE)
-		return (print_syntax_error(shell, "|"));
+	if (token->token == PIPE || token->token == AND || token->token == OR)
+		return (print_syntax_error(shell, token->token_str));
 	while (token)
 	{
 		if (token->token <= 4 && token->next && token->next->token <= 4 && \

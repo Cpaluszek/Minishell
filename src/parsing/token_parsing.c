@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 23:21:09 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 23:58:46 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ static enum e_token	which_token(char *str)
 			return (HERE_DOC);
 		return (INPUT);
 	}
-	else if (*str == '|' && str[1] && str[1] != '|')
-		return (PIPE);
 	else if (*str == '|' && str[1] && str[1] == '|')
 		return (OR);
+	else if (*str == '|')
+		return (PIPE);
 	else if (*str == '&' && str[1] && str[1] == '&')
 		return (AND);
 	else if (*str == '(')

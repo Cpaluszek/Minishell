@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 23:28:15 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/29 23:45:25 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv, char **env)
 			central_parsing(&shell, PROMPT_ERR);
 		token_list = shell.token_list;
 		print_command_line(token_list);
-		// exec_start(&shell);
+		exec_start(&shell);
 	}
 	return (EXIT_SUCCESS);
 }

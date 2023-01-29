@@ -1,0 +1,18 @@
+total 184
+-rw-r--r--   1 Teiki  staff      0 29 jan 23:48  
+drwxr-xr-x  17 Teiki  staff    544 29 jan 23:48 .
+drwxr-xr-x  16 Teiki  staff    512 15 jan 10:30 ..
+drwxr-xr-x  15 Teiki  staff    480 29 jan 23:42 .git
+-rw-r--r--   1 Teiki  staff     66 13 jan 16:50 .gitattributes
+-rw-r--r--   1 Teiki  staff     67 23 jan 21:24 .gitignore
+drwxr-xr-x   3 Teiki  staff     96 23 jan 21:24 .vscode
+-rw-r--r--   1 Teiki  staff   2811 29 jan 17:43 Makefile
+drwxr-xr-x   7 Teiki  staff    224 29 jan 23:45 build
+drwxr-xr-x   8 Teiki  staff    256 23 jan 21:24 inc
+drwxr-xr-x   3 Teiki  staff     96 18 jan 14:00 lib
+-rwxr-xr-x   1 Teiki  staff    194 23 jan 21:24 lsof.sh
+-rwxr-xr-x   1 Teiki  staff  63880 29 jan 23:45 minishell
+-rw-r--r--   1 Teiki  staff   1154 13 jan 16:50 readme.md
+-rwxr-xr-x   1 Teiki  staff    532 23 jan 21:24 run.sh
+drwxr-xr-x   7 Teiki  staff    224 23 jan 21:24 src
+-rw-r--r--   1 Teiki  staff    111 23 jan 21:24 valgrind_ignore_leaks.txt
