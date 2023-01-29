@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 18:00:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 10:26:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "input.h"
 
 static void	exec_token_list(t_token *token, t_global *shell);
-static int	check_for_builtins(t_token *token, t_global *shell);
 
 // Todo: attention a `./ls | cat -e` qui ne doit executer que le local
 // Todo: test max amount of pipes
@@ -79,15 +78,4 @@ void	exec_cmd(t_token *token, t_global *shell)
 		exit(EXIT_FAILURE);
 	}
 	parent_close_pipes(token);
-}
-
-static int	check_for_builtins(t_token *token, t_global *shell)
-{
-	int	is_builtin;
-
-	is_builtin = 0;
-	token->exit_status = parse_builtins(token, &is_builtin, shell);
-	if (is_builtin)
-		parent_close_pipes(token);
-	return (is_builtin);
 }

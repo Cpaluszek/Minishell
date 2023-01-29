@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:41:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 10:25:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_builtin {
 	int		(*builtin)(t_token *, t_global *);
 }	t_builtin;
 
-int		parse_builtins(t_token *token, int*is_builtin, t_global *shell);
+int		check_for_builtins(t_token *token, t_global *shell);
 int		ft_echo(t_token *token, t_global *shell);
 int		ft_cd(t_token *token, t_global *shell);
 int		ft_pwd(t_token *token, t_global *shell);

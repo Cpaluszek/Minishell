@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:31 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 15:26:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 10:26:14 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,21 @@
 #include "exec.h"
 
 static int	search_builtin(t_token *t, t_builtin *arr, int *found, t_global *s);
+static int	parse_builtins(t_token *token, int *is_builtin, t_global *shell);
+
+int	check_for_builtins(t_token *token, t_global *shell)
+{
+	int	is_builtin;
+
+	is_builtin = 0;
+	token->exit_status = parse_builtins(token, &is_builtin, shell);
+	if (is_builtin)
+		parent_close_pipes(token);
+	return (is_builtin);
+}
 
 // Todo: remove absolute PATH - some builtins are found in PATH
-int	parse_builtins(t_token *token, int *is_builtin, t_global *shell)
+static int	parse_builtins(t_token *token, int *is_builtin, t_global *shell)
 {
 	static t_builtin	arr[] = {
 	{"cd", &ft_cd},
