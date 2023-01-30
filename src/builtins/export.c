@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 13:46:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:53:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);
 static void		concat_or_add_var(t_global *shell, char *new, int i);
+static int		check_pipes_in_token_list(t_token *token);
 
 // Todo: unclosed quotes should not work
 // Todo: if env == NULL
 // Todo: export "a     "=test
+// Todo: export with pipes should not update env
 int	ft_export(t_token *token, t_global *shell)
 {
 	int		i;
@@ -43,7 +45,7 @@ int	ft_export(t_token *token, t_global *shell)
 				token->cmd[i]);
 			ret_value = EXIT_FAILURE;
 		}
-		else
+		else if (!check_pipes_in_token_list(token))
 			concat_or_add_var(shell, token->cmd[i], 0);
 		i++;
 	}
@@ -124,4 +126,25 @@ static void	print_env_variable(char *str)
 	while (str[i])
 		write(STDOUT, &str[i++], 1);
 	write(STDOUT, "\"\n", 2);
+}
+
+static int	check_pipes_in_token_list(t_token *token)
+{
+	t_token	*origin;
+
+	origin = token;
+	while (token)
+	{
+		if (token->make_a_pipe)
+			return (1);
+		token = token->next;
+	}
+	token = origin;
+	while (token)
+	{
+		if (token->make_a_pipe)
+			return (1);
+		token = token->prev;
+	}
+	return (0);
 }
