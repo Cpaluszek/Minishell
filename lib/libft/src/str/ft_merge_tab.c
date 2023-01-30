@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_merge_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:05:26 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/28 23:11:25 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/30 16:13:25 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ char	**ft_merge_tab(char **tab1, char **tab2)
 	ft_free_split(tab1);
 	return (merged_tab);
 }
-
 
 static int	tab_copy(char **dest, char **src, int len)
 {

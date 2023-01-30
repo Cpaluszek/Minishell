@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 10:06:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:51:18 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context)
 	g_status = 128 + signum;
 }
 
+// Todo: fix
 /**
  * @brief signal handler: ctrl-C execution mode
  * Kill the running process and give the prompt back

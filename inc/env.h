@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:46:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 17:42:45 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:18:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define VAR_LIMITER "$ \n\"\'|*=-+/%.,!@#^&[]{}_:;<>"
 
+char	**set_minimum_env(void);
 void	update_env(t_global *shell);
 t_list	*search_in_env(t_list *env_list, char *identifier);
 void	add_env_variable(t_global *shell, char *new_var);
