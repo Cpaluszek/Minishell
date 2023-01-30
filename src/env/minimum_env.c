@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:13:43 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 15:34:55 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:11:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@
 
 #define DEFAULT_SHLVL	"SHLVL=1"
 #define PWD_PREFIX		"PWD="
+#define ENV_UNDERSC		"_=/usr/bin/env"
 
 static void	err_alloc(char **env);
 
-// PWD
-// SHLVL
-// NULL
+// Todo: what is _= in env ??
 char	**set_minimum_env(void)
 {
 	char	**env;
 	char	*pwd;
 
-	env = malloc(sizeof(char *) * 3);
+	env = malloc(sizeof(char *) * 4);
 	if (env == NULL)
 		err_alloc(NULL);
 	pwd = ft_getcwd();
@@ -40,7 +39,10 @@ char	**set_minimum_env(void)
 	env[1] = ft_strdup(DEFAULT_SHLVL);
 	if (env[1] == NULL)
 		err_alloc(env);
-	env[2] = NULL;
+	env[2] = ft_strdup(ENV_UNDERSC);
+	if (env[2] == NULL)
+		err_alloc(env);
+	env[3] = NULL;
 	return (env);
 }
 
