@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/22 17:09:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:42:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 # define COMPLETED 1
 # define UNCOMPLETED 2
 
-// Note: where to put global var ?
-// Note: add extern keyword ?
+# define STDIN	0
+# define STDOUT	1
+# define STDERR	2
+
 int	g_status;
 
 enum e_link {

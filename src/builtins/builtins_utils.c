@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 10:07:09 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:41:11 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/01/25 11:49:08 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/01/25 17:06:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include <unistd.h>
+#include "libft.h"
 
-# include "structs.h"
+int	cmp_str(void *data1, void *data2)
+{
+	if (data1 && data2)
+		return (ft_strcmp((char *)data1, (char *)data2));
+	return (0);
+}
 
-void	free_structs(t_global *shell);
-void	error_exit_shell(t_global *shell, char *err_msg);
-void	exit_shell(t_global *shell, int exit_code);
-void	exit_shell_from_signal(t_global *shell);
+void	*copy_content_str(void *entry)
+{
+	char	*str;
 
-#endif
+	str = (char *)entry;
+	if (str == NULL)
+		return (NULL);
+	return (ft_strdup(str));
+}

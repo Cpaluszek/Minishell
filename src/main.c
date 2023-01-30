@@ -6,19 +6,19 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 17:26:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:13:25 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parsing.h"
 #include "exec.h"
+#include "input.h"
 
 void	print_command_line(t_token *token_list);
 
-// NOTE: check argc error ?
-// Note: here_doc in a fork to manage CTRL-C
-		// Todo: free previous path on loop reset
+// Todo: free previous path on loop reset
+// Todo: parsing need to update g_status in case of parsing error ?
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;

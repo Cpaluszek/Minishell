@@ -6,27 +6,33 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 17:35:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 13:46:05 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "exec.h"
+#include "input.h"
 
-static void	parent_close_pipes(t_token *token);
+static void	exec_token_list(t_token *token, t_global *shell);
+static void	exec_cmd(t_token *token, t_global *shell);
 
-// Todo: here_doc does not expand $var
-// Todo: protect tcsetattr and tcgetattr with isatty
+// Todo: attention a `./ls | cat -e` qui ne doit executer que le local
+// Todo: test max amount of pipes
+// Todo: test `rm -rf *`
+// Todo: test permissions on redirections
 int	exec_start(t_global *shell)
 {
-	tcsetattr(STDIN, TCSANOW, &shell->saved_attr);
-	setup_all_redirections(shell->token_list);
-	exec_token_list(shell->token_list, shell);
+	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
+		perror(ERR_TCSET);
+	set_execution_signals();
+	if (setup_all_redirections(shell, shell->token_list) != 1)
+		exec_token_list(shell->token_list, shell);
+	close_all_redirections(shell->token_list);
 	return (0);
 }
 
-// Todo: child status code
-int	exec_token_list(t_token *token, t_global *shell)
+static void	exec_token_list(t_token *token, t_global *shell)
 {
 	t_token	*head;
 
@@ -37,57 +43,44 @@ int	exec_token_list(t_token *token, t_global *shell)
 			exec_cmd(token, shell);
 		token = token->next;
 	}
-	set_execution_signals();
-	while (waitpid(-1, NULL, 0) > 0)
-		;
-	close_all_redirections(head);
-	return (0);
+	token = head;
+	while (token)
+	{
+		if (token->token == CMD)
+		{
+			if (token->pid > 0 && token->exit_status != COMMAND_NOT_FOUND)
+			{
+				waitpid(token->pid, &token->exit_status, 0);
+				token->exit_status = WEXITSTATUS(token->exit_status);
+			}
+			g_status = token->exit_status;
+		}
+		token = token->next;
+	}
 }
 
-// Todo: recover builtins exit status
-// Note: some builtins need fork to works with pipes
-void	exec_cmd(t_token *token, t_global *shell)
+// Todo: too much fork - bash does not exit
+static void	exec_cmd(t_token *token, t_global *shell)
 {
-	int	is_builtin;
-
-	is_builtin = 0;
-	g_status = parse_builtins(token, &is_builtin, shell);
-	if (is_builtin)
+	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
+		exec_cmd_error(shell, ERR_PIPE, token);
+	if (check_for_builtins(token, shell))
 		return ;
 	else if (access(token->cmd[0], X_OK) == -1)
 	{
-		g_status = COMMAND_NOT_FOUND;
+		token->exit_status = COMMAND_NOT_FOUND;
 		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
+		close_token_pipes(token);
 		return ;
-	}
-	if (token->make_a_pipe && pipe(token->pipe_fd) == -1)
-	{
-		perror(ERR_PIPE);
-		close_all_redirections(shell->token_list);
-		error_exit_shell(shell, ERR_FORK);
 	}
 	token->pid = fork();
 	if (token->pid == -1)
+		exec_cmd_error(shell, ERR_FORK, token);
+	if (token->pid == 0 && exec_child(token, shell->env))
 	{
-		perror(ERR_FORK);
-		close_all_redirections(shell->token_list);
-		error_exit_shell(shell, ERR_FORK);
-	}
-	if (token->pid == 0)
-	{
-		if (exec_child(token, shell->env))
-		{
-			close_redirections(token);
-			exit(EXIT_FAILURE);
-		}
+		close_token_pipes(token);
+		close_redirections(token);
+		exit(EXIT_FAILURE);
 	}
 	parent_close_pipes(token);
-}
-
-static void	parent_close_pipes(t_token *token)
-{
-	if (token->make_a_pipe)
-		close(token->pipe_fd[1]);
-	if (token->prev && token->prev->make_a_pipe)
-		close(token->prev->pipe_fd[0]);
 }

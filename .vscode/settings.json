@@ -9,6 +9,8 @@
 		"token_list_functions.h": "c",
 		"wait.h": "c",
 		"readline.h": "c",
-		"history.h": "c"
+		"history.h": "c",
+		"stdbool.h": "c",
+		"input.h": "c"
 	}
 }

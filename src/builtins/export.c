@@ -6,28 +6,32 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:55:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 09:30:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Add variable to environment
-// Multiple variables can be exported
-	// export a="1" b="2" c="3"
 #include "minishell.h"
+#include "env.h"
 #include "exec.h"
+#define EXPORT_PREFIX	"declare -x "
+#define CONCAT_VAR		"+="
 
-static void		print_sorted_env(t_global *shell);
-static void		add_env_variable(t_global *shell, char *cmd);
+static void		print_sorted_env(t_token *token, t_global *shell);
+static void		print_env_variable(char *str);
+static void		concat_or_add_var(t_global *shell, char *new);
 
-// Todo: exit code - test with bash3.2
+// Todo: unclosed quotes should not work
+// Todo: if env == NULL
 int	ft_export(t_token *token, t_global *shell)
 {
 	int		i;
+	int		ret_value;
 
+	ret_value = 0;
 	if (args_number(token->cmd) == 1)
 	{
-		print_sorted_env(shell);
-		return (0);
+		print_sorted_env(token, shell);
+		return (ret_value);
 	}
 	i = 1;
 	while (token->cmd[i])
@@ -36,55 +40,87 @@ int	ft_export(t_token *token, t_global *shell)
 		{
 			ft_printf_fd(STDERR, "export: `%s' not a valid identifier\n", \
 				token->cmd[i]);
-			g_status = EXIT_FAILURE;
+			ret_value = EXIT_FAILURE;
 		}
 		else
-		{
-			add_env_variable(shell, token->cmd[i]);
-			g_status = EXIT_SUCCESS;
-		}
+			concat_or_add_var(shell, token->cmd[i]);
 		i++;
 	}
 	update_env(shell);
-	return (0);
+	return (ret_value);
 }
 
-// Todo: protect lstmap return
-// Todo: add `declare -x` prefix
-static void	print_sorted_env(t_global *shell)
+static void	concat_or_add_var(t_global *shell, char *new)
+{
+	t_list	*search_result;
+	char	*content;
+	int		i;
+	int		j;
+
+	content = malloc(sizeof(char) * ft_strlen(new));
+	if (content == NULL)
+		error_exit_shell(shell, ERR_MALLOC);
+	i = 0;
+	j = 0;
+	while (new[i])
+	{
+		if (!(new[i] == '+' && i == j))
+			content[j++] = new[i];
+		i++;
+	}
+	search_result = search_in_env(shell->env_list, content);
+	if (ft_strchr(new, '=') < ft_strnstr(new, CONCAT_VAR, ft_strlen(new)) || \
+		search_result == NULL)
+	{
+		add_env_variable(shell, content);
+		return (free(content));
+	}
+	free(content);
+	concat_env_variable(shell, new, search_result);
+}
+
+static void	print_sorted_env(t_token *token, t_global *shell)
 {
 	t_list	*sorted_env;
 	t_list	*current;
 
+	token->pid = fork();
+	if (token->pid == -1)
+		error_exit_shell(shell, ERR_FORK);
+	if (token->pid != 0)
+		return ;
+	if (dup_fds(token))
+		exit(EXIT_FAILURE);
 	sorted_env = ft_lstmap(shell->env_list, &copy_content_str, &free);
+	if (sorted_env == NULL)
+		error_exit_shell(shell, ERR_MALLOC);
 	ft_lstsort(&sorted_env, &cmp_str);
 	current = sorted_env;
 	while (current)
 	{
-		printf("%s\n", (char *)current->content);
+		print_env_variable((char *)current->content);
 		current = current->next;
 	}
 	ft_lstclear(&sorted_env, &free);
+	exit(EXIT_SUCCESS);
 }
 
-static void	add_env_variable(t_global *shell, char *cmd)
+static void	print_env_variable(char *str)
 {
-	char	*new_content;
-	t_list	*search_result;
-	t_list	*new;
+	int	i;
 
-	new_content = ft_strdup(cmd);
-	if (new_content == NULL)
-		error_exit_shell(shell, ERR_MALLOC);
-	search_result = search_in_env(shell->env_list, cmd);
-	if (search_result == NULL)
+	i = 0;
+	ft_putstr_fd(EXPORT_PREFIX, STDOUT);
+	while (str[i] && str[i] != '=')
+		write(STDOUT, &str[i++], 1);
+	if (!str[i])
 	{
-		new = ft_lstnew(new_content);
-		ft_lstadd_back(&(shell->env_list), new);
+		write(STDOUT, "\n", 1);
+		return ;
 	}
-	else
-	{
-		free(search_result->content);
-		search_result->content = new_content;
-	}
+	write(STDOUT, &str[i++], 1);
+	write(STDOUT, "\"", 1);
+	while (str[i])
+		write(STDOUT, &str[i++], 1);
+	write(STDOUT, "\"\n", 2);
 }

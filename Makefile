@@ -5,8 +5,17 @@
 # Folders and names
 NAME			:=	minishell
 
-HEADERS			:=	inc
-HEADERS_FILES	:=	minishell.h
+HEADERS_DIR		:=	inc
+HEADERS_FILES	:=	minishell.h \
+					structs.h \
+					errors.h \
+					env.h \
+					exec.h \
+					parsing.h \
+					token_list_functions.h \
+					input.h
+
+HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:=	src
 
@@ -26,8 +35,6 @@ PARSING_FILES	:=	central_parsing.c \
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \
 					child.c \
-					signals.c \
-					signals_handlers.c \
 					redirections.c \
 					exec_utils.c
 					
@@ -38,19 +45,33 @@ BUILTIN_FILES	:=	parse_builtins.c \
 					env.c \
 					exit.c \
 					export.c \
-					env_utils.c \
+					builtins_utils.c \
 					pwd.c \
 					unset.c
+
+INPUT_DIR		:=	input
+INPUT_FILES		:=	signals.c \
+					signals_handlers.c \
+					here_doc_signals_handlers.c \
+					here_doc.c
+
+ENV_DIR			:=	env
+ENV_FILES		:=	env_expand.c \
+					env_utils.c
 
 PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
 EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))
 BUILTIN_SRC		:= $(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILES))
+INPUT_SRC		:= $(addprefix $(INPUT_DIR)/, $(INPUT_FILES))
+ENV_SRC			:= $(addprefix $(ENV_DIR)/, $(ENV_FILES))
 
 SRC_FILES		:=	main.c \
 					utils.c \
 					$(EXEC_SRC) \
 					$(PARSING_SRC) \
-					$(BUILTIN_SRC)
+					$(BUILTIN_SRC) \
+					$(INPUT_SRC) \
+					$(ENV_SRC)
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
@@ -66,11 +87,15 @@ LIB_HEADERS		+=	-I ~/.brew/opt/readline/include
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
+DEPS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.d)
+CCDEFS			:=	NAME=\"$(NAME)\"
 
 # Compiler options
 CC				:=	cc
 DEBUG_FLAG		:=	-g3 #-fsanitize=address
 CC_FLAGS		:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
+CC_DEPS_FLAGS	:=	-MP -MMD
+CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))
 
 MAKE			:=	make -C
 
@@ -92,7 +117,7 @@ _WHITE			:=	\x1b[37m
 # 		RULES			#
 #########################
 
-all: $(NAME)
+all: banner $(NAME)
 
 $(LIB_PATHS): force
 	@$(foreach lib, $(LIB_NAMES), \
@@ -101,15 +126,14 @@ $(LIB_PATHS): force
 
 $(NAME): $(LIB_PATHS) $(OBJS)
 	@$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
-	@echo "> $(NAME) Done!\n"
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS) $(HEADERS)/$(HEADERS_FILES)
+-include $(DEPS)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS)
 	@mkdir -p $(@D)
-	@echo "$(_GREEN)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) -I$(HEADERS) $(LIB_HEADERS) -c $< -o $@
+	@$(CC) $(CC_FLAGS) $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 
-# clean commands
-clean:
+clean: banner
 	@$(foreach lib, $(LIB_NAMES), \
 		@$(MAKE) $(lib) clean; \
 	)
@@ -120,9 +144,17 @@ fclean: clean
 	@$(foreach lib, $(LIB_NAMES), \
 		@$(MAKE) $(lib) fclean; \
 	)
-	@echo "remove $(NAME)"
 	@rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re force
+banner:
+	@echo ""
+	@echo "        _       _ __ _          _ _ "
+	@echo "  /\/\ (_)_ __ (_) _\ |__   ___| | |"
+	@echo " /    \| | '_ \| \ \| '_ \ / _ \ | |"
+	@echo "/ /\/\ \ | | | | |\ \ | | |  __/ | |"
+	@echo "\/    \/_|_| |_|_\__/_| |_|\___|_|_|"
+	@echo ""
+
+.PHONY: all clean fclean re force banner

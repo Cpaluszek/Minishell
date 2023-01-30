@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 13:28:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:29:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	handle_interactive_sigquit(int signum, siginfo_t *info, void *context)
 	(void) signum;
 	(void) info;
 	(void) context;
+	rl_on_new_line();
 	rl_redisplay();
 }
 

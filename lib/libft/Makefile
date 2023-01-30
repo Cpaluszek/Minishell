@@ -104,20 +104,16 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
-	@echo "> libft Done!\n"
 
 $(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)$(INC)
 	@mkdir -p $(@D)
-	@echo "$(_GREEN)compiling: $<$(_END)"
 	@$(CC) $(CC_FLAGS) -I$(INC_DIR) -c $< -o $@
 
 # clean commands
 clean:
-	@echo "remove $(OBJ_DIR)"
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo "remove $(NAME)"
 	@rm -rf $(NAME)
 
 re: fclean all
