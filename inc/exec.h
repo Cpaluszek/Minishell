@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 12:11:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:12:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "errors.h"
 
 # define COMMAND_NOT_FOUND 127
-# define HERE_DOC_TMP	".heredoc.tmp"
+# define HERE_DOC_TMP	"/tmp/.heredoc.tmp"
 
 int		exec_start(t_global *shell);
 int		exec_child(t_token *token, char **env);
