@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/30 09:46:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:24:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ static t_list	*make_env_list(t_global *shell, char **env)
 void	reset_commands(t_global	*shell)
 {
 	ft_free(shell->input);
+	ft_free_split(shell->path);
 	shell->input = NULL;
 	ft_free(shell->input_completed);
 	shell->input_completed = NULL;
