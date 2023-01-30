@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 18:01:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 09:30:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void		print_env_variable(char *str);
 static void		concat_or_add_var(t_global *shell, char *new);
 
 // Todo: unclosed quotes should not work
+// Todo: if env == NULL
 int	ft_export(t_token *token, t_global *shell)
 {
 	int		i;
