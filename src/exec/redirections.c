@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 11:42:10 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:40:10 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "minishell.h"
 #include "input.h"
 
-// Todo: test opens protection - unexisiting files or w/o permissions
 int	setup_all_redirections(t_global *shell, t_token *tok)
 {
 	while (tok)
@@ -31,6 +30,9 @@ int	setup_all_redirections(t_global *shell, t_token *tok)
 			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		else if (tok->token == OUTPUT_APPEND)
 			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
+		if ((tok->token == 0 || tok->token == 3 || \
+			tok->token == 2) && tok->fd_file == -1)
+			perror(tok->str);
 		tok = tok->next;
 	}
 	return (0);
