@@ -6,13 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 09:50:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 10:06:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include <readline/readline.h>
 
+// TOdo : ctrl-C status=1
 /**
  * @brief signal handler: ctrl-\ interactive mode
  * Does nothing.
@@ -41,7 +42,7 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context)
 {
 	(void) info;
 	(void) context;
-	// rl_replace_line("", 0);
+	rl_replace_line("", 0);
 	write(1, "\n", 1);
 	rl_on_new_line();
 	rl_redisplay();
