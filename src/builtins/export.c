@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 09:30:15 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:46:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 
 static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);
-static void		concat_or_add_var(t_global *shell, char *new);
+static void		concat_or_add_var(t_global *shell, char *new, int i);
 
 // Todo: unclosed quotes should not work
 // Todo: if env == NULL
+// Todo: export "a     "=test
 int	ft_export(t_token *token, t_global *shell)
 {
 	int		i;
@@ -43,24 +44,23 @@ int	ft_export(t_token *token, t_global *shell)
 			ret_value = EXIT_FAILURE;
 		}
 		else
-			concat_or_add_var(shell, token->cmd[i]);
+			concat_or_add_var(shell, token->cmd[i], 0);
 		i++;
 	}
 	update_env(shell);
 	return (ret_value);
 }
 
-static void	concat_or_add_var(t_global *shell, char *new)
+static void	concat_or_add_var(t_global *shell, char *new, int i)
 {
 	t_list	*search_result;
 	char	*content;
-	int		i;
+	char	*concat_pos;
 	int		j;
 
-	content = malloc(sizeof(char) * ft_strlen(new));
+	content = ft_calloc(ft_strlen(new) + 1, sizeof(char));
 	if (content == NULL)
 		error_exit_shell(shell, ERR_MALLOC);
-	i = 0;
 	j = 0;
 	while (new[i])
 	{
@@ -69,8 +69,9 @@ static void	concat_or_add_var(t_global *shell, char *new)
 		i++;
 	}
 	search_result = search_in_env(shell->env_list, content);
-	if (ft_strchr(new, '=') < ft_strnstr(new, CONCAT_VAR, ft_strlen(new)) || \
-		search_result == NULL)
+	concat_pos = ft_strnstr(new, CONCAT_VAR, ft_strlen(new));
+	if (search_result == NULL || concat_pos == NULL || \
+		ft_strchr(new, '=') < concat_pos)
 	{
 		add_env_variable(shell, content);
 		return (free(content));

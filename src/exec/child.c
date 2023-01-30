@@ -6,13 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 10:27:28 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:46:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "exec.h"
-
 
 // TODO : checker l'acces au fichier : si fd = -1 -> 
 // TODO : erreur pour closing file
@@ -33,4 +32,3 @@ int	exec_child(t_token *token, char **env)
 	perror(ERR_EXEC);
 	return (EXIT_FAILURE);
 }
-
