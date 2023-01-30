@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:31 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 10:26:14 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:37:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int	parse_builtins(t_token *token, int *is_builtin, t_global *shell)
 	{"/usr/bin/cd", &ft_cd},
 	{"/usr/bin/echo", &ft_echo},
 	{"/bin/echo", &ft_echo},
+	{"echo", &ft_echo},
 	{"env", &ft_env},
 	{"/usr/bin/env", &ft_env},
 	{"exit", &ft_exit},

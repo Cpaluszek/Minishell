@@ -6,13 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/30 13:24:15 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:37:53 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "token_list_functions.h"
 #include "parsing.h"
 #include "minishell.h"
+#include "env.h"
 
 static t_list	*make_env_list(t_global *shell, char **env);
 
@@ -24,7 +25,13 @@ void	set_environment(t_global *shell, char **env)
 	shell->token_list = NULL;
 	shell->block_list = NULL;
 	shell->input_completed = NULL;
-	shell->env = ft_tab_strdup(env);
+	if (env != NULL && env[0] == NULL)
+		shell->env = set_minimum_env();
+	else
+	{
+		shell->env = ft_tab_strdup(env);
+		// Todo: increment SHLVL
+	}
 	test_failed_malloc(shell, env);
 	shell->env_list = make_env_list(shell, env);
 }
