@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   central_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 23:21:16 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/30 14:52:04 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	parsing_finalization(t_global *shell)
 
 	token = shell->token_list;
 	token_list = token;
-	// token_expand_variables(shell);
+	expand_variables(shell);
 	token_merging(shell);
 	add_path_to_command_token(shell);
 	set_fd_for_each_command_token(shell);

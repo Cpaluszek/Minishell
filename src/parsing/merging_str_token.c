@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merging_str_token.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/29 23:22:43 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/30 12:03:45 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	token_merging(t_global *shell)
 	// dprintf(1,"\nBEFORE MERGE REDIRECTION");
 	// print_command_line(shell->token_list);
 	merge_redirection(shell);
+	//TODO : EXPAND HERE
 	// dprintf(1,"\nBEFORE MERGE COMMAND");
 	// print_command_line(shell->token_list);
 	merge_command(shell);
