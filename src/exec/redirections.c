@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 14:12:31 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 10:30:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,30 @@ void	close_all_redirections(t_token *tok)
 		if (tok->token == INPUT || tok->token == OUTPUT_APPEND || \
 			tok->token == OUTPUT_TRUNC)
 		{
-			if (close(tok->fd_file) == -1)
+			if (tok->fd_file != -1 && close(tok->fd_file) == -1)
 				perror(ERR_CLOSE);
 		}
 		else if (tok->token == HERE_DOC)
 		{
-			if (access(HERE_DOC_TMP, F_OK) == 0)
-				if (unlink(HERE_DOC_TMP) == -1)
-					perror(ERR_UNLINK);
+			if (access(HERE_DOC_TMP, F_OK) == 0 && unlink(HERE_DOC_TMP) == -1)
+				perror(ERR_UNLINK);
 		}
 		tok = tok->next;
 	}
 }
 
+// TOdo: need to close here_doc 
 void	close_redirections(t_token *tok)
 {
 	if (tok->token == INPUT || tok->token == OUTPUT_APPEND || \
 			tok->token == OUTPUT_TRUNC)
+	{
 		if (tok->fd_file > 2 && close(tok->fd_file) == -1)
 			perror(ERR_CLOSE);
+	}
+	else if (tok->token == HERE_DOC)
+	{
+		if (access(HERE_DOC_TMP, F_OK) == 0 && unlink(HERE_DOC_TMP) == -1)
+			perror(ERR_UNLINK);
+	}
 }
