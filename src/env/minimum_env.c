@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:13:43 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 16:11:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:12:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 static void	err_alloc(char **env);
 
-// Todo: what is _= in env ??
 char	**set_minimum_env(void)
 {
 	char	**env;
