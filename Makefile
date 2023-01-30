@@ -28,8 +28,10 @@ PARSING_FILES	:=	central_parsing.c \
 					token_list_functions.c \
 					block_list_functions.c \
 					token_parsing.c \
-					token_modifications.c \
+					set_fd_for_each_command_token.c \
 					merging_str_token.c \
+					merge_command.c \
+					split_command_token.c \
 					utils_parsing.c
 
 EXEC_DIR		:=	exec
@@ -125,13 +127,13 @@ $(LIB_PATHS): force
 	)
 
 $(NAME): $(LIB_PATHS) $(OBJS)
-	@$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
+	$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
 
 -include $(DEPS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS)
 	@mkdir -p $(@D)
-	@$(CC) $(CC_FLAGS) $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
+	$(CC) $(CC_FLAGS) $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 
 clean: banner
 	@$(foreach lib, $(LIB_NAMES), \

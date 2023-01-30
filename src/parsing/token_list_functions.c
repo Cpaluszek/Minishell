@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_list_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/23 14:50:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 23:19:40 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,14 @@ void	token_str_assignment(t_token *elem, enum e_token token)
 		elem->token_str = ">>";
 	else if (token == PIPE)
 		elem->token_str = "|";
+	else if (token == AND)
+		elem->token_str = "&&";
+	else if (token == OR)
+		elem->token_str = "||";
+	else if (token == OPEN_PAR)
+		elem->token_str = "(";
+	else if (token == CLOSE_PAR)
+		elem->token_str = ")";
 	else if (token == CMD)
 		elem->token_str = "CMD";
 	else if (token == DQUOTE)

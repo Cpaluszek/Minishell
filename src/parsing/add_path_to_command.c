@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:59:33 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/23 14:55:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/29 22:55:01 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 int	find_path(char **cmd, char **path);
 
 /*
-	Function that check the access of each command input argument.
-	If access isn't valid, it will call the finding path function.
-	If there is no valid path in the pathironment, it will display an error.
+	Check access and join the path to the first command argument.
 */
 void	add_path_to_command_token(t_global *shell)
 {

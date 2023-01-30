@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/28 09:44:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/30 09:46:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	set_environment(t_global *shell, char **env)
 	shell->block_list = NULL;
 	shell->input_completed = NULL;
 	shell->env = ft_tab_strdup(env);
-	if (!shell->env)
-		error_exit_shell(shell, ERR_MALLOC);
+	test_failed_malloc(shell, env);
 	shell->env_list = make_env_list(shell, env);
 }
 
@@ -52,8 +51,7 @@ char	**get_path(t_global *shell, char **env)
 	if (!path)
 		return (NULL);
 	cmd_path = ft_split(&path[5], ':');
-	if (!(cmd_path))
-		error_exit_shell(shell, ERR_MALLOC);
+	test_failed_malloc(shell, cmd_path);
 	return (cmd_path);
 }
 
