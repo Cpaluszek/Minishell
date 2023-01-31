@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merging_str_token.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/30 12:03:45 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:00:25 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	merge_redirection(t_global *shell)
 	token = shell->token_list;
 	while (token)
 	{
-		if (token->token <= 3)
+		if (token->token <= OUTPUT_APPEND)
 		{
 			token->str = ft_strdup(token->next->str);
 			test_failed_malloc(shell, token->str);

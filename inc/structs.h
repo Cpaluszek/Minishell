@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:42:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:56:58 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_global {
 	char			**env;
 	char			*input;
 	char			*input_completed;
+	int				nb_open_parenthesis;
 	t_block			*block_list;
 	t_token			*token_list;
 	int				last_exit_status;

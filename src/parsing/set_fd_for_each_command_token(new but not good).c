@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:30:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/31 13:33:33 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/31 11:47:35 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	set_fd_for_each_command_token(t_global *shell)
 		fd_input = NULL;
 		fd_output = NULL;
 		temp = token;
-		while (temp && temp->token != PIPE)
+		while (temp && (temp->token < PIPE || temp->token > CLOSE_PAR))
 		{
-			if (temp->token >= 0 && temp->token <= 1)
+			if (temp->token <= HERE_DOC)
 				fd_input = &temp->fd_file;
-			else if (temp->token >= 2 && temp->token <= 3)
+			else if (temp->token <= OUTPUT_APPEND)
 				fd_output = &temp->fd_file;
 			temp = temp->next;
 		}
@@ -57,7 +57,7 @@ int *fd_output)
 	}
 	if (token->token == CMD)
 		set_pipe_fd_to_command(token, fd_input, fd_output);
-	while (token && token->token != PIPE)
+	while (token && (token->token < PIPE || token->token > CLOSE_PAR))
 		token = token->next;
 	if (token)
 		token = token->next;
@@ -76,9 +76,9 @@ int *fd_output)
 		token->fd_output = fd_output;
 	// printf("Assignation 2- token id %s:\n IN : %p OUT : %p\n",token->token_str, token->fd_input, token->fd_output);
 	temp = token;
-	while (temp && temp->token != PIPE)
+	while (temp && (token->token < PIPE || token->token > CLOSE_PAR))
 		temp = temp->next;
-	if (temp)
+	if (temp && temp->token == PIPE)
 	{
 		token->make_a_pipe = true;
 		if (!fd_output)

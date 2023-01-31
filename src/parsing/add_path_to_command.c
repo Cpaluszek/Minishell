@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:59:33 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/29 22:55:01 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/31 13:48:55 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	add_path_to_command_token(t_global *shell)
 	token_list = shell->token_list;
 	while (token_list)
 	{
-		if (!(token_list->token != CMD || !token_list->cmd[0]) && \
-			(access(token_list->cmd[0], X_OK) != 0))
+		if ((token_list->token == CMD && access(token_list->cmd[0], X_OK) \
+			!= 0 && !ft_is_inside('/', token_list->cmd[0])))
 		{
 			if (find_path(token_list->cmd, shell->path) == -1)
 				error_exit_shell(shell, ERR_MALLOC);

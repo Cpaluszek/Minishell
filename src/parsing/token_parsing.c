@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 23:58:46 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/01/31 10:55:38 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_token	*create_sub_token_list(t_global *shell, char *str)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] && !ft_is_inside(str[i], "<>|&()\n"))
+		while (str[i] && (!ft_is_inside(str[i], "<>|()\n") && ft_strncmp(&str[i], "&&", 2)))
 			i++;
 		if (i != 0 && new_token(&token_list, str, i, CMD))
 			error_exit_shell(shell, ERR_MALLOC);
@@ -59,7 +59,7 @@ static t_token	*create_sub_token_list(t_global *shell, char *str)
 			break ;
 		token = which_token(&str[i]);
 		i++;
-		if (token == HERE_DOC || token == OUTPUT_APPEND)
+		if (token == HERE_DOC || token == OUTPUT_APPEND || token == AND || token == OR)
 			i++;
 		if (new_token(&token_list, NULL, 0, token))
 			error_exit_shell(shell, ERR_MALLOC);
