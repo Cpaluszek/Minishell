@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/31 23:38:12 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/01 16:55:49 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ t_block	*ft_lstnew_block(t_token *token_list, enum e_link link)
 	elem->sub_block = NULL;
 	elem->upper_block = NULL;
 	elem->token_list = token_list;
+	elem->fd_input = NULL;
+	elem->fd_output = NULL;
 	elem->logical_link = link;
 	return (elem);
 }

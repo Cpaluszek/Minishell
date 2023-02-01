@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/01 15:33:31 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/01 15:41:12 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 void	print_command_line(t_token *token_list);
 
 // Todo: parsing need to update g_status in case of parsing error ?
+//TODO : Ambiguous redirect
+//TODO env - i : le "_=./minishell" : difference entre absh et minishell
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;
