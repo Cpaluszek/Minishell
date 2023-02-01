@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   block_list_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/23 14:49:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/31 23:38:12 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_block	*ft_lstlast_block(t_block *lst)
 	return (lst);
 }
 
-t_block	*ft_lstnew_block(t_token *token_list)
+t_block	*ft_lstnew_block(t_token *token_list, enum e_link link)
 {
 	t_block	*elem;
 
@@ -79,6 +79,9 @@ t_block	*ft_lstnew_block(t_token *token_list)
 	if (!elem)
 		return (NULL);
 	elem->next = NULL;
+	elem->sub_block = NULL;
+	elem->upper_block = NULL;
 	elem->token_list = token_list;
+	elem->logical_link = link;
 	return (elem);
 }

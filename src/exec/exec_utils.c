@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 13:44:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:10:00 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "minishell.h"
 #include <unistd.h>
 
+//TODO : (2eme if) :Il ne faudrait pas plutot aller chercher le token CMD precedent pour fermer son pipe plutot que directement 
+//le token precedent 
 void	parent_close_pipes(t_token *token)
 {
 	if (token->make_a_pipe && close(token->pipe_fd[1]) == -1)

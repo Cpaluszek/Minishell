@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/31 14:56:58 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/01 13:49:13 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	g_status;
 enum e_link {
 	NO_LINK = 0,
 	OR_LINK = 1,
-	AND_LINK = 2
+	AND_LINK = 2,
+	PIPE_LINK = 3
 };
 
 enum e_token {
@@ -60,6 +61,8 @@ typedef struct s_block {
 	struct s_block		*upper_block;
 	struct s_token		*token_list;
 	int					block_level;
+	int					*fd_input;
+	int					*fd_output;
 }	t_block;
 
 typedef struct s_token {
@@ -70,8 +73,7 @@ typedef struct s_token {
 	char			**cmd;
 	char			*token_str;
 	bool			space_link;
-	bool			writtable;
-	bool			make_a_pipe;
+	int				make_a_pipe;
 	int				*fd_input;
 	int				*fd_output;
 	int				pipe_fd[2];

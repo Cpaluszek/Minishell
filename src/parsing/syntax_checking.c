@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/31 15:19:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/01 13:50:35 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ int	syntax_checking(t_global *shell)
 static int	syntax_exception(t_token *token1, t_token *token2)
 {
 	if (token1->token == PIPE && (token2->token <= OUTPUT_APPEND))
-	{
-		token2->writtable = false;
 		return (1);
-	}
 	if (token1->token == OUTPUT_TRUNC && token2->token == PIPE)
 	{
 		if (token1->space_link == true)
@@ -61,6 +58,9 @@ static int	syntax_exception(t_token *token1, t_token *token2)
 		return (1);
 	}
 	if (token1->token == PIPE && token2->token == OPEN_PAR)
+		return (1);
+	if (token1->token == CLOSE_PAR && (token2->token == PIPE || \
+		token2->token == AND || token2->token == OR))
 		return (1);
 	if ((token1->token == AND || token1->token == OR) && \
 		token2->token == OPEN_PAR)

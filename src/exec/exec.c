@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 13:46:05 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:52:08 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ static void	exec_cmd(t_token *token, t_global *shell);
 // Todo: test max amount of pipes
 // Todo: test `rm -rf *`
 // Todo: test permissions on redirections
+// EN REFLEXION :
+// ->  je pense qu'on a pas choisi la meilleure option pour l'enchainement des ouvertures des INPUT /OUT PUTS et l'exec des commandes
+// il vaudrait mieux ouvrir les directions pour une seule commande et les fermer apres l'execution de la commande
+// VOIR MEME on pourrait executer les ouvertures / fermetures uniquement dans le processus enfant pour ne pas avoir a le fermer dans le parent.
+//-> fausse bonne idee en fait je pense ><
 int	exec_start(t_global *shell)
 {
 	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
 		perror(ERR_TCSET);
 	set_execution_signals();
-	if (setup_all_redirections(shell, shell->token_list) != 1)
+	if (setup_all_redirections(shell, shell->token_list) != 1) 
 		exec_token_list(shell->token_list, shell);
 	close_all_redirections(shell->token_list);
 	return (0);
@@ -70,7 +75,7 @@ static void	exec_cmd(t_token *token, t_global *shell)
 	{
 		token->exit_status = COMMAND_NOT_FOUND;
 		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
-		close_token_pipes(token);
+		close_token_pipes(token); // RAJOUTER un check dans les closes : fermer le pipe_fd[0] uniaue
 		return ;
 	}
 	token->pid = fork();

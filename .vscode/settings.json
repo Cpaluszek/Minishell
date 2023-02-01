@@ -11,6 +11,7 @@
 		"readline.h": "c",
 		"history.h": "c",
 		"stdbool.h": "c",
-		"input.h": "c"
+		"input.h": "c",
+		"minishell.h": "c"
 	}
 }

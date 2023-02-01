@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_list_functions.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:27:20 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/17 14:31:50 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/01/31 23:38:45 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_token	*ft_lstnew_token(char	*content, enum e_token token);
 */
 
 t_block	*ft_lstlast_block(t_block *lst);
-t_block	*ft_lstnew_block(t_token *token_list);
+t_block	*ft_lstnew_block(t_token *token_list, enum e_link link);
 void	ft_lstadd_back_block(t_block **lst, t_block *new);
 void	ft_lstdelone_block(t_block *lst);
 void	ft_lstclear_block(t_block **lst);

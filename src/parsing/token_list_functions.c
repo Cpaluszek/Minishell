@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 23:19:40 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/01 13:49:38 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ t_token	*ft_lstnew_token(char	*content, enum e_token token)
 	elem->fd_input = NULL;
 	elem->fd_output = NULL;
 	elem->make_a_pipe = false;
-	elem->writtable = true;
 	token_str_assignment(elem, token);
 	return (elem);
 }

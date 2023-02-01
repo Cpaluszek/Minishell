@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/31 13:50:36 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/01 14:53:28 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv, char **env)
 			central_parsing(&shell, PROMPT_ERR);
 		token_list = shell.token_list;
 		print_command_line(token_list);
-		// exec_start(&shell);
+		exec_start(&shell);
 	}
 	return (EXIT_SUCCESS);
 }
@@ -66,14 +66,14 @@ void	print_command_line(t_token *token_list)
 				fd_in = token_list->fd_input;
 				fd_out = token_list->fd_output;
 			}
-			dprintf(1, "], pipe[%p,%p], fd_in(%p), fd_out(%p)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out);
-			// dprintf(1, "]} -> ");
+			// dprintf(1, "], pipe[%p,%p], fd_in(%p), fd_out(%p)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out);
+			dprintf(1, "]} -> ");
 		}
 		else
 		{
 			dprintf(1, "%s", token_list->str);
-			dprintf(1, "], (%p)} -> ", &token_list->fd_file);
-			// dprintf(1, "]} -> ");
+			// dprintf(1, "], (%p)} -> ", &token_list->fd_file);
+			dprintf(1, "]} -> ");
 		}
 		token_list = token_list->next;
 	}
