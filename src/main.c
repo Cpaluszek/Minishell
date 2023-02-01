@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/01 15:04:30 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/01 15:33:31 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	print_command_line(t_token *token_list)
 	printf("\n\n------------COMMAND LINE ------------\n\n");
 	while (token_list)
 	{
-		dprintf(1, "{[%s]:[", token_list->token_str);
+		dprintf(1, "{");
+		// dprintf(1, "[%p]", token_list);
+		dprintf(1, "[%s]:[", token_list->token_str);
 		if (token_list->token == CMD)
 		{
 			if (!token_list->cmd)

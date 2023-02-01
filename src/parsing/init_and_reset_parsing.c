@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/31 23:18:16 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/01 15:30:06 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	reset_commands(t_global	*shell)
 	ft_free(shell->input_completed);
 	shell->input_completed = NULL;
 	shell->command_line = BEGIN;
+	shell->nb_open_parenthesis = 0;
 	ft_lstclear_token(&shell->token_list);
 	// ft_lstclear_block(&shell->block_list);
 	shell->token_list = NULL;
