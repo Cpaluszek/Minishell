@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 18:50:02 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:31:13 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "token_list_functions.h"
 #include "parsing.h"
 
-static void	quote_parsing2(t_global *shell, char **str, char quote);
+static int	quote_parsing2(t_global *shell, char **str, char quote);
 static void	setting_space_links(t_token *token_list);
 static void	new_token(t_global *shell, char *str, int len, enum e_token type);
 
@@ -24,7 +24,7 @@ static void	new_token(t_global *shell, char *str, int len, enum e_token type);
  * @param str The user input.
  * @return A chain list of token of 3 types (quote, double quote and normal).
  */
-void	quote_parsing(t_global *shell, char *str)
+int	quote_parsing(t_global *shell, char *str)
 {
 	int		i;
 
@@ -41,27 +41,32 @@ void	quote_parsing(t_global *shell, char *str)
 			break ;
 		str = &str[i];
 		if (*str == '"' || *str == '\'')
-			quote_parsing2(shell, &str, *str);
+			if (quote_parsing2(shell, &str, *str) == UNCOMPLETED)
+				return (UNCOMPLETED);
 		i = 0;
 	}
 	setting_space_links(shell->token_list);
+	return (COMPLETED);
 }
 
-static void	quote_parsing2(t_global *shell, char **str, char quote)
+static int	quote_parsing2(t_global *shell, char **str, char quote)
 {
 	int		i;
 	char	*str_quote;
 
 	str_quote = *str;
 	i = 1;
-	while (str_quote[i] != quote) //CHECK : pas de protection ici pour le \0 mais les quotes sont toujours censees etre fermees;
+	while (str_quote[i] && str_quote[i] != quote)
 		i++;
+	if (!str_quote[i])
+		return (UNCOMPLETED);
 	i++;
 	if (quote == '"')
 		new_token(shell, &str_quote[1], i - 2, DQUOTE);
 	else if (quote == '\'')
 		new_token(shell, &str_quote[1], i - 2, QUOTE);
 	*str = &str_quote[i];
+	return (COMPLETED);
 }
 
 static void	setting_space_links(t_token *token_list)

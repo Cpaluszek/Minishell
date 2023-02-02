@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/02 12:35:59 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:36:02 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,13 @@ int	central_parsing(t_global *shell, char *prompt)
 static void	parsing_initialization(t_global *shell, char *prompt)
 {
 	get_input(shell, prompt);
-	quote_parsing(shell, shell->input);
-	token_parsing(shell);
+	if (quote_parsing(shell, shell->input_completed) == UNCOMPLETED)
+	{
+		ft_lstclear_token(&shell->token_list);
+		parsing_initialization(shell, ">");
+	}
+	else
+		token_parsing(shell);
 }
 
 static void	parsing_finalization(t_global *shell)
@@ -69,6 +74,7 @@ static int	uncompleted_line(t_global *shell)
 		|| last_token->token == OR)
 	{
 		shell->command_line = UNCOMPLETED;
+		ft_lstclear_token(&shell->token_list);
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/02 12:35:38 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:31:28 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	set_environment(t_global *shell, char **env);
 void	reset_commands(t_global	*shell);
 void	empty_token_assignation(t_token *token_list);
 int		syntax_checking(t_global *shell);
-void	quote_parsing(t_global *shell, char *str);
+int		quote_parsing(t_global *shell, char *str);
 void	token_parsing(t_global *shell);
 /*
 	---------------- PARSING FINALIZATION ---------------------
