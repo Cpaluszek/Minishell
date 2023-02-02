@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 14:51:52 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:35:38 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	token_merging(t_global *shell);
 void	split_command_token(t_global *shell);
 void	merge_command(t_global *shell);
 void	add_path_to_command_token(t_global *shell);
-void	set_fd_for_each_command_token(t_global *shell);
+void	set_fd_for_each_command_token(t_token *token_list);
 void	delete_pipe_token(t_global *shell);
 
 /*

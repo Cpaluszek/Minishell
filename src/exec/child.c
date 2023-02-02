@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/01 14:02:04 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:05:48 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "exec.h"
 
 // TODO : erreur pour closing file
-//TODO : envisager de cnager make a pipe en int pour avoir acces a une troisieme valeur : own_pipe?
+//TODO : utiliser une des fonctions stats pour chercker si c'est un directory
 int	exec_child(t_token *token, char **env)
 {
 	if ((token->fd_input && *token->fd_input == -1) || \
@@ -25,7 +25,7 @@ int	exec_child(t_token *token, char **env)
 	if (token->make_a_pipe)
 		if (token->make_a_pipe == true && close(token->pipe_fd[0]) == -1)
 			perror(ERR_CLOSE);
-	execve(token->cmd[0], token->cmd, env);
+	execve(token->cmd_path, token->cmd, env);
 	perror(ERR_EXEC);
 	return (EXIT_FAILURE);
 }

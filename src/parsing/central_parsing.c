@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/01 11:16:53 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 12:35:59 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ static void	parsing_finalization(t_global *shell)
 	// print_command_line(token);
 	expand_variables(shell);
 	token_merging(shell);
+	//block_syntax_checking(shell)
 	add_path_to_command_token(shell);
 	//block_parsing(shell);
-	set_fd_for_each_command_token(shell);
+	set_fd_for_each_command_token(shell->token_list);
 	delete_pipe_token(shell);
 	// ft_lstadd_back_block(&shell->block_list, ft_lstnew_block(shell->token_list));
 	add_history(shell->input_completed);

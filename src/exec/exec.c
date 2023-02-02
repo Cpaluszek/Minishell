@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/01 14:52:08 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:07:06 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ static void	exec_cmd(t_token *token, t_global *shell)
 		exec_cmd_error(shell, ERR_PIPE, token);
 	if (check_for_builtins(token, shell))
 		return ;
-	else if (access(token->cmd[0], X_OK) == -1)
+	else if (access(token->cmd_path, X_OK) == -1)
 	{
 		token->exit_status = COMMAND_NOT_FOUND;
 		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
-		close_token_pipes(token); // RAJOUTER un check dans les closes : fermer le pipe_fd[0] uniaue
+		close_token_pipes(token);
 		return ;
 	}
 	token->pid = fork();

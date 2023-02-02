@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:30:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/01 14:02:38 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 14:25:33 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static void	find_and_set_fd_to_command(t_token **token_id, int *fd_input, \
 int *fd_output);
 static int	check_command_in_previous_pipe(t_token *token);
 
-void	set_fd_for_each_command_token(t_global *shell)
+void	set_fd_for_each_command_token(t_token *token_list)
 {
 	t_token	*token;
 	t_token	*temp;
 	int		*fd_input;
 	int		*fd_output;
 
-	token = shell->token_list;
+	token = token_list;
 	while (token)
 	{
 		fd_input = NULL;

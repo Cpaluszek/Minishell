@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/01 13:49:38 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:08:59 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_lstdelone_token(t_token *lst)
 	if (!lst)
 		return ;
 	ft_free_split(lst->cmd);
+	ft_free(lst->cmd_path);
 	free(lst->str);
 	free(lst);
 }
@@ -82,6 +83,7 @@ t_token	*ft_lstnew_token(char	*content, enum e_token token)
 		return (NULL);
 	elem->str = content;
 	elem->cmd = NULL;
+	elem->cmd_path = NULL;
 	elem->exit_status = 0;
 	elem->space_link = true;
 	elem->token = token;

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/01 14:10:00 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:07:15 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	parent_close_pipes(t_token *token)
 
 // Note: will probably need one more parameter for the token list,
 // with different blocks
+//TODO : pas sur de pouvoir faire la comparaison dans le if ci dessus, stcmp plutot?
 void	exec_cmd_error(t_global *shell, char *err, t_token *token)
 {
 	perror(err);

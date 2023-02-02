@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/01 13:49:13 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:09:13 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ enum e_token {
 	AND = 5,
 	OR = 6,
 	OPEN_PAR = 7,
-	CLOSE_PAR = 8,
-	CMD = 9,
-	DQUOTE = 10,
-	QUOTE = 11,
-	DOLLAR = 12,
-	EMPTY = 13,
-	NEW_LINE = 14
+	CLOSE_PAR = 9,
+	CMD = 10,
+	DQUOTE = 11,
+	QUOTE = 12,
+	DOLLAR = 13,
+	EMPTY = 14,
+	NEW_LINE = 15
 };
 
 typedef struct s_block {
@@ -60,6 +60,7 @@ typedef struct s_block {
 	struct s_block		*sub_block;
 	struct s_block		*upper_block;
 	struct s_token		*token_list;
+	struct s_token		*redirection_token_list;
 	int					block_level;
 	int					*fd_input;
 	int					*fd_output;
@@ -71,6 +72,7 @@ typedef struct s_token {
 	struct s_token	*prev;
 	char			*str;
 	char			**cmd;
+	char			*cmd_path;
 	char			*token_str;
 	bool			space_link;
 	int				make_a_pipe;
