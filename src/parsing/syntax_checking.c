@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/03 18:38:57 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 18:41:12 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static	int	cmd_before_or_after_parenthesis(t_global *shell, \
 			token = token->next;
 	if (!token)
 		return (0);
-	if (token->token == CMD)
+	if (token->token >= CMD)
 		return (print_syntax_error(shell, token->origin_token_str));
 	return (0);
 }
