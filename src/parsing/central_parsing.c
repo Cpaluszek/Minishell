@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/03 18:52:20 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 19:17:50 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	central_parsing(t_global *shell, char *prompt)
 	if (parsing_initialization(shell, prompt))
 		return (1);
 	// print_command_line(shell->token_list);
-	if (!shell->token_list || syntax_checking(shell))
+	if (syntax_checking(shell))
 		return (1);
 	if (merge_and_finish_syntax_checking(shell))
 		return (1);
@@ -46,7 +46,7 @@ static int	parsing_initialization(t_global *shell, char *prompt)
 		shell->command_line = UNFINISHED_QUOTE;
 	else
 		shell->command_line = FINISHED_QUOTE;
-	// dprintf(1, "AFTER QUOTE PARSING\n");
+	// dprintf(1, "AFTER QUOTE PARSING %d\n", shell->command_line);
 	// print_command_line(shell->token_list);
 	expand_dollar_in_token_str(shell);
 	// dprintf(1, "AFTER DOLLAR EXPAND\n");
@@ -102,6 +102,7 @@ static int	uncompleted_line(t_global *shell)
 {
 	t_token	*last_token;
 
+	// dprintf(1, "UNCOMPLETED : %d\n", shell->command_line);
 	if (shell->command_line == UNFINISHED_QUOTE || \
 		shell->command_line == UNFINISHED_PARENTHESIS)
 	{
