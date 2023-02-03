@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:27:20 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/02 12:33:07 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 16:47:41 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ t_token	*ft_lstnew_token(char	*content, enum e_token token);
 */
 
 t_block	*ft_lstlast_block(t_block *lst);
-t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list, \
-enum e_link link);
+t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list);
 void	ft_lstadd_back_block(t_block **lst, t_block *new);
 void	ft_lstdelone_block(t_block *lst);
 void	ft_lstclear_block(t_block **lst);

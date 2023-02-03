@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/02 15:09:13 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 16:44:41 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@
 # include <termios.h>
 # include "libft.h"
 
+# define AMBIGUOUS_REDIRECT -2
 # define SYNTAX_ERROR -1
 # define BEGIN 0
 # define COMPLETED 1
 # define UNCOMPLETED 2
+# define FINISHED_QUOTE 3
+# define UNFINISHED_QUOTE 4
+# define FINISHED_PARENTHESIS 5
+# define UNFINISHED_PARENTHESIS 6
 
 # define STDIN	0
 # define STDOUT	1
@@ -57,6 +62,7 @@ typedef struct s_block {
 	enum e_link			logical_link;
 	int					exit_status;
 	struct s_block		*next;
+	struct s_block		*prev;
 	struct s_block		*sub_block;
 	struct s_block		*upper_block;
 	struct s_token		*token_list;
@@ -64,6 +70,7 @@ typedef struct s_block {
 	int					block_level;
 	int					*fd_input;
 	int					*fd_output;
+	int					*pipe_fd0;
 }	t_block;
 
 typedef struct s_token {
@@ -74,6 +81,8 @@ typedef struct s_token {
 	char			**cmd;
 	char			*cmd_path;
 	char			*token_str;
+	char			*origin_token_str;
+	char			*temp_expand;
 	bool			space_link;
 	int				make_a_pipe;
 	int				*fd_input;

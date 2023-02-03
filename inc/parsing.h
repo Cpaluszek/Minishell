@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/02 15:31:28 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 16:33:32 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,19 @@ int		central_parsing(t_global *shell, char *prompt);
 void	set_environment(t_global *shell, char **env);
 void	reset_commands(t_global	*shell);
 void	empty_token_assignation(t_token *token_list);
+void	remove_empty_token(t_global *shell, t_token *token);
 int		syntax_checking(t_global *shell);
+int		syntax_checking_end(t_global *shell);
 int		quote_parsing(t_global *shell, char *str);
 void	token_parsing(t_global *shell);
+void	expand_dollar_in_token_str(t_global *shell);
+int		token_merging(t_global *shell);
+
 /*
 	---------------- PARSING FINALIZATION ---------------------
 */
 
-void	expand_variables(t_global *shell);
-void	token_merging(t_global *shell);
-void	split_command_token(t_global *shell);
+void	split_dollar_token(t_global *shell);
 void	merge_command(t_global *shell);
 void	add_path_to_command_token(t_global *shell);
 void	set_fd_for_each_command_token(t_token *token_list);

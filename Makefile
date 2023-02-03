@@ -24,18 +24,21 @@ PARSING_FILES	:=	central_parsing.c \
 					quote_parsing.c \
 					block_parsing.c \
 					empty_token_assignation.c \
+					expand_dollar_in_token_str.c \
+					expand_functions.c \
 					add_path_to_command.c \
 					init_and_reset_parsing.c \
 					syntax_checking.c \
 					token_list_functions.c \
 					block_list_functions.c \
+					ft_lstnew_token.c \
 					token_parsing.c \
-					expand_variables.c \
 					set_fd_for_each_command_token.c \
 					merging_str_token.c \
 					merge_command.c \
 					split_command_token.c \
-					utils_parsing.c
+					utils_parsing.c \
+					utils_parsing2.c
 
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \

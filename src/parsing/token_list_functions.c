@@ -6,13 +6,11 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/02 15:08:59 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 14:20:46 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	token_str_assignment(t_token *elem, enum e_token token);
 
 void	ft_lstadd_back_token(t_token **lst, t_token *new)
 {
@@ -42,6 +40,7 @@ void	ft_lstdelone_token(t_token *lst)
 		return ;
 	ft_free_split(lst->cmd);
 	ft_free(lst->cmd_path);
+	// 	ft_free(lst->origin_token_str);
 	free(lst->str);
 	free(lst);
 }
@@ -60,6 +59,7 @@ void	ft_lstclear_token(t_token **lst)
 		p_del_lst = p_lst;
 		p_lst = p_lst->next;
 		p_del_lst->next = NULL;
+		p_del_lst->prev = NULL;
 		ft_lstdelone_token(p_del_lst);
 	}
 	*lst = NULL;
@@ -72,60 +72,4 @@ t_token	*ft_lstlast_token(t_token *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
-}
-
-t_token	*ft_lstnew_token(char	*content, enum e_token token)
-{
-	t_token	*elem;
-
-	elem = (t_token *)ft_calloc(1, sizeof(t_token));
-	if (!elem)
-		return (NULL);
-	elem->str = content;
-	elem->cmd = NULL;
-	elem->cmd_path = NULL;
-	elem->exit_status = 0;
-	elem->space_link = true;
-	elem->token = token;
-	elem->next = NULL;
-	elem->prev = NULL;
-	elem->fd_input = NULL;
-	elem->fd_output = NULL;
-	elem->make_a_pipe = false;
-	token_str_assignment(elem, token);
-	return (elem);
-}
-
-void	token_str_assignment(t_token *elem, enum e_token token)
-{
-	if (token == INPUT)
-		elem->token_str = "<";
-	else if (token == HERE_DOC)
-		elem->token_str = "<<";
-	else if (token == OUTPUT_TRUNC)
-		elem->token_str = ">";
-	else if (token == OUTPUT_APPEND)
-		elem->token_str = ">>";
-	else if (token == PIPE)
-		elem->token_str = "|";
-	else if (token == AND)
-		elem->token_str = "&&";
-	else if (token == OR)
-		elem->token_str = "||";
-	else if (token == OPEN_PAR)
-		elem->token_str = "(";
-	else if (token == CLOSE_PAR)
-		elem->token_str = ")";
-	else if (token == CMD)
-		elem->token_str = "CMD";
-	else if (token == DQUOTE)
-		elem->token_str = "\"";
-	else if (token == QUOTE)
-		elem->token_str = "'";
-	else if (token == DOLLAR)
-		elem->token_str = "$";
-	else if (token == NEW_LINE)
-		elem->token_str = "newline";
-	else
-		elem->token_str = NULL;
 }

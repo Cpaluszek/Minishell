@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/31 10:55:38 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 17:52:37 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static t_token		*create_sub_token_list(t_global *shell, char *str);
 static enum e_token	which_token(char *str);
 static int			new_token(t_token **token_list, char *str, \
 int len, enum e_token type);
+static void			setting_space_links_and_checking_parenthesis( \
+t_global *shell, t_token *token_list);
 
 void	token_parsing(t_global *shell)
 {
@@ -39,6 +41,7 @@ void	token_parsing(t_global *shell)
 		else
 			temp = temp->next;
 	}
+	setting_space_links_and_checking_parenthesis(shell, shell->token_list);
 }
 
 static t_token	*create_sub_token_list(t_global *shell, char *str)
@@ -51,7 +54,8 @@ static t_token	*create_sub_token_list(t_global *shell, char *str)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] && (!ft_is_inside(str[i], "<>|()\n") && ft_strncmp(&str[i], "&&", 2)))
+		while (str[i] && (!ft_is_inside(str[i], "<>|() ") && \
+			ft_strncmp(&str[i], "&&", 2)))
 			i++;
 		if (i != 0 && new_token(&token_list, str, i, CMD))
 			error_exit_shell(shell, ERR_MALLOC);
@@ -59,7 +63,7 @@ static t_token	*create_sub_token_list(t_global *shell, char *str)
 			break ;
 		token = which_token(&str[i]);
 		i++;
-		if (token == HERE_DOC || token == OUTPUT_APPEND || token == AND || token == OR)
+		if (token == HERE_DOC || token == 3 || token == AND || token == OR)
 			i++;
 		if (new_token(&token_list, NULL, 0, token))
 			error_exit_shell(shell, ERR_MALLOC);
@@ -93,7 +97,7 @@ static enum e_token	which_token(char *str)
 		return (OPEN_PAR);
 	else if (*str == ')')
 		return (CLOSE_PAR);
-	return (NEW_LINE);
+	return (EMPTY);
 }
 
 static int	new_token(t_token **token_list, char *str, \
@@ -120,4 +124,23 @@ int len, enum e_token type)
 	}
 	ft_lstadd_back_token(token_list, new);
 	return (0);
+}
+
+static void	setting_space_links_and_checking_parenthesis(t_global *shell, \
+	t_token *token)
+{
+	shell->nb_open_parenthesis = 0;
+	while (token)
+	{
+		if (token->token != EMPTY)
+			if (token->next && token->next->token != EMPTY)
+			token->space_link = false;
+		if (token->token == OPEN_PAR || token->token == CLOSE_PAR)
+			shell->nb_open_parenthesis += 8 - token->token;
+		token = token->next;
+	}
+	if (shell->nb_open_parenthesis > 0)
+		shell->command_line = UNFINISHED_PARENTHESIS;
+	else
+		shell->command_line = FINISHED_PARENTHESIS;
 }

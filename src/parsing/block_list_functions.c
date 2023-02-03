@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/02 12:32:47 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 17:15:01 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_lstadd_back_block(t_block **lst, t_block *new)
 		while (p_lst->next)
 			p_lst = p_lst->next;
 		p_lst->next = new;
+		new->prev = p_lst;
 	}
 }
 
@@ -59,6 +60,7 @@ void	ft_lstclear_block(t_block **lst)
 		p_del_lst = p_lst;
 		p_lst = p_lst->next;
 		p_del_lst->next = NULL;
+		p_del_lst->prev = NULL;
 		ft_lstdelone_block(p_del_lst);
 	}
 	*lst = NULL;
@@ -73,8 +75,7 @@ t_block	*ft_lstlast_block(t_block *lst)
 	return (lst);
 }
 
-t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list, \
-enum e_link link)
+t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list)
 {
 	t_block	*elem;
 
@@ -82,12 +83,18 @@ enum e_link link)
 	if (!elem)
 		return (NULL);
 	elem->next = NULL;
+	elem->prev = NULL;
 	elem->sub_block = NULL;
 	elem->upper_block = upper_block;
 	elem->token_list = token_list;
 	elem->redirection_token_list = NULL;
 	elem->fd_input = NULL;
 	elem->fd_output = NULL;
-	elem->logical_link = link;
+	if (upper_block)
+	{
+		elem->fd_input = upper_block->fd_input;
+		elem->fd_output = upper_block->fd_output;
+	}
+	elem->logical_link = NO_LINK;
 	return (elem);
 }

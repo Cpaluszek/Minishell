@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:30:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/02 14:25:33 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 18:09:33 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	set_fd_for_each_command_token(t_token *token_list)
 		temp = token;
 		while (temp && temp->token != PIPE)
 		{
-			if (temp->token >= 0 && temp->token <= 1)
+			if (temp->token <= HERE_DOC)
 				fd_input = &temp->fd_file;
-			else if (temp->token >= 2 && temp->token <= 3)
+			else if (temp->token <= OUTPUT_APPEND)
 				fd_output = &temp->fd_file;
 			temp = temp->next;
 		}
@@ -128,6 +128,8 @@ void	delete_pipe_token(t_global *shell)
 		if (token->token == PIPE)
 		{
 			next = token->next;
+			if (!token->prev)
+				shell->token_list = next;
 			remove_token(token);
 			token = next;
 		}

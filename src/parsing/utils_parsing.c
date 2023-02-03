@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/29 19:46:36 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 15:54:27 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "exec.h"
 #include "token_list_functions.h"
 
-// Todo: if line is only space -> don't add to history
+// TODO : CHECK LINE INPUT < 100000 on est pas des fous non plus
 void	get_input(t_global *shell, char *prompt)
 {
 	char	*input;
