@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/03 18:29:46 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 18:52:20 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	central_parsing(t_global *shell, char *prompt)
 	if (parsing_initialization(shell, prompt))
 		return (1);
 	// print_command_line(shell->token_list);
-	if (syntax_checking(shell))
+	if (!shell->token_list || syntax_checking(shell))
 		return (1);
 	if (merge_and_finish_syntax_checking(shell))
 		return (1);
