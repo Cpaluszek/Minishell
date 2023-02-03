@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/03 17:54:08 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 18:29:46 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static int	parsing_initialization(t_global *shell, char *prompt)
 	// print_command_line(shell->token_list);
 	return (0);
 }
+
 static int	merge_and_finish_syntax_checking(t_global *shell)
 {
 	if (token_merging(shell))
@@ -75,21 +76,23 @@ static int	merge_and_finish_syntax_checking(t_global *shell)
 static void	parsing_finalization(t_global *shell)
 {
 	t_token	*token;
-	t_token	*token_list;
 
-	token = shell->token_list;
-	token_list = token;
-	// if (!shell->token_list)
-	// 	return ;
-	//block_syntax_checking(shell)
+	// dprintf(1, "Parsing FINALIZATION\n");
+	// print_command_line(shell->token_list);
 	empty_token_assignation(shell->token_list);
 	remove_empty_token(shell, shell->token_list);
+	token = shell->token_list;
+	while (token)
+	{
+		if (token->token == QUOTE || token->token == DQUOTE)
+			token->token = CMD;
+		token = token->next;
+	}
 	add_path_to_command_token(shell);
 	//block_parsing(shell);
-	set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks)
+	set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
 	// set_block_fd_and_pipe_fd
 	delete_pipe_token(shell);
-	// ft_lstadd_back_block(&shell->block_list, ft_lstnew_block(shell->token_list));
 	add_history(shell->input_completed);
 	if (shell->token_list)
 		shell->command_line = COMPLETED;

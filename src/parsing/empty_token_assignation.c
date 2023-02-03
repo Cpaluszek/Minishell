@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:01:30 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/03 15:21:06 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 18:16:18 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	empty_token_assignation(t_token *token_list)
 	token = token_list;
 	while (token)
 	{
-		if (token->token >= CMD && not_only_spaces(token->str) == -1)
+		if ((token->token == CMD || token->token == DOLLAR) &&
+			 not_only_spaces(token->str) == -1)
 			token->token = EMPTY;
 		token = token->next;
 	}

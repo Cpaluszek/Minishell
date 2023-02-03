@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:41:07 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 23:28:01 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 18:24:20 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	merge_command(t_global *shell)
 		if (token->token > CLOSE_PAR)
 		{
 			first_cmd = token;
-			first_cmd->token = CMD;
-			first_cmd->token_str = "CMD";
 			while (token && (token->token < PIPE || token->token > CLOSE_PAR))
 			{
 				if (token->token > CLOSE_PAR)
