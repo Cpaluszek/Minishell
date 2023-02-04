@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/03 18:41:12 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/04 10:10:09 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	syntax_checking(t_global *shell)
 	t_token	*token;
 
 	token = shell->token_list;
+	if (!token)
+		return (0);
 	// print_command_line(token);
 	if (token->token == PIPE || token->token == AND || token->token == OR)
 		return (print_syntax_error(shell, token->token_str));
