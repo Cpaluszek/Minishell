@@ -21,6 +21,7 @@ static void		print_env_variable(char *str);
 static void		concat_or_add_var(t_global *shell, char *new, int i);
 static int		check_pipes_in_token_list(t_token *token);
 
+// Todo: export is broken
 // Todo: unclosed quotes should not work
 // Todo: export "a     "=test
 // Todo: export with pipes should not update env
