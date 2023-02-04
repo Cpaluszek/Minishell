@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:30:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 17:56:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 18:09:33 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ static void	set_pipe_fd_to_command(t_token *token, int *fd_input, \
 int *fd_output);
 static void	find_and_set_fd_to_command(t_token **token_id, int *fd_input, \
 int *fd_output);
+static int	check_command_in_previous_pipe(t_token *token);
 
-void	set_fd_for_each_command_token(t_global *shell)
+void	set_fd_for_each_command_token(t_token *token_list)
 {
 	t_token	*token;
 	t_token	*temp;
 	int		*fd_input;
 	int		*fd_output;
 
-	token = shell->token_list;
+	token = token_list;
 	while (token)
 	{
 		fd_input = NULL;
@@ -32,9 +33,9 @@ void	set_fd_for_each_command_token(t_global *shell)
 		temp = token;
 		while (temp && temp->token != PIPE)
 		{
-			if (temp->token >= 0 && temp->token <= 1)
+			if (temp->token <= HERE_DOC)
 				fd_input = &temp->fd_file;
-			else if (temp->token >= 2 && temp->token <= 3)
+			else if (temp->token <= OUTPUT_APPEND)
 				fd_output = &temp->fd_file;
 			temp = temp->next;
 		}
@@ -48,8 +49,15 @@ int *fd_output)
 	t_token	*token;
 
 	token = *token_id;
-	while (token && token->token != CMD)
+	while (token && token->token != CMD && token->token != PIPE)
 		token = token->next;
+	if (!token || token->token == PIPE)
+	{
+		if (token)
+			token = token->next;
+		*token_id = token;
+		return ;
+	}
 	if (token->token == CMD)
 		set_pipe_fd_to_command(token, fd_input, fd_output);
 	while (token && token->token != PIPE)
@@ -64,25 +72,49 @@ int *fd_output)
 {
 	t_token	*temp;
 
-	// printf("Assignation 1 - token id %s:\n IN : %p OUT : %p\n",token->token_str, fd_input, fd_output);
 	if (fd_input)
 		token->fd_input = fd_input;
 	if (fd_output)
 		token->fd_output = fd_output;
-	// printf("Assignation 2- token id %s:\n IN : %p OUT : %p\n",token->token_str, token->fd_input, token->fd_output);
-	temp = token;
-	while (temp && temp->token != PIPE)
-		temp = temp->next;
-	if (temp)
-	{
-		token->make_a_pipe = true;
-		if (!fd_output)
-			token->fd_output = &token->pipe_fd[1];
-	}
+	temp = token->next;
 	while (temp && temp->token != CMD)
+	{
+		if (temp->token == PIPE)
+			token->make_a_pipe = true;
 		temp = temp->next;
-	if (temp)
-		temp->fd_input = &token->pipe_fd[0];
+	}
+	if (!fd_output && token->make_a_pipe == true)
+		token->fd_output = &token->pipe_fd[1];
+	if (check_command_in_previous_pipe(token) == 0)
+		token->fd_input = &token->pipe_fd[0];
+	if (!temp)
+	{
+		return ;
+	}
+	temp->fd_input = &token->pipe_fd[0];
+}
+
+static int	check_command_in_previous_pipe(t_token *token)
+{
+	t_token	*first;
+
+	first = token;
+	while (first && first->token != PIPE)
+		first = first->next;
+	if (!first)
+		token->make_a_pipe = 2;
+	while (token && token->token != PIPE)
+		token = token->prev;
+	if (!token)
+		return (1);
+	token = token->prev;
+	while (token && token->token != PIPE)
+	{
+		if (token->token == CMD)
+			return (1);
+		token = token->prev;
+	}
+	return (0);
 }
 
 void	delete_pipe_token(t_global *shell)
@@ -96,6 +128,8 @@ void	delete_pipe_token(t_global *shell)
 		if (token->token == PIPE)
 		{
 			next = token->next;
+			if (!token->prev)
+				shell->token_list = next;
 			remove_token(token);
 			token = next;
 		}

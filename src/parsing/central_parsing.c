@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   central_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/30 14:52:04 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/04 10:04:49 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,107 @@
 #include "token_list_functions.h"
 #include <stdio.h>
 
-static void	parsing_initialization(t_global *shell, char *prompt);
+static int	parsing_initialization(t_global *shell, char *prompt);
+static int	merge_and_finish_syntax_checking(t_global *shell);
 static void	parsing_finalization(t_global *shell);
 static int	uncompleted_line(t_global *shell);
 
 int	central_parsing(t_global *shell, char *prompt)
 {
-	parsing_initialization(shell, prompt);
-	if (syntax_checking(shell))
+	if (parsing_initialization(shell, prompt))
+		return (1);
+	// print_command_line(shell->token_list);
+	if (shell->token_list && syntax_checking(shell))
+		return (1);
+	if (merge_and_finish_syntax_checking(shell))
 		return (1);
 	if (uncompleted_line(shell))
 		central_parsing(shell, ">");
 	if (shell->command_line == COMPLETED)
 		return (0);
-	if (shell->command_line == SYNTAX_ERROR)
+	if (shell->command_line == SYNTAX_ERROR || \
+		shell->command_line == AMBIGUOUS_REDIRECT)
 		return (1);
 	parsing_finalization(shell);
 	return (0);
 }
 
-static void	parsing_initialization(t_global *shell, char *prompt)
+static int	parsing_initialization(t_global *shell, char *prompt)
 {
 	get_input(shell, prompt);
-	quote_parsing(shell, shell->input);
+	if (quote_parsing(shell, shell->input_completed) == UNCOMPLETED)
+		shell->command_line = UNFINISHED_QUOTE;
+	else
+		shell->command_line = FINISHED_QUOTE;
+	// dprintf(1, "AFTER QUOTE PARSING %d\n", shell->command_line);
+	// print_command_line(shell->token_list);
+	expand_dollar_in_token_str(shell);
+	// dprintf(1, "AFTER DOLLAR EXPAND\n");
+	// print_command_line(shell->token_list);
 	token_parsing(shell);
+	remove_empty_token(shell, shell->token_list);
+	// dprintf(1, "AFTER TOKEN PARSING AND ENPTYT TOKEN REMOVING\n");
+	// print_command_line(shell->token_list);
+	return (0);
+}
+
+static int	merge_and_finish_syntax_checking(t_global *shell)
+{
+	if (token_merging(shell))
+	{
+		shell->command_line = AMBIGUOUS_REDIRECT;
+		add_history(shell->input_completed);
+		return (1);
+	}
+	// dprintf(1, "AFTER TOKEN MERGING\n");
+	// print_command_line(shell->token_list);
+	if (syntax_checking_end(shell))
+		return (1);
+	return (0);
 }
 
 static void	parsing_finalization(t_global *shell)
 {
 	t_token	*token;
-	t_token	*token_list;
 
+	// dprintf(1, "Parsing FINALIZATION\n");
+	// print_command_line(shell->token_list);
+	empty_token_assignation(shell->token_list);
+	remove_empty_token(shell, shell->token_list);
 	token = shell->token_list;
-	token_list = token;
-	expand_variables(shell);
-	token_merging(shell);
+	while (token)
+	{
+		if (token->token == QUOTE || token->token == DQUOTE)
+			token->token = CMD;
+		token = token->next;
+	}
 	add_path_to_command_token(shell);
-	set_fd_for_each_command_token(shell);
+	//block_parsing(shell);
+	set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
+	// set_block_fd_and_pipe_fd
 	delete_pipe_token(shell);
-	ft_lstadd_back_block(&shell->block_list, ft_lstnew_block(shell->token_list));
 	add_history(shell->input_completed);
-	shell->command_line = COMPLETED;
+	if (shell->token_list)
+		shell->command_line = COMPLETED;
 }
 
 static int	uncompleted_line(t_global *shell)
 {
 	t_token	*last_token;
 
+	// dprintf(1, "UNCOMPLETED : %d\n", shell->command_line);
+	if (shell->command_line == UNFINISHED_QUOTE || \
+		shell->command_line == UNFINISHED_PARENTHESIS)
+	{
+		ft_lstclear_token(&shell->token_list);
+		return (1);
+	}
 	last_token = ft_lstlast_token(shell->token_list);
 	if (last_token->token == PIPE || last_token->token == AND \
 		|| last_token->token == OR)
 	{
 		shell->command_line = UNCOMPLETED;
+		ft_lstclear_token(&shell->token_list);
 		return (1);
 	}
 	return (0);

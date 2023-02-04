@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:59:33 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/01/29 22:55:01 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/02 15:05:32 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,58 @@
 #include "parsing.h"
 #include <unistd.h>
 
-int	find_path(char **cmd, char **path);
+int	find_path(t_global *shell, t_token *token, char *cmd);
 
 /*
 	Check access and join the path to the first command argument.
 */
 void	add_path_to_command_token(t_global *shell)
 {
-	t_token	*token_list;
+	t_token	*token;
 
 	if (!shell->path)
 		return ;
-	token_list = shell->token_list;
-	while (token_list)
+	token = shell->token_list;
+	while (token)
 	{
-		if (!(token_list->token != CMD || !token_list->cmd[0]) && \
-			(access(token_list->cmd[0], X_OK) != 0))
+		if ((token->token == CMD && access(token->cmd[0], X_OK) != 0 && \
+			!ft_is_inside('/', token->cmd[0]) && token->cmd[0][0]))
+			find_path(shell, token, token->cmd[0]);
+		else if (token->token == CMD)
 		{
-			if (find_path(token_list->cmd, shell->path) == -1)
-				error_exit_shell(shell, ERR_MALLOC);
+			token->cmd_path = ft_strdup(token->cmd[0]);
+			test_failed_malloc(shell, token->cmd_path);
 		}
-		token_list = token_list->next;
+		token = token->next;
 	}
 }
 
 /* 
 	Function that will try each possible path for command input argument.
 */
-int	find_path(char **cmd, char **path)
+int	find_path(t_global *shell, t_token *token, char *cmd)
 {
 	int		i;
 	char	*test_path;
+	char	**path;
 
+	path = shell->path;
 	i = 0;
 	while (path[i])
 	{
 		test_path = ft_strjoin(path[i], "/");
-		if (!test_path)
-			return (-1);
-		test_path = ft_strjoin_and_free(test_path, *cmd);
-		if (!test_path)
-			return (-1);
+		test_failed_malloc(shell, test_path);
+		test_path = ft_strjoin_and_free(test_path, cmd);
+		test_failed_malloc(shell, test_path);
 		if (access(test_path, X_OK) == 0)
 		{
-			free(*cmd);
-			*cmd = test_path;
+			token->cmd_path = test_path;
 			return (1);
 		}
 		free(test_path);
 		i++;
 	}
+	token->cmd_path = ft_strdup(cmd);
+	test_failed_malloc(shell, token->cmd_path);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 13:28:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/03 18:30:13 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	print_command_line(t_token *token_list);
 // NOTE: test
 // TODO: test
 // Todo: parsing need to update g_status in case of parsing error ?
+//TODO : Ambiguous redirect
+//TODO env - i : le "_=./minishell" : difference entre absh et minishell
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;
@@ -40,8 +42,10 @@ int	main(int argc, char **argv, char **env)
 		else
 			central_parsing(&shell, PROMPT_ERR);
 		token_list = shell.token_list;
-		print_command_line(token_list);
-		exec_start(&shell);
+		// if (token_list)
+		// 	print_command_line(token_list);
+		if (shell.command_line == COMPLETED)
+			exec_start(&shell);
 	}
 	return (EXIT_SUCCESS);
 }
@@ -55,7 +59,9 @@ void	print_command_line(t_token *token_list)
 	printf("\n\n------------COMMAND LINE ------------\n\n");
 	while (token_list)
 	{
-		dprintf(1, "{[%s]:[", token_list->token_str);
+		dprintf(1, "{");
+		// dprintf(1, "[%p]", token_list);
+		dprintf(1, "[%s]:[", token_list->token_str);
 		if (token_list->token == CMD)
 		{
 			if (!token_list->cmd)

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/01/29 18:50:02 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/03 13:49:20 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 #include "token_list_functions.h"
 #include "parsing.h"
 
-static void	quote_parsing2(t_global *shell, char **str, char quote);
-static void	setting_space_links(t_token *token_list);
+static int	quote_parsing2(t_global *shell, char **str, char quote);
+static int	is_a_dollar_token(char *str);
 static void	new_token(t_global *shell, char *str, int len, enum e_token type);
+static void	dollar_parsing(t_global *shell, char **str);
 
 /**
  * @brief Parse Input with simple and double quote.
@@ -24,64 +25,68 @@ static void	new_token(t_global *shell, char *str, int len, enum e_token type);
  * @param str The user input.
  * @return A chain list of token of 3 types (quote, double quote and normal).
  */
-void	quote_parsing(t_global *shell, char *str)
+int	quote_parsing(t_global *shell, char *str)
 {
 	int		i;
 
 	i = 0;
-	while (str[i] == ' ')
-		i++;
 	while (str[i])
 	{
-		while (str[i] && str[i] != '"' && str[i] != '\'')
+		while (str[i] && str[i] != '"' && str[i] != '\'' && \
+			is_a_dollar_token(&str[i]) == false)
 			i++;
 		if (i != 0)
 			new_token(shell, str, i, EMPTY);
 		if (!str[i])
 			break ;
 		str = &str[i];
-		if (*str == '"' || *str == '\'')
-			quote_parsing2(shell, &str, *str);
+		if (*str == '$')
+			dollar_parsing(shell, &str);
+		else if (*str == '"' || *str == '\'')
+			if (quote_parsing2(shell, &str, *str) == UNCOMPLETED)
+				return (UNCOMPLETED);
 		i = 0;
 	}
-	setting_space_links(shell->token_list);
+	return (COMPLETED);
 }
 
-static void	quote_parsing2(t_global *shell, char **str, char quote)
+static int	quote_parsing2(t_global *shell, char **str, char quote)
 {
 	int		i;
 	char	*str_quote;
 
 	str_quote = *str;
 	i = 1;
-	while (str_quote[i] != quote) //CHECK : pas de protection ici pour le \0 mais les quotes sont toujours censees etre fermees;
+	while (str_quote[i] && str_quote[i] != quote)
 		i++;
+	if (!str_quote[i])
+		return (UNCOMPLETED);
 	i++;
 	if (quote == '"')
 		new_token(shell, &str_quote[1], i - 2, DQUOTE);
 	else if (quote == '\'')
 		new_token(shell, &str_quote[1], i - 2, QUOTE);
 	*str = &str_quote[i];
+	return (COMPLETED);
 }
 
-static void	setting_space_links(t_token *token_list)
+static void	dollar_parsing(t_global *shell, char **str)
 {
-	int		len;
+	char	*str_dollar;
+	int		i;
 
-	while (token_list)
+	str_dollar = *str;
+	i = 1;
+	if (str_dollar[i] == '?')
 	{
-		if (token_list->token == EMPTY)
-		{
-			len = ft_strlen(token_list->str);
-			if (token_list->prev && token_list->str[0] != ' ')
-				token_list->prev->space_link = false;
-			if (token_list->str[len - 1] != ' ')
-				token_list->space_link = false;
-		}
-		else if (token_list->next && token_list->next->token != EMPTY)
-			token_list->space_link = false;
-		token_list = token_list->next;
+		new_token(shell, str_dollar, 2, DOLLAR);
+		*str = &str_dollar[2];
+		return ;
 	}
+	while (ft_isalnum(str_dollar[i]))
+		i++;
+	new_token(shell, str_dollar, i, DOLLAR);
+	*str = &str_dollar[i];
 }
 
 static void	new_token(t_global *shell, char *str, int len, enum e_token type)
@@ -98,4 +103,21 @@ static void	new_token(t_global *shell, char *str, int len, enum e_token type)
 	new = ft_lstnew_token(instruction, type);
 	test_failed_malloc(shell, new);
 	ft_lstadd_back_token(&shell->token_list, new);
+}
+
+static int	is_a_dollar_token(char *str)
+{
+	char	c;
+
+	c = *str;
+	if (c != '$')
+		return (0);
+	c = str[1];
+	if (c == '\0')
+		return (0);
+	if (c == '?')
+		return (1);
+	if (ft_isalnum(c))
+		return (1);
+	return (0);
 }
