@@ -17,6 +17,8 @@
 
 void	print_command_line(t_token *token_list);
 
+// NOTE: test
+// TODO: test
 // Todo: parsing need to update g_status in case of parsing error ?
 int	main(int argc, char **argv, char **env)
 {
@@ -27,7 +29,7 @@ int	main(int argc, char **argv, char **env)
 	(void) argv;
 	g_status = EXIT_SUCCESS;
 	init_shell_attr(&shell);
-	set_environment(&shell, env); // recreer un environnement minimal si env -i ./minishell
+	set_environment(&shell, env);
 	while (1)
 	{
 		reset_commands(&shell);
