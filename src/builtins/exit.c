@@ -20,9 +20,6 @@
 
 static int	ft_isnum(char *str);
 
-// exit N
-// if N is not given - exit status code is the last executed command ($?)
-// Note: exit "1 2 3" - should be non numeric
 // Note: what happens when exit command is called with 
 // multiples commands in line ?
 int	ft_exit(t_token *token, t_global *shell)

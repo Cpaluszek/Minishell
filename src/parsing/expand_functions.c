@@ -87,11 +87,9 @@ static void	expand_exit_status(t_global *shell, t_token *token, \
 
 static void	no_expand(t_global *shell, t_token *token, char *str, int len)
 {
-	int		i;
 	char	*already_expanded;
 	char	*missing_expanded;
 
-	i = 0;
 	already_expanded = ft_substr(str, 0, len);
 	test_failed_malloc(shell, already_expanded);
 	token->temp_expand = ft_strjoin_and_free(token->temp_expand, \

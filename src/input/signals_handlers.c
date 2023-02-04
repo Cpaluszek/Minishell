@@ -42,14 +42,14 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context)
 {
 	(void) info;
 	(void) context;
-	// rl_replace_line("", 0);
+	rl_replace_line("", 0);
 	write(1, "\n", 1);
 	rl_on_new_line();
 	rl_redisplay();
 	g_status = 128 + signum;
 }
 
-// Todo: fix
+// Todo: if cmd is interrupted don't reset g_status
 /**
  * @brief signal handler: ctrl-C execution mode
  * Kill the running process and give the prompt back

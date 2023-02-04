@@ -26,7 +26,6 @@ static void	update_var(t_global *shell, char *new, char *var);
 static char	*cd_env_var(t_global *shell, char *var_name);
 static int	check_pipes_in_token_list(t_token *token);
 
-// Todo: problem with OLDPWD sometimes not present in env
 int	ft_cd(t_token *token, t_global *shell)
 {
 	char	*target;

@@ -16,16 +16,14 @@
 #include "input.h"
 
 void	print_command_line(t_token *token_list);
+int		g_status;
 
-// NOTE: test
-// TODO: test
 // Todo: parsing need to update g_status in case of parsing error ?
-//TODO : Ambiguous redirect
-//TODO env - i : le "_=./minishell" : difference entre absh et minishell
+// TODO: env - i : le "_=./minishell" : difference entre absh et minishell
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;
-	t_token			*token_list;
+	// t_token			*token_list;
 
 	(void) argc;
 	(void) argv;
@@ -41,7 +39,7 @@ int	main(int argc, char **argv, char **env)
 			central_parsing(&shell, PROMPT);
 		else
 			central_parsing(&shell, PROMPT_ERR);
-		token_list = shell.token_list;
+		// token_list = shell.token_list;
 		// if (token_list)
 		// 	print_command_line(token_list);
 		if (shell.command_line == COMPLETED)
@@ -53,8 +51,8 @@ int	main(int argc, char **argv, char **env)
 void	print_command_line(t_token *token_list)
 {
 	int	i;
-	int	*fd_in;
-	int	*fd_out;
+	// int	*fd_in;
+	// int	*fd_out;
 
 	printf("\n\n------------COMMAND LINE ------------\n\n");
 	while (token_list)
@@ -71,8 +69,8 @@ void	print_command_line(t_token *token_list)
 				i = 0;
 				while (token_list->cmd[i])
 					dprintf(1, "%s ", token_list->cmd[i++]);
-				fd_in = token_list->fd_input;
-				fd_out = token_list->fd_output;
+				// fd_in = token_list->fd_input;
+				// fd_out = token_list->fd_output;
 			}
 			// dprintf(1, "], pipe[%p,%p], fd_in(%p), fd_out(%p)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out);
 			dprintf(1, "]} -> ");

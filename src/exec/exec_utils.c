@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "errors.h"
 #include "exec.h"
 #include "minishell.h"
 #include <unistd.h>
@@ -31,7 +32,7 @@ void	parent_close_pipes(t_token *token)
 void	exec_cmd_error(t_global *shell, char *err, t_token *token)
 {
 	perror(err);
-	if (err != ERR_PIPE)
+	if (ft_strcmp(err, ERR_PIPE) != 0)
 		close_token_pipes(token);
 	close_all_redirections(shell->token_list);
 	exit_shell(shell, EXIT_FAILURE);

@@ -31,7 +31,7 @@
 # define STDOUT	1
 # define STDERR	2
 
-int	g_status;
+extern int	g_status;
 
 enum e_link {
 	NO_LINK = 0,

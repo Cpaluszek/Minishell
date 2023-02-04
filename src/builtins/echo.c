@@ -19,8 +19,6 @@
 
 static int	echo_option(t_token *t, int *arg_i);
 
-// Todo: crash with e"cho" test
-// Note: parsing problem with echo "-n test"
 int	ft_echo(t_token *token, t_global *shell)
 {
 	int	arg_index;
