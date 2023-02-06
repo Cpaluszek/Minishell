@@ -87,7 +87,15 @@ void	close_token_pipes(t_token *token)
 	if (token->make_a_pipe)
 		if (close(token->pipe_fd[0]) == -1 || close(token->pipe_fd[1]) == -1)
 			perror(ERR_CLOSE);
-	if (token->prev && token->prev->make_a_pipe)
-		if (close(token->prev->pipe_fd[0] == -1))
-			perror(ERR_CLOSE);
+	token = token->prev;
+	while (token)
+	{
+		if (token->token == CMD && token->make_a_pipe)
+		{
+			if (token->pipe_fd[0] > 2 && close(token->pipe_fd[0]) == -1)
+				perror(ERR_CLOSE);
+			break ;
+		}
+		token = token->prev;
+	}
 }
