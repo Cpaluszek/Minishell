@@ -41,7 +41,7 @@ int	ft_cd(t_token *token, t_global *shell)
 		target = token->cmd[1];
 	if (target == NULL)
 		return (EXIT_FAILURE);
-	if (check_pipes_in_token_list(token))
+	if (any_pipe_in_token_list(token))
 	{
 		dir_access = opendir(target);
 		if (dir_access == NULL)

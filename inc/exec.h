@@ -54,7 +54,7 @@ int		ft_unset(t_token *token, t_global *shell);
 int		ft_env(t_token *token, t_global *shell);
 int		ft_exit(t_token *token, t_global *shell);
 
-int		check_pipes_in_token_list(t_token *token);
+int		any_pipe_in_token_list(t_token *token);
 
 /*
 	--------- Utils functions -----------

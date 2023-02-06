@@ -45,7 +45,7 @@ int	ft_export(t_token *token, t_global *shell)
 				token->cmd[i]);
 			ret_value = EXIT_FAILURE;
 		}
-		else if (!check_pipes_in_token_list(token))
+		else if (!any_pipe_in_token_list(token))
 			concat_or_add_var(shell, token->cmd[i], 0);
 		else
 			dprintf(STDERR, "pipe in token list\n");

@@ -31,7 +31,7 @@ void	*copy_content_str(void *entry)
 	return (ft_strdup(str));
 }
 
-int	check_pipes_in_token_list(t_token *token)
+int	any_pipe_in_token_list(t_token *token)
 {
 	t_token	*origin;
 
