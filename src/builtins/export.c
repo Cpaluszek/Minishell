@@ -20,7 +20,6 @@ static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);
 static void		concat_or_add_var(t_global *shell, char *new, int i);
 
-// Todo: export is broken
 // Todo: unclosed quotes should not work
 // Todo: export "a     "=test
 // Todo: export with pipes should not update env
@@ -36,7 +35,6 @@ int	ft_export(t_token *token, t_global *shell)
 		return (ret_value);
 	}
 	i = 1;
-	dprintf(STDERR, "export start - %s - pipe:%d\n", token->cmd[1], token->make_a_pipe);
 	while (token->cmd[i])
 	{
 		if (!is_valid_identifier(token->cmd[i]))
@@ -47,8 +45,6 @@ int	ft_export(t_token *token, t_global *shell)
 		}
 		else if (!any_pipe_in_token_list(token))
 			concat_or_add_var(shell, token->cmd[i], 0);
-		else
-			dprintf(STDERR, "pipe in token list\n");
 		i++;
 	}
 	update_env(shell);
@@ -73,7 +69,6 @@ static void	concat_or_add_var(t_global *shell, char *new, int i)
 		i++;
 	}
 	search_result = search_in_env(shell->env_list, content);
-	dprintf(STDERR, "%s - %p\n", content, search_result);
 	concat_pos = ft_strnstr(new, CONCAT_VAR, ft_strlen(new));
 	if (search_result == NULL || concat_pos == NULL || \
 		ft_strchr(new, '=') < concat_pos)

@@ -19,21 +19,24 @@
 #define CODE_NON_NUM 2
 
 static int	ft_isnum(char *str);
+static void	check_pipe_exit(t_global *shell, t_token *token, int exit_value);
 
-// Note: what happens when exit command is called with 
-// multiples commands in line ?
 int	ft_exit(t_token *token, t_global *shell)
 {
 	int	exit_value;
 
-	ft_putstr_fd(EXIT_MSG, STDOUT);
+	if (!any_pipe_in_token_list(token))
+		ft_putstr_fd(EXIT_MSG, STDOUT);
 	if (args_number(token->cmd) < 2)
-		exit(g_status);
+	{
+		check_pipe_exit(shell, token, g_status);
+		return (0);
+	}
 	else if (!ft_isnum(token->cmd[1]))
 	{
 		ft_printf_fd(STDERR, \
 			"exit: %s: numeric argument required\n", token->cmd[1]);
-		exit_shell(shell, CODE_NON_NUM);
+		check_pipe_exit(shell, token, CODE_NON_NUM);
 	}
 	else if (args_number(token->cmd) > 2)
 	{
@@ -41,8 +44,14 @@ int	ft_exit(t_token *token, t_global *shell)
 		return (1);
 	}
 	exit_value = ft_atoi(token->cmd[1]);
-	exit_shell(shell, exit_value);
+	check_pipe_exit(shell, token, exit_value);
 	return (0);
+}
+
+static void	check_pipe_exit(t_global *shell, t_token *token, int exit_value)
+{
+	if (!any_pipe_in_token_list(token))
+		exit_shell(shell, exit_value);
 }
 
 static int	ft_isnum(char *str)
