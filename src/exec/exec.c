@@ -31,7 +31,7 @@ int	exec_start(t_global *shell)
 	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
 		perror(ERR_TCSET);
 	set_execution_signals();
-	if (setup_all_redirections(shell, shell->token_list) != 1) 
+	if (setup_all_redirections(shell, shell->token_list) != 1)
 		exec_token_list(shell->token_list, shell);
 	close_all_redirections(shell->token_list);
 	return (0);
@@ -73,8 +73,12 @@ static void	exec_cmd(t_token *token, t_global *shell)
 		return ;
 	else if (access(token->cmd_path, X_OK) == -1)
 	{
+		if (ft_strchr(token->cmd_path, '/') != NULL)
+			ft_printf_fd(STDERR, "%s: No such file or directory\n", \
+				token->cmd[0]);
+		else
+			ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
 		token->exit_status = COMMAND_NOT_FOUND;
-		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
 		close_token_pipes(token);
 		return ;
 	}
