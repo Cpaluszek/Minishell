@@ -15,15 +15,21 @@
 #include "minishell.h"
 #include <unistd.h>
 
-//TODO : (2eme if) :Il ne faudrait pas plutot aller chercher le token CMD precedent pour fermer son pipe plutot que directement 
-//le token precedent 
 void	parent_close_pipes(t_token *token)
 {
 	if (token->make_a_pipe && close(token->pipe_fd[1]) == -1)
 		perror(ERR_CLOSE);
-	if (token->prev && token->prev->make_a_pipe)
-		if (close(token->prev->pipe_fd[0]) == -1)
-			perror(ERR_CLOSE);
+	token = token->prev;
+	while (token)
+	{
+		if (token->token == CMD && token->make_a_pipe)
+		{
+			if (token->pipe_fd[0] > 2 && close(token->pipe_fd[0]) == -1)
+				perror(ERR_CLOSE);
+			break ;
+		}
+		token = token->prev;
+	}
 }
 
 // Note: will probably need one more parameter for the token list,
