@@ -17,8 +17,6 @@
 
 static t_list	*make_env_list(t_global *shell, char **env);
 
-// Todo: set minimal env when `env -i`
-	// PWD - SHLVL=1 - _=/usr/bin/env
 void	set_environment(t_global *shell, char **env)
 {
 	shell->input = NULL;

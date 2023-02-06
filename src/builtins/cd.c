@@ -24,7 +24,6 @@
 static int	change_directory(t_global *shell, char *target);
 static void	update_var(t_global *shell, char *new, char *var);
 static char	*cd_env_var(t_global *shell, char *var_name);
-static int	check_pipes_in_token_list(t_token *token);
 
 int	ft_cd(t_token *token, t_global *shell)
 {
@@ -111,25 +110,4 @@ static char	*cd_env_var(t_global *shell, char *var_name)
 	}
 	target = var->content + ft_strlen(var_name);
 	return (target);
-}
-
-static int	check_pipes_in_token_list(t_token *token)
-{
-	t_token	*origin;
-
-	origin = token;
-	while (token)
-	{
-		if (token->make_a_pipe)
-			return (1);
-		token = token->next;
-	}
-	token = origin;
-	while (token)
-	{
-		if (token->make_a_pipe)
-			return (1);
-		token = token->prev;
-	}
-	return (0);
 }
