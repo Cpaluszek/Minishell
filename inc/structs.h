@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/06 17:47:21 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/07 18:44:36 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_global {
 	char			*input;
 	char			*input_completed;
 	int				nb_open_parenthesis;
+	bool			is_wildcard;
 	t_block			*block_list;
 	t_token			*token_list;
 	int				last_exit_status;
