@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/03 17:16:35 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/07 17:25:03 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	merge_redirection(t_global *shell);
 
 int	token_merging(t_global *shell)
 {
-	split_dollar_token(shell);
+	// split_dollar_token(shell);
 	// dprintf(1,"\nAFTER_SPLITTING");
 	// print_command_line(shell->token_list);
 	find_and_merge_linked_token(shell);

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/04 10:16:48 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/07 17:27:27 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	main(int argc, char **argv, char **env)
 		else
 			central_parsing(&shell, PROMPT_ERR);
 		token_list = shell.token_list;
-		// if (token_list)
-		// 	print_command_line(token_list);
-		if (shell.command_line == COMPLETED)
-			exec_start(&shell);
+		if (token_list)
+			print_command_line(token_list);
+		// if (shell.command_line == COMPLETED)
+		// 	exec_start(&shell);
 	}
 	return (EXIT_SUCCESS);
 }
@@ -69,7 +69,7 @@ void	print_command_line(t_token *token_list)
 			{
 				i = 0;
 				while (token_list->cmd[i])
-					dprintf(1, "%s ", token_list->cmd[i++]);
+					dprintf(1, "{%s }", token_list->cmd[i++]);
 				fd_in = token_list->fd_input;
 				fd_out = token_list->fd_output;
 			}

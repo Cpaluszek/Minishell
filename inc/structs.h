@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/03 16:44:41 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/06 17:47:21 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,21 @@ enum e_token {
 };
 
 typedef struct s_block {
-	enum e_link			logical_link;
-	int					exit_status;
-	struct s_block		*next;
-	struct s_block		*prev;
-	struct s_block		*sub_block;
-	struct s_block		*upper_block;
-	struct s_token		*token_list;
-	struct s_token		*redirection_token_list;
-	int					block_level;
-	int					*fd_input;
-	int					*fd_output;
-	int					*pipe_fd0;
+	enum e_link		logical_link;
+	int				pid;
+	int				exit_status;
+	struct s_block	*next;
+	struct s_block	*prev;
+	struct s_block	*sub_block;
+	struct s_block	*upper_block;
+	struct s_token	*token_list;
+	struct s_token	*redirection_token_list;
+	int				block_level;
+	int				*fd_input;
+	int				*fd_output;
+	bool			make_a_pipe;
+	int				pipe_fd[2];
+	int				*previous_block_pipe_fd0;
 }	t_block;
 
 typedef struct s_token {
