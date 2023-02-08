@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 13:52:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:38:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "input.h"
 #include "errors.h"
 
+// Todo: manage ./minishell in minishell, don;t print multiple '\n'
 void	init_shell_attr(t_global *shell)
 {
 	if (tcgetattr(STDIN, &shell->saved_attr) == -1)

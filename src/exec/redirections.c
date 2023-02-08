@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 14:40:10 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:00:11 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	close_all_redirections(t_token *tok)
 	}
 }
 
-// TOdo: need to close here_doc 
 void	close_redirections(t_token *tok)
 {
 	if (tok->token == INPUT || tok->token == OUTPUT_APPEND || \
@@ -71,4 +70,32 @@ void	close_redirections(t_token *tok)
 		if (access(HERE_DOC_TMP, F_OK) == 0 && unlink(HERE_DOC_TMP) == -1)
 			perror(ERR_UNLINK);
 	}
+}
+
+int	setup_input_redir(t_token *tok, t_global *shell, int fd_redir_in)
+{
+	if (fd_redir_in > 0 && close(fd_redir_in) == -1)
+		perror(ERR_CLOSE);
+	if (tok->token == INPUT)
+		tok->fd_file = open(tok->str, O_RDONLY);
+	else
+	{
+		if (here_doc(shell, tok) != 0)
+			{;} //Todo: error
+		tok->fd_file = open(HERE_DOC_TMP, O_RDONLY);
+	}
+	dprintf(STDERR, "Open redir_in = %d\n", fd_redir_in);
+	return (tok->fd_file);
+}
+
+int	setup_output_redir(t_token *tok, int fd_redir_out)
+{
+	if (fd_redir_out > 0 && close(fd_redir_out) == -1)
+		perror(ERR_CLOSE);
+	if (tok->token == OUTPUT_TRUNC)
+		tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	else if (tok->token == OUTPUT_APPEND)
+		tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	dprintf(STDERR, "Open redir_out = %d\n", fd_redir_out);
+	return (tok->fd_file);
 }
