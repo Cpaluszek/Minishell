@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/08 11:01:48 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:43:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ static void	parsing_finalization(t_global *shell)
 	add_path_to_command_token(shell);
 	//block_parsing(shell);
 	set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
-	// set_block_fd_and_pipe_fd
-	delete_pipe_token(shell);
+	// set_block_fd_and_pipe_fdls
+	//delete_pipe_token(shell);
 	add_history(shell->input_completed);
 	if (shell->token_list)
 		shell->command_line = COMPLETED;

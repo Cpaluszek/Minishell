@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_list_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/03 14:20:46 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/08 15:12:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_lstdelone_token(t_token *lst)
 		return ;
 	ft_free_split(lst->cmd);
 	ft_free(lst->cmd_path);
-	// 	ft_free(lst->origin_token_str);
+	ft_free(lst->origin_token_str);
 	free(lst->str);
 	free(lst);
 }
