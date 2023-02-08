@@ -12,6 +12,7 @@ HEADERS_FILES	:=	minishell.h \
 					env.h \
 					exec.h \
 					parsing.h \
+					syntax.h \
 					token_list_functions.h \
 					input.h
 
@@ -29,6 +30,7 @@ PARSING_FILES	:=	central_parsing.c \
 					add_path_to_command.c \
 					init_and_reset_parsing.c \
 					syntax_checking.c \
+					syntax_checking_functions.c \
 					token_list_functions.c \
 					block_list_functions.c \
 					ft_lstnew_token.c \

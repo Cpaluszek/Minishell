@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:30:33 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/03 18:09:33 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/06 12:44:50 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	set_fd_for_each_command_token(t_token *token_list)
 	token = token_list;
 	while (token)
 	{
-		fd_input = NULL;
-		fd_output = NULL;
+		fd_input = NULL; // if block->prev->logical_link != PIPE =upper_block->fd_input;
+		fd_output = NULL; // =upper_block->fd_output;
 		temp = token;
 		while (temp && temp->token != PIPE)
 		{

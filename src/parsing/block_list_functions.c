@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/02 17:15:01 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/07 16:58:57 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list)
 	elem->redirection_token_list = NULL;
 	elem->fd_input = NULL;
 	elem->fd_output = NULL;
+	elem->make_a_pipe = false;
+	elem->previous_block_pipe_fd0 = NULL;
 	if (upper_block)
 	{
 		elem->fd_input = upper_block->fd_input;

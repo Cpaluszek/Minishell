@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/08 10:09:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/08 10:56:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int		g_status;
 
 // Todo: parsing need to update g_status in case of parsing error ?
 // TODO: env - i : le "_=./minishell" : difference entre absh et minishell
+//TODO : Ambiguous redirect pour des expands pas claires (a = "ls -lr")
+//TODO : ajouter un char "msh" devant le display des erreurs pour que ca soit plus classe.
+//TODO env - i : le "_=./minishell" : difference entre absh et minishell
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;
@@ -68,7 +71,7 @@ void	print_command_line(t_token *token_list)
 			{
 				i = 0;
 				while (token_list->cmd[i])
-					dprintf(1, "%s ", token_list->cmd[i++]);
+					dprintf(1, "{%s }", token_list->cmd[i++]);
 				fd_in = token_list->fd_input;
 				fd_out = token_list->fd_output;
 			}
