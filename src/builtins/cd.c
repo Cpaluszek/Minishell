@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/26 09:51:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:36:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	change_directory(t_global *shell, char *target);
 static void	update_var(t_global *shell, char *new, char *var);
 static char	*cd_env_var(t_global *shell, char *var_name);
 
+// TOdo: check cd ~/../$USER
 int	ft_cd(t_token *token, t_global *shell)
 {
 	char	*target;
