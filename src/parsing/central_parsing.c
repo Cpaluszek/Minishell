@@ -53,7 +53,7 @@ static int	parsing_initialization(t_global *shell, char *prompt)
 	// dprintf(1, "AFTER DOLLAR EXPAND\n");
 	// print_command_line(shell->token_list);
 	token_parsing(shell);
-	// print_command_line(shell->token_list);
+	print_command_line(shell->token_list);
 	remove_empty_token(shell, shell->token_list);
 	// dprintf(1, "AFTER TOKEN PARSING AND ENPTYT TOKEN REMOVING\n");
 	// print_command_line(shell->token_list);
@@ -79,24 +79,24 @@ static void	parsing_finalization(t_global *shell)
 {
 	t_token	*token;
 
-	// dprintf(1, "Parsing FINALIZATION\n");
-	// print_command_line(shell->token_list);
 	// if (shell->is_wildcard)
-	// 	expand_wildcard(shell);
 	empty_token_assignation(shell->token_list);
 	remove_empty_token(shell, shell->token_list);
 	token = shell->token_list;
 	while (token)
 	{
-		if (token->token == QUOTE || token->token == DQUOTE)
+		if (token->token == QUOTE || token->token == DQUOTE || token->token == DOLLAR)
 			token->token = CMD;
 		token = token->next;
 	}
 	add_path_to_command_token(shell);
-	//block_parsing(shell);
-	set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
+	dprintf(1, "Parsing FINALIZATION\n");
+	print_command_line(shell->token_list);
+	shell->block_list = block_parsing(shell, NULL, shell->token_list);
+	dprintf(1, "%p\n", shell->block_list);
+	// set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
 	// set_block_fd_and_pipe_fd
-	delete_pipe_token(shell);
+	// delete_pipe_token(shell);
 	add_history(shell->input_completed);
 	if (shell->token_list)
 		shell->command_line = COMPLETED;

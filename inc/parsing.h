@@ -44,10 +44,12 @@ int		token_merging(t_global *shell);
 */
 
 void	split_dollar_token(t_global *shell);
+void	expand_wildcard(t_global *shell);
 void	merge_command(t_global *shell);
 void	add_path_to_command_token(t_global *shell);
 void	set_fd_for_each_command_token(t_token *token_list);
 void	delete_pipe_token(t_global *shell);
+t_block	*block_parsing(t_global *shell, t_block *upper_block, t_token *first_token);
 
 /*
 	---------------- PARSING UTILS ---------------------

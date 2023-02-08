@@ -27,6 +27,7 @@ PARSING_FILES	:=	central_parsing.c \
 					empty_token_assignation.c \
 					expand_dollar_in_token_str.c \
 					expand_functions.c \
+					expand_wildcard.c \
 					add_path_to_command.c \
 					init_and_reset_parsing.c \
 					syntax_checking.c \
@@ -101,7 +102,7 @@ CCDEFS			:=	NAME=\"$(NAME)\"
 
 # Compiler options
 CC				:=	cc
-DEBUG_FLAG		:=	-g3 #-fsanitize=address
+DEBUG_FLAG		:=	-g3 -fsanitize=address
 CC_FLAGS		:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
 CC_DEPS_FLAGS	:=	-MP -MMD
 CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))

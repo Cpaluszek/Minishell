@@ -26,6 +26,7 @@ int	token_merging(t_global *shell)
 	// dprintf(1,"\nAFTER_SPLITTING");
 	// print_command_line(shell->token_list);
 	find_and_merge_linked_token(shell);
+	expand_wildcard(shell);
 	empty_token_assignation(shell->token_list);
 	if (check_for_ambiguous_redirect(shell->token_list))
 		return (1);
@@ -58,6 +59,8 @@ static void	merge_linked_token(t_global *shell, t_token *token_list)
 	char	*str;
 	bool	space_link;
 
+	dprintf(1, "OKinit\n");
+	print_command_line(token_list);
 	str = token_list->str;
 	token = token_list->next;
 	while (token && token->token > CLOSE_PAR)
@@ -69,11 +72,15 @@ static void	merge_linked_token(t_global *shell, t_token *token_list)
 		token_list->origin_token_str = ft_strjoin_and_free(\
 			token_list->origin_token_str, temp->origin_token_str);
 		test_failed_malloc(shell, str);
+		if (token_list->ambiguous_redirect == false)
+			token_list->ambiguous_redirect = temp->ambiguous_redirect;
 		remove_token(temp);
 		if (space_link == true)
 			break ;
 	}
 	token_list->str = str;
+	dprintf(1, "OK\n");
+	print_command_line(token_list);
 }
 
 static	int	check_for_ambiguous_redirect(t_token *token)
@@ -89,8 +96,7 @@ static	int	check_for_ambiguous_redirect(t_token *token)
 			return (1);
 		}
 		if (token->token <= OUTPUT_APPEND && token->next && \
-			token->next->token == DOLLAR && \
-			ft_is_inside(' ', token->next->str))
+			token->next->ambiguous_redirect == true)
 		{
 			ft_printf_fd(2, "%s: ambiguous redirect\n",
 				token->next->origin_token_str);

@@ -20,6 +20,7 @@ static int			new_token(t_token **token_list, char *str, \
 int len, enum e_token type);
 static void			setting_space_links_and_checking_parenthesis( \
 t_global *shell, t_token *token_list);
+void	setting_ambiguous_and_origin_str(t_global *shell, t_token *token_list, t_token *temp);
 
 void	token_parsing(t_global *shell)
 {
@@ -30,9 +31,11 @@ void	token_parsing(t_global *shell)
 	temp = shell->token_list;
 	while (temp)
 	{
-		if (temp->token == EMPTY && temp->str[0])
+		if ((temp->token == EMPTY || temp->token == DOLLAR) && temp->str[0])
 		{
 			splitted_token_list = create_sub_token_list(shell, temp->str);
+			if (temp->token == DOLLAR)
+				setting_ambiguous_and_origin_str(shell, splitted_token_list, temp);
 			insert_token_list(shell, temp, splitted_token_list);
 			del = temp;
 			temp = temp->next;
@@ -42,6 +45,26 @@ void	token_parsing(t_global *shell)
 			temp = temp->next;
 	}
 	setting_space_links_and_checking_parenthesis(shell, shell->token_list);
+}
+
+void	setting_ambiguous_and_origin_str(t_global *shell, t_token *token_list, t_token *temp)
+{
+		t_token	*token;
+		int		i;
+
+		token = token_list;
+		free(token->origin_token_str);
+		token->origin_token_str = ft_strdup(temp->origin_token_str);
+		test_failed_malloc(shell, token->origin_token_str);
+		i = 0;
+		while (token)
+		{
+			if (token->token == CMD)
+				i++;
+			token = token->next;
+		}
+		if (i != 1)
+			token_list->ambiguous_redirect = true;
 }
 
 static t_token	*create_sub_token_list(t_global *shell, char *str)

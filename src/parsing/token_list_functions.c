@@ -40,7 +40,7 @@ void	ft_lstdelone_token(t_token *lst)
 		return ;
 	ft_free_split(lst->cmd);
 	ft_free(lst->cmd_path);
-	// 	ft_free(lst->origin_token_str);
+	ft_free(lst->origin_token_str);
 	free(lst->str);
 	free(lst);
 }

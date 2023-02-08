@@ -15,6 +15,14 @@
 #include "token_list_functions.h"
 #include "libft.h"
 
+static void	parse_token_list_for_wildcard(t_global *shell, \
+t_token *token, t_list *file_list);
+t_token	*parse_filelist_for_matching_filenames(t_global *shell, \
+	char *pattern, t_list *file);
+char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file);
+char	*process_filename_with_pattern(char *filename, char *pattern);
+int		parse_pattern_until_next_last_non_star_character(char **pattern);
+
 void	expand_wildcard(t_global *shell)
 {
 	DIR				*directory;
@@ -41,7 +49,7 @@ void	expand_wildcard(t_global *shell)
 	}
 	if (file_list)
 		parse_token_list_for_wildcard(shell, shell->token_list, file_list);
-	ft_lstclear(file_list, free);
+	ft_lstclear(&file_list, free);
 }
 
 static void	parse_token_list_for_wildcard(t_global *shell, \
@@ -52,6 +60,7 @@ t_token *token, t_list *file_list)
 
 	while (token)
 	{
+		expanded_token_list = NULL;
 		if (token->token == CMD && ft_is_inside('*', token->str))
 		{
 			expanded_token_list = parse_filelist_for_matching_filenames(\
@@ -64,7 +73,8 @@ t_token *token, t_list *file_list)
 				ft_lstdelone_token(temp);
 			}
 		}
-		token = token->next;
+		if (!expanded_token_list)
+			token = token->next;
 	}
 }
 
@@ -94,7 +104,6 @@ char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file)
 {
 	char	*filename;
 	int		i;
-	int		len;
 
 	filename = (char *)file->content;
 	i = 0;

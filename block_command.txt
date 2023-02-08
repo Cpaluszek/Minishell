@@ -1,0 +1,63 @@
+
+
+INPUT : yessaiiii && (ls | ls | ((ls | ls && ls)>test1 >test2 <test3 && cat || sleep 2)>out2 >out3) && on arrive a la fin!
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : {[CMD]:[{yessaiiii }]} -> 
+
+
+
+----- NEW BLOCK ----- 
+
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : {[CMD]:[{ls }]} -> {[|]:[(null), 0]} -> {[CMD]:[{ls }]} -> 
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection : {[>]:[out2, 0]} -> {[>]:[out3, 0]} -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block redirection : {[>]:[test1, 0]} -> {[>]:[test2, 0]} -> {[<]:[test3, 0]} -> 
+
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : {[CMD]:[{ls }]} -> {[|]:[(null), 0]} -> {[CMD]:[{ls }]} -> 
+
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : {[CMD]:[{ls }]} -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : {[CMD]:[{cat }]} -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : {[CMD]:[{sleep }{2 }]} -> 
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : {[CMD]:[{on }{arrive }{a }{la }{fin! }]} -> 

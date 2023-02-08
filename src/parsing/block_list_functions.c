@@ -92,10 +92,12 @@ t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list)
 	elem->fd_output = NULL;
 	elem->make_a_pipe = false;
 	elem->previous_block_pipe_fd0 = NULL;
+	elem->block_level = 0;
 	if (upper_block)
 	{
 		elem->fd_input = upper_block->fd_input;
 		elem->fd_output = upper_block->fd_output;
+		elem->block_level = upper_block->block_level + 1;
 	}
 	elem->logical_link = NO_LINK;
 	return (elem);

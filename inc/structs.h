@@ -87,6 +87,7 @@ typedef struct s_token {
 	char			*origin_token_str;
 	char			*temp_expand;
 	bool			space_link;
+	bool			ambiguous_redirect;
 	int				make_a_pipe;
 	int				*fd_input;
 	int				*fd_output;
