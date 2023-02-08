@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_reset_parsing.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/02 18:35:10 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:02:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static t_list	*make_env_list(t_global *shell, char **env);
 void	set_environment(t_global *shell, char **env)
 {
 	shell->input = NULL;
+	shell->path = NULL;
 	shell->token_list = NULL;
 	shell->block_list = NULL;
 	shell->input_completed = NULL;

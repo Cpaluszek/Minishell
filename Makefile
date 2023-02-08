@@ -91,8 +91,6 @@ LIB_PATHS		=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
 LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
 
 LIBS			+=	-lreadline
-LIB_LD			+=	-L ~/.brew/opt/readline/lib
-LIB_HEADERS		+=	-I ~/.brew/opt/readline/include
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
