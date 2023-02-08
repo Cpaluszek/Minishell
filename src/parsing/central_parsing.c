@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   central_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/07 18:45:03 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/08 11:01:48 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static int	parsing_initialization(t_global *shell, char *prompt)
 	// dprintf(1, "AFTER QUOTE PARSING %d\n", shell->command_line);
 	// print_command_line(shell->token_list);
 	expand_dollar_in_token_str(shell);
-	print_command_line(shell->token_list);
+	// print_command_line(shell->token_list);
 	// dprintf(1, "AFTER DOLLAR EXPAND\n");
 	// print_command_line(shell->token_list);
 	token_parsing(shell);
-	print_command_line(shell, shell->token_list);
+	// print_command_line(shell->token_list);
 	remove_empty_token(shell, shell->token_list);
 	// dprintf(1, "AFTER TOKEN PARSING AND ENPTYT TOKEN REMOVING\n");
 	// print_command_line(shell->token_list);
@@ -81,8 +81,8 @@ static void	parsing_finalization(t_global *shell)
 
 	// dprintf(1, "Parsing FINALIZATION\n");
 	// print_command_line(shell->token_list);
-	if (shell->is_wildcard)
-		expand_wildcard(shell);
+	// if (shell->is_wildcard)
+	// 	expand_wildcard(shell);
 	empty_token_assignation(shell->token_list);
 	remove_empty_token(shell, shell->token_list);
 	token = shell->token_list;
