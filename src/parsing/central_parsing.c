@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/09 21:06:05 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 21:52:28 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ static void	parsing_finalization(t_global *shell)
 	token = shell->token_list;
 	while (token)
 	{
-		if (token->token == QUOTE || token->token == DQUOTE || token->token == DOLLAR)
+		if (token->token == QUOTE || token->token == DQUOTE || \
+			token->token == DOLLAR)
 			token->token = CMD;
 		token = token->next;
 	}
@@ -98,7 +99,7 @@ static void	parsing_finalization(t_global *shell)
 	// print_command_line(shell->token_list);
 	//shell->block_list = block_parsing(shell, NULL, shell->token_list);
 	// dprintf(1, "%p\n", shell->block_list);
-	set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
+	set_fd_for_each_command_token(shell->token_list);
 	// set_block_fd_and_pipe_fd
 	// delete_pipe_token(shell);
 	add_history(shell->input_completed);

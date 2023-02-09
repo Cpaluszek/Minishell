@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 21:29:33 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 21:56:09 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	reset_commands(t_global	*shell);
 void	token_parsing(t_global *shell);
 void	expand_dollar_in_token_str(t_global *shell);
 int		quote_parsing(t_global *shell, char *str);
+t_token	*create_sub_token_list(t_global *shell, char *str);
+t_token	*create_sub_dollar_list(t_global *shell, t_token *temp, char *str);
 
 /*
 	---------------- MERGING AND CHECKING ---------------------
@@ -50,7 +52,6 @@ char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file);
 	---------------- PARSING FINALIZATION ---------------------
 */
 
-void	split_dollar_token(t_global *shell);
 void	add_path_to_command_token(t_global *shell);
 void	set_fd_for_each_command_token(t_token *token_list);
 void	delete_pipe_token(t_global *shell);

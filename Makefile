@@ -41,7 +41,7 @@ PARSING_FILES	:=	central_parsing.c \
 					token_parsing.c \
 					set_fd_for_each_command_token.c \
 					token_merging.c \
-					split_command_token.c \
+					create_sub_token_list.c \
 					utils_parsing.c \
 					utils_parsing2.c
 
