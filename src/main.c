@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/08 10:56:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:45:14 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	main(int argc, char **argv, char **env)
 	g_status = EXIT_SUCCESS;
 	init_shell_attr(&shell);
 	set_environment(&shell, env);
+	fd = open("block_command.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
 	while (1)
 	{
-		fd = open("block_command.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
 		reset_commands(&shell);
 		shell.path = get_path(&shell, shell.env);
 		set_interactive_signals(&shell);
@@ -55,11 +55,12 @@ int	main(int argc, char **argv, char **env)
 			dprintf(fd, "\n\nINPUT : %s\n\n", shell.input_completed);
 			print_block(shell.block_list, fd);
 		}
-		else
-			dprintf(1, "NOBLOCK\n");
-		// if (shell.command_line == COMPLETED)
-		// 	exec_start(&shell);
+		//else
+		//	dprintf(1, "NOBLOCK\n");
+		if (shell.command_line == COMPLETED)
+			exec_start(&shell);
 	}
+	close(fd);
 	return (EXIT_SUCCESS);
 }
 

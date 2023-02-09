@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/31 10:18:27 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/08 22:52:27 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context)
 {
 	(void) info;
 	(void) context;
-	rl_replace_line("", 0);
+	// rl_replace_line("", 0);
 	write(1, "\n", 1);
 	rl_on_new_line();
 	rl_redisplay();

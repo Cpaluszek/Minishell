@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/06 10:32:51 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 16:25:11 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	syntax_checking(t_global *shell)
 	t_token	*token;
 
 	token = shell->token_list;
+	// print_command_line(token);
 	if (!token)
 		return (0);
 	if (token->token == PIPE || token->token == AND || token->token == OR)
@@ -44,7 +45,7 @@ int	syntax_checking_end(t_global *shell)
 
 	while (token)
 	{
-		if ((token->token >= CLOSE_PAR) && \
+		if ((token->token >= CLOSE_PAR || token->token <= OUTPUT_APPEND) && \
 			cmd_before_or_after_parenthesis(shell, token->next, token->token))
 			return (1);
 		token = token->next;

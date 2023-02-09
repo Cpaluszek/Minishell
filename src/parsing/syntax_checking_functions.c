@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:24:16 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/06 10:42:33 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 16:23:42 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	syntax_exception(t_token *token1, t_token *token2)
 		return (1);
 	if (token1->token == CLOSE_PAR && (token2->token != CLOSE_PAR))
 		return (1);
+	if (token1->token == OPEN_PAR && (token2->token <= OUTPUT_APPEND))
+		return (1);
 	if ((token1->token == AND || token1->token == OR) && \
 		(token2->token == OPEN_PAR || token2->token <= OUTPUT_APPEND))
 		return (1);
@@ -60,7 +62,7 @@ static int	syntax_exception(t_token *token1, t_token *token2)
 int	cmd_before_or_after_parenthesis(t_global *shell, \
 	t_token *token, enum e_token type)
 {
-	if (type >= CMD)
+	if (type >= CMD || type <= OUTPUT_APPEND)
 	{
 		while (token && (token->token <= OUTPUT_APPEND || token->token >= CMD))
 			token = token->next;

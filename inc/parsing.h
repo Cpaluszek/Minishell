@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/03 16:33:32 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 21:29:33 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,27 @@ int		central_parsing(t_global *shell, char *prompt);
 
 void	set_environment(t_global *shell, char **env);
 void	reset_commands(t_global	*shell);
-void	empty_token_assignation(t_token *token_list);
-void	remove_empty_token(t_global *shell, t_token *token);
-int		syntax_checking(t_global *shell);
-int		syntax_checking_end(t_global *shell);
-int		quote_parsing(t_global *shell, char *str);
 void	token_parsing(t_global *shell);
 void	expand_dollar_in_token_str(t_global *shell);
-int		token_merging(t_global *shell);
+int		quote_parsing(t_global *shell, char *str);
+
+/*
+	---------------- MERGING AND CHECKING ---------------------
+*/
+
+int		syntax_checking(t_global *shell);
+int		syntax_checking_end(t_global *shell);
+int		check_for_ambiguous_redirect(t_token *token);
+void	token_merging(t_global *shell);
+void	find_and_merge_linked_token(t_global *shell);
+void	expand_wildcard(t_global *shell);
+char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file);
 
 /*
 	---------------- PARSING FINALIZATION ---------------------
 */
 
 void	split_dollar_token(t_global *shell);
-void	expand_wildcard(t_global *shell);
-void	merge_command(t_global *shell);
 void	add_path_to_command_token(t_global *shell);
 void	set_fd_for_each_command_token(t_token *token_list);
 void	delete_pipe_token(t_global *shell);
@@ -54,7 +59,8 @@ t_block	*block_parsing(t_global *shell, t_block *upper_block, t_token *first_tok
 /*
 	---------------- PARSING UTILS ---------------------
 */
-
+void	empty_token_assignation(t_token *token_list);
+void	remove_empty_token(t_global *shell, t_token *token);
 char	**get_path(t_global *shell, char **env);
 int		not_only_spaces(char *line);
 void	get_input(t_global *shell, char *prompt);

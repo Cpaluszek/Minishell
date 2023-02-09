@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   central_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/08 11:01:48 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/09 21:06:05 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	parsing_initialization(t_global *shell, char *prompt)
 	// dprintf(1, "AFTER DOLLAR EXPAND\n");
 	// print_command_line(shell->token_list);
 	token_parsing(shell);
-	print_command_line(shell->token_list);
+	// print_command_line(shell->token_list);
 	remove_empty_token(shell, shell->token_list);
 	// dprintf(1, "AFTER TOKEN PARSING AND ENPTYT TOKEN REMOVING\n");
 	// print_command_line(shell->token_list);
@@ -62,7 +62,10 @@ static int	parsing_initialization(t_global *shell, char *prompt)
 
 static int	merge_and_finish_syntax_checking(t_global *shell)
 {
-	if (token_merging(shell))
+	find_and_merge_linked_token(shell);
+	expand_wildcard(shell);
+	empty_token_assignation(shell->token_list);
+	if (check_for_ambiguous_redirect(shell->token_list))
 	{
 		shell->command_line = AMBIGUOUS_REDIRECT;
 		add_history(shell->input_completed);
@@ -70,6 +73,7 @@ static int	merge_and_finish_syntax_checking(t_global *shell)
 	}
 	// dprintf(1, "AFTER TOKEN MERGING\n");
 	// print_command_line(shell->token_list);
+	token_merging(shell);
 	if (syntax_checking_end(shell))
 		return (1);
 	return (0);
@@ -90,11 +94,11 @@ static void	parsing_finalization(t_global *shell)
 		token = token->next;
 	}
 	add_path_to_command_token(shell);
-	dprintf(1, "Parsing FINALIZATION\n");
-	print_command_line(shell->token_list);
-	shell->block_list = block_parsing(shell, NULL, shell->token_list);
-	dprintf(1, "%p\n", shell->block_list);
-	// set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
+	// dprintf(1, "Parsing FINALIZATION\n");
+	// print_command_line(shell->token_list);
+	//shell->block_list = block_parsing(shell, NULL, shell->token_list);
+	// dprintf(1, "%p\n", shell->block_list);
+	set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
 	// set_block_fd_and_pipe_fd
 	// delete_pipe_token(shell);
 	add_history(shell->input_completed);

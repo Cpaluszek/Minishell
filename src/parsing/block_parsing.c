@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 23:20:20 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/07 16:58:28 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/08 23:01:42 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ static t_block	*create_sub_block(t_global *shell, t_token **first_token, \
 	token = token->next;
 	if (token)
 		ft_lstdelone_token(token->prev); // si ce nest pas le dernier token
-	token->prev = NULL;
+	if (token)
+		token->prev = NULL;
 	add_redirection_for_upper_block(upper_block, token, first_token);
 	if (*first_token)
 		(*first_token = (*first_token)->next);
