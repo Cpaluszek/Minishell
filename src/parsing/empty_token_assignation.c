@@ -6,13 +6,12 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:01:30 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/07 17:45:19 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 22:10:29 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "token_list_functions.h"
-
 
 void	empty_token_assignation(t_token *token_list)
 {
@@ -21,7 +20,7 @@ void	empty_token_assignation(t_token *token_list)
 	token = token_list;
 	while (token)
 	{
-		if ((token->token == CMD || token->token == DOLLAR) &&
+		if ((token->token == CMD || token->token == DOLLAR) && \
 			not_only_spaces(token->str) == -1)
 			token->token = EMPTY;
 		token = token->next;

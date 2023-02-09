@@ -21,27 +21,27 @@ HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 SRC_DIR			:=	src
 
 PARSING_DIR		:=	parsing
-PARSING_FILES	:=	central_parsing.c \
-					quote_parsing.c \
+PARSING_FILES	:=	add_path_to_command.c \
+					block_list_functions.c \
 					block_parsing.c \
+					central_parsing.c \
 					check_for_ambiguous_redirect.c \
+					create_sub_token_list.c \
 					empty_token_assignation.c \
 					expand_dollar_in_token_str.c \
 					expand_functions.c \
 					expand_wildcard.c \
 					find_matching_filenames.c \
-					add_path_to_command.c \
+					ft_lstnew_token.c \
 					init_and_reset_parsing.c \
+					merge_linked_token.c \
+					quote_parsing.c \
+					set_fd_for_each_command_token.c \
 					syntax_checking.c \
 					syntax_checking_functions.c \
 					token_list_functions.c \
-					block_list_functions.c \
-					merge_linked_token.c \
-					ft_lstnew_token.c \
 					token_parsing.c \
-					set_fd_for_each_command_token.c \
 					token_merging.c \
-					create_sub_token_list.c \
 					utils_parsing.c \
 					utils_parsing2.c
 

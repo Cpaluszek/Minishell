@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/09 21:18:21 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 22:08:44 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ static void	merge_redirection(t_global *shell);
 
 void	token_merging(t_global *shell)
 {
-	// dprintf(1,"\nBEFORE MERGE REDIRECTION");
-	// print_command_line(shell->token_list);
 	merge_redirection(shell);
-	// dprintf(1,"\nBEFORE MERGE COMMAND");
-	// print_command_line(shell->token_list);
 	merge_command(shell);
 }
 

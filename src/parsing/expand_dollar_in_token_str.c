@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:39:22 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/07 17:31:21 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 22:06:57 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ void	expand_dollar_in_token_str(t_global *shell)
 			token->str = ft_strjoin_and_free_s2(token->temp_expand, token->str);
 			test_failed_malloc(shell, token->str);
 			ft_free(token->temp_expand);
-			// if (token->token == DOLLAR)
-			// 	token->token = EMPTY;
 		}
 		token = token->next;
 	}
-	// empty_token_assignation(shell->token_list);
 }

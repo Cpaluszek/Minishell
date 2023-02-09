@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 21:56:09 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 22:26:09 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 int		central_parsing(t_global *shell, char *prompt);
 
 /*
-	---------------- PARSING INITIALIZATION ---------------------
+	--------------- PARSING INITIALIZATION -----------------------
 */
 
 void	set_environment(t_global *shell, char **env);
@@ -37,7 +37,7 @@ t_token	*create_sub_token_list(t_global *shell, char *str);
 t_token	*create_sub_dollar_list(t_global *shell, t_token *temp, char *str);
 
 /*
-	---------------- MERGING AND CHECKING ---------------------
+	-------------- CHECKING SYNTAX AND MERGING -------------------
 */
 
 int		syntax_checking(t_global *shell);
@@ -49,7 +49,7 @@ void	expand_wildcard(t_global *shell);
 char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file);
 
 /*
-	---------------- PARSING FINALIZATION ---------------------
+	-------------- PARSING FINALIZATION --------------------------
 */
 
 void	add_path_to_command_token(t_global *shell);
@@ -58,7 +58,7 @@ void	delete_pipe_token(t_global *shell);
 t_block	*block_parsing(t_global *shell, t_block *upper_block, t_token *first_token);
 
 /*
-	---------------- PARSING UTILS ---------------------
+	-------------- PARSING UTILS ---------------------------------
 */
 void	empty_token_assignation(t_token *token_list);
 void	remove_empty_token(t_global *shell, t_token *token);

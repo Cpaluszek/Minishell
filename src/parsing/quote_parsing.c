@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/03 13:49:20 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 22:39:26 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,13 @@ static int	quote_parsing2(t_global *shell, char **str, char quote)
 	while (str_quote[i] && str_quote[i] != quote)
 		i++;
 	if (!str_quote[i])
+	{
+		if (quote == '\'')
+			shell->temp_prompt = "quote > ";
+		else
+			shell->temp_prompt = "dquote > ";
 		return (UNCOMPLETED);
+	}
 	i++;
 	if (quote == '"')
 		new_token(shell, &str_quote[1], i - 2, DQUOTE);

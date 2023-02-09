@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/03 14:20:46 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 22:11:04 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	ft_lstdelone_token(t_token *lst)
 	free(lst->str);
 	free(lst);
 }
-
 
 void	ft_lstclear_token(t_token **lst)
 {
