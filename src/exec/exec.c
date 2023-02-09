@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/08 17:05:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:02:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,89 +22,104 @@ static void	wait_for_token_list(t_token *token);
 // Todo: test max amount of pipes
 // Todo: test `rm -rf *`
 // Todo: test permissions on redirections
-// EN REFLEXION :
-// ->  je pense qu'on a pas choisi la meilleure option pour l'enchainement des ouvertures des INPUT /OUT PUTS et l'exec des commandes
-// il vaudrait mieux ouvrir les directions pour une seule commande et les fermer apres l'execution de la commande
 int	exec_start(t_global *shell)
 {
 	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
 		perror(ERR_TCSET);
 	set_execution_signals();
 	exec_token_list(shell->token_list, shell);
+	wait_for_token_list(shell->token_list);
 	return (0);
 }
 
-// Note: on laisse tomber le parsing des pipes
-// Gestion totales des pipes dans l'exec
+// Todo: extract functions
 static void	exec_token_list(t_token *token, t_global *shell)
 {
-	t_token	*head;
-	int		*prev_pipe_fd_in;
-	int		fd_redir_in;
-	int		fd_redir_out;
 	t_token	*cmd;
+	int		*prev_pipe;
+	int		redir_in;
+	int		redir_out;
+	int		create_half_pipe;
 
-	head = token;
-	prev_pipe_fd_in = NULL;
+	prev_pipe = NULL;
+	create_half_pipe = 0;
 	while (token)
 	{
-		fd_redir_in = 0;
-		fd_redir_out = 0;
+		redir_in = 0;
+		redir_out = 0;
 		cmd = NULL;
-		while (token && token->token != PIPE)
+		while (token)
 		{
-			// Todo: check redir errors
-			if (token->token <= HERE_DOC)
-				fd_redir_in = setup_input_redir(token, shell, fd_redir_in);
-			else if (token->token <= OUTPUT_APPEND)
-				fd_redir_out = setup_output_redir(token, fd_redir_out);
+			if (token->token <= OUTPUT_APPEND)
+			{
+				// Todo: check redir errors
+				if (token->token <= HERE_DOC)
+					redir_in = setup_input_redir(token, shell, redir_in);
+				else if (token->token <= OUTPUT_APPEND)
+					redir_out = setup_output_redir(token, redir_out);
+			}
 			else if (token->token == CMD)
+			{
+				token->fd_input = NULL;
+				token->fd_output = NULL;
+				token->make_a_pipe = 0;
 				cmd = token;
+				if (prev_pipe != NULL)
+				{
+					cmd->fd_input = &prev_pipe[0];
+					prev_pipe = NULL;
+				}
+			}
+			else if (token->token == PIPE)
+			{
+				if (cmd != NULL)
+				{
+					if (pipe(cmd->pipe_fd) == -1)
+					{
+						close_redirs(redir_in, redir_out);
+						exec_cmd_error(shell, ERR_PIPE, token);
+					}
+					cmd->fd_output = &cmd->pipe_fd[1];
+					cmd->make_a_pipe = 1;
+					prev_pipe = cmd->pipe_fd;
+				}
+				else
+					create_half_pipe = 1;
+				break ;
+			}
 			token = token->next;
 		}
 		if (cmd == NULL)
 		{
-			// No cmd - close pipe
-			dprintf(STDERR, "cmd = NULL -> close %p = %d\n", prev_pipe_fd_in, *prev_pipe_fd_in);
-			if (prev_pipe_fd_in != NULL && close(*prev_pipe_fd_in) == -1)
-				perror(ERR_CLOSE);
-			prev_pipe_fd_in = NULL;
-			// Todo: close redir too
-			if (fd_redir_in > 0 && close(fd_redir_in) == -1)
-				perror(ERR_CLOSE);
-			if (fd_redir_out > 0 && close(fd_redir_out) == -1)
+			if (prev_pipe != NULL && prev_pipe[0] > 2 && close(prev_pipe[0]))
 				perror(ERR_CLOSE);
 		}
 		else
 		{
-			// Note: set redir to cmd
-			if (prev_pipe_fd_in != NULL && cmd->fd_input != prev_pipe_fd_in)
-				if (close(*prev_pipe_fd_in) == -1)
-					perror(ERR_CLOSE);
-			// Create the pipe
-			if (cmd->make_a_pipe)
+			if (create_half_pipe)
 			{
-				if ((cmd->prev != NULL && cmd->prev->token == PIPE) || \
-					(cmd->next != NULL && cmd->next->token == PIPE))
+				if (pipe(cmd->pipe_fd) == -1)
 				{
-					if (pipe(cmd->pipe_fd) == -1)
-						exec_cmd_error(shell, ERR_PIPE, token);
-					prev_pipe_fd_in = &cmd->pipe_fd[0];
-					dprintf(STDERR, "[%s] creating pipe: (%p)[%d;%d]\n", cmd->str, cmd->pipe_fd, cmd->pipe_fd[0], cmd->pipe_fd[1]);
+					close_redirs(redir_in, redir_out);
+					exec_cmd_error(shell, ERR_PIPE, token);
 				}
+				cmd->fd_input = &cmd->pipe_fd[0];
+				if (close(cmd->pipe_fd[1]) == -1)
+					perror(ERR_CLOSE);
+				cmd->make_a_pipe = 2;
+				prev_pipe = cmd->pipe_fd;
+				create_half_pipe = 0;
 			}
+			if (redir_in != 0)
+				cmd->fd_input = &redir_in;
+			if (redir_out != 0)
+				cmd->fd_output = &redir_out;
 			exec_cmd(cmd, shell);
-			// Close redir after exec
-			if (fd_redir_in > 0 && close(fd_redir_in) == -1)
-				perror(ERR_CLOSE);
-			if (fd_redir_out > 0 && close(fd_redir_out) == -1)
-				perror(ERR_CLOSE);
 		}
+		close_redirs(redir_in, redir_out);
 		if (token != NULL)
 			token = token->next;
 	}
-	// Note: use block list to get back head of token_list
-	wait_for_token_list(head);	
 }
 
 static void	wait_for_token_list(t_token *token)
@@ -145,7 +160,6 @@ static void	exec_cmd(t_token *token, t_global *shell)
 		exec_cmd_error(shell, ERR_FORK, token);
 	if (token->pid == 0 && exec_child(token, shell->env))
 	{
-		dprintf(STDERR, "child exec fail\n");
 		close_token_pipes(token);
 		exit(EXIT_FAILURE);
 	}

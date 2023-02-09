@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/08 10:56:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:47:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "input.h"
 
 void	print_command_line(t_token *token_list);
-int		g_status;
+int 	g_status;
 
 // Todo: parsing need to update g_status in case of parsing error ?
 // TODO: env - i : le "_=./minishell" : difference entre absh et minishell
@@ -69,13 +69,14 @@ void	print_command_line(t_token *token_list)
 				dprintf(1, "%s(str)", token_list->str);
 			else
 			{
+				//dprintf(1, "%s: ", token_list->cmd_path);
 				i = 0;
 				while (token_list->cmd[i])
 					dprintf(1, "{%s }", token_list->cmd[i++]);
 				fd_in = token_list->fd_input;
 				fd_out = token_list->fd_output;
 			}
-			dprintf(1, "], pipe[%p,%p], fd_in(%p), fd_out(%p) mk_pip(%d)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out, token_list->make_a_pipe);
+			dprintf(1, "], pipe[%p,%p], fd_in(%p), fd_out(%p)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out);
 			// dprintf(1, "]} -> ");
 		}
 		else
