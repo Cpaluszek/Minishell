@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 16:55:05 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:04:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	dup_fds(t_token *token)
 
 void	close_token_pipes(t_token *token)
 {
-	dprintf(STDERR, ">> close token pipes\n");
 	if (token->make_a_pipe)
 		if (close(token->pipe_fd[0]) == -1 || close(token->pipe_fd[1]) == -1)
 			perror(ERR_CLOSE);
