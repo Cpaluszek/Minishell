@@ -6,14 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 11:28:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:54:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include <readline/readline.h>
 
-// TOdo : ctrl-C status=1
 /**
  * @brief signal handler: ctrl-\ interactive mode
  * Does nothing.
@@ -26,11 +25,8 @@ void	handle_interactive_sigquit(int signum, siginfo_t *info, void *context)
 	(void) signum;
 	(void) info;
 	(void) context;
-	rl_on_new_line();
-	rl_redisplay();
 }
 
-// Todo: on new bash ^C is print
 /**
  * @brief signal handler: ctrl-C interactive mode
  * Clear the current line, and show a new prompt
@@ -43,14 +39,14 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context)
 {
 	(void) info;
 	(void) context;
+	write(1, "^C\n", 3);
 	rl_replace_line("", 0);
-	write(1, "\n", 1);
 	rl_on_new_line();
 	rl_redisplay();
 	g_status = 128 + signum;
 }
 
-// Todo: if cmd is interrupted don't reset g_status
+// Todo: IMPOSSIBLE if cmd is interrupted don't reset g_status
 /**
  * @brief signal handler: ctrl-C execution mode
  * Kill the running process and give the prompt back

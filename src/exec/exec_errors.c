@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:21:56 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 15:25:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:56:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	exec_cmd_not_found(t_token *token)
 
 // Note: will probably need one more parameter for the token list,
 // with different blocks
-// Todo: close all redirs
 void	exec_cmd_error(t_global *shell, char *err, t_token *token)
 {
 	perror(err);

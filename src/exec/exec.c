@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 17:37:47 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:04:10 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	check_cmd_exec(t_global *shell, t_exec *data);
 // Todo: block execution - all the here_doc needs to be open first
 
 // Todo: test max amount of pipes
-// Todo: test `rm -rf *`
 // Todo: test permissions on redirections
 int	exec_start(t_global *shell)
 {
@@ -118,7 +117,10 @@ static void	exec_cmd(t_token *token, t_global *shell, int redirs[2])
 	}
 	token->pid = fork();
 	if (token->pid == -1)
+	{
+		close_redirs(redirs);
 		exec_cmd_error(shell, ERR_FORK, token);
+	}
 	if (token->pid == 0 && exec_child(token, shell->env))
 	{
 		close_token_pipes(token);
