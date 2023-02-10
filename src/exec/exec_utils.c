@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 11:23:05 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:31:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,22 @@ void	exec_cmd_error(t_global *shell, char *err, t_token *token)
 	exit_shell(shell, EXIT_FAILURE);
 }
 
-int	*create_pipe(t_global *shell, t_token *cmd, int fd_in, int fd_out)
+int	*create_pipe(t_global *shell, t_token *cmd, int redirs[2], int p_end)
 {
 	if (pipe(cmd->pipe_fd) == -1)
 	{
-		close_redirs(fd_in, fd_out);
+		close_redirs(redirs);
 		exec_cmd_error(shell, ERR_PIPE, cmd);
 	}
-	cmd->make_a_pipe = 1;
+	if (p_end)
+	{
+		cmd->fd_output = &cmd->pipe_fd[1];
+		cmd->make_a_pipe = 1;
+	}
+	else
+	{
+		cmd->fd_input = &cmd->pipe_fd[0];
+		cmd->make_a_pipe = 2;
+	}
 	return (cmd->pipe_fd);
 }

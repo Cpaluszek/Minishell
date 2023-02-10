@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 10:55:09 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 11:28:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	handle_interactive_sigquit(int signum, siginfo_t *info, void *context)
 	rl_redisplay();
 }
 
+// Todo: on new bash ^C is print
 /**
  * @brief signal handler: ctrl-C interactive mode
  * Clear the current line, and show a new prompt

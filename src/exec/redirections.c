@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 11:07:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:14:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 #include "minishell.h"
 #include "input.h"
 
-void	close_redirs(int fd_in, int fd_out)
+void	close_redirs(int redirs[2])
 {
-	if (fd_in > 0 && close(fd_in) == -1)
+	if (redirs[0] > 0 && close(redirs[0]) == -1)
 		perror(ERR_CLOSE);
-	if (fd_out > 0 && close(fd_out) == -1)
+	if (redirs[1] > 0 && close(redirs[1]) == -1)
 		perror(ERR_CLOSE);
 }
 
-void	set_redirection(t_global *shell, t_token *tok, int *fd_in, int *fd_out)
+void	set_redirection(t_global *shell, t_token *tok, int redirs[2])
 {
 	if (tok->token <= HERE_DOC)
 	{
-		if (*fd_in > 0 && close(*fd_in) == -1)
+		if (redirs[0] > 0 && close(redirs[0]) == -1)
 			perror(ERR_CLOSE);
 		if (tok->token == INPUT)
 			tok->fd_file = open(tok->str, O_RDONLY);
@@ -36,17 +36,17 @@ void	set_redirection(t_global *shell, t_token *tok, int *fd_in, int *fd_out)
 				{;} //Todo: error
 			tok->fd_file = open(HERE_DOC_TMP, O_RDONLY);
 		}
-		*fd_in = tok->fd_file;
+		redirs[0] = tok->fd_file;
 	}
 	else if (tok->token <= OUTPUT_APPEND)
 	{
-		if (*fd_out > 0 && close(*fd_out) == -1)
+		if (redirs[1] > 0 && close(redirs[1]) == -1)
 			perror(ERR_CLOSE);
 		if (tok->token == OUTPUT_TRUNC)
 			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		else if (tok->token == OUTPUT_APPEND)
 			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
-		*fd_out = tok->fd_file;
+		redirs[1] = tok->fd_file;
 	}
 }
 
