@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 13:14:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:02:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	set_redirection(t_global *shell, t_token *tok, int redirs[2])
 			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
 		redirs[1] = tok->fd_file;
 	}
+	if (tok->fd_file == -1)
+		perror(tok->str);
 }
 
 int	dup_fds(t_token *token)
