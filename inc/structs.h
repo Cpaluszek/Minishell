@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 22:31:17 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 23:14:59 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct s_global {
 	bool			is_wildcard;
 	t_block			*block_list;
 	t_token			*token_list;
+	t_token			*here_doc_list;
 	int				last_exit_status;
 	int				command_line;
 	struct termios	saved_attr;

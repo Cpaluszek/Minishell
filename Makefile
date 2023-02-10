@@ -26,6 +26,7 @@ PARSING_FILES	:=	add_path_to_command.c \
 					block_parsing.c \
 					central_parsing.c \
 					check_for_ambiguous_redirect.c \
+					create_sub_block.c \
 					create_sub_token_list.c \
 					empty_token_assignation.c \
 					expand_dollar_in_token_str.c \

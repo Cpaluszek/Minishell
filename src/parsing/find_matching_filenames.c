@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:17:14 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/09 13:32:31 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/09 22:59:50 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file)
 	int		i;
 
 	filename = (char *)file->content;
+	if (filename[0] == '.' && pattern[0] != '.')
+		return (NULL);
 	i = 0;
 	while (pattern[i] != '*')
 		i++;

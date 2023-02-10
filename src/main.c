@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 14:45:14 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/10 10:58:14 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ int	main(int argc, char **argv, char **env)
 			dprintf(fd, "\n\nINPUT : %s\n\n", shell.input_completed);
 			print_block(shell.block_list, fd);
 		}
-		//else
-		//	dprintf(1, "NOBLOCK\n");
-		if (shell.command_line == COMPLETED)
-			exec_start(&shell);
+		else
+			dprintf(1, "NOBLOCK\n");
+		// if (shell.command_line == COMPLETED)
+		// 	exec_start(&shell);
 	}
 	close(fd);
 	return (EXIT_SUCCESS);
@@ -150,29 +150,31 @@ void	print_command_line2(t_token *token_list, int fd)
 
 	while (token_list)
 	{
-		dprintf(fd, "{");
+		// dprintf(fd, "{");
 		// dprintf(fd, "[%p]", token_list);
-		dprintf(fd, "[%s]:[", token_list->token_str);
+		if (token_list->token != CMD)
+			dprintf(fd, " %s", token_list->token_str);
 		if (token_list->token == CMD)
 		{
 			if (!token_list->cmd)
-				dprintf(fd, "%s(str) %d", token_list->str, token_list->ambiguous_redirect);
+				dprintf(fd, "%s(str)", token_list->str);
 			else
 			{
 				i = 0;
 				while (token_list->cmd[i])
-					dprintf(fd, "{%s }", token_list->cmd[i++]);
+					dprintf(fd, "%s ", token_list->cmd[i++]);
 				// fd_in = token_list->fd_input;
 				// fd_out = token_list->fd_output;
 			}
 			// dprintf(fd, "], pipe[%p,%p], fd_in(%p), fd_out(%p) mk_pip(%d)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out, token_list->make_a_pipe);
-			dprintf(fd, "]} -> ");
+			dprintf(fd, " -> ");
 		}
 		else
 		{
-			dprintf(fd, "%s, %d", token_list->str, token_list->ambiguous_redirect);
+			if (token_list->token <= OUTPUT_APPEND)
+				dprintf(fd, "%s", token_list->str);
 			// dprintf(fd, "], (%p)} -> ", &token_list->fd_file);
-			dprintf(fd, "]} -> ");
+			dprintf(fd, " -> ");
 		}
 		token_list = token_list->next;
 	}

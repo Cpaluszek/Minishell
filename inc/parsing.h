@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 22:26:09 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/10 10:41:45 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "structs.h"
 # include "errors.h"
 
-# define PROMPT		"\033[34mminishell-0.1 \033[32m\033[1m>\033[0m "
-# define PROMPT_ERR	"\033[34mminishell-0.1 \033[31m\033[1m>\033[0m "
+# define PROMPT		"\033[34mminishell-0.9 \033[32m\033[1m>\033[0m "
+# define PROMPT_ERR	"\033[34mminishell-0.9 \033[31m\033[1m>\033[0m "
 
 int		central_parsing(t_global *shell, char *prompt);
 
@@ -55,7 +55,11 @@ char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file);
 void	add_path_to_command_token(t_global *shell);
 void	set_fd_for_each_command_token(t_token *token_list);
 void	delete_pipe_token(t_global *shell);
-t_block	*block_parsing(t_global *shell, t_block *upper_block, t_token *first_token);
+void	add_link_between_blocks(t_block *block, t_token *token);
+void	create_sub_block(t_global *shell, t_block **block_list, \
+		t_block *upper_block, t_token **token);
+t_block	*block_parsing(t_global *shell, t_block *upper_block, \
+		t_token *first_token);
 
 /*
 	-------------- PARSING UTILS ---------------------------------

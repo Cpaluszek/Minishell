@@ -1,0 +1,214 @@
+
+
+INPUT : ls && ((ls || ls && ls) >out && ls) | ls | ls | ls | ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+
+
+
+----- NEW BLOCK ----- 
+
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  -> 
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ls  -> 
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | -> ls  ->  | -> ls  ->  | -> ls  -> 
+
+
+INPUT : cat && (ls && (((ls || ls && ls) >out && ls)<in <<out >>outaroad | ls | ls | ls | ls)>hello >>helo2 && marrant || drole)
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  -> 
+
+
+
+----- NEW BLOCK ----- 
+
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ls  -> 
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >hello ->  >>helo2 -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block redirection :  <in ->  <<out ->  >>outaroad -> 
+
+
+
+									----- NEW BLOCK ----- 
+
+									Block redirection :  >out -> 
+
+
+
+												----- NEW BLOCK ----- 
+
+												Block token list : ls  -> 
+
+
+
+												----- NEW BLOCK ----- 
+
+												Block token list : ls  -> 
+
+
+
+												----- NEW BLOCK ----- 
+
+												Block token list : ls  -> 
+
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> ls  ->  | -> ls  ->  | -> ls  -> 
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : marrant  -> 
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : drole  -> 
+
+
+INPUT : cat && (ls && (((ls || ls && ls) >out && ls)<in <<out >>outaroad | ls | ls | ls | ls)>hello >>helo2 && marrant || drole) >ahah
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  -> 
+
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >ahah -> 
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ls  -> 
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >hello ->  >>helo2 -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block redirection :  <in ->  <<out ->  >>outaroad -> 
+
+
+
+									----- NEW BLOCK ----- 
+
+									Block redirection :  >out -> 
+
+
+
+												----- NEW BLOCK ----- 
+
+												Block token list : ls  -> 
+
+
+
+												----- NEW BLOCK ----- 
+
+												Block token list : ls  -> 
+
+
+
+												----- NEW BLOCK ----- 
+
+												Block token list : ls  -> 
+
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> ls  ->  | -> ls  ->  | -> ls  -> 
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : marrant  -> 
+
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : drole  -> 
