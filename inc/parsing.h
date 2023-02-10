@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 10:41:45 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/10 11:21:55 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define PROMPT		"\033[34mminishell-0.9 \033[32m\033[1m>\033[0m "
 # define PROMPT_ERR	"\033[34mminishell-0.9 \033[31m\033[1m>\033[0m "
+# define MININAME "msh"
 
 int		central_parsing(t_global *shell, char *prompt);
 

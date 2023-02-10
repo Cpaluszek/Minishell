@@ -6,14 +6,14 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 23:20:20 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/10 10:41:37 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/10 11:08:56 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "token_list_functions.h"
 
-//NOTE : garder les token->prev pour exit dun fail malloc?
+//TODO : GARBAGE COLLECTOR pour les fails de mallocs
 
 static t_token	*create_new_block(t_global *shell, t_block **block_list, \
 	t_block *upper_block, t_token *token);

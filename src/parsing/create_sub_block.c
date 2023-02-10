@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:10:57 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/10 10:55:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/10 11:07:35 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	create_sub_block(t_global *shell, t_block **block_list, \
 {
 	t_block	*new_block;
 	t_block	*sub_block;
-	
+
 	new_block = ft_lstnew_block(upper_block, NULL);
 	test_failed_malloc(shell, new_block);
 	sub_block = parse_and_create_sub_block(shell, token, new_block);
@@ -63,13 +63,13 @@ static t_block	*parse_and_create_sub_block(t_global *shell, \
 	return (first_sub_block);
 }
 
-static void	set_link_and_redirection_for_upper_block(t_block *upper_block, t_token *token, \
-			t_token **first_token)
+static void	set_link_and_redirection_for_upper_block(t_block *upper_block, \
+			t_token *token, t_token **first_token)
 {
 	if (token && token->next)
 	{
 		token = token->next;
-		ft_lstdelone_token(token->prev); 
+		ft_lstdelone_token(token->prev);
 		token->prev = NULL;
 	}
 	else
@@ -101,7 +101,7 @@ static void	add_redirection_for_upper_block(t_block *upper_block, t_token *token
 	fd_output = NULL;
 	if (token && token->token <= OUTPUT_APPEND)
 		upper_block->redirection_token_list = token;
-	while (token && token->token <= OUTPUT_APPEND) // probablement facultatif vu que cela sera fait dans l'exec
+	while (token && token->token <= OUTPUT_APPEND)
 	{
 		if (token->token <= HERE_DOC)
 			fd_input = &token->fd_file;

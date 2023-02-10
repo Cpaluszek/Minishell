@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:59:33 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/02 15:05:32 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/10 11:12:38 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "parsing.h"
 #include <unistd.h>
 
-int	find_path(t_global *shell, t_token *token, char *cmd);
+static int	find_path(t_global *shell, t_token *token, char *cmd);
 
 /*
 	Check access and join the path to the first command argument.
@@ -43,7 +43,7 @@ void	add_path_to_command_token(t_global *shell)
 /* 
 	Function that will try each possible path for command input argument.
 */
-int	find_path(t_global *shell, t_token *token, char *cmd)
+static int	find_path(t_global *shell, t_token *token, char *cmd)
 {
 	int		i;
 	char	*test_path;
