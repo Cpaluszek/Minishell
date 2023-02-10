@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 16:55:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:08:10 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ static void	check_cmd_exec(t_global *shell, t_exec *data)
 	}
 	else if (data->pipe && data->pipe[0] > 2 && close(data->pipe[0]) == -1)
 		perror(ERR_CLOSE);
+	close_redirs(data->redirs);
 }
 
 // Todo: too much fork - bash does not exit
@@ -126,6 +127,5 @@ static void	exec_cmd(t_token *token, t_global *shell, int redirs[2])
 		close_token_pipes(token);
 		exit(EXIT_FAILURE);
 	}
-	close_redirs(redirs);
 	parent_close_pipes(token);
 }

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 16:54:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:11:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ void	parent_close_pipes(t_token *token)
 
 void	close_token_pipes(t_token *token)
 {
-	if (token->make_a_pipe)
-		if (close(token->pipe_fd[0]) == -1 || close(token->pipe_fd[1]) == -1)
-			perror(ERR_CLOSE);
+	if (token->make_a_pipe && close(token->pipe_fd[1]) == -1)
+		perror(ERR_CLOSE);
 	token = token->prev;
 	while (token)
 	{
