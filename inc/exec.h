@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 16:58:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 11:22:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int		exec_start(t_global *shell);
 int		exec_child(t_token *token, char **env);
 void	parent_close_pipes(t_token *token);
 void	close_token_pipes(t_token *token);
+int		*create_pipe(t_global *shell, t_token *cmd, int fd_in, int fd_out);
 
 /*
 	--------- Redirections functions -----------
 */
 void	close_redirs(int fd_in, int fd_out);
-int		setup_input_redir(t_token *tok, t_global *shell, int fd_redir_in);
-int		setup_output_redir(t_token *tok, int fd_redir_out);
+void	set_redirection(t_global *shell, t_token *tok, int *fd_in, int *fd_out);
 int		dup_fds(t_token *token);
 
 /*

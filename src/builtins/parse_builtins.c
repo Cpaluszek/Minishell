@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:31 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 17:06:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 10:15:34 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static int	search_builtin(t_token *t, t_builtin *arr, int *found, t_global *s)
 		if (ft_strncmp(t->cmd[0], arr[i].name, ft_strlen(arr[i].name)) == 0)
 		{
 			*found = 1;
-			printf("Builtin found\n");
 			return_status = arr[i].builtin(t, s);
 			return (return_status);
 		}

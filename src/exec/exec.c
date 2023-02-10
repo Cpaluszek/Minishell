@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 17:02:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 11:22:58 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 #include "input.h"
 
 static void	exec_token_list(t_token *token, t_global *shell);
-static void	exec_cmd(t_token *token, t_global *shell);
+static void	exec_cmd(t_token *token, t_global *shell, int fd_in, int fd_out);
 static void	wait_for_token_list(t_token *token);
+
+// Todo: block execution - all the here_doc needs to be open first
 
 // Todo: attention a `./ls | cat -e` qui ne doit executer que le local
 // Todo: test max amount of pipes
@@ -48,21 +50,13 @@ static void	exec_token_list(t_token *token, t_global *shell)
 		redir_in = 0;
 		redir_out = 0;
 		cmd = NULL;
+		// Todo: check redir errors
 		while (token)
 		{
 			if (token->token <= OUTPUT_APPEND)
-			{
-				// Todo: check redir errors
-				if (token->token <= HERE_DOC)
-					redir_in = setup_input_redir(token, shell, redir_in);
-				else if (token->token <= OUTPUT_APPEND)
-					redir_out = setup_output_redir(token, redir_out);
-			}
+				set_redirection(shell, token, &redir_in, &redir_out);
 			else if (token->token == CMD)
 			{
-				token->fd_input = NULL;
-				token->fd_output = NULL;
-				token->make_a_pipe = 0;
 				cmd = token;
 				if (prev_pipe != NULL)
 				{
@@ -74,14 +68,8 @@ static void	exec_token_list(t_token *token, t_global *shell)
 			{
 				if (cmd != NULL)
 				{
-					if (pipe(cmd->pipe_fd) == -1)
-					{
-						close_redirs(redir_in, redir_out);
-						exec_cmd_error(shell, ERR_PIPE, token);
-					}
+					prev_pipe = create_pipe(shell, cmd, redir_in, redir_out);
 					cmd->fd_output = &cmd->pipe_fd[1];
-					cmd->make_a_pipe = 1;
-					prev_pipe = cmd->pipe_fd;
 				}
 				else
 					create_half_pipe = 1;
@@ -98,29 +86,22 @@ static void	exec_token_list(t_token *token, t_global *shell)
 		{
 			if (create_half_pipe)
 			{
-				if (pipe(cmd->pipe_fd) == -1)
-				{
-					close_redirs(redir_in, redir_out);
-					exec_cmd_error(shell, ERR_PIPE, token);
-				}
+				prev_pipe = create_pipe(shell, cmd, redir_in, redir_out);
 				cmd->fd_input = &cmd->pipe_fd[0];
 				if (close(cmd->pipe_fd[1]) == -1)
 					perror(ERR_CLOSE);
 				cmd->make_a_pipe = 2;
-				prev_pipe = cmd->pipe_fd;
 				create_half_pipe = 0;
 			}
-			if (redir_in != 0)
-				cmd->fd_input = &redir_in;
-			if (redir_out != 0)
-				cmd->fd_output = &redir_out;
-			exec_cmd(cmd, shell);
+			exec_cmd(cmd, shell, redir_in, redir_out);
+			parent_close_pipes(cmd);
 		}
 		close_redirs(redir_in, redir_out);
 		if (token != NULL)
 			token = token->next;
 	}
 }
+
 
 static void	wait_for_token_list(t_token *token)
 {
@@ -140,8 +121,12 @@ static void	wait_for_token_list(t_token *token)
 }
 
 // Todo: too much fork - bash does not exit
-static void	exec_cmd(t_token *token, t_global *shell)
+static void	exec_cmd(t_token *token, t_global *shell, int fd_in, int fd_out)
 {
+	if (fd_in != 0)
+		token->fd_input = &fd_in;
+	if (fd_out != 0)
+		token->fd_output = &fd_out;
 	if (check_for_builtins(token, shell))
 		return ;
 	else if (access(token->cmd_path, X_OK) == -1)
@@ -163,5 +148,4 @@ static void	exec_cmd(t_token *token, t_global *shell)
 		close_token_pipes(token);
 		exit(EXIT_FAILURE);
 	}
-	parent_close_pipes(token);
 }

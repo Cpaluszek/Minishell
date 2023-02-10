@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/08 13:43:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 11:00:11 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	merge_and_finish_syntax_checking(t_global *shell);
 static void	parsing_finalization(t_global *shell);
 static int	uncompleted_line(t_global *shell);
 
+// Note: why return an int ?
 int	central_parsing(t_global *shell, char *prompt)
 {
 	if (parsing_initialization(shell, prompt))
@@ -94,7 +95,7 @@ static void	parsing_finalization(t_global *shell)
 	}
 	add_path_to_command_token(shell);
 	//block_parsing(shell);
-	set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
+	// set_fd_for_each_command_token(shell->token_list); //(sera fait dans la creation des blocks quand on fera les parentheses)
 	// set_block_fd_and_pipe_fdls
 	//delete_pipe_token(shell);
 	add_history(shell->input_completed);

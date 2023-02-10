@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals_handlers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/31 10:18:27 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/10 10:55:09 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ void	handle_execution_sigquit(int signum, siginfo_t *info, void *context)
 {
 	(void) info;
 	(void) context;
-	printf("Quit: %d\n", signum);
+	printf("Quit (core dumped)\n");
 	g_status = 128 + signum;
 }

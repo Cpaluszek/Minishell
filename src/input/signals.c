@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/08 17:38:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 10:56:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	set_interactive_signals(t_global *shell)
 }
 
 // Note: in execution mode ctrl-D with bash will close the shell after execution
+// Todo: set attr here
 void	set_execution_signals(void)
 {
 	struct sigaction	sa;
