@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 13:24:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:54:58 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,25 @@
 # define COMMAND_NOT_FOUND 127
 # define HERE_DOC_TMP	"/tmp/.heredoc.tmp"
 
+typedef struct s_exec {
+	t_token	*cmd;
+	int		*pipe;
+	int		redirs[2];
+	int		flag;
+}	t_exec;
+
 int		exec_start(t_global *shell);
 int		exec_child(t_token *token, char **env);
+void	wait_for_token_list(t_token *token);
 void	parent_close_pipes(t_token *token);
 void	close_token_pipes(t_token *token);
-int		*create_pipe(t_global *shell, t_token *cmd, int redirs[2], int p_end);
+int		*create_pipe(t_global *shell, t_exec *data, int p_end);
+
+/*
+	--------- Exec Errors -----------
+*/
+void	exec_cmd_error(t_global *shell, char *err, t_token *token);
+void	exec_cmd_not_found(t_token *token);
 
 /*
 	--------- Redirections functions -----------
@@ -63,6 +77,5 @@ char	*ft_getcwd(void);
 int		args_number(char **args);
 int		cmp_str(void *data1, void *data2);
 void	*copy_content_str(void *entry);
-void	exec_cmd_error(t_global *shell, char *err, t_token *token);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 14:59:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:55:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 static void	exec_token_list(t_token *token, t_global *shell);
 static void	exec_cmd(t_token *token, t_global *shell, int redirs[2]);
-static void	wait_for_token_list(t_token *token);
+static int	check_token(t_global *shell, t_token *token, t_exec *data);
+static void	check_cmd_exec(t_global *shell, t_exec *data);
 
 // Todo: block execution - all the here_doc needs to be open first
 
@@ -37,86 +38,68 @@ int	exec_start(t_global *shell)
 // Todo: extract functions
 static void	exec_token_list(t_token *token, t_global *shell)
 {
-	t_token	*cmd;
-	int		*prev_pipe;
-	int		redirs[2];
-	int		create_half_pipe;
+	t_exec	data;
 
-	prev_pipe = NULL;
-	create_half_pipe = 0;
+	data.pipe = NULL;
+	data.flag = 0;
 	while (token)
 	{
-		redirs[0] = 0;
-		redirs[1] = 0;
-		cmd = NULL;
+		data.redirs[0] = 0;
+		data.redirs[1] = 0;
+		data.cmd = NULL;
 		// Todo: check redir errors
 		while (token)
 		{
-			if (token->token <= OUTPUT_APPEND)
-				set_redirection(shell, token, redirs);
-			else if (token->token == CMD)
-			{
-				cmd = token;
-				if (prev_pipe != NULL)
-				{
-					cmd->fd_input = &prev_pipe[0];
-					prev_pipe = NULL;
-				}
-			}
-			else if (token->token == PIPE)
-			{
-				if (cmd != NULL)
-				{
-					prev_pipe = create_pipe(shell, cmd, redirs, 1);
-					cmd->fd_output = &cmd->pipe_fd[1];
-				}
-				else
-					create_half_pipe = 1;
+			if (check_token(shell, token, &data))
 				break ;
-			}
 			token = token->next;
 		}
-		if (cmd == NULL)
-		{
-			if (prev_pipe != NULL && prev_pipe[0] > 2 && close(prev_pipe[0]))
-				perror(ERR_CLOSE);
-		}
-		else
-		{
-			if (create_half_pipe)
-			{
-				prev_pipe = create_pipe(shell, cmd, redirs, 0);
-				cmd->fd_input = &cmd->pipe_fd[0];
-				if (close(cmd->pipe_fd[1]) == -1)
-					perror(ERR_CLOSE);
-				cmd->make_a_pipe = 2;
-				create_half_pipe = 0;
-			}
-			exec_cmd(cmd, shell, redirs);
-			parent_close_pipes(cmd);
-		}
-		close_redirs(redirs);
+		check_cmd_exec(shell, &data);
 		if (token != NULL)
 			token = token->next;
 	}
 }
 
-
-static void	wait_for_token_list(t_token *token)
+static int	check_token(t_global *shell, t_token *token, t_exec *data)
 {
-	while (token)
+	if (token->token <= OUTPUT_APPEND)
+		set_redirection(shell, token, data->redirs);
+	else if (token->token == CMD)
 	{
-		if (token->token == CMD)
+		data->cmd = token;
+		if (data->pipe != NULL)
 		{
-			if (token->pid > 0 && token->exit_status != COMMAND_NOT_FOUND)
-			{
-				waitpid(token->pid, &token->exit_status, 0);
-				token->exit_status = WEXITSTATUS(token->exit_status);
-			}
-			g_status = token->exit_status;
+			data->cmd->fd_input = data->pipe;
+			data->pipe = NULL;
 		}
-		token = token->next;
 	}
+	else if (token->token == PIPE)
+	{
+		if (data->cmd != NULL)
+			data->pipe = create_pipe(shell, data, 1);
+		else
+			data->flag = 1;
+		return (1);
+	}
+	return (0);
+}
+
+static void	check_cmd_exec(t_global *shell, t_exec *data)
+{
+	if (data->cmd != NULL)
+	{
+		if (data->flag)
+		{
+			data->pipe = create_pipe(shell, data, 0);
+			if (close(data->cmd->pipe_fd[1]) == -1)
+				perror(ERR_CLOSE);
+			data->cmd->make_a_pipe = 2;
+			data->flag = 0;
+		}
+		exec_cmd(data->cmd, shell, data->redirs);
+	}
+	else if (data->pipe && data->pipe[0] > 2 && close(data->pipe[0]) == -1)
+		perror(ERR_CLOSE);
 }
 
 // Todo: too much fork - bash does not exit
@@ -130,11 +113,7 @@ static void	exec_cmd(t_token *token, t_global *shell, int redirs[2])
 		return ;
 	else if (access(token->cmd_path, X_OK) == -1)
 	{
-		if (ft_strchr(token->cmd_path, '/') != NULL)
-			ft_printf_fd(STDERR, "%s: No such file or directory\n", \
-				token->cmd[0]);
-		else
-			ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
+		exec_cmd_not_found(token);
 		token->exit_status = COMMAND_NOT_FOUND;
 		close_token_pipes(token);
 		return ;
@@ -147,4 +126,6 @@ static void	exec_cmd(t_token *token, t_global *shell, int redirs[2])
 		close_token_pipes(token);
 		exit(EXIT_FAILURE);
 	}
+	close_redirs(redirs);
+	parent_close_pipes(token);
 }

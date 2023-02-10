@@ -6,14 +6,30 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 13:31:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:54:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "exec.h"
-#include "minishell.h"
 #include <unistd.h>
+
+void	wait_for_token_list(t_token *token)
+{
+	while (token)
+	{
+		if (token->token == CMD)
+		{
+			if (token->pid > 0 && token->exit_status != COMMAND_NOT_FOUND)
+			{
+				waitpid(token->pid, &token->exit_status, 0);
+				token->exit_status = WEXITSTATUS(token->exit_status);
+			}
+			g_status = token->exit_status;
+		}
+		token = token->next;
+	}
+}
 
 void	parent_close_pipes(t_token *token)
 {
@@ -51,33 +67,22 @@ void	close_token_pipes(t_token *token)
 	}
 }
 
-// Note: will probably need one more parameter for the token list,
-// with different blocks
-// Todo: close all redirs
-void	exec_cmd_error(t_global *shell, char *err, t_token *token)
+int	*create_pipe(t_global *shell, t_exec *data, int p_end)
 {
-	perror(err);
-	if (ft_strcmp(err, ERR_PIPE) != 0)
-		close_token_pipes(token);
-	exit_shell(shell, EXIT_FAILURE);
-}
-
-int	*create_pipe(t_global *shell, t_token *cmd, int redirs[2], int p_end)
-{
-	if (pipe(cmd->pipe_fd) == -1)
+	if (pipe(data->cmd->pipe_fd) == -1)
 	{
-		close_redirs(redirs);
-		exec_cmd_error(shell, ERR_PIPE, cmd);
+		close_redirs(data->redirs);
+		exec_cmd_error(shell, ERR_PIPE, data->cmd);
 	}
 	if (p_end)
 	{
-		cmd->fd_output = &cmd->pipe_fd[1];
-		cmd->make_a_pipe = 1;
+		data->cmd->fd_output = &data->cmd->pipe_fd[1];
+		data->cmd->make_a_pipe = 1;
 	}
 	else
 	{
-		cmd->fd_input = &cmd->pipe_fd[0];
-		cmd->make_a_pipe = 2;
+		data->cmd->fd_input = &data->cmd->pipe_fd[0];
+		data->cmd->make_a_pipe = 2;
 	}
-	return (cmd->pipe_fd);
+	return (data->cmd->pipe_fd);
 }
