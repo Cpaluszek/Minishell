@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 17:24:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:37:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	here_doc(t_global *shell, t_token *token)
 
 static void	here_doc_child(t_global *shell, char *delim)
 {
-	int				file;
+	int		file;
 
 	set_here_doc_signals();
 	file = open(HERE_DOC_TMP, O_CREAT | O_TRUNC | O_WRONLY, 0644);
@@ -73,6 +73,7 @@ static void	get_here_doc_input(t_global *shell, char *delim, int fd)
 		buff = check_for_expand(shell, buff);
 		if (write(fd, buff, ft_strlen(buff)) == -1 || write(fd, "\n", 1) == -1)
 		{
+			perror(ERR_WRITE);
 			ft_free(buff);
 			here_doc_write_error(shell, delim, fd);
 		}

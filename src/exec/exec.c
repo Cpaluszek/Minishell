@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 17:08:10 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:37:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	check_cmd_exec(t_global *shell, t_exec *data);
 
 // Todo: block execution - all the here_doc needs to be open first
 
-// Todo: attention a `./ls | cat -e` qui ne doit executer que le local
 // Todo: test max amount of pipes
 // Todo: test `rm -rf *`
 // Todo: test permissions on redirections
@@ -35,7 +34,6 @@ int	exec_start(t_global *shell)
 	return (0);
 }
 
-// Todo: extract functions
 static void	exec_token_list(t_token *token, t_global *shell)
 {
 	t_exec	data;
@@ -47,7 +45,6 @@ static void	exec_token_list(t_token *token, t_global *shell)
 		data.redirs[0] = 0;
 		data.redirs[1] = 0;
 		data.cmd = NULL;
-		// Todo: check redir errors
 		while (token)
 		{
 			if (check_token(shell, token, &data))

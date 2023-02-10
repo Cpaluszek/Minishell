@@ -6,13 +6,15 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 17:02:28 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:28:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "minishell.h"
 #include "input.h"
+
+static void	check_redir_error(t_token *tok);
 
 void	close_redirs(int redirs[2])
 {
@@ -30,12 +32,8 @@ void	set_redirection(t_global *shell, t_token *tok, int redirs[2])
 			perror(ERR_CLOSE);
 		if (tok->token == INPUT)
 			tok->fd_file = open(tok->str, O_RDONLY);
-		else
-		{
-			if (here_doc(shell, tok) != 0)
-				{;} //Todo: error
+		else if (here_doc(shell, tok) == 0)
 			tok->fd_file = open(HERE_DOC_TMP, O_RDONLY);
-		}
 		redirs[0] = tok->fd_file;
 	}
 	else if (tok->token <= OUTPUT_APPEND)
@@ -48,8 +46,18 @@ void	set_redirection(t_global *shell, t_token *tok, int redirs[2])
 			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
 		redirs[1] = tok->fd_file;
 	}
+	check_redir_error(tok);
+}
+
+static void	check_redir_error(t_token *tok)
+{
 	if (tok->fd_file == -1)
-		perror(tok->str);
+	{
+		if (tok->token == HERE_DOC)
+			perror(ERR_HERE_DOC_FILE);
+		else
+			perror(tok->str);
+	}
 }
 
 int	dup_fds(t_token *token)

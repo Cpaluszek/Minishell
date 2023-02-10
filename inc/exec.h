@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 16:54:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 17:17:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "errors.h"
 
 # define COMMAND_NOT_FOUND 127
-# define HERE_DOC_TMP	"/tmp/.heredoc.tmp"
+# define HERE_DOC_TMP	".heredoc.tmp"
 
 typedef struct s_exec {
 	t_token	*cmd;
