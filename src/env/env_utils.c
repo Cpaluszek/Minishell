@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "libft.h"
 #include "errors.h"
 #define INVALID_ID_SET	"=?_:{}[]"
 #define CONCAT_VAR		"+="

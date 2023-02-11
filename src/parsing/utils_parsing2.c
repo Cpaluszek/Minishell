@@ -12,8 +12,6 @@
 
 #include "minishell.h"
 #include "parsing.h"
-#include "exec.h"
-#include "token_list_functions.h"
 
 int	print_syntax_error(t_global *shell, char *str)
 {

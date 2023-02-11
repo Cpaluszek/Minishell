@@ -46,17 +46,14 @@ static int	parse_builtins(t_token *token, int *is_builtin, t_global *shell)
 static int	search_builtin(t_token *t, t_builtin *arr, int *found, t_global *s)
 {
 	int	i;
-	int	return_status;
 
 	i = 0;
-	return_status = 0;
 	while (arr[i].name != NULL)
 	{
 		if (ft_strncmp(t->cmd[0], arr[i].name, ft_strlen(arr[i].name)) == 0)
 		{
 			*found = 1;
-			return_status = arr[i].builtin(t, s);
-			return (return_status);
+			return (arr[i].builtin(t, s));
 		}
 		i++;
 	}

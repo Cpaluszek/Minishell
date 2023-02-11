@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "structs.h"
-#include "libft.h"
 
 void	expand_dollar(t_global *shell, t_token *token, char *str);
 void	test_failed_malloc(t_global *shell, void *content);

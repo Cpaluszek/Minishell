@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "exec.h"
-#include "minishell.h"
 #include "input.h"
 
 static void	check_redir_error(t_token *tok);

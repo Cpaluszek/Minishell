@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "structs.h"
-#include "libft.h"
 
 static void	expand_variable(t_global *shell, t_token *token, \
 	char *str, int start);

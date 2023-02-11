@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "parsing.h"
-#include "token_list_functions.h"
-#include "libft.h"
-#include <stdio.h>
 
 static void	find_and_merge_linked_token(t_global *shell);
 static void	merge_linked_token(t_global *shell, t_token *token_list);
