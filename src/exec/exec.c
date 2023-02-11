@@ -111,8 +111,6 @@ static void	exec_cmd(t_token *token, t_global *shell, int redirs[2])
 	else if (access(token->cmd_path, X_OK) == -1)
 	{
 		exec_cmd_not_found(token);
-		token->exit_status = COMMAND_NOT_FOUND;
-		close_token_pipes(token);
 		return ;
 	}
 	token->pid = fork();
@@ -121,6 +119,8 @@ static void	exec_cmd(t_token *token, t_global *shell, int redirs[2])
 		close_redirs(redirs);
 		exec_cmd_error(shell, ERR_FORK, token);
 	}
+	if (token->pid != 0 && ft_strcmp(token->str, "./minishell") == 0)
+		signal(SIGINT, SIG_IGN);
 	if (token->pid == 0 && exec_child(token, shell->env))
 	{
 		close_token_pipes(token);

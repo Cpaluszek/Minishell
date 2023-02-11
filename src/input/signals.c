@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 10:56:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:04:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "input.h"
 #include "errors.h"
 
-// Todo: manage ./minishell in minishell, don;t print multiple '\n'
 void	init_shell_attr(t_global *shell)
 {
 	if (tcgetattr(STDIN, &shell->saved_attr) == -1)
@@ -24,8 +23,6 @@ void	init_shell_attr(t_global *shell)
 	shell->custom_attr.c_lflag &= ECHO;
 }
 
-// Todo: remove perror with isatty and tcsetattr
-// Update interactive mode signals
 void	set_interactive_signals(t_global *shell)
 {
 	struct sigaction	sa;

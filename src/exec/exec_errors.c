@@ -20,6 +20,8 @@ void	exec_cmd_not_found(t_token *token)
 			token->cmd[0]);
 	else
 		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
+	token->exit_status = COMMAND_NOT_FOUND;
+	close_token_pipes(token);
 }
 
 // Note: will probably need one more parameter for the token list,
