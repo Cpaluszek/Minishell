@@ -21,12 +21,12 @@ static void		print_env_variable(char *str);
 static void		concat_or_add_var(t_global *shell, char *new, int i);
 
 // Todo: unclosed quotes should not work
-// Todo: export "a     "=test
-// Todo: export with pipes should not update env
+// export a="test
+// truc" -> should keep the new line
 int	ft_export(t_token *token, t_global *shell)
 {
-	int		i;
-	int		ret_value;
+	int 	i;
+	int 	ret_value;
 
 	ret_value = 0;
 	if (args_number(token->cmd) == 1)
