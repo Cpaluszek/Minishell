@@ -25,9 +25,7 @@ static void	check_cmd_exec(t_global *shell, t_exec *data);
 // Todo: test permissions on redirections
 int	exec_start(t_global *shell)
 {
-	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
-		perror(ERR_TCSET);
-	set_execution_signals();
+	set_execution_signals(shell);
 	exec_token_list(shell->token_list, shell);
 	wait_for_token_list(shell->token_list);
 	return (0);

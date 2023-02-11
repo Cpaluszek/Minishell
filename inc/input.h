@@ -27,7 +27,7 @@ int 	here_doc(t_global *shell, t_token *token);
 */
 void	init_shell_attr(t_global *shell);
 void	set_interactive_signals(t_global *shell);
-void	set_execution_signals(void);
+void	set_execution_signals(t_global *shell);
 void	set_here_doc_signals(void);
 
 /*

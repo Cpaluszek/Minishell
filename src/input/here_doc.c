@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 17:38:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:07:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ int	here_doc(t_global *shell, t_token *token)
 	waitpid(token->pid, &exit_status, 0);
 	token->exit_status = WEXITSTATUS(exit_status);
 	g_status = WEXITSTATUS(exit_status);
-	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
-		perror(ERR_TCSET);
-	set_execution_signals();
+	set_execution_signals(shell);
 	return (token->exit_status);
 }
 

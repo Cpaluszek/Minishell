@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/11 15:04:45 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:06:48 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ void	set_interactive_signals(t_global *shell)
 }
 
 // Note: in execution mode ctrl-D with bash will close the shell after execution
-// Todo: set attr here
-void	set_execution_signals(void)
+void	set_execution_signals(t_global *shell)
 {
 	struct sigaction	sa;
 
+	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
+		perror(ERR_TCSET);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	signal(SIGINT, SIG_DFL);
