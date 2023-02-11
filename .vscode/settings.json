@@ -12,6 +12,7 @@
 		"history.h": "c",
 		"stdbool.h": "c",
 		"input.h": "c",
-		"minishell.h": "c"
+		"minishell.h": "c",
+		"signal.h": "c"
 	}
 }

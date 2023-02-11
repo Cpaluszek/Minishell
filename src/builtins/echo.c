@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Writes argument to STDOUT
-// Option -n: print without trailing newline
-// The echo utility exits 0 on success, and >0 if an error occurs.
 #include "minishell.h"
 #include "exec.h"
 #define NL "-n"

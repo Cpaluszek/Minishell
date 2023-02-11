@@ -20,7 +20,7 @@
 # include <readline/history.h>
 # include "structs.h"
 
-int		here_doc(t_global *shell, t_token *token);
+int 	here_doc(t_global *shell, t_token *token);
 
 /*
 	--------- Signals functions -----------

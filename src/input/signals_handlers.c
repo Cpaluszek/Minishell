@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 17:54:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/11 10:50:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context)
 	g_status = 128 + signum;
 }
 
-// Todo: IMPOSSIBLE if cmd is interrupted don't reset g_status
 /**
  * @brief signal handler: ctrl-C execution mode
  * Kill the running process and give the prompt back
