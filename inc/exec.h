@@ -13,7 +13,6 @@
 #ifndef EXEC_H
 # define EXEC_H
 
-// Todo: move includes closer to usage
 # include <stdio.h>
 # include <unistd.h>
 # include <sys/wait.h>

@@ -24,8 +24,6 @@ void	exec_cmd_not_found(t_token *token)
 	close_token_pipes(token);
 }
 
-// Note: will probably need one more parameter for the token list,
-// with different blocks
 void	exec_cmd_error(t_global *shell, char *err, t_token *token)
 {
 	perror(err);

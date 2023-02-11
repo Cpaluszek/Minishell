@@ -20,7 +20,6 @@ static int	check_token(t_global *shell, t_token *token, t_exec *data);
 static void	check_cmd_exec(t_global *shell, t_exec *data);
 
 // Todo: block execution - all the here_doc needs to be open first
-
 // Todo: test max amount of pipes
 // Todo: test permissions on redirections
 int	exec_start(t_global *shell)
