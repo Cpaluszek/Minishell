@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 18:09:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/11 10:17:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	set_redirection(t_global *shell, t_token *tok, int redirs[2])
 		if (redirs[0] > 0 && close(redirs[0]) == -1)
 			perror(ERR_CLOSE);
 		if (tok->token == INPUT)
-			tok->fd_file = open(tok->str, O_RDONLY); //Todo: check if it's not a directory
+			tok->fd_file = open(tok->str, O_RDONLY);
 		else if (here_doc(shell, tok) == 0)
 			tok->fd_file = open(HERE_DOC_TMP, O_RDONLY);
 		redirs[0] = tok->fd_file;
@@ -57,8 +57,7 @@ static void	check_redir_error(t_token *tok)
 			perror(ERR_HERE_DOC_FILE);
 		else
 			perror(tok->str);
-	} else
-		dprintf(2, "redir OK\n");
+	}
 }
 
 int	dup_fds(t_token *token)
