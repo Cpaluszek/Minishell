@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/11 10:17:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 12:19:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	set_redirection(t_global *shell, t_token *tok, int redirs[2])
 		if (tok->token == INPUT)
 			tok->fd_file = open(tok->str, O_RDONLY);
 		else if (here_doc(shell, tok) == 0)
-			tok->fd_file = open(HERE_DOC_TMP, O_RDONLY);
+			tok->fd_file = tok->pipe_fd[0];
 		redirs[0] = tok->fd_file;
 	}
 	else if (tok->token <= OUTPUT_APPEND)

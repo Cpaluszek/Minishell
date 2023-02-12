@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 09:52:05 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 12:27:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ static void	check_cmd_exec(t_global *shell, t_exec *data);
 // Todo: test max amount of pipes
 // Todo: test permissions on redirections
 
-// Todo: block execution - all the here_doc needs to be open first
 // Todo: here_doc always first - process all
+// Todo: block execution - all the here_doc needs to be open first
+// Attention au close de tout les here_docs en cas de probleme
 int	exec_start(t_global *shell)
 {
 	set_execution_signals(shell);
