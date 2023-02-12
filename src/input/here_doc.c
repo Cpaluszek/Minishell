@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/11 15:08:34 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 10:51:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 static void	here_doc_child(t_global *shell, char *delim);
 static void	get_here_doc_input(t_global *shell, char *delim, int file);
 static void	here_doc_write_error(t_global *shell, char *delim, int file);
+
+// Todo: test `<< EOF cat | > out << EOF cat | > out2 << EOF cat | > out3`
 
 // Note: how to manage here_doc file error ?
 // Todo: not expand dollars in delimiter

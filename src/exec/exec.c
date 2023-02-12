@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 18:04:10 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 09:52:05 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ static void	exec_cmd(t_token *token, t_global *shell, int redirs[2]);
 static int	check_token(t_global *shell, t_token *token, t_exec *data);
 static void	check_cmd_exec(t_global *shell, t_exec *data);
 
-// Todo: block execution - all the here_doc needs to be open first
 // Todo: test max amount of pipes
 // Todo: test permissions on redirections
+
+// Todo: block execution - all the here_doc needs to be open first
+// Todo: here_doc always first - process all
 int	exec_start(t_global *shell)
 {
 	set_execution_signals(shell);
