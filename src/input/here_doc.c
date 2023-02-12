@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 14:44:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:50:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,9 @@ static void	here_doc_error(t_global *shell, char *str, int file, char *error);
 static int	check_here_doc_end(char *buff, char *delim);
 
 // Todo: not expand dollars in delimiter
-// Todo: remove extra /n with ctrl-C
-// Todo: check signals management - same as in wait_for_childs ?
 int	here_doc(t_global *shell, t_token *token)
 {
-	struct sigaction	sa;
-
-	sa.sa_flags = SA_RESTART;
-	sa.sa_sigaction = handle_here_doc_sigquit;
-	sigaction(SIGQUIT, &sa, NULL);
+	signal(SIGQUIT, SIG_IGN);
 	if (pipe(token->pipe_fd) == -1)
 		exec_cmd_error(shell, ERR_PIPE, token);
 	token->pid = fork();

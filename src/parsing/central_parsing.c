@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/10 11:00:11 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:46:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	merge_and_finish_syntax_checking(t_global *shell);
 static void	parsing_finalization(t_global *shell);
 static int	uncompleted_line(t_global *shell);
 
-// Note: why return an int ?
+// Note: why return an int - the return value is never read
 int	central_parsing(t_global *shell, char *prompt)
 {
 	if (parsing_initialization(shell, prompt))

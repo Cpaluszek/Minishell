@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 15:40:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:46:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "input.h"
 #include "errors.h"
 
-// Todo: check if tcsetattr is useful because new bash seems to always print signals
 void	init_shell_attr(t_global *shell)
 {
 	if (tcgetattr(STDIN, &shell->saved_attr) == -1)
@@ -40,7 +39,6 @@ void	set_interactive_signals(t_global *shell)
 	sigaction(SIGINT, &sa, NULL);
 }
 
-// Note: in execution mode ctrl-D with bash will close the shell after execution
 void	set_execution_signals(t_global *shell)
 {
 	struct sigaction	sa;

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:31:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 12:30:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:50:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context);
 void	handle_execution_sigint(int signum, siginfo_t *info, void *context);
 void	handle_execution_sigquit(int signum, siginfo_t *info, void *context);
 void	handle_here_doc_sigint(int signum, siginfo_t *info, void *context);
-void	handle_here_doc_sigquit(int signum, siginfo_t *info, void *context);
 
 #endif

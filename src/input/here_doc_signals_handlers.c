@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:28:18 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 15:42:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:50:12 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,4 @@ void	handle_here_doc_sigint(int signum, siginfo_t *info, void *context)
 	(void) signum;
 	write(1, "^C\n", 3);
 	exit(128 + signum);
-}
-
-// Todo: useless function
-void	handle_here_doc_sigquit(int signum, siginfo_t *info, void *context)
-{
-	(void) info;
-	(void) context;
-	(void) signum;
-	// rl_redisplay();
 }

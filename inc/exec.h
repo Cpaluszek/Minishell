@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 14:19:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:44:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_exec {
 	int		flag;
 }	t_exec;
 
-int		exec_start(t_global *shell);
+void	exec_start(t_global *shell);
 int		exec_child(t_token *token, char **env);
 void	wait_for_token_list(t_token *token);
 void	parent_close_pipes(t_token *token);
