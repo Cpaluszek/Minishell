@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 13:42:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:44:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 static void	here_doc_child(t_global *shell, t_token *token);
 static void	get_here_doc_input(t_global *shell, char *delim, int file);
 static void	here_doc_error(t_global *shell, char *str, int file, char *error);
+static int	check_here_doc_end(char *buff, char *delim);
 
 // Todo: not expand dollars in delimiter
 // Todo: remove extra /n with ctrl-C
 // Todo: check signals management - same as in wait_for_childs ?
 int	here_doc(t_global *shell, t_token *token)
 {
-	int					exit_status;
 	struct sigaction	sa;
 
 	sa.sa_flags = SA_RESTART;
@@ -41,9 +41,9 @@ int	here_doc(t_global *shell, t_token *token)
 		here_doc_child(shell, token);
 	if (close(token->pipe_fd[1]) == -1)
 		perror(ERR_CLOSE);
-	waitpid(token->pid, &exit_status, 0);
-	token->exit_status = WEXITSTATUS(exit_status);
-	g_status = WEXITSTATUS(exit_status);
+	waitpid(token->pid, &token->exit_status, 0);
+	token->exit_status = WEXITSTATUS(token->exit_status);
+	g_status = token->exit_status;
 	set_execution_signals(shell);
 	return (token->exit_status);
 }
@@ -68,7 +68,7 @@ static void	get_here_doc_input(t_global *shell, char *delim, int fd)
 	while (1)
 	{
 		buff = readline(HERE_DOC_PROMPT);
-		if (buff == NULL || ft_strcmp(buff, delim) == 0)
+		if (check_here_doc_end(buff, delim))
 			break ;
 		buff = check_for_expand(shell, buff);
 		buff = ft_strjoin_and_free(buff, "\n");
@@ -84,6 +84,17 @@ static void	get_here_doc_input(t_global *shell, char *delim, int fd)
 	if (write(fd, content, ft_strlen(content)) == -1)
 		here_doc_error(shell, content, fd, ERR_WRITE);
 	ft_free(content);
+}
+
+static int	check_here_doc_end(char *buff, char *delim)
+{
+	if (buff == NULL || ft_strcmp(buff, delim) == 0)
+	{
+		if (buff == NULL)
+			write(1, "\n", 1);
+		return (1);
+	}
+	return (0);
 }
 
 static void	here_doc_error(t_global *shell, char *str, int fd, char *error)

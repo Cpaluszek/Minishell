@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 13:41:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:19:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	exec_cmd_not_found(t_token *token);
 	--------- Redirections functions -----------
 */
 void	close_redirs(int redirs[2]);
-void	set_redirection(t_global *shell, t_token *tok, int redirs[2]);
+int		set_redirection(t_global *shell, t_token *tok, int redirs[2]);
 int		dup_fds(t_token *token);
 
 /*

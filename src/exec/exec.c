@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 12:27:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:30:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "exec.h"
 #include "input.h"
 
-static void	exec_token_list(t_token *token, t_global *shell);
+static int	exec_token_list(t_token *token, t_global *shell);
 static void	exec_cmd(t_token *token, t_global *shell, int redirs[2]);
 static int	check_token(t_global *shell, t_token *token, t_exec *data);
 static void	check_cmd_exec(t_global *shell, t_exec *data);
@@ -28,12 +28,13 @@ static void	check_cmd_exec(t_global *shell, t_exec *data);
 int	exec_start(t_global *shell)
 {
 	set_execution_signals(shell);
-	exec_token_list(shell->token_list, shell);
-	wait_for_token_list(shell->token_list);
+	if (exec_token_list(shell->token_list, shell) == 0)
+		wait_for_token_list(shell->token_list);
+	// Note: return value is currently useless
 	return (0);
 }
 
-static void	exec_token_list(t_token *token, t_global *shell)
+static int	exec_token_list(t_token *token, t_global *shell)
 {
 	t_exec	data;
 
@@ -46,7 +47,10 @@ static void	exec_token_list(t_token *token, t_global *shell)
 		data.cmd = NULL;
 		while (token)
 		{
-			if (check_token(shell, token, &data))
+			if (token->token <= OUTPUT_APPEND && \
+				set_redirection(shell, token, data.redirs) == 1)
+				return (close_redirs(data.redirs), 1);
+			else if (check_token(shell, token, &data))
 				break ;
 			token = token->next;
 		}
@@ -54,13 +58,20 @@ static void	exec_token_list(t_token *token, t_global *shell)
 		if (token != NULL)
 			token = token->next;
 	}
+	return (0);
 }
 
+/**
+ * @brief Check for cmd or pipe
+ * 
+ * @param shell 
+ * @param token 
+ * @param data 
+ * @return int 1 if a pipe is met, 0 otherwise
+ */
 static int	check_token(t_global *shell, t_token *token, t_exec *data)
 {
-	if (token->token <= OUTPUT_APPEND)
-		set_redirection(shell, token, data->redirs);
-	else if (token->token == CMD)
+	if (token->token == CMD)
 	{
 		data->cmd = token;
 		if (data->pipe != NULL)

@@ -6,11 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:28:18 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:33:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:42:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "input.h"
+
+// Note: print the ^C in the same line as the prompt -> HARD
 /**
  * @brief signal handler: ctrl-C here_doc
  * Stop the here_doc child process and give the prompt back
@@ -24,14 +26,15 @@ void	handle_here_doc_sigint(int signum, siginfo_t *info, void *context)
 	(void) info;
 	(void) context;
 	(void) signum;
-	write(1, "\n", 1);
-	exit(1);
+	write(1, "^C\n", 3);
+	exit(128 + signum);
 }
 
+// Todo: useless function
 void	handle_here_doc_sigquit(int signum, siginfo_t *info, void *context)
 {
 	(void) info;
 	(void) context;
 	(void) signum;
-	rl_redisplay();
+	// rl_redisplay();
 }

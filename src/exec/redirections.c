@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 12:19:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:21:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "input.h"
 
-static void	check_redir_error(t_token *tok);
+static void set_new_redir(t_token *token, int redirs[2]);
 
 void	close_redirs(int redirs[2])
 {
@@ -23,39 +23,52 @@ void	close_redirs(int redirs[2])
 		perror(ERR_CLOSE);
 }
 
-void	set_redirection(t_global *shell, t_token *tok, int redirs[2])
+/**
+ * @brief Set the redirection file descriptor
+ * 
+ * @param shell 
+ * @param tok 
+ * @param redirs 
+ * @return int 1 in case of here_doc interrupt
+ */
+int	set_redirection(t_global *shell, t_token *tok, int redirs[2])
 {
-	if (tok->token <= HERE_DOC)
+	if (tok->token == INPUT)
+		tok->fd_file = open(tok->str, O_RDONLY);
+	else if (tok->token == HERE_DOC)
+	{
+		if (here_doc(shell, tok) != 0)
+		{
+			return (1);
+			// if (close(tok->pipe_fd[0]) == -1)
+			// 	perror(ERR_CLOSE);
+			// tok->pipe_fd[0] = -1;
+		}
+		tok->fd_file = tok->pipe_fd[0];
+	}
+	else if (tok->token == OUTPUT_TRUNC)
+		tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	else if (tok->token == OUTPUT_APPEND)
+		tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	set_new_redir(tok, redirs);
+	return (0);
+}
+
+static void	set_new_redir(t_token *token, int redirs[2])
+{
+	if (token->fd_file == -1 && token->token != HERE_DOC)
+		perror(token->str);
+	if (token->token <= HERE_DOC)
 	{
 		if (redirs[0] > 0 && close(redirs[0]) == -1)
 			perror(ERR_CLOSE);
-		if (tok->token == INPUT)
-			tok->fd_file = open(tok->str, O_RDONLY);
-		else if (here_doc(shell, tok) == 0)
-			tok->fd_file = tok->pipe_fd[0];
-		redirs[0] = tok->fd_file;
+		redirs[0] = token->fd_file;
 	}
-	else if (tok->token <= OUTPUT_APPEND)
+	else
 	{
 		if (redirs[1] > 0 && close(redirs[1]) == -1)
 			perror(ERR_CLOSE);
-		if (tok->token == OUTPUT_TRUNC)
-			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-		else if (tok->token == OUTPUT_APPEND)
-			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
-		redirs[1] = tok->fd_file;
-	}
-	check_redir_error(tok);
-}
-
-static void	check_redir_error(t_token *tok)
-{
-	if (tok->fd_file == -1)
-	{
-		if (tok->token == HERE_DOC)
-			perror(ERR_HERE_DOC_FILE);
-		else
-			perror(tok->str);
+		redirs[1] = token->fd_file;
 	}
 }
 

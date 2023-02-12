@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/11 15:06:48 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:40:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "input.h"
 #include "errors.h"
 
+// Todo: check if tcsetattr is useful because new bash seems to always print signals
 void	init_shell_attr(t_global *shell)
 {
 	if (tcgetattr(STDIN, &shell->saved_attr) == -1)
@@ -56,6 +57,8 @@ void	set_execution_signals(t_global *shell)
 	sigaction(SIGQUIT, &sa, NULL);
 }
 
+
+// Todo: test to use saved_attr
 void	set_here_doc_signals(void)
 {
 	struct sigaction	sa;
