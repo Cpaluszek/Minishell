@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 12:29:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 13:42:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ static void	here_doc_child(t_global *shell, t_token *token);
 static void	get_here_doc_input(t_global *shell, char *delim, int file);
 static void	here_doc_error(t_global *shell, char *str, int file, char *error);
 
-// Note: how to manage here_doc file error ?
 // Todo: not expand dollars in delimiter
 // Todo: remove extra /n with ctrl-C
-// Todo: multiple here_doc with diff cmds will not work
 // Todo: check signals management - same as in wait_for_childs ?
 int	here_doc(t_global *shell, t_token *token)
 {
@@ -90,7 +88,7 @@ static void	get_here_doc_input(t_global *shell, char *delim, int fd)
 
 static void	here_doc_error(t_global *shell, char *str, int fd, char *error)
 {
-	ft_free(content);
+	ft_free(str);
 	if (close(fd) == -1)
 		perror(ERR_CLOSE);
 	error_exit_shell(shell, error);
