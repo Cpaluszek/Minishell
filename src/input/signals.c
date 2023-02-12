@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 15:46:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:53:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,12 @@ void	set_execution_signals(t_global *shell)
 }
 
 
-// Todo: test to use saved_attr
-void	set_here_doc_signals(void)
+void	set_here_doc_signals(t_global *shell)
 {
 	struct sigaction	sa;
-	struct termios		attr;
 
-	if (tcgetattr(STDIN, &attr) == -1)
-		perror(ERR_TCGET);
-	else
-	{
-		attr.c_lflag &= ECHO;
-		if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &attr) == -1)
-			perror(ERR_TCSET);
-	}
+	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->custom_attr) == -1)
+		perror(ERR_TCSET);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	signal(SIGINT, SIG_DFL);

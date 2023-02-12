@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:31:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 15:50:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:51:55 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		here_doc(t_global *shell, t_token *token);
 void	init_shell_attr(t_global *shell);
 void	set_interactive_signals(t_global *shell);
 void	set_execution_signals(t_global *shell);
-void	set_here_doc_signals(void);
+void	set_here_doc_signals(t_global *shell);
 
 /*
 	--------- Signals Handlers -----------
