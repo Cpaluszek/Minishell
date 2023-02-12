@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:31:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 12:41:18 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 12:30:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <readline/history.h>
 # include "structs.h"
 
-int 	here_doc(t_global *shell, t_token *token);
+int		here_doc(t_global *shell, t_token *token);
 
 /*
 	--------- Signals functions -----------

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 12:28:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 12:29:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,21 @@ static void	here_doc_error(t_global *shell, char *str, int file, char *error);
 // Todo: check signals management - same as in wait_for_childs ?
 int	here_doc(t_global *shell, t_token *token)
 {
-	int 				exit_status;
+	int					exit_status;
 	struct sigaction	sa;
 
 	sa.sa_flags = SA_RESTART;
 	sa.sa_sigaction = handle_here_doc_sigquit;
 	sigaction(SIGQUIT, &sa, NULL);
-	//Create pipe
 	if (pipe(token->pipe_fd) == -1)
 		exec_cmd_error(shell, ERR_PIPE, token);
 	token->pid = fork();
-	if (token->pid == -1) 
+	if (token->pid == -1)
 		error_exit_shell(shell, ERR_FORK);
 	if (token->pid == 0)
 		here_doc_child(shell, token);
-	// Parent close writing end of the pipe
 	if (close(token->pipe_fd[1]) == -1)
 		perror(ERR_CLOSE);
-	// Wait for child
 	waitpid(token->pid, &exit_status, 0);
 	token->exit_status = WEXITSTATUS(exit_status);
 	g_status = WEXITSTATUS(exit_status);
