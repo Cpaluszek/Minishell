@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/09 13:47:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:58:41 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 void	print_command_line(t_token *token_list);
 int 	g_status;
+
+// Note: export with unclosed quote and multiline != bash
+// bash insert \n
 
 // Todo: parsing need to update g_status in case of parsing error ?
 //TODO : Ambiguous redirect pour des expands pas claires (a = "ls -lr")
