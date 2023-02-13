@@ -39,10 +39,10 @@ int	set_redirection(t_global *shell, t_token *tok, int redirs[2])
 	{
 		if (here_doc(shell, tok) != 0)
 		{
+			 if (close(tok->pipe_fd[0]) == -1)
+			 	perror(ERR_CLOSE);
+			 tok->pipe_fd[0] = -1;
 			return (1);
-			// if (close(tok->pipe_fd[0]) == -1)
-			// 	perror(ERR_CLOSE);
-			// tok->pipe_fd[0] = -1;
 		}
 		tok->fd_file = tok->pipe_fd[0];
 	}
