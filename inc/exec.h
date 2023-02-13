@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 15:00:39 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 15:16:29 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # include "errors.h"
 
 # define COMMAND_NOT_FOUND 127
+
+typedef struct s_exec {
+	t_token	*cmd;
+	int		*pipe;
+	int		redirs[2];
+	int		flag;
+}	t_exec;
 
 int		exec_start(t_global *shell, t_token *token_list);
 void	exec_block(t_global *shell, t_block *block);
