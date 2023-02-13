@@ -20,9 +20,6 @@ static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);
 static void		concat_or_add_var(t_global *shell, char *new, int i);
 
-// Todo: unclosed quotes should not work
-// export a="test
-// truc" -> should keep the new line
 int	ft_export(t_token *token, t_global *shell)
 {
 	int	i;
