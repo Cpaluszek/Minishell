@@ -70,6 +70,7 @@ static void	get_here_doc_input(t_global *shell, char *delim, int fd)
 		if (buff == NULL)
 			here_doc_error(shell, content, fd, ERR_MALLOC);
 		content = ft_strjoin_and_free(content, buff);
+		ft_free(buff);
 		if (content == NULL)
 			here_doc_error(shell, content, fd, ERR_MALLOC);
 	}
