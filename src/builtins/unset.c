@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include "exec.h"
 #include "env.h"
 
@@ -62,6 +61,6 @@ static void	remove_env_variable(t_global *shell, char *cmd, t_list *prev)
 		shell->env_list = env_list->next;
 	else
 		prev->next = env_list->next;
-	ft_lstdelone(env_list, *free);
+	ft_lstdelone(env_list, free);
 	update_env(shell);
 }

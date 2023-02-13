@@ -12,7 +12,6 @@
 
 #include "minishell.h"
 #include "parsing.h"
-#include "exec.h"
 #include "token_list_functions.h"
 
 // TODO : CHECK LINE INPUT < 100000 on est pas des fous non plus

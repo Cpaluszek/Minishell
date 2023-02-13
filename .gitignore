@@ -1,4 +1,5 @@
 build/
+.idea/
 minishell
 lib/libft/libft.a
 valgrind-out.txt

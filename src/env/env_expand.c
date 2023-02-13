@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:44:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 17:25:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:09:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 #include "errors.h"
 #include "env.h"
 
-// Todo: test + de conneries
-
 static char	*replace_var_env(t_list *env_lst, char *ret, char **pos, int len);
 static char	*copy_until_next(t_global *sh, char *buff, char *ret, char **pos);
 static char	*init_ret_str(t_global *shell, char *buff, char *pos);
 static void	alloc_error_in_expand(t_global *shell, char *buff, char *ret);
 
-// Note: quotes doesn't matter in here_doc, but not in parsing
 char	*check_for_expand(t_global *shell, char *buff)
 {
 	char	*pos;

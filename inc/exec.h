@@ -6,14 +6,13 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 14:09:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 15:51:00 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
 
-// Todo: move includes closer to usage
 # include <stdio.h>
 # include <unistd.h>
 # include <sys/wait.h>
@@ -22,26 +21,32 @@
 # include "errors.h"
 
 # define COMMAND_NOT_FOUND 127
-# define HERE_DOC_TMP	"/tmp/.heredoc.tmp"
 
-int		exec_start(t_global *shell, t_token *token_list);
-void	exec_block(t_global *shell, t_block *block);
+typedef struct s_exec {
+	t_token	*cmd;
+	int		*pipe;
+	int		redirs[2];
+	int		flag;
+}	t_exec;
+
+void	exec_start(t_global *shell);
 int		exec_child(t_token *token, char **env);
+void	wait_for_token_list(t_token *token);
 void	parent_close_pipes(t_token *token);
 void	close_token_pipes(t_token *token);
+int		*create_pipe(t_global *shell, t_exec *data, int p_end);
+
+/*
+	--------- Exec Errors -----------
+*/
+void	exec_cmd_error(t_global *shell, char *err, t_token *token);
+void	exec_cmd_not_found(t_token *token);
 
 /*
 	--------- Redirections functions -----------
 */
-
-int		open_block_input(t_block *block);
-int		open_block_output(t_block *block);
-void	set_block_fd_input_and_close_unused_fd(t_block *block);
-void	set_block_fd_output_and_close_unused_fd(t_block *block);
-void	set_redirection_for_token(t_block *block, t_token *token_list);
-int		setup_all_redirections(t_global *shell, t_token *tok);
-void	close_all_redirections(t_token *tok);
-void	close_redirections(t_token *tok);
+void	close_redirs(int redirs[2]);
+int		set_redirection(t_global *shell, t_token *tok, int redirs[2]);
 int		dup_fds(t_token *token);
 
 /*
@@ -70,6 +75,5 @@ char	*ft_getcwd(void);
 int		args_number(char **args);
 int		cmp_str(void *data1, void *data2);
 void	*copy_content_str(void *entry);
-void	exec_cmd_error(t_global *shell, char *err, t_token *token);
 
 #endif

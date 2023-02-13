@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/08 10:02:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:43:53 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_environment(t_global *shell, char **env)
 	else
 	{
 		shell->env = ft_tab_strdup(env);
-		// Todo: increment SHLVL
+		increment_shlvl(shell);
 	}
 	test_failed_malloc(shell, env);
 	shell->env_list = make_env_list(shell, env);
@@ -50,7 +50,7 @@ char	**get_path(t_global *shell, char **env)
 	i = 0;
 	while (env[i])
 	{
-		path = ft_strnstr(env[i], "PATH=", 10);
+		path = ft_strnstr(env[i], "PATH=", 5);
 		if (path)
 			break ;
 		i++;

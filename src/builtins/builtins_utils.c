@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:49:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/25 17:06:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/10 11:07:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ int	any_pipe_in_token_list(t_token *token)
 		token = token->prev;
 	}
 	return (0);
+}
+
+int	args_number(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i])
+		i++;
+	return (i);
 }

@@ -53,7 +53,8 @@ EXEC_FILES		:=	exec.c \
 					exec_block.c \
 					open_block_redirection.c \
 					redirections.c \
-					exec_utils.c
+					exec_utils.c \
+					exec_errors.c
 					
 BUILTIN_DIR		:=	builtins
 BUILTIN_FILES	:=	parse_builtins.c \
@@ -75,7 +76,7 @@ INPUT_FILES		:=	signals.c \
 ENV_DIR			:=	env
 ENV_FILES		:=	env_expand.c \
 					env_utils.c \
-					minimum_env.c
+					setup_env.c
 
 PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
 EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))

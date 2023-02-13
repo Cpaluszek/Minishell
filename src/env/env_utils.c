@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/28 18:08:09 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/11 12:42:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "libft.h"
 #include "errors.h"
-#define INVALID_ID_SET	"=?_:{}[]"
+#include "env.h"
+#define INVALID_ID_SET	"=?_:{}[] |*-+!@^&#$<>\\,.:;"
 #define CONCAT_VAR		"+="
 
 /**

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/29 13:52:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:53:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	init_shell_attr(t_global *shell)
 	shell->custom_attr.c_lflag &= ECHO;
 }
 
-// Todo: remove perror with isatty and tcsetattr
-// Update interactive mode signals
 void	set_interactive_signals(t_global *shell)
 {
 	struct sigaction	sa;
@@ -41,11 +39,12 @@ void	set_interactive_signals(t_global *shell)
 	sigaction(SIGINT, &sa, NULL);
 }
 
-// Note: in execution mode ctrl-D with bash will close the shell after execution
-void	set_execution_signals(void)
+void	set_execution_signals(t_global *shell)
 {
 	struct sigaction	sa;
 
+	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
+		perror(ERR_TCSET);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	signal(SIGINT, SIG_DFL);
@@ -56,19 +55,12 @@ void	set_execution_signals(void)
 	sigaction(SIGQUIT, &sa, NULL);
 }
 
-void	set_here_doc_signals(void)
+void	set_here_doc_signals(t_global *shell)
 {
 	struct sigaction	sa;
-	struct termios		attr;
 
-	if (tcgetattr(STDIN, &attr) == -1)
-		perror(ERR_TCGET);
-	else
-	{
-		attr.c_lflag &= ECHO;
-		if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &attr) == -1)
-			perror(ERR_TCSET);
-	}
+	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->custom_attr) == -1)
+		perror(ERR_TCSET);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	signal(SIGINT, SIG_DFL);

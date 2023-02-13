@@ -12,6 +12,14 @@
 		"history.h": "c",
 		"stdbool.h": "c",
 		"input.h": "c",
-		"minishell.h": "c"
-	}
+		"minishell.h": "c",
+		"signal.h": "c"
+	},
+	"makefile.launchConfigurations": [
+		{
+			"cwd": "/mnt/d/Documents/SOFT/42/Minishell",
+			"binaryPath": "/mnt/d/Documents/SOFT/42/Minishell/minishell",
+			"binaryArgs": []
+		}
+	]
 }
