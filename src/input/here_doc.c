@@ -18,8 +18,8 @@
 #define HERE_DOC_PROMPT	"> "
 
 static void	here_doc_child(t_global *shell, t_token *token);
-static void	get_here_doc_input(t_global *shell, char *delim, int file);
-static void	here_doc_error(t_global *shell, char *str, int file, char *error);
+static void	get_here_doc_input(t_global *shell, char *delim, int fd);
+static void	here_doc_error(t_global *shell, char *str, int fd, char *error);
 static int	check_here_doc_end(char *buff, char *delim);
 
 // Todo: not expand dollars in delimiter
