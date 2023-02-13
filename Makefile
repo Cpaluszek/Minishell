@@ -69,7 +69,7 @@ INPUT_FILES		:=	signals.c \
 ENV_DIR			:=	env
 ENV_FILES		:=	env_expand.c \
 					env_utils.c \
-					minimum_env.c
+					setup_env.c
 
 PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
 EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))

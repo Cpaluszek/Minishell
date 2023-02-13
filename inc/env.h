@@ -18,12 +18,15 @@
 
 # define VAR_LIMITER "$ \n\"\'|*=-+/%.,!@#^&[]{}_:;<>"
 
-char	**set_minimum_env(void);
 void	update_env(t_global *shell);
 t_list	*search_in_env(t_list *env_list, char *identifier);
 void	add_env_variable(t_global *shell, char *new_var);
 void	concat_env_variable(t_global *shell, char *new_var, t_list *search);
 int		is_valid_identifier(char *str);
+
+/*	Setup env	*/
+char	**set_minimum_env(void);
+void	**increment_shlvl(t_global *sh);
 
 /*	Expand variable	*/
 char	*check_for_expand(t_global *shell, char *buff);
