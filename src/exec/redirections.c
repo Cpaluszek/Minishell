@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 14:21:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:35:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "input.h"
 
-static void set_new_redir(t_token *token, int redirs[2]);
+static void	set_new_redir(t_token *token, int redirs[2]);
 
 void	close_redirs(int redirs[2])
 {
@@ -39,10 +39,10 @@ int	set_redirection(t_global *shell, t_token *tok, int redirs[2])
 	{
 		if (here_doc(shell, tok) != 0)
 		{
+			if (close(tok->pipe_fd[0]) == -1)
+				perror(ERR_CLOSE);
+			tok->pipe_fd[0] = -1;
 			return (1);
-			// if (close(tok->pipe_fd[0]) == -1)
-			// 	perror(ERR_CLOSE);
-			// tok->pipe_fd[0] = -1;
 		}
 		tok->fd_file = tok->pipe_fd[0];
 	}

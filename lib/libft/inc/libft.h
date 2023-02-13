@@ -58,7 +58,7 @@ char	**ft_merge_tab(char **tab1, char **tab2);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_striteri(char *s, char (*f)(unsigned int, char*));
-int		ft_is_inside(char c, char *base);
+int		ft_is_inside(char c, const char *base);
 
 /* Memory	*/
 void	*ft_calloc(size_t count, size_t size);

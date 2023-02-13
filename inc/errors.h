@@ -14,6 +14,8 @@
 # define ERRORS_H
 
 # define ERR_SYNTAX 		"syntax error near unexpected token "
+
+// Note: ERR_DOLLAR is never used
 # define ERR_DOLLAR 		"ambiguous redirect\n"
 # define ERR_MALLOC 		"Error with malloc(3)\n"
 # define ERR_FORK			"fork"
@@ -22,9 +24,7 @@
 # define ERR_EXEC			"execve"
 # define ERR_WRITE			"write"
 # define ERR_CLOSE			"close"
-# define ERR_UNLINK			"unlink"
 # define ERR_TCSET			"tcsetattr"
 # define ERR_TCGET			"tcgetattr"
-# define ERR_HERE_DOC_FILE	"here_doc file"
 
 #endif

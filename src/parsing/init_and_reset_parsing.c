@@ -30,7 +30,7 @@ void	set_environment(t_global *shell, char **env)
 	else
 	{
 		shell->env = ft_tab_strdup(env);
-		// Todo: increment SHLVL
+		increment_shlvl(shell);
 	}
 	test_failed_malloc(shell, env);
 	shell->env_list = make_env_list(shell, env);

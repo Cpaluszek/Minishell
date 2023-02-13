@@ -18,14 +18,15 @@
 #define HERE_DOC_PROMPT	"> "
 
 static void	here_doc_child(t_global *shell, t_token *token);
-static void	get_here_doc_input(t_global *shell, char *delim, int file);
-static void	here_doc_error(t_global *shell, char *str, int file, char *error);
+static void	get_here_doc_input(t_global *shell, char *delim, int fd);
+static void	here_doc_error(t_global *shell, char *str, int fd, char *error);
 static int	check_here_doc_end(char *buff, char *delim);
 
 // Todo: not expand dollars in delimiter
 int	here_doc(t_global *shell, t_token *token)
 {
 	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, SIG_IGN);
 	if (pipe(token->pipe_fd) == -1)
 		exec_cmd_error(shell, ERR_PIPE, token);
 	token->pid = fork();
@@ -69,6 +70,7 @@ static void	get_here_doc_input(t_global *shell, char *delim, int fd)
 		if (buff == NULL)
 			here_doc_error(shell, content, fd, ERR_MALLOC);
 		content = ft_strjoin_and_free(content, buff);
+		ft_free(buff);
 		if (content == NULL)
 			here_doc_error(shell, content, fd, ERR_MALLOC);
 	}

@@ -12,7 +12,6 @@
 
 #include "parsing.h"
 #include "token_list_functions.h"
-#include <stdio.h>
 
 static int	parsing_initialization(t_global *shell, char *prompt);
 static int	merge_and_finish_syntax_checking(t_global *shell);

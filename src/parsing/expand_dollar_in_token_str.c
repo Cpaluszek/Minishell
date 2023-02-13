@@ -17,6 +17,7 @@ void	test_failed_malloc(t_global *shell, void *content);
 
 // Todo: here_doc delimiter should never be expanded
 // Note: expand `~` to $HOME ?
+// Note: echo $"HOME" - should primt HOME and not $HOME
 void	expand_dollar_in_token_str(t_global *shell)
 {
 	t_token	*token;

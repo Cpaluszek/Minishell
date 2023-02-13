@@ -55,7 +55,6 @@ void	set_execution_signals(t_global *shell)
 	sigaction(SIGQUIT, &sa, NULL);
 }
 
-
 void	set_here_doc_signals(t_global *shell)
 {
 	struct sigaction	sa;
