@@ -6,11 +6,12 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:24:16 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/09 16:23:42 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 10:17:37 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
+#include <stdio.h>
 
 int			print_syntax_error(t_global *shell, char *str);
 static int	syntax_exception(t_token *token1, t_token *token2);
@@ -42,20 +43,20 @@ static int	syntax_exception(t_token *token1, t_token *token2)
 		if (token1->space_link == true)
 			return (0);
 		remove_token(token2);
-		return (1);
+		return (2);
 	}
 	if (token1->token == PIPE && token2->token == OPEN_PAR)
-		return (1);
+		return (3);
 	if (token1->token == CLOSE_PAR && (token2->token != CLOSE_PAR))
-		return (1);
+		return (4);
 	if (token1->token == OPEN_PAR && (token2->token <= OUTPUT_APPEND))
-		return (1);
+		return (5);
 	if ((token1->token == AND || token1->token == OR) && \
 		(token2->token == OPEN_PAR || token2->token <= OUTPUT_APPEND))
-		return (1);
+		return (6);
 	if ((token1->token == OPEN_PAR || token1->token == CLOSE_PAR) && \
 		token2->token == token1->token)
-		return (1);
+		return (7);
 	return (0);
 }
 

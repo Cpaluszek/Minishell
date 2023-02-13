@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:10:57 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/10 11:07:35 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 14:26:09 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,15 @@ static void		set_link_and_redirection_for_upper_block(t_block *upper_block, \
 				t_token *token, t_token **first_token);
 
 void	create_sub_block(t_global *shell, t_block **block_list, \
-		t_block *upper_block, t_token **token)
+		t_block *upper_block, t_token **first_token)
 {
 	t_block	*new_block;
 	t_block	*sub_block;
 
 	new_block = ft_lstnew_block(upper_block, NULL);
 	test_failed_malloc(shell, new_block);
-	sub_block = parse_and_create_sub_block(shell, token, new_block);
+	sub_block = parse_and_create_sub_block(shell, first_token, new_block);
 	new_block->sub_block = sub_block;
-// add_link(new_block, token->next);
 	ft_lstadd_back_block(block_list, new_block);
 }
 
@@ -53,9 +52,7 @@ static t_block	*parse_and_create_sub_block(t_global *shell, \
 			nb_parenthesis += 8 - token->token;
 		if (nb_parenthesis)
 			token = token->next;
-		dprintf(1, "nb of parenthesis : %d\n", nb_parenthesis);
 	}
-	dprintf(1, "\n\n");
 	token->prev->next = NULL;
 	first_sub_block = block_parsing(shell, upper_block, begin_of_token_list);
 	set_link_and_redirection_for_upper_block(upper_block, token, first_token);
@@ -78,42 +75,40 @@ static void	set_link_and_redirection_for_upper_block(t_block *upper_block, \
 		token = NULL;
 	}
 	add_redirection_for_upper_block(upper_block, token, first_token);
-	print_command_line(*first_token);
-	// add_link_between_blocks(upper_block, *first_token);
+	add_link_between_blocks(upper_block, *first_token);
 	token = *first_token;
-	if (token && token->next) // il y aura toujours un token->next sil y a un token normalement (un token de link ne peut etre seul)
+	if (token && token->next)
 	{
 		token = token->next;
 		ft_lstdelone_token(token->prev);
 		token->prev = NULL;
 	}
 	*first_token = token;
-	// del firstoken et frst token = firstoken next attention si dernier token
 }
 
-static void	add_redirection_for_upper_block(t_block *upper_block, t_token *token, \
-			t_token **first_token)
+static void	add_redirection_for_upper_block(t_block *upper_block, \
+	t_token *token, t_token **first_token)
 {
-	int		*fd_input;
-	int		*fd_output;
+	// int		*fd_input;
+	// int		*fd_output;
 
-	fd_input = NULL;
-	fd_output = NULL;
+	// fd_input = NULL;
+	// fd_output = NULL;
 	if (token && token->token <= OUTPUT_APPEND)
 		upper_block->redirection_token_list = token;
 	while (token && token->token <= OUTPUT_APPEND)
 	{
-		if (token->token <= HERE_DOC)
-			fd_input = &token->fd_file;
-		else if (token->token <= OUTPUT_APPEND)
-			fd_output = &token->fd_file;
+		// if (token->token <= HERE_DOC)
+		// 	fd_input = &token->fd_file;
+		// else if (token->token <= OUTPUT_APPEND)
+		// 	fd_output = &token->fd_file;
 		token = token->next;
 	}
 	if (token && token->prev)
 		token->prev->next = NULL;
-	if (fd_input)
-		upper_block->fd_input = fd_input;
-	if (fd_output)
-		upper_block->fd_output = fd_output;
+	// if (fd_input)
+	// 	upper_block->fd_input = fd_input;
+	// if (fd_output)
+	// 	upper_block->fd_output = fd_output;
 	*first_token = token;
 }

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/07 16:58:57 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 14:14:40 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	ft_lstdelone_block(t_block *lst)
 	lst->token_list = NULL;
 	free(lst);
 }
-
 
 void	ft_lstclear_block(t_block **lst)
 {
@@ -88,10 +87,9 @@ t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list)
 	elem->upper_block = upper_block;
 	elem->token_list = token_list;
 	elem->redirection_token_list = NULL;
-	elem->fd_input = NULL;
-	elem->fd_output = NULL;
+	elem->fd_input = -2;
+	elem->fd_output = -2;
 	elem->make_a_pipe = false;
-	elem->previous_block_pipe_fd0 = NULL;
 	elem->block_level = 0;
 	if (upper_block)
 	{

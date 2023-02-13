@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/02 15:07:06 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 09:52:04 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static void	exec_cmd(t_token *token, t_global *shell);
 // il vaudrait mieux ouvrir les directions pour une seule commande et les fermer apres l'execution de la commande
 // VOIR MEME on pourrait executer les ouvertures / fermetures uniquement dans le processus enfant pour ne pas avoir a le fermer dans le parent.
 //-> fausse bonne idee en fait je pense ><
-int	exec_start(t_global *shell)
+int	exec_start(t_global *shell, t_token *token_list)
 {
 	if (isatty(STDIN) && tcsetattr(STDIN, TCSANOW, &shell->saved_attr) == -1)
 		perror(ERR_TCSET);
 	set_execution_signals();
-	if (setup_all_redirections(shell, shell->token_list) != 1)
-		exec_token_list(shell->token_list, shell);
-	close_all_redirections(shell->token_list);
+	if (setup_all_redirections(shell, token_list) != 1)
+		exec_token_list(token_list, shell);
+	close_all_redirections(token_list);
 	return (0);
 }
 

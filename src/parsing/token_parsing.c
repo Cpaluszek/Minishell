@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/09 21:50:20 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 10:15:09 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ static void	setting_space_links_and_checking_parenthesis(t_global *shell, \
 		shell->command_line = UNFINISHED_PARENTHESIS;
 	else if (shell->command_line != UNFINISHED_QUOTE)
 		shell->command_line = FINISHED_PARENTHESIS;
+	shell->nb_open_parenthesis = 0;
 }

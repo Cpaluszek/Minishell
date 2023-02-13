@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 11:21:55 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 13:02:46 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define PROMPT		"\033[34mminishell-0.9 \033[32m\033[1m>\033[0m "
 # define PROMPT_ERR	"\033[34mminishell-0.9 \033[31m\033[1m>\033[0m "
-# define MININAME "msh"
+# define MININAME 	"msh"
 
 int		central_parsing(t_global *shell, char *prompt);
 
@@ -72,6 +72,7 @@ int		not_only_spaces(char *line);
 void	get_input(t_global *shell, char *prompt);
 void	remove_token(t_token *token);
 void	print_command_line(t_token *token_list);
+void	print_block(t_block *block, int fd);
 void	test_failed_malloc(t_global *shell, void *content);
 void	insert_token_list(t_global *shell, t_token *token, \
 t_token *splitted_token_list);

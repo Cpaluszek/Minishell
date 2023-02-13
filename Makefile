@@ -36,6 +36,7 @@ PARSING_FILES	:=	add_path_to_command.c \
 					ft_lstnew_token.c \
 					init_and_reset_parsing.c \
 					merge_linked_token.c \
+					printing_functions.c \
 					quote_parsing.c \
 					set_fd_for_each_command_token.c \
 					syntax_checking.c \
@@ -49,6 +50,8 @@ PARSING_FILES	:=	add_path_to_command.c \
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \
 					child.c \
+					exec_block.c \
+					open_block_redirection.c \
 					redirections.c \
 					exec_utils.c
 					
