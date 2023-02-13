@@ -1,5 +1,5 @@
 # libft
-## Implementation of some of the Standard C Library functions
+## Implementation of some Standard C Library functions
 The first project in the study program at School 42.
 This project is about understanding the way these functions work, implementing and learning to use them.
 

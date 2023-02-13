@@ -15,8 +15,6 @@
 
 # define ERR_SYNTAX 		"syntax error near unexpected token "
 
-// Note: ERR_DOLLAR is never used
-# define ERR_DOLLAR 		"ambiguous redirect\n"
 # define ERR_MALLOC 		"Error with malloc(3)\n"
 # define ERR_FORK			"fork"
 # define ERR_PIPE			"pipe"

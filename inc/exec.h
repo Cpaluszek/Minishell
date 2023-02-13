@@ -30,7 +30,7 @@ typedef struct s_exec {
 }	t_exec;
 
 void	exec_start(t_global *shell);
-int		exec_child(t_token *token, char **env);
+int exec_child(t_token *token, char **env);
 void	wait_for_token_list(t_token *token);
 void	parent_close_pipes(t_token *token);
 void	close_token_pipes(t_token *token);
