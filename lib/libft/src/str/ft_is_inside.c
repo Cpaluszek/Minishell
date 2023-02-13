@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_is_inside(char c, char *base)
+int	ft_is_inside(char c, const char *base)
 {
 	int	i;
 

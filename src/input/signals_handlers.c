@@ -6,14 +6,13 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/08 22:52:27 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 15:08:41 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include <readline/readline.h>
 
-// TOdo : ctrl-C status=1
 /**
  * @brief signal handler: ctrl-\ interactive mode
  * Does nothing.
@@ -26,8 +25,6 @@ void	handle_interactive_sigquit(int signum, siginfo_t *info, void *context)
 	(void) signum;
 	(void) info;
 	(void) context;
-	rl_on_new_line();
-	rl_redisplay();
 }
 
 /**
@@ -49,7 +46,6 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context)
 	g_status = 128 + signum;
 }
 
-// Todo: if cmd is interrupted don't reset g_status
 /**
  * @brief signal handler: ctrl-C execution mode
  * Kill the running process and give the prompt back
@@ -78,6 +74,6 @@ void	handle_execution_sigquit(int signum, siginfo_t *info, void *context)
 {
 	(void) info;
 	(void) context;
-	printf("Quit: %d\n", signum);
+	printf("Quit (core dumped)\n");
 	g_status = 128 + signum;
 }

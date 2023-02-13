@@ -6,14 +6,13 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 14:09:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 15:00:39 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
 
-// Todo: move includes closer to usage
 # include <stdio.h>
 # include <unistd.h>
 # include <sys/wait.h>
@@ -22,13 +21,20 @@
 # include "errors.h"
 
 # define COMMAND_NOT_FOUND 127
-# define HERE_DOC_TMP	"/tmp/.heredoc.tmp"
 
 int		exec_start(t_global *shell, t_token *token_list);
 void	exec_block(t_global *shell, t_block *block);
 int		exec_child(t_token *token, char **env);
+void	wait_for_token_list(t_token *token);
 void	parent_close_pipes(t_token *token);
 void	close_token_pipes(t_token *token);
+int		*create_pipe(t_global *shell, t_exec *data, int p_end);
+
+/*
+	--------- Exec Errors -----------
+*/
+void	exec_cmd_error(t_global *shell, char *err, t_token *token);
+void	exec_cmd_not_found(t_token *token);
 
 /*
 	--------- Redirections functions -----------
@@ -70,6 +76,5 @@ char	*ft_getcwd(void);
 int		args_number(char **args);
 int		cmp_str(void *data1, void *data2);
 void	*copy_content_str(void *entry);
-void	exec_cmd_error(t_global *shell, char *err, t_token *token);
 
 #endif

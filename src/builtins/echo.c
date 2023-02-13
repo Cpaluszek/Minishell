@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Writes argument to STDOUT
-// Option -n: print without trailing newline
-// The echo utility exits 0 on success, and >0 if an error occurs.
 #include "minishell.h"
 #include "exec.h"
 #define NL "-n"
@@ -48,9 +45,9 @@ int	ft_echo(t_token *token, t_global *shell)
 // Skip all "-n" and "-nnnnn"
 static int	echo_option(t_token *t, int *arg_i)
 {
-	int	new_line;
-	int	len;
-	int	j;
+	int		new_line;
+	size_t	len;
+	size_t	j;
 
 	new_line = 1;
 	len = ft_strlen(NL);

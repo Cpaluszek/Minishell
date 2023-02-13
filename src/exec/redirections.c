@@ -6,69 +6,97 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 14:40:10 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:35:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
-#include "minishell.h"
 #include "input.h"
 
-int	setup_all_redirections(t_global *shell, t_token *tok)
+static void	set_new_redir(t_token *token, int redirs[2]);
+
+void	close_redirs(int redirs[2])
 {
-	while (tok)
+	if (redirs[0] > 0 && close(redirs[0]) == -1)
+		perror(ERR_CLOSE);
+	if (redirs[1] > 0 && close(redirs[1]) == -1)
+		perror(ERR_CLOSE);
+}
+
+/**
+ * @brief Set the redirection file descriptor
+ * 
+ * @param shell 
+ * @param tok 
+ * @param redirs 
+ * @return int 1 in case of here_doc interrupt
+ */
+int	set_redirection(t_global *shell, t_token *tok, int redirs[2])
+{
+	if (tok->token == INPUT)
+		tok->fd_file = open(tok->str, O_RDONLY);
+	else if (tok->token == HERE_DOC)
 	{
-		if (tok->token == INPUT)
-			tok->fd_file = open(tok->str, O_RDONLY);
-		else if (tok->token == HERE_DOC)
+		if (here_doc(shell, tok) != 0)
 		{
-			if (here_doc(shell, tok) != 0)
-				return (1);
-			tok->fd_file = open(HERE_DOC_TMP, O_RDONLY);
+			if (close(tok->pipe_fd[0]) == -1)
+				perror(ERR_CLOSE);
+			tok->pipe_fd[0] = -1;
+			return (1);
 		}
-		else if (tok->token == OUTPUT_TRUNC)
-			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-		else if (tok->token == OUTPUT_APPEND)
-			tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
-		if ((tok->token == 0 || tok->token == 3 || \
-			tok->token == 2) && tok->fd_file == -1)
-			perror(tok->str);
-		tok = tok->next;
+		tok->fd_file = tok->pipe_fd[0];
 	}
+	else if (tok->token == OUTPUT_TRUNC)
+		tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	else if (tok->token == OUTPUT_APPEND)
+		tok->fd_file = open(tok->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	set_new_redir(tok, redirs);
 	return (0);
 }
 
-void	close_all_redirections(t_token *tok)
+static void	set_new_redir(t_token *token, int redirs[2])
 {
-	while (tok)
+	if (token->fd_file == -1 && token->token != HERE_DOC)
+		perror(token->str);
+	if (token->token <= HERE_DOC)
 	{
-		if (tok->token == INPUT || tok->token == OUTPUT_APPEND || \
-			tok->token == OUTPUT_TRUNC)
-		{
-			if (tok->fd_file != -1 && close(tok->fd_file) == -1)
-				perror(ERR_CLOSE);
-		}
-		else if (tok->token == HERE_DOC)
-		{
-			if (access(HERE_DOC_TMP, F_OK) == 0 && unlink(HERE_DOC_TMP) == -1)
-				perror(ERR_UNLINK);
-		}
-		tok = tok->next;
+		if (redirs[0] > 0 && close(redirs[0]) == -1)
+			perror(ERR_CLOSE);
+		redirs[0] = token->fd_file;
+	}
+	else
+	{
+		if (redirs[1] > 0 && close(redirs[1]) == -1)
+			perror(ERR_CLOSE);
+		redirs[1] = token->fd_file;
 	}
 }
 
-// TOdo: need to close here_doc 
-void	close_redirections(t_token *tok)
+int	dup_fds(t_token *token)
 {
-	if (tok->token == INPUT || tok->token == OUTPUT_APPEND || \
-			tok->token == OUTPUT_TRUNC)
+	if (token->fd_input != NULL)
 	{
-		if (tok->fd_file > 2 && close(tok->fd_file) == -1)
+		if (dup2(*(token->fd_input), STDIN) == -1)
+		{
+			perror(ERR_DUP2);
+			if (close(*(token->fd_input)) == -1)
+				perror(ERR_CLOSE);
+			return (EXIT_FAILURE);
+		}
+		if (close(*(token->fd_input)) == -1)
 			perror(ERR_CLOSE);
 	}
-	else if (tok->token == HERE_DOC)
+	if (token->fd_output != NULL)
 	{
-		if (access(HERE_DOC_TMP, F_OK) == 0 && unlink(HERE_DOC_TMP) == -1)
-			perror(ERR_UNLINK);
+		if (dup2(*(token->fd_output), STDOUT) == -1)
+		{
+			perror(ERR_DUP2);
+			if (close(*(token->fd_output)) == -1)
+				perror(ERR_CLOSE);
+			return (EXIT_FAILURE);
+		}
+		if (close(*(token->fd_output)) == -1)
+			perror(ERR_CLOSE);
 	}
+	return (0);
 }

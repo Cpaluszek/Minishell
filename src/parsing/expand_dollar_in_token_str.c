@@ -6,16 +6,18 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:39:22 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/09 22:06:57 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 15:07:41 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
-#include "libft.h"
 
 void	expand_dollar(t_global *shell, t_token *token, char *str);
 void	test_failed_malloc(t_global *shell, void *content);
 
+// Todo: here_doc delimiter should never be expanded
+// Note: expand `~` to $HOME ?
+// Note: echo $"HOME" - should primt HOME and not $HOME
 void	expand_dollar_in_token_str(t_global *shell)
 {
 	t_token	*token;

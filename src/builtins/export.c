@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:42 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/30 15:12:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/12 12:29:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,10 @@ static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);
 static void		concat_or_add_var(t_global *shell, char *new, int i);
 
-// Todo: unclosed quotes should not work
-// Todo: export "a     "=test
-// Todo: export with pipes should not update env
 int	ft_export(t_token *token, t_global *shell)
 {
-	int		i;
-	int		ret_value;
+	int	i;
+	int	ret_value;
 
 	ret_value = 0;
 	if (args_number(token->cmd) == 1)
