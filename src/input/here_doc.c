@@ -26,6 +26,7 @@ static int	check_here_doc_end(char *buff, char *delim);
 int	here_doc(t_global *shell, t_token *token)
 {
 	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, SIG_IGN);
 	if (pipe(token->pipe_fd) == -1)
 		exec_cmd_error(shell, ERR_PIPE, token);
 	token->pid = fork();
