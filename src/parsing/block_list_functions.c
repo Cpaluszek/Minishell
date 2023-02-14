@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/07 16:58:57 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 14:14:40 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,31 @@ void	ft_lstdelone_block(t_block *lst)
 	if (!lst)
 		return ;
 	ft_lstclear_token(&lst->token_list);
+	ft_lstclear_token(&lst->redirection_token_list);
 	lst->token_list = NULL;
+	lst->redirection_token_list = NULL;
 	free(lst);
 }
 
-
-void	ft_lstclear_block(t_block **lst)
+void	ft_lstclear_block(t_block **first_block)
 {
-	t_block	*p_lst;
-	t_block	*p_del_lst;
+	t_block	*block;
+	t_block	*del_block;
 
-	if (!lst)
+	if (!first_block || !(*first_block))
 		return ;
-	p_lst = *lst;
-	while (p_lst)
+	block = *first_block;
+	while (block)
 	{
-		p_del_lst = p_lst;
-		p_lst = p_lst->next;
-		p_del_lst->next = NULL;
-		p_del_lst->prev = NULL;
-		ft_lstdelone_block(p_del_lst);
+		if (block->sub_block)
+			ft_lstclear_block(&block->sub_block);
+		del_block = block;
+		block = block->next;
+		del_block->next = NULL;
+		del_block->prev = NULL;
+		ft_lstdelone_block(del_block);
 	}
-	*lst = NULL;
+	*first_block = NULL;
 }
 
 t_block	*ft_lstlast_block(t_block *lst)
@@ -88,14 +91,15 @@ t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list)
 	elem->upper_block = upper_block;
 	elem->token_list = token_list;
 	elem->redirection_token_list = NULL;
-	elem->fd_input = NULL;
-	elem->fd_output = NULL;
+	elem->fd_input = -2;
+	elem->fd_output = -2;
 	elem->make_a_pipe = false;
-	elem->previous_block_pipe_fd0 = NULL;
+	elem->block_level = 0;
 	if (upper_block)
 	{
 		elem->fd_input = upper_block->fd_input;
 		elem->fd_output = upper_block->fd_output;
+		elem->block_level = upper_block->block_level + 1;
 	}
 	elem->logical_link = NO_LINK;
 	return (elem);

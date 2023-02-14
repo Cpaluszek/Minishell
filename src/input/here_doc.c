@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 15:51:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:43:05 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "exec.h"
 #include "minishell.h"
 #include "env.h"
 #include "input.h"
 
-#define HERE_DOC_PROMPT	"> "
+#define HERE_DOC_PROMPT	"pipe heredoc> "
 
 static void	here_doc_child(t_global *shell, t_token *token);
 static void	get_here_doc_input(t_global *shell, char *delim, int fd);

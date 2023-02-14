@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   expand_dollar_in_token_str.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 08:39:22 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/11 15:11:19 by cpalusze         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/02/13 16:02:22 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "structs.h"
 
-void	expand_dollar(t_global *shell, t_token *token, char *str);
-void	test_failed_malloc(t_global *shell, void *content);
+void		expand_dollar(t_global *shell, t_token *token, char *str);
+void		test_failed_malloc(t_global *shell, void *content);
+static	int	is_a_heredoc(t_token *token);
 
 // Todo: here_doc delimiter should never be expanded
 // Note: expand `~` to $HOME ?
@@ -26,17 +28,23 @@ void	expand_dollar_in_token_str(t_global *shell)
 	while (token)
 	{
 		if ((token->token == DQUOTE || token->token == DOLLAR) && \
-			ft_is_inside('$', token->str))
+			ft_is_inside('$', token->str) && is_a_heredoc(token) == 0)
 		{
 			token->temp_expand = NULL;
 			expand_dollar(shell, token, token->str);
 			token->str = ft_strjoin_and_free_s2(token->temp_expand, token->str);
 			test_failed_malloc(shell, token->str);
 			ft_free(token->temp_expand);
-			if (token->token == DOLLAR)
-				token->token = EMPTY;
 		}
 		token = token->next;
 	}
-	// empty_token_assignation(shell->token_list);
+}
+
+static	int	is_a_heredoc(t_token *token)
+{
+	while (token && token->token >= CMD)
+		token = token->prev;
+	if (token && token->token == HERE_DOC)
+		return (1);
+	return (0);
 }

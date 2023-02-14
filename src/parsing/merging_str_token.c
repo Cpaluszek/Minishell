@@ -6,11 +6,14 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/07 17:25:03 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 16:02:45 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "token_list_functions.h"
+#include "libft.h"
+#include <stdio.h>
 
 static void	find_and_merge_linked_token(t_global *shell);
 static void	merge_linked_token(t_global *shell, t_token *token_list);

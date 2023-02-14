@@ -21,30 +21,37 @@ HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 SRC_DIR			:=	src
 
 PARSING_DIR		:=	parsing
-PARSING_FILES	:=	central_parsing.c \
-					quote_parsing.c \
+PARSING_FILES	:=	add_path_to_command.c \
+					block_list_functions.c \
 					block_parsing.c \
+					central_parsing.c \
+					check_for_ambiguous_redirect.c \
+					create_sub_block.c \
+					create_sub_token_list.c \
 					empty_token_assignation.c \
 					expand_dollar_in_token_str.c \
 					expand_functions.c \
-					add_path_to_command.c \
+					expand_wildcard.c \
+					find_matching_filenames.c \
+					ft_lstnew_token.c \
 					init_and_reset_parsing.c \
+					merge_linked_token.c \
+					printing_functions.c \
+					quote_parsing.c \
+					set_fd_for_each_command_token.c \
 					syntax_checking.c \
 					syntax_checking_functions.c \
 					token_list_functions.c \
-					block_list_functions.c \
-					ft_lstnew_token.c \
 					token_parsing.c \
-					set_fd_for_each_command_token.c \
-					merging_str_token.c \
-					merge_command.c \
-					split_command_token.c \
+					token_merging.c \
 					utils_parsing.c \
 					utils_parsing2.c
 
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \
 					child.c \
+					exec_block.c \
+					open_block_redirection.c \
 					redirections.c \
 					exec_utils.c \
 					exec_errors.c
@@ -139,7 +146,7 @@ $(NAME): $(LIB_PATHS) $(OBJS)
 
 -include $(DEPS)
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS)
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS) Makefile
 	@mkdir -p $(@D)
 	$(CC) $(CC_FLAGS) $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 

@@ -15,12 +15,26 @@
 
 static void	set_new_redir(t_token *token, int redirs[2]);
 
-void	close_redirs(int redirs[2])
+void	open_and_immediatly_close_redirection(t_token *token)
 {
-	if (redirs[0] > 0 && close(redirs[0]) == -1)
-		perror(ERR_CLOSE);
-	if (redirs[1] > 0 && close(redirs[1]) == -1)
-		perror(ERR_CLOSE);
+	while (token && token->token != PIPE)
+	{
+		if (token->token == OUTPUT_TRUNC)
+			token->fd_file = open(token->str, O_RDONLY | O_CREAT | O_TRUNC);
+		else if (token->token == OUTPUT_APPEND)
+			token->fd_file = open(token->str, O_RDONLY | O_CREAT | O_APPEND);
+		if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
+		{
+			if (token->fd_file == -1)
+			{
+				ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));
+				return ;
+			}
+			if (close(token->fd_file) == -1)
+				perror(ERR_CLOSE);
+		}
+		token = token->next;
+	}
 }
 
 /**

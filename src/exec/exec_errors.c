@@ -3,25 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:21:56 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 17:56:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/14 00:41:12 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "exec.h"
+#include <sys/stat.h>
+#include <string.h>
+#include <errno.h>
 
-void	exec_cmd_not_found(t_token *token)
+int	exec_cmd_not_found(t_token *token)
 {
-	if (ft_strchr(token->cmd_path, '/') != NULL)
-		ft_printf_fd(STDERR, "%s: No such file or directory\n", \
+	if (errno == EACCES)
+	{
+		ft_printf_fd(2, "msh: %s: Permission denied\n", token->cmd_path);
+		token->exit_status = 126;
+		return (EXIT_FAILURE);
+	}
+	else if (errno == ENOENT && ft_strchr(token->cmd_path, '/') != NULL)
+		ft_printf_fd(STDERR, "msh: %s: No such file or directory\n", \
 			token->cmd[0]);
 	else
-		ft_printf_fd(STDERR, "command not found: %s\n", token->cmd[0]);
+		ft_printf_fd(STDERR, "msh: %s :command not found\n", token->cmd[0]);
 	token->exit_status = COMMAND_NOT_FOUND;
 	close_token_pipes(token);
+	return (EXIT_FAILURE);
 }
 
 void	exec_cmd_error(t_global *shell, char *err, t_token *token)

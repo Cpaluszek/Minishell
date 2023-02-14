@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 18:58:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:24:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 #include "input.h"
 
 void	print_command_line(t_token *token_list);
-int 	g_status;
-
-// Note: export with unclosed quote and multiline != bash
-// bash insert \n
+void	print_block(t_block *block, int fd);
+void	print_command_line2(t_token *token_list, int fd);
+int		g_status;
 
 // Todo: parsing need to update g_status in case of parsing error ?
 //TODO : Ambiguous redirect pour des expands pas claires (a = "ls -lr")
@@ -28,12 +27,15 @@ int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;
 	t_token			*token_list;
+	int				fd;
 
 	(void) argc;
 	(void) argv;
+	(void)token_list;
 	g_status = EXIT_SUCCESS;
 	init_shell_attr(&shell);
 	set_environment(&shell, env);
+	fd = open("block_command.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
 	while (1)
 	{
 		reset_commands(&shell);
@@ -44,49 +46,21 @@ int	main(int argc, char **argv, char **env)
 		else
 			central_parsing(&shell, PROMPT_ERR);
 		token_list = shell.token_list;
-		if (token_list)
-			print_command_line(token_list);
-		if (shell.command_line == COMPLETED)
-			exec_start(&shell);
-	}
-	return (EXIT_SUCCESS);
-}
-
-void	print_command_line(t_token *token_list)
-{
-	int	i;
-	int	*fd_in;
-	int	*fd_out;
-
-	printf("\n\n------------COMMAND LINE ------------\n\n");
-	while (token_list)
-	{
-		dprintf(1, "{");
-		// dprintf(1, "[%p]", token_list);
-		dprintf(1, "[%s]:[", token_list->token_str);
-		if (token_list->token == CMD)
+		// if (token_list)
+		// 	print_command_line(token_list);
+		if (shell.block_list)
 		{
-			if (!token_list->cmd)
-				dprintf(1, "%s(str)", token_list->str);
-			else
-			{
-				//dprintf(1, "%s: ", token_list->cmd_path);
-				i = 0;
-				while (token_list->cmd[i])
-					dprintf(1, "{%s }", token_list->cmd[i++]);
-				fd_in = token_list->fd_input;
-				fd_out = token_list->fd_output;
-			}
-			dprintf(1, "], pipe[%p,%p], fd_in(%p), fd_out(%p)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out);
-			// dprintf(1, "]} -> ");
+			dprintf(fd, "\n\nINPUT : %s\n\n", shell.input_completed);
+			print_block(shell.block_list, fd);
 		}
 		else
+			dprintf(1, "NOBLOCK\n");
+		if (shell.command_line == COMPLETED)
 		{
-			dprintf(1, "%s", token_list->str);
-			dprintf(1, "], (%p)} -> ", &token_list->fd_file);
-			// dprintf(1, "]} -> ");
+			set_execution_signals(&shell);
+			exec_block(&shell, shell.block_list);
 		}
-		token_list = token_list->next;
 	}
-	printf("\n");
+	close(fd);
+	return (EXIT_SUCCESS);
 }

@@ -100,8 +100,8 @@ void	reset_commands(t_global	*shell)
 	shell->input_completed = NULL;
 	shell->command_line = BEGIN;
 	shell->nb_open_parenthesis = 0;
-	ft_lstclear_token(&shell->token_list);
-	// ft_lstclear_block(&shell->block_list);
+	// ft_lstclear_token(&shell->token_list);
+	ft_lstclear_block(&shell->block_list);
 	shell->token_list = NULL;
 	shell->block_list = NULL;
 }

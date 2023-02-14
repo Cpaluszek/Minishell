@@ -74,7 +74,7 @@ int	*create_pipe(t_global *shell, t_exec *data, int p_end)
 {
 	if (pipe(data->cmd->pipe_fd) == -1)
 	{
-		close_redirs(data->redirs);
+		// close_redirs(data->redirs);
 		exec_cmd_error(shell, ERR_PIPE, data->cmd);
 	}
 	if (p_end)

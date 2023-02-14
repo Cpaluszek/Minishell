@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/07 18:44:36 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 13:44:37 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ typedef struct s_block {
 	struct s_block	*upper_block;
 	struct s_token	*token_list;
 	struct s_token	*redirection_token_list;
+	int				redirection_status;
 	int				block_level;
-	int				*fd_input;
-	int				*fd_output;
+	int				fd_input;
+	int				fd_output;
 	bool			make_a_pipe;
 	int				pipe_fd[2];
-	int				*previous_block_pipe_fd0;
 }	t_block;
 
 typedef struct s_token {
@@ -87,6 +87,7 @@ typedef struct s_token {
 	char			*origin_token_str;
 	char			*temp_expand;
 	bool			space_link;
+	bool			ambiguous_redirect;
 	int				make_a_pipe;
 	int				*fd_input;
 	int				*fd_output;
@@ -102,10 +103,12 @@ typedef struct s_global {
 	char			**env;
 	char			*input;
 	char			*input_completed;
+	char			*temp_prompt;
 	int				nb_open_parenthesis;
 	bool			is_wildcard;
 	t_block			*block_list;
 	t_token			*token_list;
+	t_token			*here_doc_list;
 	int				last_exit_status;
 	int				command_line;
 	struct termios	saved_attr;
