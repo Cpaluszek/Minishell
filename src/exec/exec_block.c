@@ -47,10 +47,7 @@ static void	exec_block_child(t_global *shell, t_block *block)
 		close(block->pipe_fd[0]);
 	block->redirection_status = open_block_redirections(block);
 	if (block->redirection_status == -1)
-	{
-		g_status = 1;
-		exit(g_status);
-	}
+		exit(EXIT_FAILURE);
 	set_block_fd_input_and_close_unused_fd(block);
 	set_block_fd_output_and_close_unused_fd(block);
 	// dprintf(1, "fd_in %d, fd_out%d\n", block->fd_input, block->fd_output);
@@ -59,8 +56,8 @@ static void	exec_block_child(t_global *shell, t_block *block)
 	if (block->sub_block)
 		exec_block(shell, block->sub_block);
 	else if (block->token_list)
-		exec_start(shell, block->token_list);
-	if (block->fd_output != -2) // ne pas oublier de closes ces fds dans l'exec de chaque commande
+		exec_token_list(block->token_list, shell);
+	if (block->fd_input != -2) // ne pas oublier de closes ces fds dans l'exec de chaque commande
 		close(block->fd_input);
 	if (block->fd_output != -2)
 		close(block->fd_output);

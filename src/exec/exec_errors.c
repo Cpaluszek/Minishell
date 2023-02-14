@@ -21,8 +21,8 @@ int	exec_cmd_not_found(t_token *token)
 	if (errno == EACCES)
 	{
 		ft_printf_fd(2, "msh: %s: Permission denied\n", token->cmd_path);
-		g_status = 126;
-		return (g_status);
+		token->exit_status = 126;
+		return (EXIT_FAILURE);
 	}
 	else if (errno == ENOENT && ft_strchr(token->cmd_path, '/') != NULL)
 		ft_printf_fd(STDERR, "msh: %s: No such file or directory\n", \

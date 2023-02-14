@@ -68,7 +68,7 @@ static int	open_command_outputs(t_token *command, t_token *token)
 	if (token->token == OUTPUT_TRUNC)
 		token->fd_file = open(token->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else
-		token->fd_file = open(token->str, O_WRONLY, O_CREAT | O_APPEND, 0644);
+		token->fd_file = open(token->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (token->fd_file == -1)
 	{
 		ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));

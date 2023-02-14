@@ -50,7 +50,7 @@ void	ft_lstclear_token(t_token **lst)
 	t_token	*p_lst;
 	t_token	*p_del_lst;
 
-	if (!lst)
+	if (!lst || !(*lst))
 		return ;
 	p_lst = *lst;
 	while (p_lst)

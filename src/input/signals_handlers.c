@@ -40,7 +40,7 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context)
 	(void) info;
 	(void) context;
 	write(1, "^C\n", 3);
-	// rl_replace_line("", 0);
+	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
 	g_status = 128 + signum;

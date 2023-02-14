@@ -56,7 +56,10 @@ int	main(int argc, char **argv, char **env)
 		else
 			dprintf(1, "NOBLOCK\n");
 		if (shell.command_line == COMPLETED)
+		{
+			set_execution_signals(&shell);
 			exec_block(&shell, shell.block_list);
+		}
 	}
 	close(fd);
 	return (EXIT_SUCCESS);

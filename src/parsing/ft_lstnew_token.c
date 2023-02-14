@@ -16,11 +16,13 @@ void	token_str_assignment(t_token *elem, enum e_token token);
 void	token_str_assignment2(t_token *elem, enum e_token token);
 int		origin_token_assignment(t_token *elem, char *str, enum e_token token);
 
-t_token	*ft_lstnew_token(char	*content, enum e_token token)
+t_token	*ft_lstnew_token(char *content, enum e_token token)
 {
 	t_token	*elem;
 
 	elem = (t_token *)ft_calloc(1, sizeof(t_token));
+	if (!elem && content)
+		free(content);
 	if (!elem)
 		return (NULL);
 	token_str_assignment(elem, token);

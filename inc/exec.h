@@ -31,7 +31,8 @@ typedef struct s_exec {
 	int		flag;
 }	t_exec;
 
-void	exec_start(t_global *shell, t_token *token_list);
+// void	exec_start(t_global *shell, t_token *token_list);
+int		exec_token_list(t_token *token, t_global *shell);
 void	exec_block(t_global *shell, t_block *block);
 int		exec_child(t_token *token, t_token *command, char **env);
 void	wait_for_token_list(t_token *token);

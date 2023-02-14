@@ -1,14 +1,324 @@
 
 
-INPUT : echo $"HOME"
+INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala)>out && echo jespere que ca va marcher)>out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : {[CMD]:[{echo }{$HOME }]} -> 
+Block token list : ls  -> 
+&&
 
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out2 -> 
+NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo youhou  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
+			NO LINK
+
+INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala) && echo jespere que ca va marcher)>out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out2 -> 
+NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo youhou  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
+			NO LINK
+
+INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && sleep 5 && echo tralala) && echo jespere que ca va marcher)>out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out2 -> 
+NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : sleep 5  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
+			NO LINK
+
+INPUT : ls && ((ls | cat | sleep 5 | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out2 -> 
+NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> sleep 5  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
+			NO LINK
+
+INPUT : ls && (sleep 5 |(ls | cat | grep e | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out2 -> 
+NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : sleep 5  -> 
+			|
+
+
+			----- NEW BLOCK ----- 
+
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
+			NO LINK
+
+INPUT : ls && ((ls | cat | sleep 5 | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2 && sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out2 -> 
+&&
+
+
+			----- NEW BLOCK ----- 
+
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> sleep 5  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : ls && ((ls | cat | sleep 5 | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2 && sleep 2 | cat << EOF
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out2 -> 
+&&
+
+
+			----- NEW BLOCK ----- 
+
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> sleep 5  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  ->  | -> cat  ->  <<EOF -> 
+NO LINK
+
+INPUT : cat << EOF
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  <<EOF -> 
+NO LINK
 
 INPUT : ls
 
@@ -20,7 +330,187 @@ INPUT : ls
 Block token list : ls  -> 
 NO LINK
 
-INPUT : lsss && ls
+INPUT : ./test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./test  -> 
+NO LINK
+
+INPUT : env
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : env  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : env
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : env  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : env
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : env  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : touch a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : touch a.out  -> 
+NO LINK
+
+INPUT : ./a.out 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : ls -a a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -a a.out  -> 
+NO LINK
+
+INPUT : ls -l a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l a.out  -> 
+NO LINK
+
+INPUT : chmod 666 a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : chmod 666 a.out  -> 
+NO LINK
+
+INPUT : ./a.out 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : ls -l a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l a.out  -> 
+NO LINK
+
+INPUT : chmod 766 a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : chmod 766 a.out  -> 
+NO LINK
+
+INPUT : ./a.out 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : lsss
 
 
 
@@ -28,7 +518,11 @@ INPUT : lsss && ls
 ----- NEW BLOCK ----- 
 
 Block token list : lsss  -> 
-&&
+NO LINK
+
+INPUT : ls
+
+
 
 
 ----- NEW BLOCK ----- 
@@ -36,65 +530,27 @@ Block token list : lsss  ->
 Block token list : ls  -> 
 NO LINK
 
-INPUT : ls | ls
+INPUT : cat << EOF
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  ->  | -> ls  -> 
+Block token list : cat  ->  <<EOF -> 
 NO LINK
 
-INPUT : ls && ls
+INPUT : cat << $USER
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
+Block token list : cat  ->  <<jlitaudo -> 
 NO LINK
 
-INPUT : lssss && ls
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : lssss  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-NO LINK
-
-INPUT : lssss || ls
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : lssss  -> 
-||
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-NO LINK
-
-INPUT : ls && (ls | cat | grep e) >out
+INPUT : ls && ((ls | cat | sleep 5 | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2
 
 
 
@@ -107,16 +563,33 @@ Block token list : ls  ->
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  >out -> 
+Block redirection :  >out2 -> 
 NO LINK
 
 
 			----- NEW BLOCK ----- 
 
-			Block token list : ls  ->  | -> cat  ->  | -> grep e  -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> sleep 5  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
 			NO LINK
 
-INPUT : ls && (ls | cat | grep e)
+INPUT : ls && ((ls | cat | sleep 1 | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2
 
 
 
@@ -129,15 +602,33 @@ Block token list : ls  ->
 
 ----- NEW BLOCK ----- 
 
+Block redirection :  >out2 -> 
 NO LINK
 
 
 			----- NEW BLOCK ----- 
 
-			Block token list : ls  ->  | -> cat  ->  | -> grep e  -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> sleep 1  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
 			NO LINK
 
-INPUT : ls && ( ls | cat | grep e)
+INPUT : ls && ((ls | cat | sleep 1 | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2
 
 
 
@@ -150,15 +641,33 @@ Block token list : ls  ->
 
 ----- NEW BLOCK ----- 
 
+Block redirection :  >out2 -> 
 NO LINK
 
 
 			----- NEW BLOCK ----- 
 
-			Block token list : ls  ->  | -> cat  ->  | -> grep e  -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> sleep 1  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
 			NO LINK
 
-INPUT : ls && ( ls | cat | grep e)>out
+INPUT : ls && ((ls | cat | sleep 1 | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2
 
 
 
@@ -171,94 +680,249 @@ Block token list : ls  ->
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  >out -> 
+Block redirection :  >out2 -> 
 NO LINK
 
 
 			----- NEW BLOCK ----- 
 
-			Block token list : ls  ->  | -> cat  ->  | -> grep e  -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> sleep 1  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
 			NO LINK
 
-INPUT : (ls)>out
+INPUT : ls && ((ls | cat | sleep 1 | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  >out -> 
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out2 -> 
 NO LINK
 
 
 			----- NEW BLOCK ----- 
 
-			Block token list : ls  -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> sleep 1  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
 			NO LINK
 
-INPUT : (ls)>out
+INPUT : ls && ((ls | cat | sleep 1 | sed s/e/42/g && echo tralala) && echo jespere que ca va marcher)>out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  >out -> 
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out2 -> 
 NO LINK
 
 
 			----- NEW BLOCK ----- 
 
-			Block token list : ls  -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : ls  ->  | -> cat  ->  | -> sleep 1  ->  | -> sed s/e/42/g  -> 
+						&&
+
+
+						----- NEW BLOCK ----- 
+
+						Block token list : echo tralala  -> 
+						NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo jespere que ca va marcher  -> 
 			NO LINK
 
-INPUT : (ls) >out
+INPUT : sleep 5
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  >out -> 
+Block token list : sleep 5  -> 
 NO LINK
 
-
-			----- NEW BLOCK ----- 
-
-			Block token list : ls  -> 
-			NO LINK
-
-INPUT : (ls)>out
+INPUT : ./minishell 
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  >out -> 
+Block token list : ./minishell  -> 
 NO LINK
 
-
-			----- NEW BLOCK ----- 
-
-			Block token list : ls  -> 
-			NO LINK
-
-INPUT : (ls) >out
+INPUT : sleep 2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  >out -> 
+Block token list : sleep 2  -> 
 NO LINK
 
+INPUT : ls
 
-			----- NEW BLOCK ----- 
 
-			Block token list : ls  -> 
-			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : rm out out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm out out2  -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : ls | >out | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : cat out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat out  -> 
+NO LINK
+
+INPUT : rm out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm out  -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : ls | >out | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | -> cat  -> 
+NO LINK
+
+INPUT : cat out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat out  -> 
+NO LINK
+
+INPUT : ls -l out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l out  -> 
+NO LINK
 
 INPUT : make
 
@@ -280,83 +944,65 @@ INPUT : ./minishell
 Block token list : ./minishell  -> 
 NO LINK
 
-INPUT : (ls)>out
+INPUT : ls | >out | cat
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  >out -> 
+Block token list : ls  ->  | ->  >out ->  | -> cat  -> 
 NO LINK
 
-
-			----- NEW BLOCK ----- 
-
-			Block token list : ls  -> 
-			NO LINK
-
-INPUT : ls && (ls | cat | grep e | sed s/e/42/g && echo youhou)>out
+INPUT : rm out
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  >out -> 
+Block token list : rm out  -> 
 NO LINK
 
-
-			----- NEW BLOCK ----- 
-
-			Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : echo youhou  -> 
-			NO LINK
-
-INPUT : ls && (ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala)>out >out2
+INPUT : ls | >out | cat
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  >out ->  >out2 -> 
+Block token list : ls  ->  | ->  >out ->  | -> cat  -> 
 NO LINK
 
-
-			----- NEW BLOCK ----- 
-
-			Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
-			&&
+INPUT : cat out
 
 
-			----- NEW BLOCK ----- 
-
-			Block token list : echo youhou  -> 
-			&&
 
 
-			----- NEW BLOCK ----- 
+----- NEW BLOCK ----- 
 
-			Block token list : echo tralala  -> 
-			NO LINK
+Block token list : cat out  -> 
+NO LINK
+
+INPUT : ls | >out2 | >out | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out2 ->  | ->  >out ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out2 | >out | >out3 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out2 ->  | ->  >out ->  | ->  >out3 ->  | -> cat  -> 
+NO LINK
 
 INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala)>out && echo jespere que ca va marcher)>out2
 
@@ -404,435 +1050,14 @@ NO LINK
 			Block token list : echo jespere que ca va marcher  -> 
 			NO LINK
 
-INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala) | sed s/a/JJJ/g)>out2
+INPUT : rm out*
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  >out2 -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			|
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo youhou  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo tralala  -> 
-						NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : sed s/a/JJJ/g  -> 
-			NO LINK
-
-INPUT : echo $?
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : echo 0  -> 
-NO LINK
-
-INPUT : ls & ls
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls & ls  -> 
-NO LINK
-
-INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala) | sed s/a/JJJ/g)>out2 && lsss
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  >out2 -> 
-&&
-
-
-			----- NEW BLOCK ----- 
-
-			|
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo youhou  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo tralala  -> 
-						NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : sed s/a/JJJ/g  -> 
-			NO LINK
-
-
------ NEW BLOCK ----- 
-
-Block token list : lsss  -> 
-NO LINK
-
-INPUT : echo $?
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : echo 256  -> 
-NO LINK
-
-INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala) | sed s/a/JJJ/g)>out2 
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  >out2 -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			|
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo youhou  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo tralala  -> 
-						NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : sed s/a/JJJ/g  -> 
-			NO LINK
-
-INPUT : touch in
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : touch in  -> 
-NO LINK
-
-INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala) | sed s/a/JJJ/g)>out2 <in
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  >out2 ->  <in -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			|
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo youhou  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo tralala  -> 
-						NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : sed s/a/JJJ/g  -> 
-			NO LINK
-
-INPUT : chmod 000 in
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : chmod 000 in  -> 
-NO LINK
-
-INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala) | sed s/a/JJJ/g)>out2 <in
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  >out2 ->  <in -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			|
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo youhou  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo tralala  -> 
-						NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : sed s/a/JJJ/g  -> 
-			NO LINK
-
-INPUT : mkdir test
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : mkdir test  -> 
-NO LINK
-
-INPUT : ./test
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./test  -> 
-NO LINK
-
-INPUT : touch a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : touch a.out  -> 
-NO LINK
-
-INPUT : chmod 066 a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : chmod 066 a.out  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : echo "$SHELL and$USER$SHELL"
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : echo /bin/zsh andjlitaudo/bin/zsh  -> 
-NO LINK
-
-INPUT : export a=">"
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : export a=>  -> 
-NO LINK
-
-INPUT : export
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : export  -> 
-NO LINK
-
-INPUT : env
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : env  -> 
-NO LINK
-
-INPUT : ./minishell 
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./minishell  -> 
-NO LINK
-
-INPUT : ./minishell 
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./minishell  -> 
-NO LINK
-
-INPUT : ./minishell 
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./minishell  -> 
-NO LINK
-
-INPUT : env
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : env  -> 
-NO LINK
-
-INPUT : clear
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : clear  -> 
-NO LINK
-
-INPUT : git status
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : git status  -> 
+Block token list : rm out3 out2 out  -> 
 NO LINK
 
 INPUT : rm a.out
@@ -845,116 +1070,14 @@ INPUT : rm a.out
 Block token list : rm a.out  -> 
 NO LINK
 
-INPUT : rm in out out2
+INPUT : git status
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : rm in out out2  -> 
-NO LINK
-
-INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala)>out3 && sed s/a/JJJ/g)>out2 <in
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  >out2 ->  <in -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  >out3 -> 
-			&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo youhou  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo tralala  -> 
-						NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : sed s/a/JJJ/g  -> 
-			NO LINK
-
-INPUT : ls && ((ls | cat | grep e | sed s/e/42/g && echo youhou && echo tralala)>out3 && sed s/a/JJJ/g)>out2 
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  >out2 -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  >out3 -> 
-			&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  ->  | -> cat  ->  | -> grep e  ->  | -> sed s/e/42/g  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo youhou  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : echo tralala  -> 
-						NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : sed s/a/JJJ/g  -> 
-			NO LINK
-
-INPUT : rm out2 out3
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : rm out2 out3  -> 
+Block token list : git status  -> 
 NO LINK
 
 INPUT : git add .

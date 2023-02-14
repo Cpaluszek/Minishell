@@ -53,7 +53,7 @@ void	ft_lstclear_block(t_block **first_block)
 	t_block	*block;
 	t_block	*del_block;
 
-	if (first_block || !(*first_block))
+	if (!first_block || !(*first_block))
 		return ;
 	block = *first_block;
 	while (block)
