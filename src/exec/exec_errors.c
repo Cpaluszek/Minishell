@@ -12,7 +12,6 @@
 
 #include "minishell.h"
 #include "exec.h"
-#include <sys/stat.h>
 #include <string.h>
 #include <errno.h>
 

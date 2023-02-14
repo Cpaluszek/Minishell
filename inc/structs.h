@@ -105,11 +105,9 @@ typedef struct s_global {
 	char			*input_completed;
 	char			*temp_prompt;
 	int				nb_open_parenthesis;
-	bool			is_wildcard;
 	t_block			*block_list;
 	t_token			*token_list;
 	t_token			*here_doc_list;
-	int				last_exit_status;
 	int				command_line;
 	struct termios	saved_attr;
 	struct termios	custom_attr;

@@ -13,8 +13,6 @@
 #include "minishell.h"
 #include "token_list_functions.h"
 
-void	set_fd_for_each_command_token(t_global *shell);
-
 void	ft_lstadd_back_block(t_block **lst, t_block *new)
 {
 	t_block	*p_lst;

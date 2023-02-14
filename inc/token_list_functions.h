@@ -29,7 +29,6 @@ t_token	*ft_lstnew_token(char	*content, enum e_token token);
 	--------- Chainlist blocks functions -----------
 */
 
-t_block	*ft_lstlast_block(t_block *lst);
 t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list);
 void	ft_lstadd_back_block(t_block **lst, t_block *new);
 void	ft_lstdelone_block(t_block *lst);

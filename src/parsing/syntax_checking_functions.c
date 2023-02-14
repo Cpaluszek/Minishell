@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "structs.h"
-#include <stdio.h>
 
 int			print_syntax_error(t_global *shell, char *str);
 static int	syntax_exception(t_token *token1, t_token *token2);

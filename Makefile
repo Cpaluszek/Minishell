@@ -38,7 +38,6 @@ PARSING_FILES	:=	add_path_to_command.c \
 					merge_linked_token.c \
 					printing_functions.c \
 					quote_parsing.c \
-					set_fd_for_each_command_token.c \
 					syntax_checking.c \
 					syntax_checking_functions.c \
 					token_list_functions.c \

@@ -54,8 +54,6 @@ char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file);
 */
 
 void	add_path_to_command_token(t_global *shell);
-void	set_fd_for_each_command_token(t_token *token_list);
-void	delete_pipe_token(t_global *shell);
 void	add_link_between_blocks(t_block *block, t_token *token);
 void	create_sub_block(t_global *shell, t_block **block_list, \
 		t_block *upper_block, t_token **token);

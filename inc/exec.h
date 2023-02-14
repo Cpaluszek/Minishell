@@ -50,7 +50,6 @@ int		exec_cmd_not_found(t_token *token);
 	--------- Redirections functions -----------
 */
 void	open_and_immediatly_close_redirection(t_token *token);
-int		set_redirection(t_global *shell, t_token *tok, int redirs[2]);
 void	set_redirection_for_token(t_block *block, t_token *token_list);
 void	set_block_fd_input_and_close_unused_fd(t_block *block);
 void    set_block_fd_output_and_close_unused_fd(t_block *block);
