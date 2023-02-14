@@ -26,6 +26,8 @@ void	exec_block(t_global *shell, t_block *block)
 		block->pid = fork();
 		if (block->pid == 0)
 			exec_block_child(shell, block);
+		if (block->prev && block->prev->make_a_pipe == true)
+			close(block->prev->pipe_fd[0]);
 		if (block->logical_link == PIPE_LINK)
 		{
 			close(block->pipe_fd[1]);
@@ -43,9 +45,7 @@ static void	exec_block_child(t_global *shell, t_block *block)
 {
 	if (block->make_a_pipe)
 		close(block->pipe_fd[0]);
-	block->redirection_status = open_block_input(block);
-	if (block->redirection_status != -1)
-		block->redirection_status = open_block_output(block);
+	block->redirection_status = open_block_redirections(block);
 	if (block->redirection_status == -1)
 	{
 		g_status = 1;

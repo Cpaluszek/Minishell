@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include <string.h>
+# include <errno.h>
 # include "structs.h"
 # include "errors.h"
 
@@ -24,14 +26,14 @@
 
 typedef struct s_exec {
 	t_token	*cmd;
+	t_token	*first_token;
 	int		*pipe;
-	int		redirs[2];
 	int		flag;
 }	t_exec;
 
 void	exec_start(t_global *shell, t_token *token_list);
 void	exec_block(t_global *shell, t_block *block);
-int		exec_child(t_token *token, char **env);
+int		exec_child(t_token *token, t_token *command, char **env);
 void	wait_for_token_list(t_token *token);
 void	parent_close_pipes(t_token *token);
 void	close_token_pipes(t_token *token);
@@ -41,18 +43,17 @@ int		*create_pipe(t_global *shell, t_exec *data, int p_end);
 	--------- Exec Errors -----------
 */
 void	exec_cmd_error(t_global *shell, char *err, t_token *token);
-void	exec_cmd_not_found(t_token *token);
+int		exec_cmd_not_found(t_token *token);
 
 /*
 	--------- Redirections functions -----------
 */
-void	close_redirs(int redirs[2]);
+void	open_and_immediatly_close_redirection(t_token *token);
 int		set_redirection(t_global *shell, t_token *tok, int redirs[2]);
 void	set_redirection_for_token(t_block *block, t_token *token_list);
 void	set_block_fd_input_and_close_unused_fd(t_block *block);
 void    set_block_fd_output_and_close_unused_fd(t_block *block);
-int		open_block_input(t_block *block);
-int     open_block_output(t_block *block);
+int		open_block_redirections(t_block *block);
 int		dup_fds(t_token *token);
 
 /*

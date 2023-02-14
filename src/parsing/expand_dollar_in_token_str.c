@@ -13,8 +13,9 @@
 
 #include "structs.h"
 
-void	expand_dollar(t_global *shell, t_token *token, char *str);
-void	test_failed_malloc(t_global *shell, void *content);
+void		expand_dollar(t_global *shell, t_token *token, char *str);
+void		test_failed_malloc(t_global *shell, void *content);
+static	int	is_a_heredoc(t_token *token);
 
 // Todo: here_doc delimiter should never be expanded
 // Note: expand `~` to $HOME ?
@@ -27,7 +28,7 @@ void	expand_dollar_in_token_str(t_global *shell)
 	while (token)
 	{
 		if ((token->token == DQUOTE || token->token == DOLLAR) && \
-			ft_is_inside('$', token->str))
+			ft_is_inside('$', token->str) && is_a_heredoc(token) == 0)
 		{
 			token->temp_expand = NULL;
 			expand_dollar(shell, token, token->str);
@@ -37,4 +38,13 @@ void	expand_dollar_in_token_str(t_global *shell)
 		}
 		token = token->next;
 	}
+}
+
+static	int	is_a_heredoc(t_token *token)
+{
+	while (token && token->token >= CMD)
+		token = token->prev;
+	if (token && token->token == HERE_DOC)
+		return (1);
+	return (0);
 }

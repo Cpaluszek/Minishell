@@ -42,27 +42,31 @@ void	ft_lstdelone_block(t_block *lst)
 	if (!lst)
 		return ;
 	ft_lstclear_token(&lst->token_list);
+	ft_lstclear_token(&lst->redirection_token_list);
 	lst->token_list = NULL;
+	lst->redirection_token_list = NULL;
 	free(lst);
 }
 
-void	ft_lstclear_block(t_block **lst)
+void	ft_lstclear_block(t_block **first_block)
 {
-	t_block	*p_lst;
-	t_block	*p_del_lst;
+	t_block	*block;
+	t_block	*del_block;
 
-	if (!lst)
+	if (first_block || !(*first_block))
 		return ;
-	p_lst = *lst;
-	while (p_lst)
+	block = *first_block;
+	while (block)
 	{
-		p_del_lst = p_lst;
-		p_lst = p_lst->next;
-		p_del_lst->next = NULL;
-		p_del_lst->prev = NULL;
-		ft_lstdelone_block(p_del_lst);
+		if (block->sub_block)
+			ft_lstclear_block(&block->sub_block);
+		del_block = block;
+		block = block->next;
+		del_block->next = NULL;
+		del_block->prev = NULL;
+		ft_lstdelone_block(del_block);
 	}
-	*lst = NULL;
+	*first_block = NULL;
 }
 
 t_block	*ft_lstlast_block(t_block *lst)

@@ -16,6 +16,10 @@
 #include "minishell.h"
 #include "exec.h"
 
+static int	open_command_redirections(t_token *command, t_token *token);
+static int	open_command_outputs(t_token *command, t_token *token);
+static int	is_a_directory(char *path);
+
 int	exec_child(t_token *token, t_token *command, char **env)
 {
 	if (open_command_redirections(command, token) == -1)
@@ -33,7 +37,7 @@ int	exec_child(t_token *token, t_token *command, char **env)
 	return (EXIT_FAILURE);
 }
 
-int	open_command_redirections(t_token *command, t_token *token) // gerer le cas des here_docs
+static int	open_command_redirections(t_token *command, t_token *token) // gerer le cas des here_docs
 {
 	while (token)
 	{
@@ -42,34 +46,32 @@ int	open_command_redirections(t_token *command, t_token *token) // gerer le cas 
 			if (command->fd_input)
 				close(*command->fd_input);
 			token->fd_file = open(token->str, O_RDONLY);
-			if (token->fd_input == -1)
+			if (token->fd_file == -1)
 			{
-				ft_printf_fd(2, "msh: %s: %s", token->str, strerror(errno));
+				ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));
 				return (-1);
 			}
 			command->fd_input = &token->fd_file;
 		}
 		else if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
-			if (open_command_output(command, token) == -1)
+			if (open_command_outputs(command, token) == -1)
 				return (-1);
 		token = token->next;
 	}
 	return (1);
 }
 
-int	open_command_outputs(t_token *command, t_token *token)
+static int	open_command_outputs(t_token *command, t_token *token)
 {
 	if (command->fd_output)
 		close(*command->fd_output);
 	if (token->token == OUTPUT_TRUNC)
-		token->fd_output = open(token->str, O_WRONLY, \
-			O_CREAT, O_TRUNC, 0644);
+		token->fd_file = open(token->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else
-		token->fd_output = open(token->str, O_WRONLY, \
-			O_CREAT, O_APPEND, 0644);
-	if (token->fd_output == -1)
+		token->fd_file = open(token->str, O_WRONLY, O_CREAT | O_APPEND, 0644);
+	if (token->fd_file == -1)
 	{
-		ft_printf_fd(2, "msh: %s: %s", token->str, strerror(errno));
+		ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));
 		return (-1);
 	}
 	command->fd_output = &token->fd_file;

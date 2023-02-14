@@ -13,6 +13,8 @@
 #include "exec.h"
 #include "structs.h"
 
+static int	open_block_output(t_block *block, t_token * token);
+
 void	set_redirection_for_token(t_block *block, t_token *token_list)
 {
 	t_token *token;
@@ -22,7 +24,7 @@ void	set_redirection_for_token(t_block *block, t_token *token_list)
 	{
 		while (token)
 		{
-			if (token->fd_input != NULL )
+			if (token->token == CMD)
 				token->fd_input = &block->fd_input;
 			token = token->next;
 		}
@@ -32,14 +34,14 @@ void	set_redirection_for_token(t_block *block, t_token *token_list)
 	{
 		while (token)
 		{
-			if (token->fd_output != NULL )
+			if (token->token == CMD)
 				token->fd_output = &block->fd_output;
 			token = token->next;
 		}
 	}
 }
 
-int	open_block_input(t_block *block) // gerer le cas des here_docs
+int	open_block_redirections(t_block *block) // gerer le cas des here_docs
 {
 	t_token	*token;
 
@@ -54,16 +56,43 @@ int	open_block_input(t_block *block) // gerer le cas des here_docs
 				close(block->fd_input);
 			block->fd_input = open(token->str, O_RDONLY);
 			if (block->fd_input == -1)
+			{
+				ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));
 				return (-1);
+			}
 		}
+		else if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
+			if (open_block_output(block, token) == -1)
+				return (-1);
 		token = token->next;
+	}
+	return (1);
+}
+
+static int	open_block_output(t_block *block, t_token * token)
+{
+	if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
+	{
+		if (block->fd_output != -2)
+			close(block->fd_output);
+		if (token->token == OUTPUT_TRUNC)
+			block->fd_output = open(token->str, O_WRONLY | \
+				O_CREAT | O_TRUNC, 0644);
+		else
+			block->fd_output = open(token->str, O_WRONLY | \
+				O_CREAT | O_APPEND, 0644);
+		if (block->fd_output == -1)
+		{
+			ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));
+			return (-1);
+		}
 	}
 	return (1);
 }
 
 void	set_block_fd_input_and_close_unused_fd(t_block *block)
 {
-	if (block->redirection_status == 1)
+	if (block->fd_input != -2)
 	{
 		if (block->upper_block && block->upper_block->fd_input != -2)
 			close(block->upper_block->fd_input);
@@ -82,7 +111,7 @@ void	set_block_fd_input_and_close_unused_fd(t_block *block)
 
 void	set_block_fd_output_and_close_unused_fd(t_block *block)
 {
-	if (block->redirection_status == 1)
+	if (block->fd_output != -2)
 	{
 		if (block->upper_block && block->upper_block->fd_output != -2)
 			close(block->upper_block->fd_output);
@@ -97,31 +126,4 @@ void	set_block_fd_output_and_close_unused_fd(t_block *block)
 	}
 	else if (block->upper_block)
 		block->fd_output = block->upper_block->fd_output;
-}
-
-int	open_block_output(t_block *block)
-{
-	t_token	*token;
-
-	token = block->redirection_token_list;
-	if (!token)
-		return (0);
-	while (token)
-	{
-		if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
-		{
-			if (block->fd_output != -2)
-				close(block->fd_output);
-			if (token->token == OUTPUT_TRUNC)
-				block->fd_output = open(token->str, O_WRONLY, \
-					O_CREAT, O_TRUNC, 0644);
-			else
-				block->fd_output = open(token->str, O_WRONLY, \
-					O_CREAT, O_APPEND, 0644);
-			if (block->fd_output == -1)
-				return (-1);
-		}
-		token = token->next;
-	}
-	return (1);
 }

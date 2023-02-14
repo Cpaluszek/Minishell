@@ -15,7 +15,7 @@
 #include "input.h"
 
 static int	exec_token_list(t_token *token, t_global *shell);
-static void	exec_cmd(t_token *token, t_global *shell, int redirs[2]);
+static void	exec_cmd(t_token *first_token, t_token *command, t_global *shell);
 static int	check_token(t_global *shell, t_token *token, t_exec *data);
 static void	check_cmd_exec(t_global *shell, t_exec *data);
 
@@ -40,6 +40,7 @@ static int	exec_token_list(t_token *token, t_global *shell)
 	while (token)
 	{
 		data.cmd = NULL;
+		data.first_token = token;
 		while (token)
 		{
 			if (check_token(shell, token, &data))
@@ -98,29 +99,33 @@ static void	check_cmd_exec(t_global *shell, t_exec *data)
 			command->make_a_pipe = 2;
 			data->flag = 0;
 		}
-		exec_cmd(data->cmd, shell);
+		exec_cmd(data->first_token, data->cmd, shell);
 	}
-	else if (data->pipe && data->pipe[0] > 2 && close(data->pipe[0]) == -1)
-		perror(ERR_CLOSE);
+	else
+	{
+		open_and_immediatly_close_redirection(data->first_token);
+		if (data->pipe && data->pipe[0] > 2 && close(data->pipe[0]) == -1)
+			perror(ERR_CLOSE);
+	}
+		
 }
 
 // Todo: too much fork - bash does not exit
-static void	exec_cmd(t_token *token, t_global *shell)
+static void	exec_cmd(t_token *first_token, t_token *command, t_global *shell)
 {
-	if (check_for_builtins(token, shell))
+	if (check_for_builtins(command, shell))
 		return ;
-	token->pid = fork();
-	if (token->pid == -1) // a voir ce quil faut faire dans ce cas.
+	command->pid = fork();
+	if (command->pid == -1) // a voir ce quil faut faire dans ce cas.
 	{
-		close_redirs(redirs);
-		exec_cmd_error(shell, ERR_FORK, token);
+		exec_cmd_error(shell, ERR_FORK, command);
 	}
-	if (token->pid != 0 && ft_strcmp(token->str, "./minishell") == 0)
+	if (command->pid != 0 && ft_strcmp(command->str, "./minishell") == 0)
 		signal(SIGINT, SIG_IGN);
-	if (token->pid == 0 && exec_child(token, shell->env))
+	if (command->pid == 0 && exec_child(first_token, command, shell->env))
 	{
-		close_token_pipes(token);
+		close_token_pipes(command);
 		exit(EXIT_FAILURE);
 	}
-	parent_close_pipes(token);
+	parent_close_pipes(command);
 }
