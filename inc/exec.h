@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 15:59:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 16:42:07 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_exec {
 	int		flag;
 }	t_exec;
 
-int		exec_start(t_global *shell, t_token *token_list);
+void	exec_start(t_global *shell, t_token *token_list);
 void	exec_block(t_global *shell, t_block *block);
 int		exec_child(t_token *token, char **env);
 void	wait_for_token_list(t_token *token);
@@ -48,6 +48,11 @@ void	exec_cmd_not_found(t_token *token);
 */
 void	close_redirs(int redirs[2]);
 int		set_redirection(t_global *shell, t_token *tok, int redirs[2]);
+void	set_redirection_for_token(t_block *block, t_token *token_list);
+void	set_block_fd_input_and_close_unused_fd(t_block *block);
+void    set_block_fd_output_and_close_unused_fd(t_block *block);
+int		open_block_input(t_block *block);
+int     open_block_output(t_block *block);
 int		dup_fds(t_token *token);
 
 /*

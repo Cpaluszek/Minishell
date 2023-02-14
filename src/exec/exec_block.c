@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/13 14:33:29 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/13 16:44:10 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	exec_block_child(t_global *shell, t_block *block)
 	}
 	set_block_fd_input_and_close_unused_fd(block);
 	set_block_fd_output_and_close_unused_fd(block);
-	dprintf(1, "fd_in %d, fd_out%d\n", block->fd_input, block->fd_output);
+	// dprintf(1, "fd_in %d, fd_out%d\n", block->fd_input, block->fd_output);
 	if (block->token_list)
 		set_redirection_for_token(block, block->token_list);
 	if (block->sub_block)
@@ -79,7 +79,7 @@ static void	wait_for_all_piped_block(t_block *block)
 	}
 	waitpid(block->pid, &block->exit_status, 0);
 	g_status = block->exit_status;
-	dprintf(1, "fg_status : %d\n", g_status);
+	// dprintf(1, "fg_status : %d\n", g_status);
 }
 
 static t_block	*find_next_block_to_execute(t_block *block)

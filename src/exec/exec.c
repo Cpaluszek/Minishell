@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 16:00:46 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/14 01:01:55 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void	check_cmd_exec(t_global *shell, t_exec *data);
 // Todo: here_doc always first - process all
 // Todo: block execution - all the here_doc needs to be open first
 // Attention au close de tout les here_docs en cas de probleme
-void	exec_start(t_global *shell)
+void	exec_start(t_global *shell, t_token *token_list)
 {
 	set_execution_signals(shell);
-	if (exec_token_list(shell->token_list, shell) == 0)
-		wait_for_token_list(shell->token_list);
+	if (exec_token_list(token_list, shell) == 0)
+		wait_for_token_list(token_list);
 }
 
 static int	exec_token_list(t_token *token, t_global *shell)
@@ -39,15 +39,10 @@ static int	exec_token_list(t_token *token, t_global *shell)
 	data.flag = 0;
 	while (token)
 	{
-		data.redirs[0] = 0;
-		data.redirs[1] = 0;
 		data.cmd = NULL;
 		while (token)
 		{
-			if (token->token <= OUTPUT_APPEND && \
-				set_redirection(shell, token, data.redirs) == 1)
-				return (close_redirs(data.redirs), 1);
-			else if (check_token(shell, token, &data))
+			if (check_token(shell, token, &data))
 				break ;
 			token = token->next;
 		}
@@ -90,39 +85,32 @@ static int	check_token(t_global *shell, t_token *token, t_exec *data)
 
 static void	check_cmd_exec(t_global *shell, t_exec *data)
 {
-	if (data->cmd != NULL)
+	t_token	*command;
+
+	command = data->cmd;
+	if (command != NULL)
 	{
 		if (data->flag)
 		{
 			data->pipe = create_pipe(shell, data, 0);
-			if (close(data->cmd->pipe_fd[1]) == -1)
+			if (close(command->pipe_fd[1]) == -1)
 				perror(ERR_CLOSE);
-			data->cmd->make_a_pipe = 2;
+			command->make_a_pipe = 2;
 			data->flag = 0;
 		}
-		exec_cmd(data->cmd, shell, data->redirs);
+		exec_cmd(data->cmd, shell);
 	}
 	else if (data->pipe && data->pipe[0] > 2 && close(data->pipe[0]) == -1)
 		perror(ERR_CLOSE);
-	close_redirs(data->redirs);
 }
 
 // Todo: too much fork - bash does not exit
-static void	exec_cmd(t_token *token, t_global *shell, int redirs[2])
+static void	exec_cmd(t_token *token, t_global *shell)
 {
-	if (redirs[0] != 0)
-		token->fd_input = &redirs[0];
-	if (redirs[1] != 0)
-		token->fd_output = &redirs[1];
 	if (check_for_builtins(token, shell))
 		return ;
-	else if (access(token->cmd_path, X_OK) == -1)
-	{
-		exec_cmd_not_found(token);
-		return ;
-	}
 	token->pid = fork();
-	if (token->pid == -1)
+	if (token->pid == -1) // a voir ce quil faut faire dans ce cas.
 	{
 		close_redirs(redirs);
 		exec_cmd_error(shell, ERR_FORK, token);

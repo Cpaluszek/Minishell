@@ -6,13 +6,10 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-<<<<<<<<< Temporary merge branch 1
-/*   Updated: 2023/02/12 15:51:46 by cpalusze         ###   ########.fr       */
-=========
-/*   Updated: 2023/02/10 23:40:40 by Teiki            ###   ########.fr       */
->>>>>>>>> Temporary merge branch 2
+/*   Updated: 2023/02/13 16:43:05 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "exec.h"
 #include "minishell.h"

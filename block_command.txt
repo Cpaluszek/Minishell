@@ -1636,3 +1636,420 @@ INPUT : exit
 
 Block token list : exit  -> 
 NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : ls && ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : ls && ls || ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+||
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : env
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : env  -> 
+NO LINK
+
+INPUT : exit
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit  -> 
+NO LINK
+
+INPUT : env
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : env  -> 
+NO LINK
+
+INPUT : env
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : env  -> 
+NO LINK
+
+INPUT : ls && (cat && cat) <Makefile
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  <Makefile -> 
+NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  -> 
+			NO LINK
+
+INPUT : ls && (cat && cat) >out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >out -> 
+NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  -> 
+			NO LINK
+
+INPUT : ls && (cat && cat) | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  -> 
+NO LINK
+
+INPUT : make
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : make  -> 
+NO LINK
+
+INPUT : ./minishell
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : lsss
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : lsss  -> 
+NO LINK
+
+INPUT : ls <file
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  <file -> 
+NO LINK
+
+INPUT : ./ ahah
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./ ahah  -> 
+NO LINK
+
+INPUT : ls >"./temp"
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  >./temp -> 
+NO LINK
+
+INPUT : ./a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : /ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : /ls  -> 
+NO LINK
+
+INPUT : lsss
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : lsss  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : exit
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit  -> 
+NO LINK
+
+INPUT : exit
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit  -> 
+NO LINK
+
+INPUT : exit
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit  -> 
+NO LINK
+
+INPUT : exit
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit  -> 
+NO LINK
+
+INPUT : rm out*
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm out out4 out3 out2 out5  -> 
+NO LINK
+
+INPUT : rm a.out 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm a.out  -> 
+NO LINK
+
+INPUT : rm file
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm file  -> 
+NO LINK
+
+INPUT : git status
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : git status  -> 
+NO LINK
+
+INPUT : git add .
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : git add .  -> 
+NO LINK

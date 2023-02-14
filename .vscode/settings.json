@@ -13,7 +13,9 @@
 		"stdbool.h": "c",
 		"input.h": "c",
 		"minishell.h": "c",
-		"signal.h": "c"
+		"signal.h": "c",
+		"stat.h": "c",
+		"errno.h": "c"
 	},
 	"makefile.launchConfigurations": [
 		{
