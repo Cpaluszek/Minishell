@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_block_redirection.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:30:26 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/13 14:11:57 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/15 10:16:34 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,6 @@
 #include "structs.h"
 
 static int	open_block_output(t_block *block, t_token * token);
-
-void	set_redirection_for_token(t_block *block, t_token *token_list)
-{
-	t_token *token;
-
-	token = token_list;
-	if (block->fd_input != -2)
-	{
-		while (token)
-		{
-			if (token->token == CMD)
-				token->fd_input = &block->fd_input;
-			token = token->next;
-		}
-	}
-	token = token_list;
-	if (block->fd_output != -2)
-	{
-		while (token)
-		{
-			if (token->token == CMD)
-				token->fd_output = &block->fd_output;
-			token = token->next;
-		}
-	}
-}
 
 int	open_block_redirections(t_block *block) // gerer le cas des here_docs
 {
@@ -52,14 +26,15 @@ int	open_block_redirections(t_block *block) // gerer le cas des here_docs
 	{
 		if (token->token <= HERE_DOC)
 		{
-			if (block->fd_input != -2)
-				close(block->fd_input);
-			block->fd_input = open(token->str, O_RDONLY);
-			if (block->fd_input == -1)
+			if (block->fd_input != NULL)
+				close(*block->fd_input);
+			token->fd_file = open(token->str, O_RDONLY);
+			if (token->fd_file == -1)
 			{
 				ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));
 				return (-1);
 			}
+			block->fd_input = &token->fd_file;
 		}
 		else if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
 			if (open_block_output(block, token) == -1)
@@ -73,57 +48,72 @@ static int	open_block_output(t_block *block, t_token * token)
 {
 	if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
 	{
-		if (block->fd_output != -2)
-			close(block->fd_output);
+		if (block->fd_output != NULL)
+			close(*block->fd_output);
 		if (token->token == OUTPUT_TRUNC)
-			block->fd_output = open(token->str, O_WRONLY | \
+			token->fd_file = open(token->str, O_WRONLY | \
 				O_CREAT | O_TRUNC, 0644);
 		else
-			block->fd_output = open(token->str, O_WRONLY | \
+			token->fd_file = open(token->str, O_WRONLY | \
 				O_CREAT | O_APPEND, 0644);
-		if (block->fd_output == -1)
+		if (token->fd_file == -1)
 		{
 			ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));
 			return (-1);
 		}
+		block->fd_output = &token->fd_file;
 	}
 	return (1);
 }
 
-void	set_block_fd_input_and_close_unused_fd(t_block *block)
+void	set_block_redirections(t_global *shell, t_block *block)
 {
-	if (block->fd_input != -2)
-	{
-		if (block->upper_block && block->upper_block->fd_input != -2)
-			close(block->upper_block->fd_input);
-		if (block->prev && block->prev->make_a_pipe)
-			close(block->prev->pipe_fd[0]);
-	}
+	if (block->fd_input != NULL)
+		add_fd_to_list(shell, block->fd_input);
 	else if (block->prev && block->prev->make_a_pipe)
+		block->fd_input = &block->prev->pipe_fd[0];
+	else if (block->upper_block && block->upper_block->fd_input)
 	{
-		if (block->upper_block && block->upper_block->fd_input != -2)
-			close(block->upper_block->fd_input);
-		block->fd_input = block->prev->pipe_fd[0];
-	}
-	else if (block->upper_block)
 		block->fd_input = block->upper_block->fd_input;
+		block->fd_input_level = block->upper_block->fd_input_level + 1;
+	}
+	if (block->fd_output != NULL)
+		add_fd_to_list(shell, block->fd_output);
+	else if (block->make_a_pipe)
+		block->fd_output = &block->pipe_fd[1];
+	else if (block->upper_block && block->upper_block->fd_output)
+	{
+		block->fd_output = block->upper_block->fd_output;
+		block->fd_output_level = block->upper_block->fd_output_level + 1;
+	}
 }
 
-void	set_block_fd_output_and_close_unused_fd(t_block *block)
+void	set_redirection_for_token(t_block *block, t_token *token_list)
 {
-	if (block->fd_output != -2)
+	t_token *token;
+
+	token = token_list;
+	if (block->fd_input != NULL)
 	{
-		if (block->upper_block && block->upper_block->fd_output != -2)
-			close(block->upper_block->fd_output);
-		if (block->make_a_pipe)
-			close(block->pipe_fd[1]);
+		while (token)
+		{
+			if (token->token == CMD)
+				token->fd_input = block->fd_input;
+			token = token->next;
+		}
 	}
-	else if (block->make_a_pipe)
+	token = token_list;
+	if (block->fd_output != NULL)
 	{
-		if (block->upper_block && block->upper_block->fd_output != -2)
-			close(block->upper_block->fd_output);
-		block->fd_output = block->pipe_fd[1];
+		while (token)
+		{
+			if (token->token == CMD)
+			{
+				// dprintf(1, "setting tok fd_out %p block fd_out%p\n", token->fd_output, block->fd_output);
+				token->fd_output = block->fd_output;
+				// dprintf(1, "setting tok fd_out %p block fd_out%p\n", token->fd_output, block->fd_output);
+			}
+			token = token->next;
+		}
 	}
-	else if (block->upper_block)
-		block->fd_output = block->upper_block->fd_output;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 13:02:46 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/14 17:35:05 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		central_parsing(t_global *shell, char *prompt);
 
 void	set_environment(t_global *shell, char **env);
 void	reset_commands(t_global	*shell);
+void	close_all_file_descriptors(t_list *fd_list);
 void	token_parsing(t_global *shell);
 void	expand_dollar_in_token_str(t_global *shell);
 int		quote_parsing(t_global *shell, char *str);
@@ -54,6 +55,7 @@ char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file);
 */
 
 void	add_path_to_command_token(t_global *shell);
+void    add_fd_to_list(t_global *shell, int *fd);
 void	add_link_between_blocks(t_block *block, t_token *token);
 void	create_sub_block(t_global *shell, t_block **block_list, \
 		t_block *upper_block, t_token **token);

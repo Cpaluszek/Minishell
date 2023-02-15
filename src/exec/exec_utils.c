@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/11 10:53:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:41:15 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	wait_for_token_list(t_token *token)
 			if (token->pid > 0 && token->exit_status != COMMAND_NOT_FOUND)
 			{
 				token->exit_status = 0;
+				// dprintf(2, "\nwait for %s (PID : %d)\n", token->cmd[0], token->pid);
 				waitpid(token->pid, &token->exit_status, 0);
+				// dprintf(2, "wait finished for %s\n", token->cmd[0]);
 				if (WIFEXITED(token->exit_status))
 					token->exit_status = WEXITSTATUS(token->exit_status);
 				else if (WIFSIGNALED(token->exit_status))

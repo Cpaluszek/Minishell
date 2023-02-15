@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_block.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/13 16:44:10 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/15 10:40:25 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,68 +15,53 @@
 
 static t_block	*find_next_block_to_execute(t_block *block);
 static void		exec_block_child(t_global *shell, t_block *block);
-static void		wait_for_all_piped_block(t_block *block);
+static void		close_block_redirection(t_block * block);
 
 void	exec_block(t_global *shell, t_block *block)
 {
+	t_list *tok;
+	
 	while (block)
 	{
 		if (block->make_a_pipe == true)
+		{
 			pipe(block->pipe_fd);
-		block->pid = fork();
-		if (block->pid == 0)
-			exec_block_child(shell, block);
-		if (block->prev && block->prev->make_a_pipe == true)
-			close(block->prev->pipe_fd[0]);
+			add_fd_to_list(shell, &block->pipe_fd[0]);
+			add_fd_to_list(shell, &block->pipe_fd[1]);
+			tok = shell->block_fd_list;
+			while (tok)
+			{
+				// dprintf(1, "adding fd : %d\n", *(int *)tok->content);
+				tok = tok->next;
+			}
+		}
+		exec_block_child(shell, block);
 		if (block->logical_link == PIPE_LINK)
-		{
-			close(block->pipe_fd[1]);
 			block = block->next;
-		}
 		else
-		{
-			wait_for_all_piped_block(block);
 			block = find_next_block_to_execute(block);
-		}
 	}
+	// close_all_file_descriptors(shell->block_fd_list);
 }
 
 static void	exec_block_child(t_global *shell, t_block *block)
 {
-	if (block->make_a_pipe)
-		close(block->pipe_fd[0]);
 	block->redirection_status = open_block_redirections(block);
 	if (block->redirection_status == -1)
-		exit(EXIT_FAILURE);
-	set_block_fd_input_and_close_unused_fd(block);
-	set_block_fd_output_and_close_unused_fd(block);
-	// dprintf(1, "fd_in %d, fd_out%d\n", block->fd_input, block->fd_output);
+		return ;
+	set_block_redirections(shell, block);
 	if (block->token_list)
 		set_redirection_for_token(block, block->token_list);
 	if (block->sub_block)
-		exec_block(shell, block->sub_block);
-	else if (block->token_list)
-		exec_token_list(block->token_list, shell);
-	if (block->fd_input != -2) // ne pas oublier de closes ces fds dans l'exec de chaque commande
-		close(block->fd_input);
-	if (block->fd_output != -2)
-		close(block->fd_output);
-	exit(g_status);
-}
-
-static void	wait_for_all_piped_block(t_block *block)
-{
-	while (block->prev && block->prev->logical_link == PIPE_LINK)
-		block = block->prev;
-	while (block && block->logical_link == PIPE_LINK)
 	{
-		waitpid(block->pid, &block->exit_status, 0);
-		g_status = block->exit_status;
-		block = block->next;
+		exec_block(shell, block->sub_block);
+		close_block_redirection(block);
 	}
-	waitpid(block->pid, &block->exit_status, 0);
-	g_status = block->exit_status;
-	// dprintf(1, "fg_status : %d\n", g_status);
+	else if (block->token_list)
+	{
+		exec_token_list(block->token_list, shell);
+		wait_for_token_list(block->token_list);
+	}
 }
 
 static t_block	*find_next_block_to_execute(t_block *block)
@@ -90,4 +75,22 @@ static t_block	*find_next_block_to_execute(t_block *block)
 	if (block)
 		block = block->next;
 	return (block);
+}
+
+static void	close_block_redirection(t_block * block)
+{
+	if (block->fd_input && block->fd_input_level == 0)
+	{
+		if (close(*block->fd_input) == -1)
+			perror(ERR_CLOSE);
+		else
+			*block->fd_input = -1;
+	}
+	if (block->fd_output && block->fd_output_level == 0)
+	{
+		if (close(*block->fd_output) == -1)
+			perror(ERR_CLOSE);
+		else
+			*block->fd_output = -1;
+	}
 }

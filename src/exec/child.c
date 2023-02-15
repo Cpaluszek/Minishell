@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/14 00:39:03 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/15 10:39:02 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,32 @@
 static int	open_command_redirections(t_token *command, t_token *token);
 static int	open_command_outputs(t_token *command, t_token *token);
 static int	is_a_directory(char *path);
+static void	close_all_file_descriptors_in_execution(t_list *fd_list);
 
-int	exec_child(t_token *token, t_token *command, char **env)
+int	exec_child(t_global *shell, t_token *token, t_token *command)
 {
+	char	**env;
+	
+	env = shell->env;
 	if (open_command_redirections(command, token) == -1)
 		return (EXIT_FAILURE);
 	if (access(command->cmd_path, X_OK) == -1)
 		return (exec_cmd_not_found(command));
 	if (is_a_directory(command->cmd_path))
 		return (g_status);
-	if (dup_fds(token))
+	// if (command->fd_input)
+	// 	dprintf(2,"fd_input %p (fd %d) from command %p (%s)\n", command->fd_input, *command->fd_input, command, command->cmd[0]);
+	// if (command->fd_output)
+	// 	dprintf(2,"fd_output %p (fd %d) from command %p (%s)\n", command->fd_output, *command->fd_output, command, command->cmd[0]);
+	if (dup_fds(command))
 		return (EXIT_FAILURE);
-	if (token->make_a_pipe == 1 && close(token->pipe_fd[0]) == -1)
+	// dprintf(2, "OK DUP IS FINISHED from command %p (%s)\n", command, command->cmd[0]);
+	close_all_file_descriptors_in_execution(shell->block_fd_list);
+	// dprintf(2, "OK CLOSING ALL FILES IS FINISHED from command %p (%s)\n\n", command, command->cmd[0]);
+	if (command->make_a_pipe == 1 && close(command->pipe_fd[0]) == -1)
 		perror(ERR_CLOSE);
-	execve(token->cmd_path, token->cmd, env);
+	// dprintf(2, "close block command txt %d\n", close(3));
+	execve(command->cmd_path, command->cmd, env);
 	perror(ERR_EXEC);
 	return (EXIT_FAILURE);
 }
@@ -90,4 +102,18 @@ static int	is_a_directory(char *path)
 		return (1);
 	}
 	return (0);
+}
+
+static void	close_all_file_descriptors_in_execution(t_list *fd_list)
+{
+	int	*fd;
+
+	while (fd_list)
+	{
+		fd = (int *)fd_list->content;
+		if (fd && *fd != -1)
+			if (close(*fd) == -1)
+				perror(ERR_CLOSE);
+		fd_list = fd_list->next;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_reset_parsing.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/09 13:43:53 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:36:26 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	set_environment(t_global *shell, char **env)
 	shell->token_list = NULL;
 	shell->block_list = NULL;
 	shell->input_completed = NULL;
+	shell->block_fd_list = NULL;
 	shell->nb_open_parenthesis = 0;
 	if (env != NULL && env[0] == NULL)
 		shell->env = set_minimum_env();
@@ -100,6 +101,8 @@ void	reset_commands(t_global	*shell)
 	shell->input_completed = NULL;
 	shell->command_line = BEGIN;
 	shell->nb_open_parenthesis = 0;
+	close_all_file_descriptors(shell->block_fd_list);
+	ft_lstclear(&shell->block_fd_list, NULL);
 	// ft_lstclear_token(&shell->token_list);
 	ft_lstclear_block(&shell->block_list);
 	shell->token_list = NULL;

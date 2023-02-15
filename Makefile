@@ -85,6 +85,7 @@ ENV_SRC			:= $(addprefix $(ENV_DIR)/, $(ENV_FILES))
 
 SRC_FILES		:=	main.c \
 					utils.c \
+					add_fd_to_list.c \
 					$(EXEC_SRC) \
 					$(PARSING_SRC) \
 					$(BUILTIN_SRC) \

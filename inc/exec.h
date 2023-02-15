@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/14 15:25:09 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:22:34 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_exec {
 // void	exec_start(t_global *shell, t_token *token_list);
 int		exec_token_list(t_token *token, t_global *shell);
 void	exec_block(t_global *shell, t_block *block);
-int		exec_child(t_token *token, t_token *command, char **env);
+int		exec_child(t_global *shell, t_token *token, t_token *command);
 void	wait_for_token_list(t_token *token);
 void	parent_close_pipes(t_token *token);
 void	close_token_pipes(t_token *token);
@@ -51,8 +51,9 @@ int		exec_cmd_not_found(t_token *token);
 */
 void	open_and_immediatly_close_redirection(t_token *token);
 void	set_redirection_for_token(t_block *block, t_token *token_list);
-void	set_block_fd_input_and_close_unused_fd(t_block *block);
-void    set_block_fd_output_and_close_unused_fd(t_block *block);
+void	set_block_redirections(t_global *shell, t_block *block);
+void	close_all_file_descriptors(t_list *fd_list);
+void    add_fd_to_list(t_global *shell, int *fd);
 int		open_block_redirections(t_block *block);
 int		dup_fds(t_token *token);
 

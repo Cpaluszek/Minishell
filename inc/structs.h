@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 13:44:37 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/15 10:10:05 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ typedef struct s_block {
 	struct s_token	*redirection_token_list;
 	int				redirection_status;
 	int				block_level;
-	int				fd_input;
-	int				fd_output;
+	int				fd_input_level;
+	int				fd_output_level;
+	int				*fd_input;
+	int				*fd_output;
 	bool			make_a_pipe;
 	int				pipe_fd[2];
 }	t_block;
@@ -108,6 +110,8 @@ typedef struct s_global {
 	t_block			*block_list;
 	t_token			*token_list;
 	t_token			*here_doc_list;
+	t_list			*block_fd_list;
+	t_list			*garbage_block_list;
 	int				command_line;
 	struct termios	saved_attr;
 	struct termios	custom_attr;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:37:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/08 22:51:22 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/14 17:20:10 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,17 @@
 #include <stdio.h>
 #include <readline/readline.h>
 
+void	close_all_file_descriptors(t_list *fd_list);
+
 void	free_structs(t_global *shell)
 {
 	ft_free_split(shell->env);
 	ft_free_split(shell->path);
 	ft_lstclear_token(&shell->token_list);
 	ft_lstclear(&shell->env_list, free);
+	ft_lstclear(&shell->block_fd_list, NULL);
+	// ft_lstclear(&shell->garbage_block_list, NULL);
+	close_all_file_descriptors(shell->block_fd_list);
 	ft_free(shell->input);
 	ft_free(shell->input_completed);
 }
@@ -48,3 +53,4 @@ void	exit_shell_from_signal(t_global *shell)
 	free_structs(shell);
 	exit(g_status);
 }
+

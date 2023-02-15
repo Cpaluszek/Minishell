@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 13:35:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:38:36 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,12 @@ int	dup_fds(t_token *token)
 				perror(ERR_CLOSE);
 			return (EXIT_FAILURE);
 		}
+		// dprintf(2,"DUP FDS : closing %p (fd %d) from command %p (%s)\n", token->fd_input, *token->fd_input, token, token->cmd[0]);
 		if (close(*(token->fd_input)) == -1)
 			perror(ERR_CLOSE);
+		else
+			*token->fd_input = -1;
+		// dprintf(2,"DUPS FDS : CLOSED %p (fd %d) from command %p (%s)\n", token->fd_input, *token->fd_input, token, token->cmd[0]);
 	}
 	if (token->fd_output != NULL)
 	{
@@ -109,8 +113,12 @@ int	dup_fds(t_token *token)
 				perror(ERR_CLOSE);
 			return (EXIT_FAILURE);
 		}
+		// dprintf(2,"closing %p (fd %d) from command %p (%s)\n", token->fd_output, *token->fd_output, token, token->cmd[0]);
 		if (close(*(token->fd_output)) == -1)
 			perror(ERR_CLOSE);
+		else
+			*token->fd_output = -1;
+		// dprintf(2,"CLOSED %p (fd %d) from command %p (%s)\n", token->fd_output, *token->fd_output, token, token->cmd[0]);
 	}
 	return (0);
 }

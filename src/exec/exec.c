@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/14 01:01:55 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/15 10:41:39 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ static void	check_cmd_exec(t_global *shell, t_exec *data);
 // 	if (exec_token_list(token_list, shell) == 0)
 		
 // }
+void	print_command_line(t_token *token_list);
 
 int	exec_token_list(t_token *token, t_global *shell)
 {
 	t_exec	data;
-	t_token	*head;
+	// t_token	*head;
 
-	head = token;
+	// head = token;
 	data.pipe = NULL;
 	data.flag = 0;
 	while (token)
@@ -52,7 +53,6 @@ int	exec_token_list(t_token *token, t_global *shell)
 		if (token != NULL)
 			token = token->next;
 	}
-	wait_for_token_list(head);
 	return (0);
 }
 
@@ -117,6 +117,7 @@ static void	exec_cmd(t_token *first_token, t_token *command, t_global *shell)
 {
 	if (check_for_builtins(command, shell))
 		return ;
+	// dprintf(1, "CMD : %s\n", command->cmd[0]);
 	command->pid = fork();
 	if (command->pid == -1) // a voir ce quil faut faire dans ce cas.
 	{
@@ -124,9 +125,10 @@ static void	exec_cmd(t_token *first_token, t_token *command, t_global *shell)
 	}
 	if (command->pid != 0 && ft_strcmp(command->str, "./minishell") == 0)
 		signal(SIGINT, SIG_IGN);
-	if (command->pid == 0 && exec_child(first_token, command, shell->env))
+	if (command->pid == 0 && exec_child(shell, first_token, command))
 	{
 		close_token_pipes(command);
+		close_all_file_descriptors(shell->block_fd_list);
 		exit(EXIT_FAILURE);
 	}
 	parent_close_pipes(command);

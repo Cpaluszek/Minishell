@@ -15,7 +15,9 @@
 		"minishell.h": "c",
 		"signal.h": "c",
 		"stat.h": "c",
-		"errno.h": "c"
+		"errno.h": "c",
+		"*.tcc": "c",
+		"fstream": "c"
 	},
 	"makefile.launchConfigurations": [
 		{
