@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:21:56 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/14 00:41:12 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/15 10:48:53 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	exec_cmd_not_found(t_token *token)
 			token->cmd[0]);
 	else
 		ft_printf_fd(STDERR, "msh: %s :command not found\n", token->cmd[0]);
-	token->exit_status = COMMAND_NOT_FOUND;
+	g_status = COMMAND_NOT_FOUND;
 	close_token_pipes(token);
 	return (EXIT_FAILURE);
 }

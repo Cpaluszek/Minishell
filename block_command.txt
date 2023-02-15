@@ -5113,3 +5113,424 @@ INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala)) && cat <Makefil
 
 Block token list : cat -e  ->  >cat -> 
 NO LINK
+
+INPUT : export a="Hell"
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=Hell  -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
+INPUT : (echo coucou && export b="YESSAI")
+
+
+
+
+----- NEW BLOCK ----- 
+
+NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo coucou  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : export b=YESSAI  -> 
+			NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 130  -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell  -> 
+NO LINK
+
+INPUT : catssadads
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : catssadads  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 1  -> 
+NO LINK
+
+INPUT : cath
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cath  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 1  -> 
+NO LINK
+
+INPUT : catsdjds
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : catsdjds  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 0  -> 
+NO LINK
+
+INPUT : cakjsdalk
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cakjsdalk  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 127  -> 
+NO LINK
+
+INPUT : caklsdjlads
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : caklsdjlads  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 127  -> 
+NO LINK
+
+INPUT : cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  -> 
+NO LINK
+
+INPUT : cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  -> 
+NO LINK
+
+INPUT : cat -e
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  -> 
+NO LINK
+
+INPUT : sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : ecoh $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ecoh 2  -> 
+NO LINK
+
+INPUT : sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 2  -> 
+NO LINK
+
+INPUT : sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 3  -> 
+NO LINK
+
+INPUT : sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : sleep 1
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 1  -> 
+NO LINK
+
+INPUT : sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 2  -> 
+NO LINK
+
+INPUT : sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 130  -> 
+NO LINK
+
+INPUT : sleep 2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sleep 2  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 131  -> 
+NO LINK
+
+INPUT : ls | >out1 | >out2 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out1 ->  | ->  >out2 -> 
+NO LINK
+
+INPUT : rm out*
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm out2 out1  -> 
+NO LINK
+
+INPUT : ls -l out*
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l out2 out1  -> 
+NO LINK
+
+INPUT : >out1
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list :  >out1 -> 
+NO LINK
+
+INPUT : ls -l out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l out  -> 
+NO LINK
+
+INPUT : ls -l out1
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l out1  -> 
+NO LINK

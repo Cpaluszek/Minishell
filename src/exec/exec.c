@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 10:41:39 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:47:47 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ static void	exec_cmd(t_token *first_token, t_token *command, t_global *shell)
 	{
 		close_token_pipes(command);
 		close_all_file_descriptors(shell->block_fd_list);
-		exit(EXIT_FAILURE);
+		exit(g_status);
 	}
 	parent_close_pipes(command);
 }

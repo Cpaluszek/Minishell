@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 10:38:36 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:58:12 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	open_and_immediatly_close_redirection(t_token *token)
 	while (token && token->token != PIPE)
 	{
 		if (token->token == OUTPUT_TRUNC)
-			token->fd_file = open(token->str, O_RDONLY | O_CREAT | O_TRUNC);
+			token->fd_file = open(token->str, O_RDONLY | O_CREAT | O_TRUNC, 0644);
 		else if (token->token == OUTPUT_APPEND)
-			token->fd_file = open(token->str, O_RDONLY | O_CREAT | O_APPEND);
+			token->fd_file = open(token->str, O_RDONLY | O_CREAT | O_APPEND, 0644);
 		if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
 		{
 			if (token->fd_file == -1)
