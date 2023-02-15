@@ -32,6 +32,7 @@ PARSING_FILES	:=	add_path_to_command.c \
 					expand_dollar_in_token_str.c \
 					expand_functions.c \
 					expand_wildcard.c \
+					fill_all_heredocs.c \
 					find_matching_filenames.c \
 					ft_lstnew_token.c \
 					init_and_reset_parsing.c \
@@ -109,7 +110,7 @@ CCDEFS			:=	NAME=\"$(NAME)\"
 
 # Compiler options
 CC				:=	cc
-DEBUG_FLAG		:=	-g3 #-fsanitize=address
+DEBUG_FLAG		:=	-g3 -fsanitize=address
 CC_FLAGS		:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
 CC_DEPS_FLAGS	:=	-MP -MMD
 CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))

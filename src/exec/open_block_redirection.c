@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:30:26 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/15 10:16:34 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:57:34 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "structs.h"
 
 static int	open_block_output(t_block *block, t_token * token);
+static void	link_heredoc_to_block(t_block * block, t_token *token);
 
-int	open_block_redirections(t_block *block) // gerer le cas des here_docs
+int	open_block_redirections(t_block *block)
 {
 	t_token	*token;
 
@@ -24,24 +25,30 @@ int	open_block_redirections(t_block *block) // gerer le cas des here_docs
 		return (0);
 	while (token)
 	{
-		if (token->token <= HERE_DOC)
+		if (token->token == INPUT)
 		{
 			if (block->fd_input != NULL)
 				close(*block->fd_input);
 			token->fd_file = open(token->str, O_RDONLY);
 			if (token->fd_file == -1)
-			{
-				ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));
-				return (-1);
-			}
+				return (print_execution_error(token->str));
 			block->fd_input = &token->fd_file;
 		}
+		else if (token->token == HERE_DOC)
+			link_heredoc_to_block(block, token);
 		else if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
 			if (open_block_output(block, token) == -1)
 				return (-1);
 		token = token->next;
 	}
 	return (1);
+}
+
+static void	link_heredoc_to_block(t_block * block, t_token *token)
+{
+	if (block->fd_input != NULL)
+		close(*block->fd_input);
+	block->fd_input = &token->pipe_fd[0];
 }
 
 static int	open_block_output(t_block *block, t_token * token)
@@ -57,10 +64,7 @@ static int	open_block_output(t_block *block, t_token * token)
 			token->fd_file = open(token->str, O_WRONLY | \
 				O_CREAT | O_APPEND, 0644);
 		if (token->fd_file == -1)
-		{
-			ft_printf_fd(2, "msh: %s: %s\n", token->str, strerror(errno));
-			return (-1);
-		}
+			return (print_execution_error(token->str));
 		block->fd_output = &token->fd_file;
 	}
 	return (1);

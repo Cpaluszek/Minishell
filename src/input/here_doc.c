@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 13:33:08 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:50:01 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ static void	get_here_doc_input(t_global *shell, char *delim, int fd);
 static void	here_doc_error(t_global *shell, char *str, int fd, char *error);
 static int	check_here_doc_end(char *buff, char *delim);
 
-// Todo: not expand dollars in delimiter
-int	here_doc(t_global *shell, t_token *token)
+int	make_pipe_heredoc(t_global *shell, t_token *token)
 {
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, SIG_IGN);
-	// if (pipe(token->pipe_fd) == -1)
-	// 	exec_cmd_error(shell, ERR_PIPE, token);
+	if (pipe(token->pipe_fd) == -1)
+		error_exit_shell(shell, ERR_PIPE);
 	token->pid = fork();
 	if (token->pid == -1)
 		error_exit_shell(shell, ERR_FORK);

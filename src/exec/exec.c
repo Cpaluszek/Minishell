@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 13:48:12 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:32:40 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ static int	check_token(t_global *shell, t_token *token, t_exec *data)
 	{
 		if (pipe(token->pipe_fd) == -1)
 		{
-			perror(ERR_PIPE);
-			close_pipe_fd(data);
-			exit_shell(shell, EXIT_FAILURE);
+			if (data->prev_pipe)
+				close(data->prev_pipe->pipe_fd[0]);
+			error_exit_shell(shell, ERR_PIPE);
 		}
 		data->pipe = token;
 		return (1);
@@ -102,16 +102,12 @@ static void	exec_cmd(t_exec *data, t_global *shell)
 	command = data->cmd;
 	first_token = data->first_token;
 	if (check_for_builtins(command, shell))
-	{
-		close_pipe_fd(data);
 		return ;
-	}
 	command->pid = fork();
 	if (command->pid == -1)
 	{
-		perror(ERR_FORK);
 		close_pipe_fd(data);
-		exit_shell(shell, EXIT_FAILURE);
+		error_exit_shell(shell, ERR_FORK);
 	}
 	if (command->pid != 0 && ft_strcmp(command->str, "./minishell") == 0)
 		signal(SIGINT, SIG_IGN);
@@ -125,8 +121,18 @@ static void	exec_cmd(t_exec *data, t_global *shell)
 
 static void	close_pipe_fd(t_exec *data)
 {
-	if (data->prev_pipe && close(data->prev_pipe->pipe_fd[0]) == -1)
-		perror(ERR_CLOSE);
-	if (data->pipe && close(data->pipe->pipe_fd[1]) == -1)
-		perror(ERR_CLOSE);
+	if (data->prev_pipe && data->prev_pipe->pipe_fd[0] != -1)
+	{
+		if (close(data->prev_pipe->pipe_fd[0] == -1))
+			perror(ERR_CLOSE);
+		else
+			data->prev_pipe->pipe_fd[0] = -1;
+	}
+	if (data->pipe && data->pipe->pipe_fd[1] != -1)
+	{
+		if (close(data->pipe->pipe_fd[1]) == -1)
+			perror(ERR_CLOSE);
+		else
+			data->pipe->pipe_fd[1] = -1;
+	}
 }

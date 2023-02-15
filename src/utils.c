@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:37:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/14 17:20:10 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 20:01:39 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <readline/readline.h>
 
-void	close_all_file_descriptors(t_list *fd_list);
+// void	close_all_file_descriptors(t_list *fd_list);
 
 void	free_structs(t_global *shell)
 {
@@ -27,7 +27,7 @@ void	free_structs(t_global *shell)
 	ft_lstclear(&shell->env_list, free);
 	ft_lstclear(&shell->block_fd_list, NULL);
 	// ft_lstclear(&shell->garbage_block_list, NULL);
-	close_all_file_descriptors(shell->block_fd_list);
+	// close_all_file_descriptors(shell->block_fd_list);
 	ft_free(shell->input);
 	ft_free(shell->input_completed);
 }

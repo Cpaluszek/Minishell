@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 10:10:05 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:04:28 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define UNFINISHED_QUOTE 4
 # define FINISHED_PARENTHESIS 5
 # define UNFINISHED_PARENTHESIS 6
+# define HERE_DOC_PROBLEM 7
 
 # define STDIN	0
 # define STDOUT	1

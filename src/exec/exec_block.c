@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/15 10:40:25 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:34:03 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ static void	close_block_redirection(t_block * block)
 {
 	if (block->fd_input && block->fd_input_level == 0)
 	{
-		if (close(*block->fd_input) == -1)
+		if (*block->fd_input != -1 && close(*block->fd_input) == -1)
 			perror(ERR_CLOSE);
 		else
 			*block->fd_input = -1;
 	}
 	if (block->fd_output && block->fd_output_level == 0)
 	{
-		if (close(*block->fd_output) == -1)
+		if (*block->fd_output != -1 && close(*block->fd_output) == -1)
 			perror(ERR_CLOSE);
 		else
 			*block->fd_output = -1;

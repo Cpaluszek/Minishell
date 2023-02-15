@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:31:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 15:51:55 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:19:33 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "structs.h"
-
-int		here_doc(t_global *shell, t_token *token);
 
 /*
 	--------- Signals functions -----------

@@ -17,7 +17,8 @@
 		"stat.h": "c",
 		"errno.h": "c",
 		"*.tcc": "c",
-		"fstream": "c"
+		"fstream": "c",
+		"unistd.h": "c"
 	},
 	"makefile.launchConfigurations": [
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:59:33 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/10 11:12:38 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/15 16:37:29 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	add_path_to_command_token(t_global *shell)
 	token = shell->token_list;
 	while (token)
 	{
-		if ((token->token == CMD && access(token->cmd[0], X_OK) != 0 && \
+		if ((token->token == CMD && access(token->cmd[0], F_OK) != 0 && \
 			!ft_is_inside('/', token->cmd[0]) && token->cmd[0][0]))
 			find_path(shell, token, token->cmd[0]);
 		else if (token->token == CMD)
@@ -57,7 +57,7 @@ static int	find_path(t_global *shell, t_token *token, char *cmd)
 		test_failed_malloc(shell, test_path);
 		test_path = ft_strjoin_and_free(test_path, cmd);
 		test_failed_malloc(shell, test_path);
-		if (access(test_path, X_OK) == 0)
+		if (access(test_path, F_OK) == 0)
 		{
 			token->cmd_path = test_path;
 			return (1);

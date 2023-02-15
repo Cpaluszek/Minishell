@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 13:30:26 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:29:20 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	wait_for_token_list(t_token *token);
 */
 
 int		exec_cmd_not_found(t_token *token);
+int		print_execution_error(char *name);
 
 /*
 	--------- Redirections functions -----------

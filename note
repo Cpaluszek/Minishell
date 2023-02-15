@@ -1,0 +1,2 @@
+echo asdaas$LANG segfault
+echo ass$LANG segfault

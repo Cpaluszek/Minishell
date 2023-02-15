@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/14 17:35:05 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:13:19 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file);
 */
 
 void	add_path_to_command_token(t_global *shell);
+int		make_pipe_heredoc(t_global *shell, t_token *token);
+int		fill_all_heredocs(t_global *shell);
 void    add_fd_to_list(t_global *shell, int *fd);
 void	add_link_between_blocks(t_block *block, t_token *token);
 void	create_sub_block(t_global *shell, t_block **block_list, \

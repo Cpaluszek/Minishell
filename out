@@ -1,0 +1,15 @@
+block_command.txt
+build
+compile_flags.txt
+inc
+lib
+Makefile
+minishell
+note
+out
+readme.md
+run.sh
+src
+test
+valgrind_ignore_leaks.txt
+valgrind-out.txt
