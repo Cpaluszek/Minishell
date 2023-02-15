@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 10:22:34 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:30:26 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 typedef struct s_exec {
 	t_token	*cmd;
 	t_token	*first_token;
-	int		*pipe;
-	int		flag;
+	t_token	*prev_pipe;
+	t_token	*pipe;
 }	t_exec;
 
 // void	exec_start(t_global *shell, t_token *token_list);
@@ -36,14 +36,11 @@ int		exec_token_list(t_token *token, t_global *shell);
 void	exec_block(t_global *shell, t_block *block);
 int		exec_child(t_global *shell, t_token *token, t_token *command);
 void	wait_for_token_list(t_token *token);
-void	parent_close_pipes(t_token *token);
-void	close_token_pipes(t_token *token);
-int		*create_pipe(t_global *shell, t_exec *data, int p_end);
 
 /*
 	--------- Exec Errors -----------
 */
-void	exec_cmd_error(t_global *shell, char *err, t_token *token);
+
 int		exec_cmd_not_found(t_token *token);
 
 /*

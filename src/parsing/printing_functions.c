@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:01:09 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/15 09:02:49 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:07:08 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ void	print_command_line(t_token *token_list)
 		else
 		{
 			dprintf(1, "%s, %d", token_list->str, token_list->ambiguous_redirect);
-			dprintf(1, "], (%p)} -> ", &token_list->fd_file);
-			// dprintf(1, "]} -> ");
+			// dprintf(1, "pipe[%p,%p]} -> ", &token_list->pipe_fd[0], &token_list->pipe_fd[1]);
+			// dprintf(1, "], (%p)} -> ", &token_list->fd_file);
+			dprintf(1, "]} -> ");
 		}
 		token_list = token_list->next;
 	}

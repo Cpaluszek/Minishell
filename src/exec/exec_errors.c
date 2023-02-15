@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:21:56 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 10:48:53 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:32:25 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,5 @@ int	exec_cmd_not_found(t_token *token)
 	else
 		ft_printf_fd(STDERR, "msh: %s :command not found\n", token->cmd[0]);
 	g_status = COMMAND_NOT_FOUND;
-	close_token_pipes(token);
 	return (EXIT_FAILURE);
-}
-
-void	exec_cmd_error(t_global *shell, char *err, t_token *token)
-{
-	perror(err);
-	if (ft_strcmp(err, ERR_PIPE) != 0)
-		close_token_pipes(token);
-	exit_shell(shell, EXIT_FAILURE);
 }

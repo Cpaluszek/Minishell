@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:31 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/10 10:15:34 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:18:35 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	check_for_builtins(t_token *token, t_global *shell)
 
 	is_builtin = 0;
 	token->exit_status = parse_builtins(token, &is_builtin, shell);
-	if (is_builtin)
-		parent_close_pipes(token);
 	return (is_builtin);
 }
 

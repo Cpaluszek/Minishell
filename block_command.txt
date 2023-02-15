@@ -5534,3 +5534,1226 @@ INPUT : ls -l out1
 
 Block token list : ls -l out1  -> 
 NO LINK
+
+INPUT : ls | >out1 | >out2 | >out3
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out1 ->  | ->  >out2 ->  | ->  >out3 -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : (export a=R && ((ls && ls >out2 -"l" >out3 -$a) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : export a=R  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls -l -  ->  >out2 ->  >out3 -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
+INPUT : (export a=R && ((ls && ls >out2 -"l" >out3 -$a) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : export a=R  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls -l -R  ->  >out2 ->  >out3 -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : ls | >out | >out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 -> 
+NO LINK
+
+INPUT : ls | >out | >out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 -> 
+NO LINK
+
+INPUT : ls | >out | >out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 -> 
+NO LINK
+
+INPUT : ls | >out | >out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 -> 
+NO LINK
+
+INPUT : ls -l
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l  -> 
+NO LINK
+
+INPUT : ls | >out | >out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 -> 
+NO LINK
+
+INPUT : ls | >out | >out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 -> 
+NO LINK
+
+INPUT : ls | >out | >out2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : echo out | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo out  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : command->pipe_fd[1] = -1;
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : command- = -1;  ->  >pipe_fd[1] -> 
+NO LINK
+
+INPUT : command->pipe_fd[1] = -1;
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : command- = -1;  ->  >pipe_fd[1] -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls -l
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l  -> 
+NO LINK
+
+INPUT : rm out*
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm out5 out3 out4 out6 out2 out  -> 
+NO LINK
+
+INPUT : ls -l
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls -l
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 >out4 >out5 | >out6 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  >out4 ->  >out5 ->  | ->  >out6 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 | >out4 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  | ->  >out4 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 | >out4 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  | ->  >out4 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 | >out4 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  | ->  >out4 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 | >out4 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  | ->  >out4 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 | >out4 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  | ->  >out4 ->  | -> cat  -> 
+NO LINK
+
+INPUT : ls | >out | >out2 | ls | >out3 | >out4 | cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  ->  | ->  >out ->  | ->  >out2 ->  | -> ls  ->  | ->  >out3 ->  | ->  >out4 ->  | -> cat  -> 
+NO LINK
+
+INPUT : rm out*
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm out3 out4 out2 out  -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat && cat>out
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  >out -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat && cat>out
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  >out -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat && cat>out
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  >out -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : cat <Makefile | sed s/a/4242/g | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  ->  | -> cat -e  ->  >cat -> 
+NO LINK
+
+INPUT : cat <Makefile 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  <Makefile -> 
+NO LINK
+
+INPUT : cat <Makefile | sed s/a/4242/g 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+NO LINK
+
+INPUT : cat <Makefile | sed s/a/4242/g 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+NO LINK
+
+INPUT : cat <Makefile | sed s/a/4242/g
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+NO LINK
+
+INPUT : cat <Makefile | sed s/a/4242/g
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+NO LINK
+
+INPUT : (((ls && ls) && (echo lala ahah && echo youhou tralala))>out1 && cat <Makefile | sed s/a/4242/g) | cat -e> cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block redirection :  >out1 -> 
+			&&
+
+
+						----- NEW BLOCK ----- 
+
+						&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : ls  -> 
+									NO LINK
+
+
+						----- NEW BLOCK ----- 
+
+						NO LINK
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo lala ahah  -> 
+									&&
+
+
+									----- NEW BLOCK ----- 
+
+									Block token list : echo youhou tralala  -> 
+									NO LINK
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : cat  ->  <Makefile ->  | -> sed s/a/4242/g  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat -e  ->  >cat -> 
+NO LINK

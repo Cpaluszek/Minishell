@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 10:39:02 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:48:44 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	exec_child(t_global *shell, t_token *token, t_token *command)
 
 static int	open_command_redirections(t_token *command, t_token *token) // gerer le cas des here_docs
 {
-	while (token)
+	while (token && token->token != PIPE)
 	{
 		if (token->token == INPUT)
 		{
