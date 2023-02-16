@@ -1078,6 +1078,236 @@ INPUT : ( ./a.out && ./a.out && ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./
 Block token list : sed s/Oranaa/Ta maa Meitei/g  -> 
 NO LINK
 
+INPUT : cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  -> 
+NO LINK
+
+INPUT : cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  -> 
+NO LINK
+
+INPUT : cat
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 130  -> 
+NO LINK
+
+INPUT : export a=test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=test  -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
+INPUT : export a+=truc
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a+=truc  -> 
+NO LINK
+
+INPUT : export a=test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=test  -> 
+NO LINK
+
+INPUT : export a+=test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a+=test  -> 
+NO LINK
+
+INPUT : export a=test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=test  -> 
+NO LINK
+
+INPUT : export a+=test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a+=test  -> 
+NO LINK
+
+INPUT : export a=test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=test  -> 
+NO LINK
+
+INPUT : export a+=truc
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a+=truc  -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
+INPUT : export a+=12
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a+=12  -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
+INPUT : export 1
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export 1  -> 
+NO LINK
+
+INPUT : export 1+=truc
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export 1+=truc  -> 
+NO LINK
+
+INPUT : exit
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit  -> 
+NO LINK
+
+INPUT : export a=truc | echo hello
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=truc  ->  | -> echo hello  -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
+INPUT : export a=test | echo hello
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=test  ->  | -> echo hello  -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
 INPUT : ./minishell | >./minishell
 
 
