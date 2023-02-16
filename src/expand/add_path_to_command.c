@@ -3,29 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 10:59:33 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/15 16:37:29 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:50:00 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "parsing.h"
-#include <unistd.h>
+#include "expand.h"
 
 static int	find_path(t_global *shell, t_token *token, char *cmd);
 
 /*
 	Check access and join the path to the first command argument.
 */
-void	add_path_to_command_token(t_global *shell)
+void	add_path_to_command_token(t_global *shell, t_token *token_list)
 {
 	t_token	*token;
 
 	if (!shell->path)
 		return ;
-	token = shell->token_list;
+	token = token_list;
 	while (token)
 	{
 		if ((token->token == CMD && access(token->cmd[0], F_OK) != 0 && \

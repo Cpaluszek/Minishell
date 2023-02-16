@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 00:36:07 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 18:16:52 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 
 static int	quote_parsing2(t_global *shell, char **str, char quote);
 static int	is_a_dollar_token(char *str);
-static void	new_token(t_global *shell, char *str, int len, enum e_token type);
 static void	dollar_parsing(t_global *shell, char **str);
+static void	local_new_token(t_global *shell, char *str, int len, \
+			enum e_token type);
 
 /**
  * @brief Parse Input with simple and double quote.
@@ -36,7 +37,7 @@ int	quote_parsing(t_global *shell, char *str)
 			is_a_dollar_token(&str[i]) == false)
 			i++;
 		if (i != 0)
-			new_token(shell, str, i, EMPTY);
+			local_new_token(shell, str, i, EMPTY);
 		if (!str[i])
 			break ;
 		str = &str[i];
@@ -69,9 +70,9 @@ static int	quote_parsing2(t_global *shell, char **str, char quote)
 	}
 	i++;
 	if (quote == '"')
-		new_token(shell, &str_quote[1], i - 2, DQUOTE);
+		local_new_token(shell, &str_quote[1], i - 2, DQUOTE);
 	else if (quote == '\'')
-		new_token(shell, &str_quote[1], i - 2, QUOTE);
+		local_new_token(shell, &str_quote[1], i - 2, QUOTE);
 	*str = &str_quote[i];
 	return (COMPLETED);
 }
@@ -85,17 +86,18 @@ static void	dollar_parsing(t_global *shell, char **str)
 	i = 1;
 	if (str_dollar[i] == '?')
 	{
-		new_token(shell, str_dollar, 2, DOLLAR);
+		local_new_token(shell, str_dollar, 2, DOLLAR);
 		*str = &str_dollar[2];
 		return ;
 	}
 	while (ft_isalnum(str_dollar[i]))
 		i++;
-	new_token(shell, str_dollar, i, DOLLAR);
+	local_new_token(shell, str_dollar, i, DOLLAR);
 	*str = &str_dollar[i];
 }
 
-static void	new_token(t_global *shell, char *str, int len, enum e_token type)
+static void	local_new_token(t_global *shell, char *str, int len, \
+			enum e_token type)
 {
 	char	*instruction;
 	t_token	*new;

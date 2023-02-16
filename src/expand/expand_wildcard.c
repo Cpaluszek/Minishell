@@ -6,14 +6,14 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:50:41 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 16:52:44 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 19:46:58 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <dirent.h>
-#include "parsing.h"
+#include "expand.h"
 #include "token_list_functions.h"
-#include "libft.h"
+
 
 static void		parse_token_list_for_wildcard(t_global *shell, \
 				t_token **head_list, t_token *token, t_list *file_list);
@@ -108,6 +108,8 @@ static t_token	*parse_filelist_for_matching_filenames(t_global *shell, \
 void	assign_ambiguous_redirect(t_global *shell, t_token *token, \
 	t_token *expanded_wildcard)
 {
+	if (!expanded_wildcard)
+		return ;
 	if (expanded_wildcard->next)
 		expanded_wildcard->ambiguous_redirect = true;
 	free(expanded_wildcard->origin_token_str);

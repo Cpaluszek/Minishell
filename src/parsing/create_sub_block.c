@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:10:57 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/13 14:26:09 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 23:13:34 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static void	add_redirection_for_upper_block(t_block *upper_block, \
 	// fd_output = NULL;
 	if (token && token->token <= OUTPUT_APPEND)
 		upper_block->redirection_token_list = token;
-	while (token && token->token <= OUTPUT_APPEND)
+	while (token && (token->token <= OUTPUT_APPEND || token->token >= CMD))
 	{
 		// if (token->token <= HERE_DOC)
 		// 	fd_input = &token->fd_file;

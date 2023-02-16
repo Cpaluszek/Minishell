@@ -6,14 +6,14 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 14:51:35 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 18:31:11 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "token_list_functions.h"
 #include "parsing.h"
 
-static void	setting_space_links_and_checking_parenthesis( \
+void	setting_space_links_and_checking_parenthesis( \
 			t_global *shell, t_token *token_list);
 
 void	token_parsing(t_global *shell)
@@ -25,13 +25,9 @@ void	token_parsing(t_global *shell)
 	temp = shell->token_list;
 	while (temp)
 	{
-		if ((temp->token == EMPTY || temp->token == DOLLAR) && temp->str[0])
-		{
-			if (temp->token == EMPTY)
-				splitted_token_list = create_sub_token_list(shell, temp->str);
-			else
-				splitted_token_list = create_sub_dollar_list(shell, \
-					temp, temp->str);
+		if (temp->token == EMPTY && temp->str[0])
+		{			
+			splitted_token_list = create_sub_token_list(shell, temp->str);
 			insert_token_list(&shell->token_list, temp, splitted_token_list);
 			del = temp;
 			temp = temp->next;
@@ -43,7 +39,7 @@ void	token_parsing(t_global *shell)
 	setting_space_links_and_checking_parenthesis(shell, shell->token_list);
 }
 
-static void	setting_space_links_and_checking_parenthesis(t_global *shell, \
+void	setting_space_links_and_checking_parenthesis(t_global *shell, \
 	t_token *token)
 {
 	shell->nb_open_parenthesis = 0;

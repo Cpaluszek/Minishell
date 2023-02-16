@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/16 16:50:49 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 23:30:03 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,17 @@ static void	merge_command(t_global *shell, t_token *head_list);
 
 void	token_merging(t_global *shell, t_token *head_list)
 {
+	t_token	*token;
+
 	merge_redirection(shell, head_list);
 	merge_command(shell, head_list);
+	token = head_list;
+	while (token)
+	{
+		if (token->token > CMD)
+			token->token = CMD;
+		token = token->next;
+	}
 }
 
 static void	merge_redirection(t_global *shell, t_token *head_list)

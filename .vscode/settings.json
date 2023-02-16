@@ -18,7 +18,11 @@
 		"errno.h": "c",
 		"*.tcc": "c",
 		"fstream": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"errors.h": "c",
+		"termios.h": "c",
+		"__config": "c",
+		"expand.h": "c"
 	},
 	"makefile.launchConfigurations": [
 		{

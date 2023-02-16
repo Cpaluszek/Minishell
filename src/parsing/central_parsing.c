@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 16:51:03 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 23:50:17 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 
 static void	parsing_initialization(t_global *shell, char *prompt);
 static void	parsing_finalization(t_global *shell);
-static int	syntax_checking_and_merging_token(t_global *shell);
 static int	uncompleted_line(t_global *shell);
 
 // Note: why return an int - the return value is never read
 int	central_parsing(t_global *shell, char *prompt)
 {
 	parsing_initialization(shell, prompt);
-	if (syntax_checking_and_merging_token(shell))
+	if (syntax_checking(shell))
 		return (1);
 	if (uncompleted_line(shell))
 		central_parsing(shell, shell->temp_prompt);
@@ -42,50 +41,12 @@ static void	parsing_initialization(t_global *shell, char *prompt)
 		shell->command_line = UNFINISHED_QUOTE;
 	else
 		shell->command_line = FINISHED_QUOTE;
-	expand_dollar_in_token_str(shell);
 	token_parsing(shell);
-	remove_empty_token(shell, shell->token_list);
-}
-
-static int	syntax_checking_and_merging_token(t_global *shell)
-{
-	if (syntax_checking(shell))
-		return (1);
-	find_and_merge_linked_token(shell);
-	expand_wildcard(shell, &shell->token_list);
-	empty_token_assignation(shell->token_list);
-	if (check_for_ambiguous_redirect(shell->token_list))
-	{
-		shell->command_line = AMBIGUOUS_REDIRECT;
-		add_history(shell->input_completed);
-		return (1);
-	}
-	// print_command_line(shell->token_list);
-	token_merging(shell, shell->token_list);
-	// print_command_line(shell->token_list);
-	if (syntax_checking_end(shell))
-		return (1);
-	return (0);
+	remove_empty_token(&shell->token_list, shell->token_list);
 }
 
 static void	parsing_finalization(t_global *shell)
 {
-	t_token	*token;
-
-	// print_command_line(shell->token_list);
-	// empty_token_assignation(shell->token_list);
-	// print_command_line(shell->token_list);
-	// remove_empty_token(shell, shell->token_list);
-	token = shell->token_list;
-	while (token)
-	{
-		if (token->token == QUOTE || token->token == DQUOTE || \
-			token->token == DOLLAR)
-			token->token = CMD;
-		token = token->next;
-	}
-	// print_command_line(shell->token_list);
-	add_path_to_command_token(shell);
 	if (fill_all_heredocs(shell))
 		return ;
 	shell->block_list = block_parsing(shell, NULL, shell->token_list);

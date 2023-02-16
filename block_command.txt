@@ -1,577 +1,5 @@
 
 
-INPUT : ls && (ls && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))) && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))))
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-NO LINK
-
-
-|			----- NEW BLOCK ----- 
-
-|			Block token list : ls  -> 
-|			&&
-
-
-|			----- NEW BLOCK ----- 
-
-|			Block token list : ls  -> 
-|			&&
-
-
-|			----- NEW BLOCK ----- 
-
-|			&&
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			Block token list : ls  -> 
-|			|			&&
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			NO LINK
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			NO LINK
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			----- NEW BLOCK ----- 
-
-|			Block token list : ls  -> 
-|			&&
-
-
-|			----- NEW BLOCK ----- 
-
-|			NO LINK
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			Block token list : ls  -> 
-|			|			&&
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			NO LINK
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			NO LINK
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-INPUT : ls && (ls && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))) && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))))&& ls
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-&&
-
-
------ NEW BLOCK ----- 
-
-&&
-
-
-|			----- NEW BLOCK ----- 
-
-|			Block token list : ls  -> 
-|			&&
-
-
-|			----- NEW BLOCK ----- 
-
-|			Block token list : ls  -> 
-|			&&
-
-
-|			----- NEW BLOCK ----- 
-
-|			&&
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			Block token list : ls  -> 
-|			|			&&
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			NO LINK
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			NO LINK
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			----- NEW BLOCK ----- 
-
-|			Block token list : ls  -> 
-|			&&
-
-
-|			----- NEW BLOCK ----- 
-
-|			NO LINK
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			Block token list : ls  -> 
-|			|			&&
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			NO LINK
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			----- NEW BLOCK ----- 
-
-|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			Block token list : ls  -> 
-|			|			|			&&
-
-
-|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			NO LINK
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			&&
-
-
-|			|			|			|			----- NEW BLOCK ----- 
-
-|			|			|			|			Block token list : ls  -> 
-|			|			|			|			NO LINK
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
-NO LINK
-
 INPUT : ls || (ls && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))) && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))))&& ls
 
 
@@ -579,7 +7,7 @@ INPUT : ls || (ls && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) &
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  -> 
+Block token list : ls(str) -> 
 ||
 
 
@@ -590,13 +18,13 @@ Block token list : ls  ->
 
 |			----- NEW BLOCK ----- 
 
-|			Block token list : ls  -> 
+|			Block token list : ls(str) -> 
 |			&&
 
 
 |			----- NEW BLOCK ----- 
 
-|			Block token list : ls  -> 
+|			Block token list : ls(str) -> 
 |			&&
 
 
@@ -607,7 +35,7 @@ Block token list : ls  ->
 
 |			|			----- NEW BLOCK ----- 
 
-|			|			Block token list : ls  -> 
+|			|			Block token list : ls(str) -> 
 |			|			&&
 
 
@@ -618,13 +46,13 @@ Block token list : ls  ->
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
@@ -635,19 +63,19 @@ Block token list : ls  ->
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			&&
 
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			NO LINK
 
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
@@ -658,13 +86,13 @@ Block token list : ls  ->
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			&&
 
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			NO LINK
 
 
@@ -675,13 +103,13 @@ Block token list : ls  ->
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
@@ -692,19 +120,19 @@ Block token list : ls  ->
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			&&
 
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			NO LINK
 
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
@@ -715,19 +143,19 @@ Block token list : ls  ->
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			&&
 
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			NO LINK
 
 
 |			----- NEW BLOCK ----- 
 
-|			Block token list : ls  -> 
+|			Block token list : ls(str) -> 
 |			&&
 
 
@@ -738,7 +166,7 @@ Block token list : ls  ->
 
 |			|			----- NEW BLOCK ----- 
 
-|			|			Block token list : ls  -> 
+|			|			Block token list : ls(str) -> 
 |			|			&&
 
 
@@ -749,13 +177,13 @@ Block token list : ls  ->
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
@@ -766,19 +194,19 @@ Block token list : ls  ->
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			&&
 
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			NO LINK
 
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
@@ -789,13 +217,13 @@ Block token list : ls  ->
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			&&
 
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			NO LINK
 
 
@@ -806,13 +234,13 @@ Block token list : ls  ->
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
@@ -823,19 +251,19 @@ Block token list : ls  ->
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			&&
 
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			NO LINK
 
 
 |			|			|			----- NEW BLOCK ----- 
 
-|			|			|			Block token list : ls  -> 
+|			|			|			Block token list : ls(str) -> 
 |			|			|			&&
 
 
@@ -846,398 +274,160 @@ Block token list : ls  ->
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			&&
 
 
 |			|			|			|			----- NEW BLOCK ----- 
 
-|			|			|			|			Block token list : ls  -> 
+|			|			|			|			Block token list : ls(str) -> 
 |			|			|			|			NO LINK
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  -> 
+Block token list : ls(str) -> 
 NO LINK
 
-INPUT : ls || (ls && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))) && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))))&& ls
+
+INPUT : env | grep LANG
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  -> 
-||
-
-
------ NEW BLOCK ----- 
-
-&&
-
-
-|			v----- NEW BLOCK ----- 
-
-|			vBlock token list : ls  -> 
-|			v&&
-
-
-|			v----- NEW BLOCK ----- 
-
-|			vBlock token list : ls  -> 
-|			v&&
-
-
-|			v----- NEW BLOCK ----- 
-
-|			v&&
-
-
-|			v|			v----- NEW BLOCK ----- 
-
-|			v|			vBlock token list : ls  -> 
-|			v|			v&&
-
-
-|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			vNO LINK
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vNO LINK
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			vNO LINK
-
-
-|			v|			v----- NEW BLOCK ----- 
-
-|			v|			vNO LINK
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			vNO LINK
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vNO LINK
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			vNO LINK
-
-
-|			v----- NEW BLOCK ----- 
-
-|			vBlock token list : ls  -> 
-|			v&&
-
-
-|			v----- NEW BLOCK ----- 
-
-|			vNO LINK
-
-
-|			v|			v----- NEW BLOCK ----- 
-
-|			v|			vBlock token list : ls  -> 
-|			v|			v&&
-
-
-|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			vNO LINK
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vNO LINK
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			vNO LINK
-
-
-|			v|			v----- NEW BLOCK ----- 
-
-|			v|			vNO LINK
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			vNO LINK
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v&&
-
-
-|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			vNO LINK
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			v&&
-
-
-|			v|			v|			v|			v----- NEW BLOCK ----- 
-
-|			v|			v|			v|			vBlock token list : ls  -> 
-|			v|			v|			v|			vNO LINK
-
-
------ NEW BLOCK ----- 
-
-Block token list : ls  -> 
+Block token list : env(str) ->  | -> grep(str) -> LANG(str) -> 
 NO LINK
 
-INPUT : ecport a="* *"
+INPUT : echo $PATHsss'aaaa'"uuuuu"$USER
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ecport a=* *  -> 
+Block token list : echo(str) ->  $ ->  ' ->  " ->  $ -> 
 NO LINK
 
-INPUT : export a="* *"
+INPUT : echo $PATHsss'aaaa'"uuuuu"$USER
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : export a=* *  -> 
+Block token list : echo(str) ->  $ ->  ' ->  " ->  $ -> 
 NO LINK
 
-INPUT : ls $a
+INPUT : echo $PATHsss'aaaa'"uuuuu"$USER
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src  -> 
+Block token list : echo(str) ->  $ ->  ' ->  " ->  $ -> 
 NO LINK
 
-INPUT : $a
+INPUT : echo $PATHsss'aaaa'"uuuuu"$USER
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src  -> 
+Block token list : echo(str) ->  $ ->  ' ->  " ->  $ -> 
 NO LINK
 
-INPUT : export a=ok | ls $a
+INPUT : echo $PATHsss'aaaa'"uuuuu"$USER
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : export a=ok  ->  | -> ls note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src  -> 
+Block token list : echo(str) ->  $ ->  ' ->  " ->  $ -> 
 NO LINK
 
-INPUT : export
+INPUT : echo $PATHsss'aaaa'"uuuuu"$USER
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : export  -> 
+Block token list : echo(str) ->  $ ->  ' ->  " ->  $ -> 
 NO LINK
 
-INPUT : echo $a
+INPUT : ls >$c
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo note inc test Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build test2 valgrind_ignore_leaks.txt   src note inc test Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build test2 valgrind_ignore_leaks.txt   src  -> 
+Block token list : ls(str) ->  >(null) ->  $ -> 
 NO LINK
 
-INPUT : git status
+INPUT : env
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : git status  -> 
+Block token list : env(str) -> 
 NO LINK
 
-INPUT : git checkout *
+INPUT : ls >$b
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : git checkout note inc test Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build test2 valgrind_ignore_leaks.txt   src  -> 
+Block token list : ls(str) ->  >(null) ->  $ -> 
+NO LINK
+
+INPUT : ls >$b
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+NO LINK
+
+INPUT : ls >$b
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+NO LINK
+
+INPUT : ls >$b
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+NO LINK
+
+INPUT : ls >$a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
 NO LINK
 
 INPUT : ls
@@ -1247,67 +437,2722 @@ INPUT : ls
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  -> 
+Block token list : ls(str) -> 
 NO LINK
 
-INPUT : export a="ahah" && echo $a
+INPUT : echo $a
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : export a=ahah  -> 
+Block token list : echo(str) ->  $ -> 
+NO LINK
+
+INPUT : make
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : make(str) -> 
+NO LINK
+
+INPUT : ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell(str) -> 
+NO LINK
+
+INPUT : ls >$a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+NO LINK
+
+INPUT : ls >$a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) ->  $ -> 
+NO LINK
+
+INPUT : export b="bonjour je m'appelle johan" && ls >$b"hello"coucou
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export(str) -> b=(str) ->  " -> 
 &&
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo ls -lR  -> 
+Block token list : ls(str) ->  >(null) ->  $ ->  " -> coucou(str) -> 
 NO LINK
 
-INPUT : export a="ahah" && echo $a
+INPUT : export b="bonjour je m'appelle johan" && ls >hello"salut"$b"hello"coucou
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : export a=ahah  -> 
+Block token list : export(str) -> b=(str) ->  " -> 
 &&
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo ahah  -> 
+Block token list : ls(str) ->  >(null) -> hello(str) ->  " ->  $ ->  " -> coucou(str) -> 
 NO LINK
 
-INPUT : echo $PAThssss'ssss'aaaaa"hhhhh"$HOME
+INPUT : export b="* *" && ls >hello"salut"$b"hello"coucou
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo ssssaaaaahhhhh/Users/Teiki  -> 
+Block token list : export(str) -> b=(str) ->  " -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) -> hello(str) ->  " ->  $ ->  " -> coucou(str) -> 
 NO LINK
 
-INPUT : echo $PATHssss'ssss'aaaaa"hhhhh"$HOME
+INPUT : echo $b
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo ssssaaaaahhhhh/Users/Teiki  -> 
+Block token list : echo(str) ->  $ -> 
 NO LINK
 
-INPUT : echo $PATH*ssss'ssss'aaaaa"hhhhh"$HOME
+INPUT : export a="ls -l -R" && $a
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo /Library/Frameworks/Python.framework/Versions/3.11/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin*ssssssssaaaaahhhhh/Users/Teiki  -> 
+Block token list : export(str) -> a=(str) ->  " -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list :  $ -> 
+NO LINK
+
+INPUT : ls >out >out2 -R >out3 -"a" >out5 -'l'
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) -> out(str) ->  >(null) -> out2(str) -> -R(str) ->  >(null) -> out3(str) -> -(str) ->  " ->  >(null) -> out5(str) -> -(str) ->  ' -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) -> 
+NO LINK
+
+INPUT : ls -l
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) -> -l(str) -> 
+NO LINK
+
+INPUT : rm out* && ls -l
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm(str) -> out*(str) -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) -> -l(str) -> 
+NO LINK
+
+INPUT : rm ertz
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm(str) -> ertz(str) -> 
+NO LINK
+
+INPUT : sudo
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sudo(str) -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) ->  $ -> 
+NO LINK
+
+INPUT : ls -ZM
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) -> -ZM(str) -> 
+NO LINK
+
+INPUT : echo coucou && (echo salut & echo tralala && (echo ahaha && echo bamlalalalaibamaba) | sed s/a/125/g) >out2 >>out3
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> coucou(str) -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >(null) -> 
+NO LINK
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : echo(str) -> salut(str) -> &(str) -> echo(str) -> tralala(str) -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			|
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : echo(str) -> ahaha(str) -> 
+|			|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : echo(str) -> bamlalalalaibamaba(str) -> 
+|			|			NO LINK
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : sed(str) -> s/a/125/g(str) -> 
+|			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list :  >>(null) -> out3(str) -> 
+NO LINK
+
+INPUT : echo coucou && (echo salut & echo tralala && (echo ahaha && echo bamlalalalaibamaba) | sed s/a/125/g) >out2 >>out3
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> coucou(str) -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block redirection :  >(null) -> out2(str) ->  >>(null) -> out3(str) -> 
+NO LINK
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : echo(str) -> salut(str) -> &(str) -> echo(str) -> tralala(str) -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			|
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : echo(str) -> ahaha(str) -> 
+|			|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : echo(str) -> bamlalalalaibamaba(str) -> 
+|			|			NO LINK
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : sed(str) -> s/a/125/g(str) -> 
+|			NO LINK
+
+INPUT : env | grep LANG
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : env(str) ->  | -> grep(str) -> LANG(str) -> 
+NO LINK
+
+INPUT : ls > $OK"coucou"
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ ->  " -> 
+NO LINK
+
+INPUT : "ls"
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list :  " -> 
+NO LINK
+
+INPUT : "ls"
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list :  " -> 
+NO LINK
+
+INPUT : cat <<$ahah"jetaieu" <<*coucou
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat(str) ->  << ->  " ->  << -> 
+NO LINK
+
+INPUT : cat <<$ahah"jetaieu" <<*coucou
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat(str) ->  <<$ahah ->  " ->  <<*coucou -> 
+NO LINK
+
+INPUT : cat <<$ahah"salut'cestcool' <<*coucou*"
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat(str) ->  <<$ahahsalut'cestcool' <<*coucou* -> 
+NO LINK
+
+INPUT : cat <<$ahah"salut"'cestcool' <<*coucou*
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat(str) ->  <<$ahahsalut ->  ' ->  <<*coucou* -> 
+NO LINK
+
+INPUT : git status
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : git(str) -> status(str) -> 
+NO LINK
+
+INPUT : ls |ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  | -> ls(str) -> 
+NO LINK
+
+INPUT : echo coucou && ls >$a && echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> coucou(str) -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) ->  $ -> 
+NO LINK
+
+INPUT : echo coucou && ls >$a && echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> coucou(str) -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) ->  $ -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) ->  $ -> 
+NO LINK
+
+INPUT : echo coucou && ls >$a && echo $?j
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> coucou(str) -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) ->  $ -> j(str) -> 
+NO LINK
+
+INPUT : echo coucou && ls >$a && echo coucou
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> coucou(str) -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> coucou(str) -> 
+NO LINK
+
+INPUT : echo coucou && ls >$a || echo $?j
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> coucou(str) -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+||
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) ->  $ -> j(str) -> 
+NO LINK
+
+INPUT : echo coucou && ls >$a || echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> coucou(str) -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) ->  >(null) ->  $ -> 
+||
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) ->  $ -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) ->  $ -> 
+NO LINK
+
+INPUT : lwibeg
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : lwibeg(str) -> 
+NO LINK
+
+INPUT : ./minishell | ./minishell 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./minishell(str) ->  | -> ./minishell(str) -> 
+NO LINK
+
+INPUT : echo ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo(str) -> ls(str) -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls(str) -> 
+NO LINK
+
+INPUT : ./ca
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./ca(str) -> 
+NO LINK
+
+INPUT : cat /dev/urandom 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat(str) -> /dev/urandom(str) -> (str) -> 
+NO LINK
+
+INPUT : #z
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : #z(str) -> 
+NO LINK
+
+INPUT : s
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : s(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : N
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : N(str) -> 
+NO LINK
+
+INPUT : %ܗ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : %ܗ(str) -> 
+NO LINK
+
+INPUT :  
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : ~	
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ~	(str) -> 
+NO LINK
+
+INPUT : gܢr
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : gܢr(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : ݲһ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ݲһ(str) -> 
+NO LINK
+
+INPUT : 	ǆH
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 	ǆH(str) -> 
+NO LINK
+
+INPUT : =
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : =(str) -> 
+NO LINK
+
+INPUT : b⯍OH
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : b⯍OH(str) -> 
+NO LINK
+
+INPUT : ebvIx&,J
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ebvIx&,J(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : B
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : B(str) -> 
+NO LINK
+
+INPUT : ~
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ~(str) -> 
+NO LINK
+
+INPUT : =
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : =(str) -> 
+NO LINK
+
+INPUT : l
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : l(str) -> 
+NO LINK
+
+INPUT : ~&yk
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ~&yk(str) -> 
+NO LINK
+
+INPUT : -p*w
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : -p*w(str) -> 
+NO LINK
+
+INPUT : {Yt-3V:
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : {Yt-3V:(str) -> 
+NO LINK
+
+INPUT : 1
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 1(str) -> 
+NO LINK
+
+INPUT : ^
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ^(str) -> 
+NO LINK
+
+INPUT : `
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : `(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : [V
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : [V(str) -> 
+NO LINK
+
+INPUT : e?w
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : e?w(str) -> 
+NO LINK
+
+INPUT : =\	
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : =\	(str) -> 
+NO LINK
+
+INPUT : #@Y
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : #@Y(str) -> 
+NO LINK
+
+INPUT : L
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : L(str) -> 
+NO LINK
+
+INPUT : &
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : &(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : J
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : J(str) -> 
+NO LINK
+
+INPUT : \Nt
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : \Nt(str) -> 
+NO LINK
+
+INPUT : ith
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ith(str) -> 
+NO LINK
+
+INPUT : @,m
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : @,m(str) -> 
+NO LINK
+
+INPUT : 0;i
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 0;i(str) -> 
+NO LINK
+
+INPUT : [
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : [(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : jO7[8*^UE_%v
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : jO7[8*^UE_%v(str) -> 
+NO LINK
+
+INPUT : ;
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ;(str) -> 
+NO LINK
+
+INPUT : :
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : :(str) -> 
+NO LINK
+
+INPUT : r
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : r(str) -> 
+NO LINK
+
+INPUT : l
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : l(str) -> 
+NO LINK
+
+INPUT : Z	
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Z	(str) -> 
+NO LINK
+
+INPUT : hZ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : hZ(str) -> 
+NO LINK
+
+INPUT : uEKx&
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : uEKx&(str) -> 
+NO LINK
+
+INPUT : 嶆0~
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 嶆0~(str) -> 
+NO LINK
+
+INPUT : 4s5
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 4s5(str) -> 
+NO LINK
+
+INPUT : T@7Y},aT߫^:
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : T@7Y},aT߫^:(str) -> 
+NO LINK
+
+INPUT : 69D4i3
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 69D4i3(str) -> 
+NO LINK
+
+INPUT : h
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : h(str) -> 
+NO LINK
+
+INPUT : ̒t
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ̒t(str) -> 
+NO LINK
+
+INPUT : B
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : B(str) -> 
+NO LINK
+
+INPUT : +
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : +(str) -> 
+NO LINK
+
+INPUT : =
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : =(str) -> 
+NO LINK
+
+INPUT : y%ν;
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : y%ν;(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : ߣ=DZJmJ_
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ߣ=DZJmJ_(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : a*
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : a*(str) -> 
+NO LINK
+
+INPUT : [f
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : [f(str) -> 
+NO LINK
+
+INPUT : VZV
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : VZV(str) -> 
+NO LINK
+
+INPUT : .3HK
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : .3HK(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : 	*ɏ,Gg
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 	*ɏ,Gg(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : >dqÀ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list :  >(null) -> dqÀ(str) -> 
+NO LINK
+
+INPUT : HY
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : HY(str) -> 
+NO LINK
+
+INPUT : Hֿ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Hֿ(str) -> 
+NO LINK
+
+INPUT : ٥院vs
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ٥院vs(str) -> 
+NO LINK
+
+INPUT : V
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : V(str) -> 
+NO LINK
+
+INPUT : ml
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ml(str) -> 
+NO LINK
+
+INPUT : 5_<J7[
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 5_(str) ->  <(null) -> J7[(str) -> 
+NO LINK
+
+INPUT : ~N
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ~N(str) -> 
+NO LINK
+
+INPUT : ,]:
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ,]:(str) -> 
+NO LINK
+
+INPUT : S
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : S(str) -> 
+NO LINK
+
+INPUT : T?H
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : T?H(str) -> 
+NO LINK
+
+INPUT : #
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : #(str) -> 
+NO LINK
+
+INPUT : ,
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ,(str) -> 
+NO LINK
+
+INPUT : 4
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 4(str) -> 
+NO LINK
+
+INPUT : o1
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : o1(str) -> 
+NO LINK
+
+INPUT : *i}tM
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : *i}tM(str) -> 
+NO LINK
+
+INPUT : 2{LӱAK
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 2{LӱAK(str) -> 
+NO LINK
+
+INPUT : Oy
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Oy(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : uuȮ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : uuȮ(str) -> 
+NO LINK
+
+INPUT : 3
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 3(str) -> 
+NO LINK
+
+INPUT : Q
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Q(str) -> 
+NO LINK
+
+INPUT : q&%
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : q&%(str) -> 
+NO LINK
+
+INPUT : +
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : +(str) -> 
+NO LINK
+
+INPUT : EV
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : EV(str) -> 
+NO LINK
+
+INPUT : O{
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : O{(str) -> 
+NO LINK
+
+INPUT : Tw
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Tw(str) -> 
+NO LINK
+
+INPUT : _[[
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : _[[(str) -> 
+NO LINK
+
+INPUT : 00
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 00(str) -> 
+NO LINK
+
+INPUT : f
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : f(str) -> 
+NO LINK
+
+INPUT : v
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : v(str) -> 
+NO LINK
+
+INPUT : ok.Amyk;RTe[2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ok.Amyk;RTe[2(str) -> 
+NO LINK
+
+INPUT : B
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : B(str) -> 
+NO LINK
+
+INPUT : ~y#Cm
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ~y#Cm(str) -> 
+NO LINK
+
+INPUT : `
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : `(str) -> 
+NO LINK
+
+INPUT : U
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : U(str) -> 
+NO LINK
+
+INPUT : Gl8DL[ey
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Gl8DL[ey(str) -> 
+NO LINK
+
+INPUT : D>܈B
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : D(str) ->  >(null) -> ܈B(str) -> 
+NO LINK
+
+INPUT : volxm2}=QP
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : volxm2}=QP(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : $Fj
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list :  $ -> 
+NO LINK
+
+INPUT : -
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : -(str) -> 
+NO LINK
+
+INPUT : z7\ b
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : z7\(str) -> b(str) -> 
+NO LINK
+
+INPUT : K
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : K(str) -> 
+NO LINK
+
+INPUT : ې`
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ې`(str) -> 
+NO LINK
+
+INPUT : }KVmk;
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : }KVmk;(str) -> 
+NO LINK
+
+INPUT : ׸Z
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ׸Z(str) -> 
+NO LINK
+
+INPUT : G
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : G(str) -> 
+NO LINK
+
+INPUT : WTe7
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : WTe7(str) -> 
+NO LINK
+
+INPUT : Ez
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Ez(str) -> 
+NO LINK
+
+INPUT : 8
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 8(str) -> 
+NO LINK
+
+INPUT : 0*KP
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 0*KP(str) -> 
+NO LINK
+
+INPUT : },
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : },(str) -> 
+NO LINK
+
+INPUT : eήxE
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : eήxE(str) -> 
+NO LINK
+
+INPUT : =Ͼ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : =Ͼ(str) -> 
+NO LINK
+
+INPUT : A
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : A(str) -> 
+NO LINK
+
+INPUT : S:
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : S:(str) -> 
+NO LINK
+
+INPUT : y4v
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : y4v(str) -> 
+NO LINK
+
+INPUT : A{*
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : A{*(str) -> 
+NO LINK
+
+INPUT : ŭi
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ŭi(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : x
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : x(str) -> 
+NO LINK
+
+INPUT : [
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : [(str) -> 
+NO LINK
+
+INPUT : K
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : K(str) -> 
+NO LINK
+
+INPUT : !
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : !(str) -> 
+NO LINK
+
+INPUT : 2^~a̓?Ag
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 2^~a̓?Ag(str) -> 
+NO LINK
+
+INPUT : K
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : K(str) -> 
+NO LINK
+
+INPUT : Zh2ʴ1nut}55ۼʆܔ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Zh2ʴ1nut}55ۼʆܔ(str) -> 
+NO LINK
+
+INPUT : ~
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ~(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : 9[
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 9[(str) -> 
+NO LINK
+
+INPUT : F
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : F(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : ?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ?(str) -> 
+NO LINK
+
+INPUT : 78
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 78(str) -> 
+NO LINK
+
+INPUT : i
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : i(str) -> 
+NO LINK
+
+INPUT : k0=d
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : k0=d(str) -> 
+NO LINK
+
+INPUT : b.
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : b.(str) -> 
+NO LINK
+
+INPUT : șL
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : șL(str) -> 
+NO LINK
+
+INPUT : `01p
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : `01p(str) -> 
+NO LINK
+
+INPUT : UrK7
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : UrK7(str) -> 
+NO LINK
+
+INPUT : bH
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : bH(str) -> 
+NO LINK
+
+INPUT : nZg1MV֒k
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : nZg1MV֒k(str) -> 
+NO LINK
+
+INPUT : 6!A
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 6!A(str) -> 
+NO LINK
+
+INPUT : .N
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : .N(str) -> 
+NO LINK
+
+INPUT : UdeY
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : UdeY(str) -> 
+NO LINK
+
+INPUT : j
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : j(str) -> 
+NO LINK
+
+INPUT : d
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : d(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : &
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : &(str) -> 
+NO LINK
+
+INPUT : Eэ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Eэ(str) -> 
+NO LINK
+
+INPUT : 0
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 0(str) -> 
+NO LINK
+
+INPUT : ?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ?(str) -> 
+NO LINK
+
+INPUT : 抣H
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 抣H(str) -> 
+NO LINK
+
+INPUT : 8
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 8(str) -> 
+NO LINK
+
+INPUT : a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : a(str) -> 
+NO LINK
+
+INPUT : %ǤMP-.
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : %ǤMP-.(str) -> 
+NO LINK
+
+INPUT : I#
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : I#(str) -> 
+NO LINK
+
+INPUT : DSM	
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : DSM	(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : ѡ>qn!
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ѡ(str) ->  >(null) -> qn!(str) -> 
+NO LINK
+
+INPUT : :la֞
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : :la֞(str) -> 
+NO LINK
+
+INPUT : HXm,
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : HXm,(str) -> 
+NO LINK
+
+INPUT : Csw
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Csw(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : mTn:Є
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : mTn:Є(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : Ҙɮ<
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : Ҙɮ(str) ->  <(null) -> (str) -> 
+NO LINK
+
+INPUT : {D
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : {D(str) -> 
+NO LINK
+
+INPUT : lg
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : lg(str) -> 
+NO LINK
+
+INPUT : 6n
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 6n(str) -> 
+NO LINK
+
+INPUT : n@,
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : n@,(str) -> 
+NO LINK
+
+INPUT : P
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : P(str) -> 
+NO LINK
+
+INPUT : l-
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : l-(str) -> 
+NO LINK
+
+INPUT : W:
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : W:(str) -> 
+NO LINK
+
+INPUT : gMֲ`
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : gMֲ`(str) -> 
+NO LINK
+
+INPUT : 3!
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 3!(str) -> 
+NO LINK
+
+INPUT : hZ
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : hZ(str) -> 
+NO LINK
+
+INPUT : &e
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : &e(str) -> 
+NO LINK
+
+INPUT :  2
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 2(str) -> 
+NO LINK
+
+INPUT : cl$
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cl$(str) -> 
+NO LINK
+
+INPUT : A
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : A(str) -> 
+NO LINK
+
+INPUT : 쬞h
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 쬞h(str) -> 
+NO LINK
+
+INPUT : ]
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ](str) -> 
+NO LINK
+
+INPUT : ^
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ^(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : uC[4
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : uC[4(str) -> 
+NO LINK
+
+INPUT : @խ!d
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : @խ!d(str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : (str) -> 
+NO LINK
+
+INPUT : fC(AyMwDzg+͌!q_)3ScA
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : 
+
+INPUT : cat ass$LANG
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cat(str) -> ass(str) ->  $ -> 
+NO LINK
+
+INPUT : rm coucou
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm(str) -> coucou(str) -> 
+NO LINK
+
+INPUT : rm note
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : rm(str) -> note(str) -> 
+NO LINK
+
+INPUT : git status
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : git(str) -> status(str) -> 
+NO LINK
+
+INPUT : git add .
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : git(str) -> add(str) -> .(str) -> 
 NO LINK

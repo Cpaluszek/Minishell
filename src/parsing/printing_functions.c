@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:01:09 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 12:41:16 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 23:46:50 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ void	print_command_line(t_token *token_list)
 				// fd_out = token_list->fd_output;
 			}
 			// dprintf(1, "], pipe[%p,%p], fd_in(%p), fd_out(%p)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out);
+			dprintf(1, "][SL:%d", token_list->space_link);
 			dprintf(1, "]} -> ");
 		}
 		else
 		{
-			dprintf(1, "%s, %d", token_list->str, token_list->ambiguous_redirect);
+			dprintf(1, "%s(%d), SL : %d", token_list->str,token_list->token, token_list->space_link);
 			// dprintf(1, "pipe[%p,%p]} -> ", &token_list->pipe_fd[0], &token_list->pipe_fd[1]);
 			// dprintf(1, "], (%p)} -> ", &token_list->fd_file);
 			dprintf(1, "]} -> ");
