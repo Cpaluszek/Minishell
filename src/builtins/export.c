@@ -14,7 +14,6 @@
 #include "env.h"
 #include "exec.h"
 #define EXPORT_PREFIX	"declare -x "
-#define CONCAT_VAR		"+="
 
 static void		print_sorted_env(t_token *token, t_global *shell);
 static void		print_env_variable(char *str);

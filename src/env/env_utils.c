@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/11 12:42:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:40:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "errors.h"
 #include "env.h"
 #define INVALID_ID_SET	"=?_:{}[] |*-+!@^&#$<>\\,.:;"
-#define CONCAT_VAR		"+="
 
 /**
  * @brief check if the input is a valid identifier. A valid identifier can only
@@ -27,11 +26,15 @@ int	is_valid_identifier(char *str)
 {
 	int		i;
 	char	*space_position;
+	char 	*concat_pos;
 
 	if (ft_isdigit(str[0]))
 		return (0);
 	i = 0;
 	space_position = ft_strchr(str, '=');
+	concat_pos = ft_strnstr(str, CONCAT_VAR, ft_strlen(str));
+	if (concat_pos < space_position)
+		space_position = concat_pos;
 	while (str + i < space_position)
 	{
 		if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && \
