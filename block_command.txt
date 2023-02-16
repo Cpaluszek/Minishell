@@ -1267,3 +1267,43 @@ INPUT : exit
 
 Block token list : exit  -> 
 NO LINK
+
+INPUT : export a=truc | echo hello
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=truc  ->  | -> echo hello  -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
+INPUT : export a=test | echo hello
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=test  ->  | -> echo hello  -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK

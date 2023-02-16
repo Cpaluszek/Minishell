@@ -38,14 +38,14 @@ int	any_pipe_in_token_list(t_token *token)
 	origin = token;
 	while (token)
 	{
-		if (token->make_a_pipe == 1)
+		if (token->token == PIPE)
 			return (1);
 		token = token->next;
 	}
 	token = origin;
 	while (token)
 	{
-		if (token->make_a_pipe == 1)
+		if (token->token == PIPE)
 			return (1);
 		token = token->prev;
 	}
