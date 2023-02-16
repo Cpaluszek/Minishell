@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 11:46:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:57:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "exec.h"
 #define EXIT_MSG "exit\n"
 #define CODE_NON_NUM 2
+#define LONG_MAX_STR "9223372036854775807"
+#define LONG_MIN_STR "-9223372036854775808"
 
 static int	ft_isnum(char *str);
 static void	check_pipe_exit(t_global *shell, t_token *token, int exit_value);
@@ -54,7 +56,6 @@ static void	check_pipe_exit(t_global *shell, t_token *token, int exit_value)
 		exit_shell(shell, exit_value);
 }
 
-// Todo: check for long overflow
 static int	ft_isnum(char *str)
 {
 	int	i;
@@ -65,6 +66,16 @@ static int	ft_isnum(char *str)
 		if (!ft_isdigit(str[i]) && !(i == 0 && str[i] == '-'))
 			return (0);
 		i++;
+	}
+	if (str[0] == '-' && ft_strlen(str) >= ft_strlen(LONG_MIN_STR))
+	{
+		if (ft_strcmp(str, LONG_MIN_STR) > 0)
+			return (0);
+	}
+	else if (ft_strlen(str) >= ft_strlen(LONG_MAX_STR))
+	{
+		if (ft_strcmp(str, LONG_MAX_STR) > 0)
+			return (0);
 	}
 	return (1);
 }
