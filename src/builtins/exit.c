@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 11:57:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:49:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	check_pipe_exit(t_global *shell, t_token *token, int exit_value)
 		exit_shell(shell, exit_value);
 }
 
+#include <stdio.h>
 static int	ft_isnum(char *str)
 {
 	int	i;
@@ -67,12 +68,14 @@ static int	ft_isnum(char *str)
 			return (0);
 		i++;
 	}
-	if (str[0] == '-' && ft_strlen(str) >= ft_strlen(LONG_MIN_STR))
+	if (strlen(str) > ft_strlen(LONG_MIN_STR))
+		return (0);
+	else if (str[0] == '-' && ft_strlen(str) == ft_strlen(LONG_MIN_STR))
 	{
 		if (ft_strcmp(str, LONG_MIN_STR) > 0)
 			return (0);
 	}
-	else if (ft_strlen(str) >= ft_strlen(LONG_MAX_STR))
+	else if (ft_strlen(str) == ft_strlen(LONG_MAX_STR))
 	{
 		if (ft_strcmp(str, LONG_MAX_STR) > 0)
 			return (0);
