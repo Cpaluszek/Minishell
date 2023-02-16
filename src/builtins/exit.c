@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/23 14:56:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:46:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void	check_pipe_exit(t_global *shell, t_token *token, int exit_value)
 		exit_shell(shell, exit_value);
 }
 
+// Todo: check for long overflow
 static int	ft_isnum(char *str)
 {
 	int	i;
@@ -61,7 +62,7 @@ static int	ft_isnum(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]) && !(i == 0 && str[i] == '-'))
 			return (0);
 		i++;
 	}
