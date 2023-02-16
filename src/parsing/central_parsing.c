@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   central_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/15 15:11:26 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:47:39 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ static int	syntax_checking_and_merging_token(t_global *shell)
 		add_history(shell->input_completed);
 		return (1);
 	}
+	print_command_line(shell->token_list);
 	token_merging(shell);
+	print_command_line(shell->token_list);
 	if (syntax_checking_end(shell))
 		return (1);
 	return (0);
@@ -70,8 +72,10 @@ static void	parsing_finalization(t_global *shell)
 {
 	t_token	*token;
 
-	empty_token_assignation(shell->token_list);
-	remove_empty_token(shell, shell->token_list);
+	// print_command_line(shell->token_list);
+	// empty_token_assignation(shell->token_list);
+	// print_command_line(shell->token_list);
+	// remove_empty_token(shell, shell->token_list);
 	token = shell->token_list;
 	while (token)
 	{
@@ -80,6 +84,7 @@ static void	parsing_finalization(t_global *shell)
 			token->token = CMD;
 		token = token->next;
 	}
+	print_command_line(shell->token_list);
 	add_path_to_command_token(shell);
 	if (fill_all_heredocs(shell))
 		return ;
