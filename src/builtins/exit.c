@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 12:49:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:49:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	check_pipe_exit(t_global *shell, t_token *token, int exit_value)
 		exit_shell(shell, exit_value);
 }
 
-#include <stdio.h>
 static int	ft_isnum(char *str)
 {
 	int	i;

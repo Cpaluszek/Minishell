@@ -1307,3 +1307,333 @@ INPUT : export
 
 Block token list : export  -> 
 NO LINK
+
+INPUT : exit 1111111111111111111111111111111111111111111
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit 1111111111111111111111111111111111111111111  -> 
+NO LINK
+
+INPUT : exit 1111111111111111111111111111111111111111111111
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit 1111111111111111111111111111111111111111111111  -> 
+NO LINK
+
+INPUT : exit 11111111111111111111111111111111111111
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit 11111111111111111111111111111111111111  -> 
+NO LINK
+
+INPUT : exit 1111111111111111111111111111111111111
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit 1111111111111111111111111111111111111  -> 
+NO LINK
+
+INPUT : exit 9223372036854775807
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit 9223372036854775807  -> 
+NO LINK
+
+INPUT : exit 9223372036854775808
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit 9223372036854775808  -> 
+NO LINK
+
+INPUT : exit 9223372036854775806
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit 9223372036854775806  -> 
+NO LINK
+
+INPUT : exit -9223372036854775808
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit -9223372036854775808  -> 
+NO LINK
+
+INPUT : exit -9223372036854775809
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit -9223372036854775809  -> 
+NO LINK
+
+INPUT : unset PWD
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : unset PWD  -> 
+NO LINK
+
+INPUT : unset OLDPWD
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : unset OLDPWD  -> 
+NO LINK
+
+INPUT : cd src
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cd src  -> 
+NO LINK
+
+INPUT : pwd
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : pwd  -> 
+NO LINK
+
+INPUT : cd ..
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cd ..  -> 
+NO LINK
+
+INPUT : pwd
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : pwd  -> 
+NO LINK
+
+INPUT : cd 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cd  -> 
+NO LINK
+
+INPUT : pwd
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : pwd  -> 
+NO LINK
+
+INPUT : cd -
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cd -  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 1  -> 
+NO LINK
+
+INPUT : exit
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit  -> 
+NO LINK
+
+INPUT : cd src
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cd src  -> 
+NO LINK
+
+INPUT : pwd
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : pwd  -> 
+NO LINK
+
+INPUT : cd -
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cd -  -> 
+NO LINK
+
+INPUT : export | grep PWD
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  ->  | -> grep PWD  -> 
+NO LINK
+
+INPUT : unset PWD
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : unset PWD  -> 
+NO LINK
+
+INPUT : unset OLDPWD
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : unset OLDPWD  -> 
+NO LINK
+
+INPUT : export | grep PWD
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  ->  | -> grep PWD  -> 
+NO LINK
+
+INPUT : echo $?
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo 1  -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : cd src
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cd src  -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : cd ..
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : cd ..  -> 
+NO LINK
+
+INPUT : exit
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : exit  -> 
+NO LINK
