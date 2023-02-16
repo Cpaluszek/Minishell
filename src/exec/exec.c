@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 19:32:40 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:45:42 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 #include "input.h"
 
 // static int	exec_token_list(t_token *token, t_global *shell);
-static void	exec_cmd(t_exec *data, t_global *shell);
+static void	exec_cmd(t_global *shell, t_block *block, t_exec *data);
 static int	check_token(t_global *shell, t_token *token, t_exec *data);
-static void	check_cmd_exec(t_global *shell, t_exec *data);
-static void	close_pipe_fd(t_exec *data);
+static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data);
+static void	close_command_redirection(t_exec *data, t_token *command, \
+			t_block *block);
 
 // Todo: test max amount of pipes
 // Todo: test permissions on redirections
@@ -32,7 +33,7 @@ static void	close_pipe_fd(t_exec *data);
 // }
 void	print_command_line(t_token *token_list);
 
-int	exec_token_list(t_token *token, t_global *shell)
+int		exec_token_list(t_global *shell, t_block *block, t_token *token)
 {
 	t_exec	data;
 
@@ -52,7 +53,7 @@ int	exec_token_list(t_token *token, t_global *shell)
 			data.pipe = NULL;
 		else
 			token = token->next;
-		check_cmd_exec(shell, &data);
+		check_cmd_exec(shell, block, &data);
 		data.prev_pipe = data.pipe;
 	}
 	return (0);
@@ -76,7 +77,7 @@ static int	check_token(t_global *shell, t_token *token, t_exec *data)
 	return (0);
 }
 
-static void	check_cmd_exec(t_global *shell, t_exec *data)
+static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data)
 {
 	t_token	*command;
 
@@ -87,52 +88,61 @@ static void	check_cmd_exec(t_global *shell, t_exec *data)
 			command->fd_input = &data->prev_pipe->pipe_fd[0];
 		if (data->pipe)
 			command->fd_output = &data->pipe->pipe_fd[1];
-		exec_cmd(data, shell);
+		open_command_redirections(command, data->first_token);
+		set_block_redirection_for_command(block, command);
+		exec_cmd(shell, block, data);
 	}
 	else
 		open_and_immediatly_close_redirection(data->first_token);
-	close_pipe_fd(data);
+	close_command_redirection(data, command, block);
 }
 
-static void	exec_cmd(t_exec *data, t_global *shell)
+static void	exec_cmd( t_global *shell, t_block *block, t_exec *data)
 {
-	t_token *first_token;
-	t_token *command;
-	
+	t_token	*command;
+
 	command = data->cmd;
-	first_token = data->first_token;
 	if (check_for_builtins(command, shell))
 		return ;
 	command->pid = fork();
 	if (command->pid == -1)
 	{
-		close_pipe_fd(data);
+		close_command_redirection(data, command, block);
 		error_exit_shell(shell, ERR_FORK);
 	}
 	if (command->pid != 0 && ft_strcmp(command->str, "./minishell") == 0)
 		signal(SIGINT, SIG_IGN);
-	if (command->pid == 0 && exec_child(shell, first_token, command))
+	if (command->pid == 0 && exec_child(shell, command))
 	{
-		close_pipe_fd(data);
+		close_command_redirection(data, command, block);
 		close_all_file_descriptors(shell->block_fd_list);
 		exit(g_status);
 	}
 }
 
-static void	close_pipe_fd(t_exec *data)
+static void	close_command_redirection(t_exec *data, t_token *command, \
+	t_block *block)
 {
 	if (data->prev_pipe && data->prev_pipe->pipe_fd[0] != -1)
 	{
-		if (close(data->prev_pipe->pipe_fd[0] == -1))
-			perror(ERR_CLOSE);
-		else
-			data->prev_pipe->pipe_fd[0] = -1;
+		close(data->prev_pipe->pipe_fd[0]);
+		data->prev_pipe->pipe_fd[0] = -1;
 	}
 	if (data->pipe && data->pipe->pipe_fd[1] != -1)
 	{
-		if (close(data->pipe->pipe_fd[1]) == -1)
-			perror(ERR_CLOSE);
-		else
-			data->pipe->pipe_fd[1] = -1;
+		close(data->pipe->pipe_fd[1]);
+		data->pipe->pipe_fd[1] = -1;
+	}
+	if (command->fd_input && *command->fd_input != -1 \
+		&& block->fd_input && *command->fd_input != *block->fd_input)
+	{
+		close(*command->fd_input);
+		*command->fd_input = -1;
+	}
+	if (command->fd_output && *command->fd_output != -1 \
+		&& block->fd_output && *command->fd_output != *block->fd_output)
+	{
+		close(*command->fd_output);
+		*command->fd_output = -1;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:50:41 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/09 21:16:12 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 09:30:44 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ static void	assign_ambiguous_redirect(t_global *shell, t_token *token, \
 {
 	if (expanded_wildcard->next)
 		expanded_wildcard->ambiguous_redirect = true;
+	free(expanded_wildcard->origin_token_str);
 	expanded_wildcard->origin_token_str = ft_strdup(token->origin_token_str);
 	test_failed_malloc(shell, expanded_wildcard->origin_token_str);
 }

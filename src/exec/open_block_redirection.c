@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_block_redirection.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:30:26 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/15 19:57:34 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:08:18 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int	open_block_redirections(t_block *block)
 	return (1);
 }
 
-static void	link_heredoc_to_block(t_block * block, t_token *token)
+static void	link_heredoc_to_block(t_block *block, t_token *token)
 {
 	if (block->fd_input != NULL)
 		close(*block->fd_input);
 	block->fd_input = &token->pipe_fd[0];
 }
 
-static int	open_block_output(t_block *block, t_token * token)
+static int	open_block_output(t_block *block, t_token *token)
 {
 	if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
 	{
@@ -89,35 +89,5 @@ void	set_block_redirections(t_global *shell, t_block *block)
 	{
 		block->fd_output = block->upper_block->fd_output;
 		block->fd_output_level = block->upper_block->fd_output_level + 1;
-	}
-}
-
-void	set_redirection_for_token(t_block *block, t_token *token_list)
-{
-	t_token *token;
-
-	token = token_list;
-	if (block->fd_input != NULL)
-	{
-		while (token)
-		{
-			if (token->token == CMD)
-				token->fd_input = block->fd_input;
-			token = token->next;
-		}
-	}
-	token = token_list;
-	if (block->fd_output != NULL)
-	{
-		while (token)
-		{
-			if (token->token == CMD)
-			{
-				// dprintf(1, "setting tok fd_out %p block fd_out%p\n", token->fd_output, block->fd_output);
-				token->fd_output = block->fd_output;
-				// dprintf(1, "setting tok fd_out %p block fd_out%p\n", token->fd_output, block->fd_output);
-			}
-			token = token->next;
-		}
 	}
 }

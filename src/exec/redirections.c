@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 19:03:13 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:05:34 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "input.h"
+
+static int	open_command_outputs(t_token *command, t_token *token);
 
 void	open_and_immediatly_close_redirection(t_token *token)
 {
@@ -38,6 +40,55 @@ void	open_and_immediatly_close_redirection(t_token *token)
 		}
 		token = token->next;
 	}
+}
+
+int	open_command_redirections(t_token *command, t_token *token)
+{
+	while (token && token->token != PIPE)
+	{
+		if (token->token == INPUT)
+		{
+			if (command->fd_input)
+				close(*command->fd_input);
+			token->fd_file = open(token->str, O_RDONLY);
+			if (token->fd_file == -1)
+				return (print_execution_error(token->str));
+			command->fd_input = &token->fd_file;
+		}
+		else if (token->token == HERE_DOC)
+		{
+			if (command->fd_input)
+				close(*command->fd_input);
+			command->fd_input = &token->pipe_fd[0];
+		}
+		else if (token->token == OUTPUT_APPEND || token->token == OUTPUT_TRUNC)
+			if (open_command_outputs(command, token) == -1)
+				return (-1);
+		token = token->next;
+	}
+	return (1);
+}
+
+static int	open_command_outputs(t_token *command, t_token *token)
+{
+	if (command->fd_output)
+		close(*command->fd_output);
+	if (token->token == OUTPUT_TRUNC)
+		token->fd_file = open(token->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	else
+		token->fd_file = open(token->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	if (token->fd_file == -1)
+		return (print_execution_error(token->str));
+	command->fd_output = &token->fd_file;
+	return (1);
+}
+
+void	set_block_redirection_for_command(t_block *block, t_token *command)
+{
+	if (command->fd_input == NULL)
+		command->fd_input = block->fd_input;
+	if (command->fd_output == NULL)
+		command->fd_output = block->fd_output;
 }
 
 int	dup_fds(t_token *token)

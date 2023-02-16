@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:04:54 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/10 11:12:07 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 00:36:07 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,13 @@ static int	is_a_dollar_token(char *str)
 
 	c = *str;
 	if (c != '$')
-		return (0);
+		return (false);
 	c = str[1];
 	if (c == '\0')
-		return (0);
+		return (false);
 	if (c == '?')
-		return (1);
+		return (true);
 	if (ft_isalnum(c))
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }

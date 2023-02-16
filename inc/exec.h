@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 15:29:20 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:20:40 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_exec {
 }	t_exec;
 
 // void	exec_start(t_global *shell, t_token *token_list);
-int		exec_token_list(t_token *token, t_global *shell);
+int		exec_token_list(t_global *shell, t_block *block, t_token *token);
 void	exec_block(t_global *shell, t_block *block);
-int		exec_child(t_global *shell, t_token *token, t_token *command);
+int		exec_child(t_global *shell, t_token *command);
 void	wait_for_token_list(t_token *token);
 
 /*
@@ -48,7 +48,8 @@ int		print_execution_error(char *name);
 	--------- Redirections functions -----------
 */
 void	open_and_immediatly_close_redirection(t_token *token);
-void	set_redirection_for_token(t_block *block, t_token *token_list);
+int		open_command_redirections(t_token *command, t_token *token);
+void	set_block_redirection_for_command(t_block *block, t_token *command);
 void	set_block_redirections(t_global *shell, t_block *block);
 void	close_all_file_descriptors(t_list *fd_list);
 void    add_fd_to_list(t_global *shell, int *fd);

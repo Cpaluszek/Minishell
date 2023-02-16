@@ -1,153 +1,93 @@
 
 
-INPUT : asdaas$LANG
+INPUT : echo $PATH"sgsgsg"$HOME > "CAT | >OUT"
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : asdaasen_US.UTF-8  -> 
+Block token list : echo /Library/Frameworks/Python.framework/Versions/3.11/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Frameworks/Python.framework/Versions/3.11/binsgsgsg/Users/Teiki  ->  >CAT | >OUT -> 
 NO LINK
 
-INPUT : asdaas$LANG
+INPUT : echo $PATH"sgsgsg"$HOME > "CAT | >OUT"
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : asdaasen_US.UTF-8  -> 
+Block token list : echo /Library/Frameworks/Python.framework/Versions/3.11/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Frameworks/Python.framework/Versions/3.11/binsgsgsg/Users/Teiki  ->  >CAT | >OUT -> 
 NO LINK
 
-INPUT : unset LANG
+INPUT : rm CAT | >OUT 
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : unset LANG  -> 
+Block token list : rm CAT  ->  | ->  >OUT -> 
 NO LINK
 
-INPUT : asdaas$LANG
+INPUT : ls | grep e | sed s/e/??/g
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : asdaas  -> 
+Block token list : ls  ->  | -> grep e  ->  | -> sed s/e/??/g  -> 
 NO LINK
 
-INPUT : exit
+INPUT : ""
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : exit  -> 
+Block token list :   -> 
 NO LINK
 
-INPUT : asdaas$LANG
+INPUT : " "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : asdaasen_US.UTF-8  -> 
+Block token list :    -> 
 NO LINK
 
-INPUT : env | grep LANG
+INPUT : touch " "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : env  ->  | -> grep LANG  -> 
+Block token list : touch    -> 
 NO LINK
 
-INPUT : env | grep LANG
+INPUT : " "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : env  ->  | -> grep LANG  -> 
+Block token list :    -> 
 NO LINK
 
-INPUT : env | grep LANG
+INPUT : " "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : env  ->  | -> grep LANG  -> 
-NO LINK
-
-INPUT : env | grep LANG
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : env  ->  | -> grep LANG  -> 
-NO LINK
-
-INPUT : env | grep LANG
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : env  ->  | -> grep LANG  -> 
-NO LINK
-
-INPUT : env | grep LANG
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : env  ->  | -> grep LANG  -> 
-NO LINK
-
-INPUT : env | grep LANG
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : env  ->  | -> grep LANG  -> 
-NO LINK
-
-INPUT : env | grep LANG
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : env  ->  | -> grep LANG  -> 
-NO LINK
-
-INPUT : env | grep LANG
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : env  ->  | -> grep LANG  -> 
+Block token list :    -> 
 NO LINK
 
 INPUT : ls
@@ -160,459 +100,127 @@ INPUT : ls
 Block token list : ls  -> 
 NO LINK
 
-INPUT : env | grep LANG
+INPUT : /" "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : env  ->  | -> grep LANG  -> 
+Block token list : /   -> 
 NO LINK
 
-INPUT : asasasas$LANG
+INPUT : ./" "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : asasasasen_US.UTF-8  -> 
+Block token list : ./   -> 
 NO LINK
 
-INPUT : asasasas$LANG
+INPUT : chmod 766 " "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : asasasasen_US.UTF-8  -> 
+Block token list : chmod 766    -> 
 NO LINK
 
-INPUT : echo asasasas$LANG
+INPUT : ./" "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo asasasasen_US.UTF-8  -> 
+Block token list : ./   -> 
 NO LINK
 
-INPUT : echo asasasas$LANG'adasd'
+INPUT : ./" "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo asasasasen_US.UTF-8adasd  -> 
+Block token list : ./   -> 
 NO LINK
 
-INPUT : echo asasasas$LANG'adasd'$PATH
+INPUT : ./" "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo asasasasen_US.UTF-8adasd/nfs/homes/jlitaudo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin  -> 
+Block token list : ./   -> 
 NO LINK
 
-INPUT : echo asasasas$LANG'adasd'$ENV
+INPUT : run " "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo asasasasen_US.UTF-8adasd  -> 
+Block token list : run    -> 
 NO LINK
 
-INPUT : echo asasasas$LANG'adasd'$PWD
+INPUT : sh " "
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo asasasasen_US.UTF-8adasd/nfs/homes/jlitaudo/Documents/Minishell  -> 
+Block token list : sh    -> 
 NO LINK
 
-INPUT : asasasas$LANG'adasd'$PWD
+INPUT : ./ls
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : asasasasen_US.UTF-8adasd/nfs/homes/jlitaudo/Documents/Minishell  -> 
+Block token list : ./ls  -> 
 NO LINK
 
-INPUT : asasasas$LANG'adasd'$PWD
+INPUT : ./ ls
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : asasasasen_US.UTF-8adasd/nfs/homes/jlitaudo/Documents/Minishell  -> 
+Block token list : ./ ls  -> 
 NO LINK
 
-INPUT : sudo
+INPUT : /ls
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : sudo  -> 
+Block token list : /ls  -> 
 NO LINK
 
-INPUT : ./
+INPUT : ./ls
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ./  -> 
+Block token list : ./ls  -> 
 NO LINK
 
-INPUT : exit
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : exit  -> 
-NO LINK
-
-INPUT : sudo
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : sudo  -> 
-NO LINK
-
-INPUT : ./
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./  -> 
-NO LINK
-
-INPUT : .
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : .  -> 
-NO LINK
-
-INPUT : ..
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ..  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : a.out  -> 
-NO LINK
-
-INPUT : lssss
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : lssss  -> 
-NO LINK
-
-INPUT : ./a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./a.out  -> 
-NO LINK
-
-INPUT : lsss
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : lsss  -> 
-NO LINK
-
-INPUT : a.out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : a.out  -> 
-NO LINK
-
-INPUT : ./
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : ./  -> 
-NO LINK
-
-INPUT : .
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : .  -> 
-NO LINK
-
-INPUT : <<a <<b <<c
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : <readme.md /bin/cat | cat 
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <readme.md -> /bin/cat  ->  | -> cat  -> 
-NO LINK
-
-INPUT : <readme.md /bin/cat | cat > out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <readme.md -> /bin/cat  ->  | -> cat  ->  >out -> 
-NO LINK
-
-INPUT : <readme.md /bin./cat | cat > out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <readme.md -> /bin./cat  ->  | -> cat  ->  >out -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : (cat && cat) <<h
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<h -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : ls
+INPUT : ls && ls && ls && (ls && ls)
 
 
 
@@ -620,76 +228,23 @@ INPUT : ls
 ----- NEW BLOCK ----- 
 
 Block token list : ls  -> 
-NO LINK
-
-INPUT : ls >out
-
-
+&&
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : ls  ->  >out -> 
-NO LINK
-
-INPUT : cat | cat
-
-
+Block token list : ls  -> 
+&&
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : cat  ->  | -> cat  -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
+Block token list : ls  -> 
+&&
 
 
 ----- NEW BLOCK ----- 
 
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : <<a <<b <<c cat
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list :  <<a ->  <<b ->  <<c -> cat  -> 
-NO LINK
-
-INPUT : (ls && (ls && (cat && sed s/a/e/g) <<a ) <<b ) <<c
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<c -> 
 NO LINK
 
 
@@ -701,126 +256,30 @@ NO LINK
 
 			----- NEW BLOCK ----- 
 
-			Block redirection :  <<b -> 
+			Block token list : ls  -> 
 			NO LINK
 
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : (ls && (ls && (cat && sed s/a/e/g) <<a ) <<b ) <<c
+INPUT : make
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  <<c -> 
+Block token list : make  -> 
 NO LINK
 
-
-			----- NEW BLOCK ----- 
-
-			Block token list : ls  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : (ls && (ls && (cat && sed s/a/e/g) <<a ) <<b ) <<c
+INPUT : <<$USER
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block redirection :  <<c -> 
+Block token list :  <<Teiki -> 
 NO LINK
 
-
-			----- NEW BLOCK ----- 
-
-			Block token list : ls  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : ls  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : ls Makefile 
+INPUT : ls M*
 
 
 
@@ -828,384 +287,6 @@ INPUT : ls Makefile
 ----- NEW BLOCK ----- 
 
 Block token list : ls Makefile  -> 
-NO LINK
-
-INPUT : (cat && (cat && (cat && sed s/a/e/g) <<a ) <<b ) <<c
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<c -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : cat  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : (cat && (cat && (cat && sed s/a/e/g) <<a ) <<b ) <<c < Makefile
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<c ->  <Makefile -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : cat  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : (cat && (cat && (cat && sed s/a/e/g) <<a ) <<b ) <<c <out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<c ->  <out -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : cat  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : (cat && (cat && (cat && sed s/a/e/g) <<a ) <<b <out) <<c <out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<c ->  <out -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b ->  <out -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : cat  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : (cat && (cat && (cat && sed s/a/e/g) <<a ) <<b <out) <<c <out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<c ->  <out -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b ->  <out -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : cat  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : (cat && (cat && (cat && sed s/a/e/g) <<a ) <<b <out) <<c <out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<c ->  <out -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b ->  <out -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : cat  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : (cat && (cat && (cat && sed s/a/e/g) <<a ) <<b <out) <<c <out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<c ->  <out -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b ->  <out -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : cat  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : (cat && (cat && (cat && sed s/a/e/g) <<a ) <<b <out) <<c <out
-
-
-
-
------ NEW BLOCK ----- 
-
-Block redirection :  <<c ->  <out -> 
-NO LINK
-
-
-			----- NEW BLOCK ----- 
-
-			Block token list : cat  -> 
-			&&
-
-
-			----- NEW BLOCK ----- 
-
-			Block redirection :  <<b ->  <out -> 
-			NO LINK
-
-
-						----- NEW BLOCK ----- 
-
-						Block token list : cat  -> 
-						&&
-
-
-						----- NEW BLOCK ----- 
-
-						Block redirection :  <<a -> 
-						NO LINK
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : cat  -> 
-									&&
-
-
-									----- NEW BLOCK ----- 
-
-									Block token list : sed s/a/e/g  -> 
-									NO LINK
-
-INPUT : env | grep LANG
-
-
-
-
------ NEW BLOCK ----- 
-
-Block token list : env  ->  | -> grep LANG  -> 
 NO LINK
 
 INPUT : env
@@ -1218,182 +299,781 @@ INPUT : env
 Block token list : env  -> 
 NO LINK
 
-INPUT : cd | grep
+INPUT : env >out
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : cd  ->  | -> grep  -> 
+Block token list : env  ->  >out -> 
 NO LINK
 
-INPUT : sleep 5
+INPUT : env | cat
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : sleep 5  -> 
+Block token list : env  ->  | -> cat  -> 
 NO LINK
 
-INPUT : sleep 5
+INPUT : echo coucou | cat
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : sleep 5  -> 
+Block token list : echo coucou  ->  | -> cat  -> 
 NO LINK
 
-INPUT : $a
+INPUT : echo salut >out
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list :  $ -> 
+Block token list : echo salut  ->  >out -> 
 NO LINK
 
-INPUT : echo $?
+INPUT : cat out
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo 130  -> 
+Block token list : cat out  -> 
 NO LINK
 
-INPUT : $a
+INPUT : (echo coucou && echo salut) >>out
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list :  $ -> 
+Block redirection :  >>out -> 
 NO LINK
 
-INPUT : echo $?
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo coucou  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : echo salut  -> 
+			NO LINK
+
+INPUT : cat out
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo 0  -> 
+Block token list : cat out  -> 
 NO LINK
 
-INPUT : cat *
+INPUT : env >out
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : cat inc block_command.txt lib readme.md build run.sh src valgrind_ignore_leaks.txt test minishell compile_flags.txt note Makefile valgrind-out.txt out  -> 
+Block token list : env  ->  >out -> 
 NO LINK
 
-INPUT : echo $?
+INPUT : cat out
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo 1  -> 
+Block token list : cat out  -> 
 NO LINK
 
-INPUT : echo $?
+INPUT : echo >out1 >>out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo 1  -> 
+Block token list : echo  ->  >out1 ->  >>out2 -> 
 NO LINK
 
-INPUT : cat *e*
+INPUT : echo ahahah >out >>out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : cat readme.md valgrind_ignore_leaks.txt test minishell compile_flags.txt note Makefile  -> 
+Block token list : echo ahahah  ->  >out ->  >>out2 -> 
 NO LINK
 
-INPUT : echo $?
+INPUT : cat out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo 1  -> 
+Block token list : cat out2  -> 
 NO LINK
 
-INPUT : cat *ewrugkawrgb
+INPUT : cat out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : cat *ewrugkawrgb  -> 
+Block token list : cat out2  -> 
 NO LINK
 
-INPUT : cat re*
+INPUT : echo ahahah >out >>out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : cat readme.md  -> 
+Block token list : echo ahahah  ->  >out ->  >>out2 -> 
 NO LINK
 
-INPUT : echo $?
+INPUT : cat out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo 0  -> 
+Block token list : cat out2  -> 
 NO LINK
 
-INPUT : cat re*
+INPUT : rm out*
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : cat readme.md  -> 
+Block token list : rm out1 out out2  -> 
 NO LINK
 
-INPUT : echo $?
+INPUT : echo ahahah >out >>out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : echo 0  -> 
+Block token list : echo ahahah  ->  >out ->  >>out2 -> 
 NO LINK
 
-INPUT : exit
+INPUT : cat out2
 
 
 
 
 ----- NEW BLOCK ----- 
 
-Block token list : exit  -> 
+Block token list : cat out2  -> 
+NO LINK
+
+INPUT : ./a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : a.out  -> 
+NO LINK
+
+INPUT : ls -l a.out 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls -l a.out  -> 
+NO LINK
+
+INPUT : chmod 766 a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : chmod 766 a.out  -> 
+NO LINK
+
+INPUT : ./a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : touch test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : touch test  -> 
+NO LINK
+
+INPUT : chmod 766 test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : chmod 766 test  -> 
+NO LINK
+
+INPUT : ./test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./test  -> 
+NO LINK
+
+INPUT : test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : test  -> 
+NO LINK
+
+INPUT : testt
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : testt  -> 
+NO LINK
+
+INPUT : test
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : test  -> 
+NO LINK
+
+INPUT : ./a.out 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : ./a.out && ./a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : ./a.out && ./a.out./a.out && ./a.out
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : ./a.out && ./a.out. && /a.out && ./a.out && ./a.out && ./a.out. && /a.out && ./a.out && ./a.out && ./a.out. && /a.out && ./a.out && ./a.out && ./a.out. && /a.out && ./a.out 
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out.  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : /a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out.  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : /a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out.  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : /a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out.  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : /a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+NO LINK
+
+INPUT : ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out && echo
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo  -> 
+NO LINK
+
+INPUT : ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out && echo
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ./a.out  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo  -> 
+NO LINK
+
+INPUT : ( ./a.out && ./a.out ) | sed s/Oranaa/Ta maa Meitei/g
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sed s/Oranaa/Ta maa Meitei/g  -> 
+NO LINK
+
+INPUT : ( ./a.out && ./a.out ) | sed s/Oranaa/"Ta maa Meitei"/g
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sed s/Oranaa/Ta maa Meitei/g  -> 
+NO LINK
+
+INPUT : ( ./a.out && ./a.out && ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out &&  ./a.out && ./a.out ) | sed s/Oranaa/"Ta maa Meitei"/g
+
+
+
+
+----- NEW BLOCK ----- 
+
+|
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			&&
+
+
+			----- NEW BLOCK ----- 
+
+			Block token list : ./a.out  -> 
+			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : sed s/Oranaa/Ta maa Meitei/g  -> 
 NO LINK
