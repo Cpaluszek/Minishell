@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 11:36:00 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 12:07:24 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int	exec_child(t_global *shell, t_token *command)
 	if (dup_fds(command))
 		return (EXIT_FAILURE);
 	close_all_file_descriptors_in_execution(shell->block_fd_list);
-	if (command->make_a_pipe == 1 && close(command->pipe_fd[0]) == -1)
-		perror(ERR_CLOSE);
 	execve(command->cmd_path, command->cmd, env);
 	perror(ERR_EXEC);
 	return (EXIT_FAILURE);

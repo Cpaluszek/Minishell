@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 15:04:28 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:07:57 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct s_token {
 	char			*temp_expand;
 	bool			space_link;
 	bool			ambiguous_redirect;
-	int				make_a_pipe;
 	int				*fd_input;
 	int				*fd_output;
 	int				pipe_fd[2];
