@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 10:23:16 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 16:01:15 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	exec_block(t_global *shell, t_block *block)
 
 static void	exec_block_child(t_global *shell, t_block *block)
 {
+	// if (expand_environment_variable_and_wildcard(shell, \
+	// 	&block->redirection_token_list, \
+	// 	block->redirection_token_list))
+	// 	return ;
 	block->redirection_status = open_block_redirections(block);
 	if (block->redirection_status == -1)
 		return ;
@@ -48,6 +52,9 @@ static void	exec_block_child(t_global *shell, t_block *block)
 	}
 	else if (block->token_list)
 	{
+		// if (expand_environment_variable_and_wildcard(shell, \
+		// 	&block->token_list, block->token_list))
+		// 	return ;
 		exec_token_list(shell, block, block->token_list);
 		wait_for_token_list(block->token_list);
 	}

@@ -1,0 +1,1313 @@
+
+
+INPUT : ls && (ls && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))) && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))))
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+NO LINK
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : ls  -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : ls  -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : ls  -> 
+|			|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : ls  -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			NO LINK
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : ls  -> 
+|			|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+INPUT : ls && (ls && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))) && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))))&& ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : ls  -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : ls  -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : ls  -> 
+|			|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : ls  -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			NO LINK
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : ls  -> 
+|			|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : ls || (ls && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))) && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))))&& ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+||
+
+
+----- NEW BLOCK ----- 
+
+&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : ls  -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : ls  -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : ls  -> 
+|			|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			----- NEW BLOCK ----- 
+
+|			Block token list : ls  -> 
+|			&&
+
+
+|			----- NEW BLOCK ----- 
+
+|			NO LINK
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			Block token list : ls  -> 
+|			|			&&
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			----- NEW BLOCK ----- 
+
+|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			Block token list : ls  -> 
+|			|			|			&&
+
+
+|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			NO LINK
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			&&
+
+
+|			|			|			|			----- NEW BLOCK ----- 
+
+|			|			|			|			Block token list : ls  -> 
+|			|			|			|			NO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : ls || (ls && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))) && ls && (ls && (ls && ls && (ls && ls) && ls && (ls && ls)) && (ls && ls && (ls && ls) && ls && (ls && ls))))&& ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+||
+
+
+----- NEW BLOCK ----- 
+
+&&
+
+
+|			v----- NEW BLOCK ----- 
+
+|			vBlock token list : ls  -> 
+|			v&&
+
+
+|			v----- NEW BLOCK ----- 
+
+|			vBlock token list : ls  -> 
+|			v&&
+
+
+|			v----- NEW BLOCK ----- 
+
+|			v&&
+
+
+|			v|			v----- NEW BLOCK ----- 
+
+|			v|			vBlock token list : ls  -> 
+|			v|			v&&
+
+
+|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			vNO LINK
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vNO LINK
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			vNO LINK
+
+
+|			v|			v----- NEW BLOCK ----- 
+
+|			v|			vNO LINK
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			vNO LINK
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vNO LINK
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			vNO LINK
+
+
+|			v----- NEW BLOCK ----- 
+
+|			vBlock token list : ls  -> 
+|			v&&
+
+
+|			v----- NEW BLOCK ----- 
+
+|			vNO LINK
+
+
+|			v|			v----- NEW BLOCK ----- 
+
+|			v|			vBlock token list : ls  -> 
+|			v|			v&&
+
+
+|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			vNO LINK
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vNO LINK
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			vNO LINK
+
+
+|			v|			v----- NEW BLOCK ----- 
+
+|			v|			vNO LINK
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			vNO LINK
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v&&
+
+
+|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			vNO LINK
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			v&&
+
+
+|			v|			v|			v|			v----- NEW BLOCK ----- 
+
+|			v|			v|			v|			vBlock token list : ls  -> 
+|			v|			v|			v|			vNO LINK
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : ecport a="* *"
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ecport a=* *  -> 
+NO LINK
+
+INPUT : export a="* *"
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=* *  -> 
+NO LINK
+
+INPUT : ls $a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src  -> 
+NO LINK
+
+INPUT : $a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src  -> 
+NO LINK
+
+INPUT : export a=ok | ls $a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=ok  ->  | -> ls note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src note inc Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build valgrind_ignore_leaks.txt   src  -> 
+NO LINK
+
+INPUT : export
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export  -> 
+NO LINK
+
+INPUT : echo $a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo note inc test Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build test2 valgrind_ignore_leaks.txt   src note inc test Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build test2 valgrind_ignore_leaks.txt   src  -> 
+NO LINK
+
+INPUT : git status
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : git status  -> 
+NO LINK
+
+INPUT : git checkout *
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : git checkout note inc test Makefile block_command.txt run.sh readme.md minishell a.out lib compile_flags.txt build test2 valgrind_ignore_leaks.txt   src  -> 
+NO LINK
+
+INPUT : ls
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : ls  -> 
+NO LINK
+
+INPUT : export a="ahah" && echo $a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=ahah  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo ls -lR  -> 
+NO LINK
+
+INPUT : export a="ahah" && echo $a
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : export a=ahah  -> 
+&&
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo ahah  -> 
+NO LINK
+
+INPUT : echo $PAThssss'ssss'aaaaa"hhhhh"$HOME
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo ssssaaaaahhhhh/Users/Teiki  -> 
+NO LINK
+
+INPUT : echo $PATHssss'ssss'aaaaa"hhhhh"$HOME
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo ssssaaaaahhhhh/Users/Teiki  -> 
+NO LINK
+
+INPUT : echo $PATH*ssss'ssss'aaaaa"hhhhh"$HOME
+
+
+
+
+----- NEW BLOCK ----- 
+
+Block token list : echo /Library/Frameworks/Python.framework/Versions/3.11/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin*ssssssssaaaaahhhhh/Users/Teiki  -> 
+NO LINK

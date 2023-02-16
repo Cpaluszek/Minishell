@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:50:41 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 09:30:44 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 16:52:44 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include "libft.h"
 
 static void		parse_token_list_for_wildcard(t_global *shell, \
-				t_token *token, t_list *file_list);
+				t_token **head_list, t_token *token, t_list *file_list);
 static t_token	*parse_filelist_for_matching_filenames(t_global *shell, \
 				char *pattern, t_list *file);
-static void		assign_ambiguous_redirect(t_global *shell, t_token *token, \
+void			assign_ambiguous_redirect(t_global *shell, t_token *token, \
 				t_token *expanded_wildcard);
 
-void	expand_wildcard(t_global *shell)
+void	expand_wildcard(t_global *shell, t_token **head_list)
 {
 	DIR				*directory;
 	struct dirent	*dir;
@@ -47,12 +47,12 @@ void	expand_wildcard(t_global *shell)
 		closedir(directory);
 	}
 	if (file_list)
-		parse_token_list_for_wildcard(shell, shell->token_list, file_list);
+		parse_token_list_for_wildcard(shell, head_list, *head_list, file_list);
 	ft_lstclear(&file_list, free);
 }
 
 static void	parse_token_list_for_wildcard(t_global *shell, \
-t_token *token, t_list *file_list)
+t_token **head_list, t_token *token, t_list *file_list)
 {
 	t_token	*expanded_token_list;
 	t_token	*temp;
@@ -68,7 +68,8 @@ t_token *token, t_list *file_list)
 			if (expanded_token_list)
 			{
 				assign_ambiguous_redirect(shell, token, expanded_token_list);
-				insert_token_list(shell, token, expanded_token_list);
+				insert_token_list(head_list, \
+					token, expanded_token_list);
 				temp = token;
 				token = token->next;
 				ft_lstdelone_token(temp);
@@ -104,7 +105,7 @@ static t_token	*parse_filelist_for_matching_filenames(t_global *shell, \
 	return (expanded_wildcard_list);
 }
 
-static void	assign_ambiguous_redirect(t_global *shell, t_token *token, \
+void	assign_ambiguous_redirect(t_global *shell, t_token *token, \
 	t_token *expanded_wildcard)
 {
 	if (expanded_wildcard->next)

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 11:47:39 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 16:51:03 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	syntax_checking_and_merging_token(t_global *shell)
 	if (syntax_checking(shell))
 		return (1);
 	find_and_merge_linked_token(shell);
-	expand_wildcard(shell);
+	expand_wildcard(shell, &shell->token_list);
 	empty_token_assignation(shell->token_list);
 	if (check_for_ambiguous_redirect(shell->token_list))
 	{
@@ -60,9 +60,9 @@ static int	syntax_checking_and_merging_token(t_global *shell)
 		add_history(shell->input_completed);
 		return (1);
 	}
-	print_command_line(shell->token_list);
-	token_merging(shell);
-	print_command_line(shell->token_list);
+	// print_command_line(shell->token_list);
+	token_merging(shell, shell->token_list);
+	// print_command_line(shell->token_list);
 	if (syntax_checking_end(shell))
 		return (1);
 	return (0);
@@ -84,7 +84,7 @@ static void	parsing_finalization(t_global *shell)
 			token->token = CMD;
 		token = token->next;
 	}
-	print_command_line(shell->token_list);
+	// print_command_line(shell->token_list);
 	add_path_to_command_token(shell);
 	if (fill_all_heredocs(shell))
 		return ;

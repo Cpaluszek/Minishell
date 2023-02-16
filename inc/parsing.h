@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 15:13:19 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:52:31 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ t_token	*create_sub_dollar_list(t_global *shell, t_token *temp, char *str);
 int		syntax_checking(t_global *shell);
 int		syntax_checking_end(t_global *shell);
 int		check_for_ambiguous_redirect(t_token *token);
-void	token_merging(t_global *shell);
+void	token_merging(t_global *shell, t_token *head_list);
+void	assign_ambiguous_redirect(t_global *shell, t_token *token, \
+		t_token *expanded_wildcard);
 void	find_and_merge_linked_token(t_global *shell);
-void	expand_wildcard(t_global *shell);
+void	expand_wildcard(t_global *shell, t_token **head_list);
 char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file);
 
 /*
@@ -76,7 +78,7 @@ void	remove_token(t_token *token);
 void	print_command_line(t_token *token_list);
 void	print_block(t_block *block, int fd);
 void	test_failed_malloc(t_global *shell, void *content);
-void	insert_token_list(t_global *shell, t_token *token, \
+void	insert_token_list(t_token **head_list, t_token *token, \
 t_token *splitted_token_list);
 
 #endif

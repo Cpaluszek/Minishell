@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 12:13:56 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 12:53:46 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	print_block(t_block *block, int fd);
 void	print_command_line2(t_token *token_list, int fd);
 int		g_status;
 
-// Todo: parsing need to update g_status in case of parsing error ?
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;

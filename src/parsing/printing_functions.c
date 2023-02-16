@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:01:09 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 12:09:44 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 12:41:16 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	print_block(t_block *block, int fd)
 	i = block->block_level;
 	while (i)
 	{
-		dprintf(fd, "\t\t\t");
+		dprintf(fd, "|\t\t\t");
 		i--;
 	}
 	dprintf(fd, "----- NEW BLOCK ----- \n\n");
@@ -70,7 +70,7 @@ void	print_block(t_block *block, int fd)
 		i = block->block_level;
 		while (i)
 		{
-			dprintf(fd, "\t\t\t");
+			dprintf(fd, "|\t\t\t");
 			i--;
 		}
 		dprintf(fd, "Block token list : ");
@@ -81,7 +81,7 @@ void	print_block(t_block *block, int fd)
 		i = block->block_level;
 		while (i)
 		{
-			dprintf(fd, "\t\t\t");
+			dprintf(fd, "|\t\t\t");
 			i--;
 		}
 		dprintf(fd, "Block redirection : ");
@@ -90,7 +90,7 @@ void	print_block(t_block *block, int fd)
 	i = block->block_level;
 	while (i)
 	{
-		dprintf(fd, "\t\t\t");
+		dprintf(fd, "|\t\t\t");
 		i--;
 	}
 	if (block->logical_link == AND_LINK)
@@ -101,8 +101,6 @@ void	print_block(t_block *block, int fd)
 		dprintf(fd, "|");
 	else if (block->logical_link == NO_LINK)
 		dprintf(fd, "NO LINK");
-	else
-		dprintf(fd, "%d", block->logical_link);
 	if (block->sub_block)
 		print_block(block->sub_block, fd);
 	if (block->next)

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/13 10:15:09 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 14:51:35 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	token_parsing(t_global *shell)
 			else
 				splitted_token_list = create_sub_dollar_list(shell, \
 					temp, temp->str);
-			insert_token_list(shell, temp, splitted_token_list);
+			insert_token_list(&shell->token_list, temp, splitted_token_list);
 			del = temp;
 			temp = temp->next;
 			ft_lstdelone_token(del);

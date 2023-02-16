@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/16 11:57:29 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 16:50:49 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,21 @@
 
 static void	merge_all_cmd_token_between_pipe(t_global *shell, \
 			t_token *first_cmd,	int size_cmd_tab);
-static void	merge_command(t_global *shell);
+static void	merge_redirection(t_global *shell, t_token *head_list);
+static void	merge_command(t_global *shell, t_token *head_list);
 
-static void	merge_redirection(t_global *shell);
-
-void	token_merging(t_global *shell)
+void	token_merging(t_global *shell, t_token *head_list)
 {
-	merge_redirection(shell);
-	merge_command(shell);
+	merge_redirection(shell, head_list);
+	merge_command(shell, head_list);
 }
 
-static void	merge_redirection(t_global *shell)
+static void	merge_redirection(t_global *shell, t_token *head_list)
 {
 	t_token	*token;
 	t_token	*temp;
 
-	token = shell->token_list;
+	token = head_list;
 	while (token)
 	{
 		if (token->token <= OUTPUT_APPEND && token->next)
@@ -46,13 +45,13 @@ static void	merge_redirection(t_global *shell)
 	}
 }
 
-static void	merge_command(t_global *shell)
+static void	merge_command(t_global *shell, t_token *head_list)
 {
 	t_token	*token;
 	t_token	*first_cmd;
 	int		size_cmd_tab;
 
-	token = shell->token_list;
+	token = head_list;
 	while (token)
 	{
 		size_cmd_tab = 0;
