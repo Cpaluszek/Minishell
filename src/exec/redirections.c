@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 13:23:15 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:47:42 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ int	dup_fds(t_token *token)
 		}
 		if (*token->fd_input != -1 && close(*token->fd_input) == -1)
 			perror(ERR_CLOSE);
-		else
-			*token->fd_input = -1;
 	}
 	if (token->fd_output != NULL)
 	{
@@ -118,8 +116,6 @@ int	dup_fds(t_token *token)
 		}
 		if (*token->fd_output != -1 && close(*token->fd_output) == -1)
 			perror(ERR_CLOSE);
-		else
-			*token->fd_output = -1;
 	}
 	return (0);
 }

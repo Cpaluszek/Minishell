@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_sub_block.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 09:10:57 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 23:13:34 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 16:27:06 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,26 +89,11 @@ static void	set_link_and_redirection_for_upper_block(t_block *upper_block, \
 static void	add_redirection_for_upper_block(t_block *upper_block, \
 	t_token *token, t_token **first_token)
 {
-	// int		*fd_input;
-	// int		*fd_output;
-
-	// fd_input = NULL;
-	// fd_output = NULL;
 	if (token && token->token <= OUTPUT_APPEND)
 		upper_block->redirection_token_list = token;
 	while (token && (token->token <= OUTPUT_APPEND || token->token >= CMD))
-	{
-		// if (token->token <= HERE_DOC)
-		// 	fd_input = &token->fd_file;
-		// else if (token->token <= OUTPUT_APPEND)
-		// 	fd_output = &token->fd_file;
 		token = token->next;
-	}
 	if (token && token->prev)
 		token->prev->next = NULL;
-	// if (fd_input)
-	// 	upper_block->fd_input = fd_input;
-	// if (fd_output)
-	// 	upper_block->fd_output = fd_output;
 	*first_token = token;
 }

@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/17 13:40:54 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:27:56 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "parsing.h"
 #include "token_list_functions.h"
 
-// TODO : CHECK LINE INPUT < 100000 on est pas des fous non plus
 void	get_input(t_global *shell, char *prompt)
 {
 	char	*input;

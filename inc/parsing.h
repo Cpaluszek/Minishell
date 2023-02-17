@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 00:15:41 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 18:20:33 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 # include "structs.h"
 # include "errors.h"
 
-# define PROMPT		"\033[34mminishell-1.0 \033[32m\033[1m>\033[0m "
-# define PROMPT_ERR	"\033[34mminishell-1.0 \033[31m\033[1m>\033[0m "
+# define PROMPT		"\001\033[34m\002minishell-1.0\
+ \001\033[32m\002\001\033[1m>\002\001\033[0m\002 "
+# define PROMPT_ERR	"\001\033[34m\002minishell-1.0\
+ \001\033[31m\002\001\033[1m>\002\001\033[0m\002 "
 # define MININAME 	"msh"
 
 int		central_parsing(t_global *shell, char *prompt);
@@ -54,7 +56,7 @@ void	find_and_merge_linked_token(t_global *shell, t_token *head_list);
 
 int		make_pipe_heredoc(t_global *shell, t_token *token);
 int		fill_all_heredocs(t_global *shell);
-void    add_fd_to_list(t_global *shell, int *fd);
+void	add_fd_to_list(t_global *shell, int *fd);
 void	add_link_between_blocks(t_block *block, t_token *token);
 void	create_sub_block(t_global *shell, t_block **block_list, \
 		t_block *upper_block, t_token **token);

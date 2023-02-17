@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 18:28:59 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:36:58 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	wait_for_token_list(t_token *token)
 	{
 		if (token->token == CMD)
 		{
-			if (token->pid > 0)//&& token->exit_status != COMMAND_NOT_FOUND)
+			if (token->pid > 0)
 			{
 				token->exit_status = 0;
 				waitpid(token->pid, &token->exit_status, 0);

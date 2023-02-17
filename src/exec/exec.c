@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 13:21:48 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:34:49 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data);
 static void	close_command_redirection(t_exec *data, t_token *command, \
 			t_block *block);
 
-int		exec_token_list(t_global *shell, t_block *block, t_token *token)
+int	exec_token_list(t_global *shell, t_block *block, t_token *token)
 {
 	t_exec	data;
 

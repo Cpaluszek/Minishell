@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 19:31:42 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 16:41:35 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 	---------------------- GENERAL -----------------------
 */
 
-
 void	insert_token_list(t_token **head_list, t_token *token, \
 		t_token *splitted_token_list);
 int		new_token(t_token **token_list, char *str, \
@@ -41,8 +40,6 @@ void	print_command_line(t_token *token_list);
 void	add_path_to_command_token(t_global *shell, t_token *token_list);
 void	find_and_merge_linked_token(t_global *shell, t_token *head_list);
 void	token_merging(t_global *shell, t_token *head_list);
-
-
 
 /*
 	----------------- EXPAND ENV VARIABLE & WILDCARD --------------------

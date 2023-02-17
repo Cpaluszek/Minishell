@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:21:56 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 13:15:35 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:26:01 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static int	is_a_directory(char *path);
 
 int	exec_cmd_not_found(t_token *token)
 {
-	// TODO: WTF !!!
-	// dprintf(2, "CMD not found : %s\n", token->cmd_path);
 	if (ft_strchr(token->cmd_path, '/') != NULL && (access(token->cmd_path, \
 		X_OK)) == -1 && access(token->cmd_path, F_OK) == 0)
 	{
@@ -58,6 +56,7 @@ static int	is_a_directory(char *path)
 {
 	struct stat	path_stat;
 
+	path_stat.st_mode = 0;
 	stat(path, &path_stat);
 	if (S_ISDIR(path_stat.st_mode))
 	{

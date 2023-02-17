@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 12:39:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 18:31:11 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 16:38:44 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	setting_space_links_and_checking_parenthesis(t_global *shell, \
 	{
 		if (token->token != EMPTY)
 			if (token->next && token->next->token != EMPTY)
-			token->space_link = false;
+				token->space_link = false;
 		if (token->token == OPEN_PAR || token->token == CLOSE_PAR)
 			shell->nb_open_parenthesis += 8 - token->token;
 		token = token->next;

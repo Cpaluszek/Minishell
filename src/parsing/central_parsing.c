@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 14:15:28 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:26:37 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	parsing_initialization(t_global *shell, char *prompt);
 static void	parsing_finalization(t_global *shell);
 static int	uncompleted_line(t_global *shell);
 
-// Note: why return an int - the return value is never read
 int	central_parsing(t_global *shell, char *prompt)
 {
 	parsing_initialization(shell, prompt);

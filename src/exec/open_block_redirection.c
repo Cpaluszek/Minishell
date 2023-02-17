@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   open_block_redirection.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:30:26 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 10:08:18 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 16:35:43 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 #include "structs.h"
 
-static int	open_block_output(t_block *block, t_token * token);
-static void	link_heredoc_to_block(t_block * block, t_token *token);
+static int	open_block_output(t_block *block, t_token *token);
+static void	link_heredoc_to_block(t_block *block, t_token *token);
 
 int	open_block_redirections(t_block *block)
 {

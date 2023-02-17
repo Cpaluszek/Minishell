@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   expand_wildcard.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:50:41 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 19:46:58 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 16:38:15 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <dirent.h>
 #include "expand.h"
 #include "token_list_functions.h"
-
 
 static void		parse_token_list_for_wildcard(t_global *shell, \
 				t_token **head_list, t_token *token, t_list *file_list);

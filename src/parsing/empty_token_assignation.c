@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   empty_token_assignation.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:01:30 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 19:12:23 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 16:27:18 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	remove_empty_token(t_token **head_list, t_token *token)
 
 	while (token)
 	{
-		if (token->token == EMPTY && !token->origin_token_str) // facultatif apres le &&?
+		if (token->token == EMPTY && !token->origin_token_str)
 		{
 			temp = token;
 			token = token->next;

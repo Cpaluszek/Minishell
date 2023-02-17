@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:24:16 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 11:31:49 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:39:23 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ int	cmd_before_or_after_parenthesis(t_global *shell, \
 		while (token && token->token >= CMD && token->space_link == false)
 			token = token->next;
 		if (token && token->next && token->next->token >= CMD)
-			return (print_syntax_error(shell, token->next->origin_token_str));
+			return (print_syntax_error(shell, \
+				token->next->origin_token_str));
 	}
 	if (!token)
 		return (0);

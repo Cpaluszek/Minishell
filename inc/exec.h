@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 13:22:18 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:44:11 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		open_command_redirections(t_token *command, t_token *token);
 void	set_block_redirection_for_command(t_block *block, t_token *command);
 void	set_block_redirections(t_global *shell, t_block *block);
 void	close_all_file_descriptors(t_list *fd_list);
-void    add_fd_to_list(t_global *shell, int *fd);
+void	add_fd_to_list(t_global *shell, int *fd);
 int		open_block_redirections(t_block *block);
 int		dup_fds(t_token *token);
 

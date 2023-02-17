@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:26:04 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/06 10:40:21 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 16:41:17 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@ int	cmd_before_or_after_parenthesis(t_global *shell, \
 	t_token *token, enum e_token type);
 int	print_syntax_error(t_global *shell, char *str);
 int	two_tokens_in_a_row(t_global *shell, t_token *token1, t_token *token2);
-
 
 #endif
