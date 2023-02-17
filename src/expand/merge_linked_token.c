@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 21:07:51 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/09 22:07:43 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 19:08:11 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 static void	merge_linked_token(t_global *shell, t_token *token_list);
 
-void	find_and_merge_linked_token(t_global *shell)
+void	find_and_merge_linked_token(t_global *shell, t_token *head_list)
 {
 	t_token	*token;
 
-	token = shell->token_list;
+	token = head_list;
 	while (token)
 	{
 		if (token->token > CLOSE_PAR && token->space_link == false)

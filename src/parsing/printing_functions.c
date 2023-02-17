@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:01:09 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/15 13:07:08 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 23:46:50 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ void	print_command_line(t_token *token_list)
 				// fd_in = token_list->fd_input;
 				// fd_out = token_list->fd_output;
 			}
-			// dprintf(1, "], pipe[%p,%p], fd_in(%p), fd_out(%p) mk_pip(%d)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out, token_list->make_a_pipe);
+			// dprintf(1, "], pipe[%p,%p], fd_in(%p), fd_out(%p)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out);
+			dprintf(1, "][SL:%d", token_list->space_link);
 			dprintf(1, "]} -> ");
 		}
 		else
 		{
-			dprintf(1, "%s, %d", token_list->str, token_list->ambiguous_redirect);
+			dprintf(1, "%s(%d), SL : %d", token_list->str,token_list->token, token_list->space_link);
 			// dprintf(1, "pipe[%p,%p]} -> ", &token_list->pipe_fd[0], &token_list->pipe_fd[1]);
 			// dprintf(1, "], (%p)} -> ", &token_list->fd_file);
 			dprintf(1, "]} -> ");
@@ -61,7 +62,7 @@ void	print_block(t_block *block, int fd)
 	i = block->block_level;
 	while (i)
 	{
-		dprintf(fd, "\t\t\t");
+		dprintf(fd, "|\t\t\t");
 		i--;
 	}
 	dprintf(fd, "----- NEW BLOCK ----- \n\n");
@@ -70,7 +71,7 @@ void	print_block(t_block *block, int fd)
 		i = block->block_level;
 		while (i)
 		{
-			dprintf(fd, "\t\t\t");
+			dprintf(fd, "|\t\t\t");
 			i--;
 		}
 		dprintf(fd, "Block token list : ");
@@ -81,7 +82,7 @@ void	print_block(t_block *block, int fd)
 		i = block->block_level;
 		while (i)
 		{
-			dprintf(fd, "\t\t\t");
+			dprintf(fd, "|\t\t\t");
 			i--;
 		}
 		dprintf(fd, "Block redirection : ");
@@ -90,7 +91,7 @@ void	print_block(t_block *block, int fd)
 	i = block->block_level;
 	while (i)
 	{
-		dprintf(fd, "\t\t\t");
+		dprintf(fd, "|\t\t\t");
 		i--;
 	}
 	if (block->logical_link == AND_LINK)
@@ -101,8 +102,6 @@ void	print_block(t_block *block, int fd)
 		dprintf(fd, "|");
 	else if (block->logical_link == NO_LINK)
 		dprintf(fd, "NO LINK");
-	else
-		dprintf(fd, "%d", block->logical_link);
 	if (block->sub_block)
 		print_block(block->sub_block, fd);
 	if (block->next)
@@ -133,7 +132,7 @@ static void	print_command_line2(t_token *token_list, int fd)
 				// fd_in = token_list->fd_input;
 				// fd_out = token_list->fd_output;
 			}
-			// dprintf(fd, "], pipe[%p,%p], fd_in(%p), fd_out(%p) mk_pip(%d)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out, token_list->make_a_pipe);
+			// dprintf(fd, "], pipe[%p,%p], fd_in(%p), fd_out(%p)} -> ", &token_list->pipe_fd[0],&token_list->pipe_fd[1], fd_in, fd_out);
 			dprintf(fd, " -> ");
 		}
 		else

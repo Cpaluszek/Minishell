@@ -10,6 +10,7 @@ HEADERS_FILES	:=	minishell.h \
 					structs.h \
 					errors.h \
 					env.h \
+					expand.h \
 					exec.h \
 					parsing.h \
 					syntax.h \
@@ -21,31 +22,34 @@ HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 SRC_DIR			:=	src
 
 PARSING_DIR		:=	parsing
-PARSING_FILES	:=	add_path_to_command.c \
-					block_list_functions.c \
+PARSING_FILES	:=	block_list_functions.c \
 					block_parsing.c \
 					central_parsing.c \
-					check_for_ambiguous_redirect.c \
 					create_sub_block.c \
 					create_sub_token_list.c \
 					empty_token_assignation.c \
-					expand_dollar_in_token_str.c \
-					expand_functions.c \
-					expand_wildcard.c \
 					fill_all_heredocs.c \
-					find_matching_filenames.c \
 					ft_lstnew_token.c \
 					init_and_reset_parsing.c \
-					merge_linked_token.c \
 					printing_functions.c \
 					quote_parsing.c \
 					syntax_checking.c \
 					syntax_checking_functions.c \
 					token_list_functions.c \
 					token_parsing.c \
-					token_merging.c \
 					utils_parsing.c \
 					utils_parsing2.c
+
+EXPAND_DIR		:=	expand
+EXPAND_FILES	:=	add_path_to_command.c \
+					check_for_ambiguous_redirect.c \
+					create_sub_dollar_list.c \
+					expand_functions.c \
+					expand_environment_variable_and_wildcard.c \
+					expand_wildcard.c \
+					find_matching_filenames.c \
+					merge_linked_token.c \
+					token_merging.c \
 
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \
@@ -79,6 +83,7 @@ ENV_FILES		:=	env_expand.c \
 					setup_env.c
 
 PARSING_SRC		:= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
+EXPAND_SRC		:= $(addprefix $(EXPAND_DIR)/, $(EXPAND_FILES))
 EXEC_SRC		:= $(addprefix $(EXEC_DIR)/, $(EXEC_FILES))
 BUILTIN_SRC		:= $(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILES))
 INPUT_SRC		:= $(addprefix $(INPUT_DIR)/, $(INPUT_FILES))
@@ -88,6 +93,7 @@ SRC_FILES		:=	main.c \
 					utils.c \
 					add_fd_to_list.c \
 					$(EXEC_SRC) \
+					$(EXPAND_SRC) \
 					$(PARSING_SRC) \
 					$(BUILTIN_SRC) \
 					$(INPUT_SRC) \

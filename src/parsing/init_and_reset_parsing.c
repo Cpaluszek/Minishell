@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_reset_parsing.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/15 20:36:15 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:35:57 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ static t_list	*make_env_list(t_global *shell, char **env)
 
 void	reset_commands(t_global	*shell)
 {
-	t_list	*tok;
-
 	ft_free(shell->input);
 	ft_free_split(shell->path);
 	shell->input = NULL;
@@ -103,12 +101,6 @@ void	reset_commands(t_global	*shell)
 	shell->input_completed = NULL;
 	shell->command_line = BEGIN;
 	shell->nb_open_parenthesis = 0;
-	tok = shell->block_fd_list;
-	while (tok)
-	{
-		dprintf(1, "fd %p = %d\n", (int *)tok->content, *(int *)tok->content);
-		tok = tok->next;
-	}
 	close_all_file_descriptors(shell->block_fd_list);
 	ft_lstclear(&shell->block_fd_list, NULL);
 	// ft_lstclear_token(&shell->token_list);

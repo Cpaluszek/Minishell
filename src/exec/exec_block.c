@@ -6,11 +6,11 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/16 10:23:16 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 23:00:10 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "expand.h"
 #include "exec.h"
 
 static t_block	*find_next_block_to_execute(t_block *block);
@@ -37,6 +37,9 @@ void	exec_block(t_global *shell, t_block *block)
 
 static void	exec_block_child(t_global *shell, t_block *block)
 {
+	if (expand_environment_variable_and_wildcard(shell, \
+		&block->redirection_token_list))
+		return ;
 	block->redirection_status = open_block_redirections(block);
 	if (block->redirection_status == -1)
 		return ;
@@ -48,6 +51,10 @@ static void	exec_block_child(t_global *shell, t_block *block)
 	}
 	else if (block->token_list)
 	{
+		if (expand_environment_variable_and_wildcard(shell, \
+			&block->token_list))
+			return ;
+		add_path_to_command_token(shell, block->token_list);
 		exec_token_list(shell, block, block->token_list);
 		wait_for_token_list(block->token_list);
 	}

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:01:30 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/09 22:10:29 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 19:12:23 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	empty_token_assignation(t_token *token_list)
 	}
 }
 
-void	remove_empty_token(t_global *shell, t_token *token)
+void	remove_empty_token(t_token **head_list, t_token *token)
 {
 	t_token	*temp;
 
@@ -42,7 +42,7 @@ void	remove_empty_token(t_global *shell, t_token *token)
 			if (temp->prev)
 				temp->prev->next = token;
 			if (!temp->prev)
-				shell->token_list = token;
+				*head_list = token;
 			ft_lstdelone_token(temp);
 		}
 		else

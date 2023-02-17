@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/02/13 16:02:22 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/16 18:22:52 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	expand_dollar_in_token_str(t_global *shell)
 
 static	int	is_a_heredoc(t_token *token)
 {
-	while (token && token->token >= CMD)
+	while (token && token->token >= CMD &&token->space_link == true)
 		token = token->prev;
 	if (token && token->token == HERE_DOC)
 		return (1);

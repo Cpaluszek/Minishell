@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 10:45:42 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 00:23:15 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ static void	close_command_redirection(t_exec *data, t_token *command, \
 		close(data->pipe->pipe_fd[1]);
 		data->pipe->pipe_fd[1] = -1;
 	}
+	if (!block || !command)
+		return ;
 	if (command->fd_input && *command->fd_input != -1 \
 		&& block->fd_input && *command->fd_input != *block->fd_input)
 	{

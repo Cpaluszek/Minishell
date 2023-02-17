@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 23:20:20 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/13 13:44:25 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 00:20:32 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_token	*create_new_block(t_global *shell, t_block **block_list, \
 			break ;
 		token = token->next;
 	}
-	if (token)
+	if (token && token->prev)
 		token->prev->next = NULL;
 	new_block = ft_lstnew_block(upper_block, first_token);
 	test_failed_malloc(shell, new_block);
