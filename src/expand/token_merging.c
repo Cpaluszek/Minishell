@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_merging.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/16 23:30:03 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 11:00:35 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	merge_redirection(t_global *shell, t_token *head_list)
 	token = head_list;
 	while (token)
 	{
-		if (token->token <= OUTPUT_APPEND && token->next)
+		if (token->token <= OUTPUT_APPEND && token->token != HERE_DOC \
+			&& token->next)
 		{
 			token->str = ft_strdup(token->next->str);
 			test_failed_malloc(shell, token->str);

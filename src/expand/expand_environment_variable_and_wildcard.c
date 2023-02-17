@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_environment_variable_and_wildcard.c         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:27:59 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 00:06:33 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 11:01:21 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static void	expand_environment_variable(t_global *shell, \
 			t_token **head_of_list, t_token *token);
 static void	expand_dollar_in_token_str(t_global *shell, t_token *token);
+void	print_command_line(t_token *token_list);
 
 int	expand_environment_variable_and_wildcard(t_global *shell, \
 	t_token **head_of_list)

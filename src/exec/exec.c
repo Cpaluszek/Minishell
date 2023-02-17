@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 10:38:25 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:05:47 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,11 @@ static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data)
 			command->fd_input = &data->prev_pipe->pipe_fd[0];
 		if (data->pipe)
 			command->fd_output = &data->pipe->pipe_fd[1];
-		open_command_redirections(command, data->first_token);
+		if (open_command_redirections(command, data->first_token) == -1)
+		{
+			g_status = EXIT_FAILURE;
+			return ;
+		}
 		set_block_redirection_for_command(block, command);
 		exec_cmd(shell, block, data);
 	}
