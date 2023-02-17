@@ -4,3 +4,4 @@ minishell
 lib/libft/libft.a
 valgrind-out.txt
 minishell.dSYM/
+block_command.txt
