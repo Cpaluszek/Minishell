@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 10:20:40 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 13:22:18 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct s_exec {
 
 // void	exec_start(t_global *shell, t_token *token_list);
 int		exec_token_list(t_global *shell, t_block *block, t_token *token);
+int		exec_child(t_global *shell, t_token *command, t_token *pipe);
 void	exec_block(t_global *shell, t_block *block);
-int		exec_child(t_global *shell, t_token *command);
 void	wait_for_token_list(t_token *token);
 
 /*

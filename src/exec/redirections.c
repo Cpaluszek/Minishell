@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:39:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 11:06:31 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 13:23:15 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	dup_fds(t_token *token)
 	{
 		if (dup2(*(token->fd_input), STDIN) == -1)
 		{
-			dprintf(2,"DUP FDS : ERROR FROM DUPING %p (fd %d) from command %p (%s)\n", token->fd_input, *token->fd_input, token, token->cmd[0]);
 			perror(ERR_DUP2);
 			if (close(*(token->fd_input)) == -1)
 				perror(ERR_CLOSE);
@@ -107,24 +106,20 @@ int	dup_fds(t_token *token)
 			perror(ERR_CLOSE);
 		else
 			*token->fd_input = -1;
-		// dprintf(2,"DUPS FDS : CLOSED %p (fd %d) from command %p (%s)\n", token->fd_input, *token->fd_input, token, token->cmd[0]);
 	}
 	if (token->fd_output != NULL)
 	{
 		if (dup2(*(token->fd_output), STDOUT) == -1)
 		{
-			dprintf(2,"DUP FDS : ERROR FROM DUPING %p (fd %d) from command %p (%s)\n", token->fd_output, *token->fd_output, token, token->cmd[0]);
 			perror(ERR_DUP2);
 			if (close(*(token->fd_output)) == -1)
 				perror(ERR_CLOSE);
 			return (EXIT_FAILURE);
 		}
-		// dprintf(2,"closing %p (fd %d) from command %p (%s)\n", token->fd_output, *token->fd_output, token, token->cmd[0]);
 		if (*token->fd_output != -1 && close(*token->fd_output) == -1)
 			perror(ERR_CLOSE);
 		else
 			*token->fd_output = -1;
-		// dprintf(2,"CLOSED %p (fd %d) from command %p (%s)\n", token->fd_output, *token->fd_output, token, token->cmd[0]);
 	}
 	return (0);
 }

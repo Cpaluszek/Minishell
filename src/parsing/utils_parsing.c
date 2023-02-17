@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:49:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/16 14:50:40 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 13:40:54 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	test_failed_malloc(t_global *shell, void *content)
 
 void	remove_token(t_token *token)
 {
+	if (!token)
+		return ;
 	if (token->prev)
 		token->prev->next = token->next;
 	if (token->next)

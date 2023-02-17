@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 12:53:46 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 14:05:16 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,20 @@ int	main(int argc, char **argv, char **env)
 	t_token			*token_list;
 	int				fd;
 
+	// if (!isatty(STDIN))
+	// {
+	// 	printf("Minishell cannot run with a pipe\n");
+	// 	close(STDIN);
+	// 	close(STDOUT);
+	// 	return (0);
+	// }
 	(void) argc;
 	(void) argv;
 	(void)token_list;
 	g_status = EXIT_SUCCESS;
 	init_shell_attr(&shell);
 	set_environment(&shell, env);
-	fd = open("block_command.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
+	fd = open("block_command.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	while (1)
 	{
 		reset_commands(&shell);

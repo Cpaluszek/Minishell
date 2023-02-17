@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 12:07:24 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 13:22:33 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	close_all_file_descriptors_in_execution(t_list *fd_list);
 
-int	exec_child(t_global *shell, t_token *command)
+int	exec_child(t_global *shell, t_token *command, t_token *pipe)
 {
 	char	**env;
 	
@@ -30,6 +30,8 @@ int	exec_child(t_global *shell, t_token *command)
 	// 	dprintf(2,"fd_output %p (fd %d) from command %p (%s)\n", command->fd_output, *command->fd_output, command, command->cmd[0]);
 	if (dup_fds(command))
 		return (EXIT_FAILURE);
+	if (pipe)
+		close(pipe->pipe_fd[0]);
 	close_all_file_descriptors_in_execution(shell->block_fd_list);
 	execve(command->cmd_path, command->cmd, env);
 	perror(ERR_EXEC);

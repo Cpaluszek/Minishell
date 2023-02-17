@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_checking_functions.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:24:16 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/13 10:17:37 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 11:31:49 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static int	syntax_exception(t_token *token1, t_token *token2)
 int	cmd_before_or_after_parenthesis(t_global *shell, \
 	t_token *token, enum e_token type)
 {
+	if (type < CLOSE_PAR && type > OUTPUT_APPEND)
+		return (0);
 	if (type >= CMD || type <= OUTPUT_APPEND)
 	{
 		while (token && (token->token <= OUTPUT_APPEND || token->token >= CMD))
@@ -73,11 +75,15 @@ int	cmd_before_or_after_parenthesis(t_global *shell, \
 		return (0);
 	}
 	while (token && token->token <= OUTPUT_APPEND)
+	{
+		token = token->next;
+		while (token && token->token >= CMD && token->space_link == false)
 			token = token->next;
+		if (token && token->next && token->next->token >= CMD)
+			return (print_syntax_error(shell, token->next->origin_token_str));
+	}
 	if (!token)
 		return (0);
-	if (token->token >= CMD)
-		return (print_syntax_error(shell, token->origin_token_str));
 	return (0);
 }
 

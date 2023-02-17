@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_checking.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.f>       +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:28:41 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/14 15:28:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:37:28 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	syntax_checking(t_global *shell)
 			return (2);
 		else if (token_at_end_of_command_line(shell, token))
 			return (3);
+		else if (cmd_before_or_after_parenthesis(shell, token->next, token->token))
+			return (4);
 		token = token->next;
 	}
 	return (0);

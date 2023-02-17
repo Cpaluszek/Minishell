@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_list_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/13 16:03:00 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 13:45:57 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_lstclear_token(t_token **lst)
 		p_del_lst->next = NULL;
 		p_del_lst->prev = NULL;
 		ft_lstdelone_token(p_del_lst);
+		p_del_lst = NULL;
 	}
 	*lst = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_reset_parsing.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/16 11:35:57 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 14:11:39 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,10 @@ void	reset_commands(t_global	*shell)
 	shell->nb_open_parenthesis = 0;
 	close_all_file_descriptors(shell->block_fd_list);
 	ft_lstclear(&shell->block_fd_list, NULL);
-	// ft_lstclear_token(&shell->token_list);
-	ft_lstclear_block(&shell->block_list);
+	if (shell->block_list)
+		ft_lstclear_block(&shell->block_list);
+	else
+		ft_lstclear_token(&shell->token_list);
 	shell->token_list = NULL;
 	shell->block_list = NULL;
 }

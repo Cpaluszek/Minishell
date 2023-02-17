@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:37:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 22:51:44 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 14:59:12 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ void	free_structs(t_global *shell)
 {
 	ft_free_split(shell->env);
 	ft_free_split(shell->path);
-	ft_lstclear_token(&shell->token_list);
 	ft_lstclear(&shell->env_list, free);
 	ft_lstclear(&shell->block_fd_list, NULL);
+	if (shell->block_list)
+		ft_lstclear_block(&shell->block_list);
+	else
+		ft_lstclear_token(&shell->token_list);
 	// ft_lstclear(&shell->garbage_block_list, NULL);
 	// close_all_file_descriptors(shell->block_fd_list);
 	ft_free(shell->input);

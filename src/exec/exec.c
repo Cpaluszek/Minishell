@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 11:05:47 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/17 13:21:48 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static void	exec_cmd( t_global *shell, t_block *block, t_exec *data)
 		signal(SIGINT, SIG_IGN);
 		signal(SIGQUIT, SIG_IGN);
 	}
-	if (command->pid == 0 && exec_child(shell, command))
+	if (command->pid == 0 && exec_child(shell, command, data->pipe))
 	{
 		close_command_redirection(data, command, block);
 		close_all_file_descriptors(shell->block_fd_list);
