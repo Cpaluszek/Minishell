@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_all_heredocs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:53:37 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/17 00:05:27 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 10:49:17 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static t_token	*merge_linked_token(t_global *shell, t_token *here_doc)
 	temp = token;
 	token = token->next;
 	remove_token(temp);
-	while (token)
+	while (token && token->token >= CMD)
 	{
 		here_doc->str = ft_strjoin_and_free(here_doc->str, token->str);
 		test_failed_malloc(shell, here_doc->str);

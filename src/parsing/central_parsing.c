@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   central_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:03:00 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 10:09:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:41:54 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static void	parsing_initialization(t_global *shell, char *prompt)
 
 static void	parsing_finalization(t_global *shell)
 {
+	add_history(shell->input_completed);
 	if (fill_all_heredocs(shell))
 		return ;
 	shell->block_list = block_parsing(shell, NULL, shell->token_list);
-	add_history(shell->input_completed);
 	if (shell->token_list)
 		shell->command_line = COMPLETED;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 00:23:15 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 10:38:25 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,10 @@ static void	exec_cmd( t_global *shell, t_block *block, t_exec *data)
 		error_exit_shell(shell, ERR_FORK);
 	}
 	if (command->pid != 0 && ft_strcmp(command->str, "./minishell") == 0)
+	{
 		signal(SIGINT, SIG_IGN);
+		signal(SIGQUIT, SIG_IGN);
+	}
 	if (command->pid == 0 && exec_child(shell, command))
 	{
 		close_command_redirection(data, command, block);
