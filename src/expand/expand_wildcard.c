@@ -19,8 +19,6 @@ static void		parse_token_list_for_wildcard(t_global *shell, \
 				t_token **head_list, t_token *token, t_list *file_list);
 static t_token	*parse_filelist_for_matching_filenames(t_global *shell, \
 				char *pattern, t_list *file);
-void			assign_ambiguous_redirect(t_global *shell, t_token *token, \
-				t_token *expanded_wildcard);
 
 void	expand_wildcard(t_global *shell, t_token **head_list)
 {

@@ -17,7 +17,6 @@
 # include <termios.h>
 # include "libft.h"
 
-# define AMBIGUOUS_REDIRECT -2
 # define SYNTAX_ERROR -1
 # define BEGIN 0
 # define COMPLETED 1

@@ -49,7 +49,7 @@ void	exit_shell_from_signal(t_global *shell)
 	if (isatty(STDIN) && tcsetattr(0, TCSANOW, &shell->saved_attr) == -1)
 		perror(ERR_TCSET);
 	printf("exit\n");
-	// rl_clear_history();
+	rl_clear_history();
 	free_structs(shell);
 	exit(g_status);
 }

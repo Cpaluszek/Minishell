@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "errors.h"
 #include "exec.h"
-#include <unistd.h>
 
 void	wait_for_token_list(t_token *token)
 {

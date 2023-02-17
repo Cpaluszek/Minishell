@@ -105,7 +105,7 @@ static void	no_expand(t_global *shell, t_token *token, char *str, int len)
 static char	*get_variable(t_global *shell, char **env, char *var)
 {
 	int		i;
-	int		len;
+	size_t	len;
 	char	*new_var;
 
 	len = ft_strlen(var);

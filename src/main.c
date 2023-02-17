@@ -15,8 +15,6 @@
 #include "exec.h"
 #include "input.h"
 
-void	print_command_line(t_token *token_list);
-void	print_block(t_block *block, int fd);
 void	print_command_line2(t_token *token_list, int fd);
 int		g_status;
 
@@ -42,9 +40,6 @@ int	main(int argc, char **argv, char **env)
 			central_parsing(&shell, PROMPT);
 		else
 			central_parsing(&shell, PROMPT_ERR);
-		token_list = shell.token_list;
-		// if (token_list)
-		// 	print_command_line(token_list);
 		if (shell.block_list)
 		{
 			dprintf(fd, "\n\nINPUT : %s\n\n", shell.input_completed);
@@ -60,6 +55,5 @@ int	main(int argc, char **argv, char **env)
 		else if (shell.command_line == SYNTAX_ERROR)
 			g_status = 258;
 	}
-	close(fd);
 	return (EXIT_SUCCESS);
 }

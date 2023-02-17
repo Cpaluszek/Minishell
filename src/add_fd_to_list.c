@@ -12,9 +12,7 @@
 
 #include "libft.h"
 #include "structs.h"
-#include "errors.h"
 #include <unistd.h>
-#include <stdio.h>
 
 void	test_failed_malloc(t_global *shell, void *content);
 

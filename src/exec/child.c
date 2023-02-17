@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <errno.h>
 #include "minishell.h"
 #include "exec.h"
 

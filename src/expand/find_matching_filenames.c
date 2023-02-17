@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_matching_filenames.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 13:17:14 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/09 22:59:50 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/17 10:09:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ char	*find_matching_filenames(t_global *shell, char *pattern, t_list *file)
 
 static char	*process_filename_with_pattern(char *filename, char *pattern)
 {
-	int	i;
-	int	len;
+	size_t	i;
+	size_t	len;
 
 	while (*pattern)
 	{

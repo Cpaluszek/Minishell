@@ -27,8 +27,7 @@ int	central_parsing(t_global *shell, char *prompt)
 		central_parsing(shell, shell->temp_prompt);
 	if (shell->command_line == COMPLETED)
 		return (0);
-	if (shell->command_line == SYNTAX_ERROR || \
-		shell->command_line == AMBIGUOUS_REDIRECT)
+	if (shell->command_line == SYNTAX_ERROR)
 		return (1);
 	parsing_finalization(shell);
 	return (0);
