@@ -21,8 +21,6 @@
 
 static void	err_alloc(char **env);
 
-// Todo: rename file to setup env
-
 char	**set_minimum_env(void)
 {
 	char	**env;

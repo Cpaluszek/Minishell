@@ -14,24 +14,11 @@
 #include "exec.h"
 #include "input.h"
 
-// static int	exec_token_list(t_token *token, t_global *shell);
 static void	exec_cmd(t_global *shell, t_block *block, t_exec *data);
 static int	check_token(t_global *shell, t_token *token, t_exec *data);
 static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data);
 static void	close_command_redirection(t_exec *data, t_token *command, \
 			t_block *block);
-
-// Todo: test max amount of pipes
-// Todo: test permissions on redirections
-// Todo: here_doc always first - process all
-// Todo: block execution - all the here_doc needs to be open first
-// Attention au close de tout les here_docs en cas de probleme
-// void	exec_start(t_global *shell, t_token *token_list)
-// {
-// 	if (exec_token_list(token_list, shell) == 0)
-		
-// }
-void	print_command_line(t_token *token_list);
 
 int		exec_token_list(t_global *shell, t_block *block, t_token *token)
 {
