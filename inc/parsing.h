@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 18:20:33 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/18 11:18:09 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@
 # include <readline/history.h>
 # include "structs.h"
 # include "errors.h"
-
-# define PROMPT		"\001\033[34m\002minishell-1.0\
- \001\033[32m\002\001\033[1m>\002\001\033[0m\002 "
-# define PROMPT_ERR	"\001\033[34m\002minishell-1.0\
- \001\033[31m\002\001\033[1m>\002\001\033[0m\002 "
+# define PROMPT "\033[34;1mminishell-1.0 \033[0;32m>\033[0m "
+# define PROMPT_ERR "\033[34;1mminishell-1.0 \033[0;31m>\033[0m "
 # define MININAME 	"msh"
 
 int		central_parsing(t_global *shell, char *prompt);
