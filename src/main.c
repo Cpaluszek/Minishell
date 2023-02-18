@@ -18,6 +18,7 @@
 void	print_command_line2(t_token *token_list, int fd);
 int		g_status;
 
+// Todo: fd from a pipe is leaking from a block
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;
