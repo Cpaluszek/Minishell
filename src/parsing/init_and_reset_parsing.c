@@ -29,11 +29,9 @@ void	set_environment(t_global *shell, char **env)
 	if (env != NULL && env[0] == NULL)
 		shell->env = set_minimum_env();
 	else
-	{
 		shell->env = ft_tab_strdup(env);
-		increment_shlvl(shell);
-	}
 	test_failed_malloc(shell, env);
+	increment_shlvl(shell);
 	shell->env_list = make_env_list(shell, env);
 }
 

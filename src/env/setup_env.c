@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimum_env.c                                      :+:      :+:    :+:   */
+/*   setup_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:13:43 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/13 13:31:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/18 11:00:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #define SHLVL_PREFIX	"SHLVL="
 
 static void	err_alloc(char **env);
+static void	add_shlvl_to_env(t_global *sh);
 
 char	**set_minimum_env(void)
 {
@@ -36,7 +37,7 @@ char	**set_minimum_env(void)
 	free(pwd);
 	if (env[0] == NULL)
 		err_alloc(env);
-	env[1] = ft_strdup(DEFAULT_SHLVL);
+	env[1] = ft_strdup("SHLVL=0");
 	if (env[1] == NULL)
 		err_alloc(env);
 	env[2] = ft_strdup(ENV_UNDERSC);
@@ -69,6 +70,33 @@ void	increment_shlvl(t_global *sh)
 		}
 		i++;
 	}
+	if (sh->env[i] == NULL)
+		add_shlvl_to_env(sh);
+}
+
+static void	add_shlvl_to_env(t_global *sh)
+{
+	char	**new_env;
+	int		i;
+
+	i = 0;
+	while (sh->env[i])
+		i++;
+	new_env = malloc(sizeof(char *) * (i + 2));
+	if (new_env == NULL)
+		error_exit_shell(sh, ERR_MALLOC);
+	i = 0;
+	while (sh->env[i])
+	{
+		new_env[i] = sh->env[i];
+		i++;
+	}
+	new_env[i] = ft_strdup(DEFAULT_SHLVL);
+	if (new_env[i] == NULL)
+		error_exit_shell(sh, ERR_MALLOC);
+	new_env[i + 1] = NULL;
+	free(sh->env);
+	sh->env = new_env;
 }
 
 static void	err_alloc(char **env)
