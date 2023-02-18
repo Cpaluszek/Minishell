@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/18 12:30:56 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/18 19:50:31 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <readline/history.h>
 # include "structs.h"
 # include "errors.h"
-# define PROMPT "\033[34;5mMinishell-1.0 \033[0;32m>\033[0m "
-# define PROMPT_ERR "\033[34;5mMinishell-1.0 \033[0;31m>\033[0m "
+# define PROMPT "\001\033[34;5m\002Minishell-1.0 \001\033[0;32m\002>\001\033[0m\002 "
+# define PROMPT_ERR "\001\033[34;5m\002Minishell-1.0 \001\033[0;31m\002>\001\033[0m\002 "
 # define MININAME 	"msh"
 
 int		central_parsing(t_global *shell, char *prompt);
@@ -30,7 +30,7 @@ int		central_parsing(t_global *shell, char *prompt);
 
 void	set_environment(t_global *shell, char **env);
 void	reset_commands(t_global	*shell);
-void	close_all_file_descriptors(t_list *fd_list);
+void	close_heredocs_file_descriptors(t_list *fd_list);
 void	token_parsing(t_global *shell);
 int		new_token(t_token **token_list, char *str, \
 		int len, enum e_token type);

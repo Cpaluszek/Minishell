@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 16:34:49 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:26:33 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 static void	exec_cmd(t_global *shell, t_block *block, t_exec *data);
 static int	check_token(t_global *shell, t_token *token, t_exec *data);
 static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data);
-static void	close_command_redirection(t_exec *data, t_token *command, \
-			t_block *block);
+static void	close_command_pipe_redirections(t_exec *data, t_token *command);
 
 int	exec_token_list(t_global *shell, t_block *block, t_token *token)
 {
@@ -85,7 +84,7 @@ static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data)
 	}
 	else
 		open_and_immediatly_close_redirection(data->first_token);
-	close_command_redirection(data, command, block);
+	close_command_pipe_redirections(data, command);
 }
 
 static void	exec_cmd( t_global *shell, t_block *block, t_exec *data)
@@ -98,7 +97,7 @@ static void	exec_cmd( t_global *shell, t_block *block, t_exec *data)
 	command->pid = fork();
 	if (command->pid == -1)
 	{
-		close_command_redirection(data, command, block);
+		close_command_pipe_redirections(data, command);
 		error_exit_shell(shell, ERR_FORK);
 	}
 	if (command->pid != 0 && ft_strcmp(command->str, "./minishell") == 0)
@@ -106,39 +105,20 @@ static void	exec_cmd( t_global *shell, t_block *block, t_exec *data)
 		signal(SIGINT, SIG_IGN);
 		signal(SIGQUIT, SIG_IGN);
 	}
-	if (command->pid == 0 && exec_child(shell, command, data->pipe))
+	if (command->pid == 0 && exec_child(shell, command, data->pipe, block))
 	{
-		close_command_redirection(data, command, block);
-		close_all_file_descriptors(shell->block_fd_list);
+		close_command_pipe_redirections(data, command);
+		close_heredocs_file_descriptors(shell->block_fd_list);
+		close_block_redirection(block);
 		exit(g_status);
 	}
 }
 
-static void	close_command_redirection(t_exec *data, t_token *command, \
-	t_block *block)
+static void	close_command_pipe_redirections(t_exec *data, t_token *command)
 {
-	if (data->prev_pipe && data->prev_pipe->pipe_fd[0] != -1)
-	{
+	(void)command;
+	if (data->prev_pipe)
 		close(data->prev_pipe->pipe_fd[0]);
-		data->prev_pipe->pipe_fd[0] = -1;
-	}
-	if (data->pipe && data->pipe->pipe_fd[1] != -1)
-	{
+	if (data->pipe)
 		close(data->pipe->pipe_fd[1]);
-		data->pipe->pipe_fd[1] = -1;
-	}
-	if (!block || !command)
-		return ;
-	if (command->fd_input && *command->fd_input != -1 \
-		&& block->fd_input && *command->fd_input != *block->fd_input)
-	{
-		close(*command->fd_input);
-		*command->fd_input = -1;
-	}
-	if (command->fd_output && *command->fd_output != -1 \
-		&& block->fd_output && *command->fd_output != *block->fd_output)
-	{
-		close(*command->fd_output);
-		*command->fd_output = -1;
-	}
 }

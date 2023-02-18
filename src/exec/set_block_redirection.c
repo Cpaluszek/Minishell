@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:33:52 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/18 15:03:30 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/18 19:25:00 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,25 @@ void	close_block_redirection(t_block *block)
 		close(*block->fd_input);
 	if (block->fd_output)
 		close(*block->fd_output);
+}
+
+void	set_block_redirection(t_block *block, t_block *upper_block)
+{
+	if (upper_block)
+	{
+		block->fd_input = upper_block->fd_input;
+		block->fd_output = upper_block->fd_output;
+	}
+	if (block->prev && block->prev->make_a_pipe == true)
+		block->fd_input = &block->prev->pipe_fd[0];
+	if (block->make_a_pipe == true)
+		block->fd_output = &block->pipe_fd[1];
+}
+
+void	close_block_pipe_redirection(t_block *block)
+{
+	if (block->make_a_pipe == true)
+		close(block->pipe_fd[1]);
+	if (block->prev && block->prev->make_a_pipe == true)
+		close(block->prev->pipe_fd[0]);
 }

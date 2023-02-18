@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:37:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/18 12:14:14 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/18 19:21:57 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <readline/readline.h>
 
-void	close_all_file_descriptors(t_list *fd_list);
+void	close_heredocs_file_descriptors(t_list *fd_list);
 
 // TODO : GARBAGE COLLECTOR FOR BLOCK PARSING
 
@@ -31,7 +31,7 @@ void	free_structs(t_global *shell)
 		ft_lstclear_block(&shell->block_list);
 	else
 		ft_lstclear_token(&shell->token_list);
-	close_all_file_descriptors(shell->block_fd_list);
+	close_heredocs_file_descriptors(shell->block_fd_list);
 	ft_free(shell->input);
 	ft_free(shell->input_completed);
 }

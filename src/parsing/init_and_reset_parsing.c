@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_reset_parsing.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/18 11:04:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:21:22 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	reset_commands(t_global	*shell)
 	shell->input_completed = NULL;
 	shell->command_line = BEGIN;
 	shell->nb_open_parenthesis = 0;
-	close_all_file_descriptors(shell->block_fd_list);
+	close_heredocs_file_descriptors(shell->block_fd_list);
 	ft_lstclear(&shell->block_fd_list, NULL);
 	if (shell->block_list)
 		ft_lstclear_block(&shell->block_list);
