@@ -6,12 +6,10 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:29 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/08 12:36:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/18 11:57:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// change current working directory
-// only with relative or absolute path
 #include "minishell.h"
 #include "exec.h"
 #include "env.h"
@@ -23,6 +21,7 @@
 
 static int	change_directory(t_global *shell, char *target);
 static void	update_var(t_global *shell, char *new, char *var);
+static void	add_oldpwd_to_env(t_global *shell, char *new);
 static char	*cd_env_var(t_global *shell, char *var_name);
 
 // TOdo: check cd ~/../$USER
@@ -82,14 +81,28 @@ static void	update_var(t_global *shell, char *new, char *var)
 
 	env_var = search_in_env(shell->env_list, var);
 	if (env_var == NULL)
+	{
+		if (ft_strcmp(var, OLDPWD_VAR) == 0)
+			add_oldpwd_to_env(shell, new);
 		return ;
+	}
 	free(env_var->content);
-	temp = ft_strjoin(var, new);
+	temp = ft_strjoin_and_free_s2(var, new);
 	if (temp == NULL)
 		error_exit_shell(shell, ERR_MALLOC);
-	ft_free(new);
 	env_var->content = temp;
 	update_env(shell);
+}
+
+static void	add_oldpwd_to_env(t_global *shell, char *new)
+{
+	char	*old_pwd;
+
+	old_pwd = ft_strjoin_and_free_s2(OLDPWD_VAR, new);
+	if (old_pwd == NULL)
+		error_exit_shell(shell, ERR_MALLOC);
+	add_env_variable(shell, old_pwd);
+	free(old_pwd);
 }
 
 static char	*cd_env_var(t_global *shell, char *var_name)
