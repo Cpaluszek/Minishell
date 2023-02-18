@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 16:43:17 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/18 14:59:29 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv, char **env)
 		if (shell.command_line == COMPLETED)
 		{
 			set_execution_signals(&shell);
-			exec_block(&shell, shell.block_list);
+			exec_block_list(&shell, shell.block_list);
 		}
 		else if (shell.command_line == SYNTAX_ERROR)
 			g_status = 258;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   block_list_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:10:18 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/15 10:12:30 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/18 14:56:46 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list)
 	elem->fd_output = NULL;
 	elem->make_a_pipe = false;
 	elem->block_level = 0;
-	elem->fd_input_level = 0;
-	elem->fd_output_level = 0;
 	if (upper_block)
 		elem->block_level = upper_block->block_level + 1;
 	elem->logical_link = NO_LINK;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_block_redirection.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:30:26 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 16:35:43 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/18 14:52:21 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,4 @@ static int	open_block_output(t_block *block, t_token *token)
 		block->fd_output = &token->fd_file;
 	}
 	return (1);
-}
-
-void	set_block_redirections(t_global *shell, t_block *block)
-{
-	if (block->fd_input != NULL)
-		add_fd_to_list(shell, block->fd_input);
-	else if (block->prev && block->prev->make_a_pipe)
-		block->fd_input = &block->prev->pipe_fd[0];
-	else if (block->upper_block && block->upper_block->fd_input)
-	{
-		block->fd_input = block->upper_block->fd_input;
-		block->fd_input_level = block->upper_block->fd_input_level + 1;
-	}
-	if (block->fd_output != NULL)
-		add_fd_to_list(shell, block->fd_output);
-	else if (block->make_a_pipe)
-		block->fd_output = &block->pipe_fd[1];
-	else if (block->upper_block && block->upper_block->fd_output)
-	{
-		block->fd_output = block->upper_block->fd_output;
-		block->fd_output_level = block->upper_block->fd_output_level + 1;
-	}
 }

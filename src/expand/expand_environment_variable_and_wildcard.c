@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_environment_variable_and_wildcard.c         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:27:59 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 16:37:51 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/18 12:47:07 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static void	expand_environment_variable(t_global *shell, \
 			t_token **head_of_list, t_token *token);
 static void	expand_dollar_in_token_str(t_global *shell, t_token *token);
+static int	is_a_wildcard_in_token_list(t_token *token);
 
 int	expand_environment_variable_and_wildcard(t_global *shell, \
 	t_token **head_of_list)
@@ -24,7 +25,8 @@ int	expand_environment_variable_and_wildcard(t_global *shell, \
 		return (0);
 	expand_environment_variable(shell, head_of_list, *head_of_list);
 	find_and_merge_linked_token(shell, *head_of_list);
-	expand_wildcard(shell, head_of_list);
+	if (is_a_wildcard_in_token_list(*head_of_list))
+		expand_wildcard(shell, head_of_list);
 	empty_token_assignation(*head_of_list);
 	if (check_for_ambiguous_redirect(*head_of_list))
 	{
@@ -73,4 +75,16 @@ static void	expand_dollar_in_token_str(t_global *shell, t_token *token)
 	token->str = ft_strjoin_and_free_s2(token->temp_expand, token->str);
 	test_failed_malloc(shell, token->str);
 	ft_free(token->temp_expand);
+}
+
+static int	is_a_wildcard_in_token_list(t_token *token)
+{
+	while (token)
+	{
+		if ((token->token == CMD || token->token == DOLLAR) \
+			&& ft_is_inside('*', token->str))
+			return (1);
+		token = token->next;
+	}
+	return (0);
 }

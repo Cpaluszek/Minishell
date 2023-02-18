@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 16:44:11 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:02:40 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_exec {
 // void	exec_start(t_global *shell, t_token *token_list);
 int		exec_token_list(t_global *shell, t_block *block, t_token *token);
 int		exec_child(t_global *shell, t_token *command, t_token *pipe);
-void	exec_block(t_global *shell, t_block *block);
+void	exec_block_list(t_global *shell, t_block *block);
 void	wait_for_token_list(t_token *token);
 
 /*
@@ -47,13 +47,14 @@ int		print_execution_error(char *name);
 /*
 	--------- Redirections functions -----------
 */
-void	open_and_immediatly_close_redirection(t_token *token);
 int		open_command_redirections(t_token *command, t_token *token);
-void	set_block_redirection_for_command(t_block *block, t_token *command);
-void	set_block_redirections(t_global *shell, t_block *block);
-void	close_all_file_descriptors(t_list *fd_list);
-void	add_fd_to_list(t_global *shell, int *fd);
 int		open_block_redirections(t_block *block);
+void	set_block_fd_output_and_close_unused_fd(t_block *block);
+void	set_block_fd_input_and_close_unused_fd(t_block *block);
+void	set_block_redirection_for_command(t_block *block, t_token *command);
+void	close_block_redirection(t_block *block);
+void	open_and_immediatly_close_redirection(t_token *token);
+void	close_all_file_descriptors(t_list *fd_list);
 int		dup_fds(t_token *token);
 
 /*

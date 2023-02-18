@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 12:07:57 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/18 14:55:40 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,7 @@ typedef struct s_block {
 	struct s_block	*upper_block;
 	struct s_token	*token_list;
 	struct s_token	*redirection_token_list;
-	int				redirection_status;
 	int				block_level;
-	int				fd_input_level;
-	int				fd_output_level;
 	int				*fd_input;
 	int				*fd_output;
 	bool			make_a_pipe;

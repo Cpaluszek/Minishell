@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:37:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 16:42:51 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/18 12:14:14 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	exit_shell_from_signal(t_global *shell)
 	if (isatty(STDIN) && tcsetattr(0, TCSANOW, &shell->saved_attr) == -1)
 		perror(ERR_TCSET);
 	printf("exit\n");
-	rl_clear_history();
+	// rl_clear_history();
 	free_structs(shell);
 	exit(g_status);
 }

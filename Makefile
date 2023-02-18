@@ -38,7 +38,7 @@ PARSING_FILES	:=	block_list_functions.c \
 					token_list_functions.c \
 					token_parsing.c \
 					utils_parsing.c \
-					utils_parsing2.c
+					utils_parsing2.c \
 
 EXPAND_DIR		:=	expand
 EXPAND_FILES	:=	add_path_to_command.c \
@@ -53,12 +53,13 @@ EXPAND_FILES	:=	add_path_to_command.c \
 
 EXEC_DIR		:=	exec
 EXEC_FILES		:=	exec.c \
+					command_redirections.c \
 					child.c \
 					exec_block.c \
-					open_block_redirection.c \
-					redirections.c \
+					exec_errors.c \
 					exec_utils.c \
-					exec_errors.c
+					open_block_redirection.c \
+					set_block_redirection.c \
 					
 BUILTIN_DIR		:=	builtins
 BUILTIN_FILES	:=	parse_builtins.c \
