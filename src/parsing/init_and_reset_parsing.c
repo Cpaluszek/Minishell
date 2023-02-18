@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_and_reset_parsing.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/17 14:11:39 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/18 11:04:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	set_environment(t_global *shell, char **env)
 		shell->env = ft_tab_strdup(env);
 	test_failed_malloc(shell, env);
 	increment_shlvl(shell);
-	shell->env_list = make_env_list(shell, env);
+	shell->env_list = make_env_list(shell, shell->env);
 }
 
 /**
