@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/18 19:25:21 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 13:10:34 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	wait_for_token_list(t_token *token)
 					token->exit_status = 128 + WTERMSIG(token->exit_status);
 			}
 			g_status = token->exit_status;
+			// dprintf(1, "EXIT FROM WAITING token_list : %d\n", g_status);
 		}
 		token = token->next;
 	}

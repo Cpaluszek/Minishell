@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/19 00:51:22 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 13:10:27 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ static void	exec_block(t_global *shell, t_block *block)
 		exec_token_list(shell, block, block->token_list);
 		close_block_pipe_redirection(block);
 		if (block->logical_link != PIPE_LINK)
-			wait_for_token_list(block->token_list);
-		block->exit_status = g_status;
+			block->exit_status = g_status;
 	}
 }
 
@@ -82,7 +81,7 @@ static void	exec_sub_block(t_global *shell, t_block *block)
 	set_block_fd_output_and_close_unused_fd(block);
 	exec_block_list(shell, block->sub_block);
 	close_block_redirection(block);
-	block->exit_status = g_status;
+	// dprintf(1, "EXIT FROM SUB BLOCK (lvl : %d) : %d\n", block->block_level, g_status);
 	exit(g_status);
 }
 
@@ -103,15 +102,25 @@ static void	wait_for_all_piped_block(t_block *block)
 {
 	while (block->prev && block->prev->logical_link == PIPE_LINK)
 		block = block->prev;
-	while (block && block->logical_link == PIPE_LINK)
+	while (block)
 	{
-		waitpid(block->pid, &block->exit_status, 0);
+		if (block->token_list)
+		{
+			wait_for_token_list(block->token_list);
+			// dprintf(1, "EXIT FROM token_list (lvl : %d) : %d\n", block->block_level, g_status);
+			block->exit_status = g_status;
+		}
+		else
+		{
+			waitpid(block->pid, &block->exit_status, 0);
+			if (WIFEXITED(block->exit_status))
+				block->exit_status = WEXITSTATUS(block->exit_status);
+			else if (WIFSIGNALED(block->exit_status))
+				block->exit_status = 128 + WTERMSIG(block->exit_status);
+		}
+		g_status = block->exit_status;
 		block = block->next;
+		if (block && block->prev->logical_link != PIPE_LINK)
+			break ;
 	}
-	waitpid(block->pid, &block->exit_status, 0);
-	if (WIFEXITED(block->exit_status))
-		block->exit_status = WEXITSTATUS(block->exit_status);
-	else if (WIFSIGNALED(block->exit_status))
-		block->exit_status = 128 + WTERMSIG(block->exit_status);
-	g_status = block->exit_status;
 }

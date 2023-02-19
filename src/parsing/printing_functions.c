@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:01:09 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 11:24:13 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/19 01:29:26 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,7 @@ static void	print_command_line2(t_token *token_list, int fd)
 		}
 		else
 		{
-			if (token_list->token <= OUTPUT_APPEND)
-				dprintf(fd, "%s", token_list->str);
+			dprintf(fd, "%s", token_list->str);
 			// dprintf(fd, "], (%p)} -> ", &token_list->fd_file);
 			dprintf(fd, " -> ");
 		}

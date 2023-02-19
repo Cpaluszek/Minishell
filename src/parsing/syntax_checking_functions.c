@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_checking_functions.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:24:16 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 16:39:23 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/19 01:41:12 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,10 @@ int	cmd_before_or_after_parenthesis(t_global *shell, \
 		token = token->next;
 		while (token && token->token >= CMD && token->space_link == false)
 			token = token->next;
-		if (token && token->next && token->next->token >= CMD)
+		token = token->next;
+		if (token && token->token >= CMD)
 			return (print_syntax_error(shell, \
-				token->next->origin_token_str));
+				token->origin_token_str));
 	}
 	if (!token)
 		return (0);
