@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:21:56 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 16:26:01 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/19 14:06:40 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 
 static int	is_a_directory(char *path);
 
+/**
+ * @brief Display a message corresponding to the reason why the 
+ * path cannot be executate.
+ * 
+ * @return 0 or 1;
+ */
 int	exec_cmd_not_found(t_token *token)
 {
 	if (ft_strchr(token->cmd_path, '/') != NULL && (access(token->cmd_path, \
@@ -46,6 +52,11 @@ int	exec_cmd_not_found(t_token *token)
 	return (0);
 }
 
+/**
+ * @brief Display a message corresponding to the errno id of the error.
+ * 
+ * @return -1
+ */
 int	print_execution_error(char *name)
 {
 	ft_printf_fd(2, "msh: %s: %s\n", name, strerror(errno));

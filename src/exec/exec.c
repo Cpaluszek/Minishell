@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/19 01:13:17 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 13:54:15 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #include "exec.h"
 #include "input.h"
 
-static void	exec_cmd(t_global *shell, t_block *block, t_exec *data);
-static int	check_token(t_global *shell, t_token *token, t_exec *data);
-static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data);
+static void	execute_command( t_global *shell, t_block *block, t_exec *data);
+static int	find_command_and_next_pipe(t_global *shell, \
+			t_token *token, t_exec *data);
+static void	setting_command_execution(t_global *shell, \
+			t_block *block, t_exec *data);
 static void	close_command_pipe_redirections(t_exec *data, t_token *command);
 
 int	exec_token_list(t_global *shell, t_block *block, t_token *token)
@@ -31,7 +33,7 @@ int	exec_token_list(t_global *shell, t_block *block, t_token *token)
 		data.first_token = token;
 		while (token)
 		{
-			if (check_token(shell, token, &data))
+			if (find_command_and_next_pipe(shell, token, &data))
 				break ;
 			token = token->next;
 		}
@@ -39,13 +41,14 @@ int	exec_token_list(t_global *shell, t_block *block, t_token *token)
 			data.pipe = NULL;
 		else
 			token = token->next;
-		check_cmd_exec(shell, block, &data);
+		setting_command_execution(shell, block, &data);
 		data.prev_pipe = data.pipe;
 	}
 	return (0);
 }
 
-static int	check_token(t_global *shell, t_token *token, t_exec *data)
+static int	find_command_and_next_pipe(t_global *shell, \
+			t_token *token, t_exec *data)
 {
 	if (token->token == CMD)
 		data->cmd = token;
@@ -63,7 +66,8 @@ static int	check_token(t_global *shell, t_token *token, t_exec *data)
 	return (0);
 }
 
-static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data)
+static void	setting_command_execution(t_global *shell, \
+			t_block *block, t_exec *data)
 {
 	t_token	*command;
 
@@ -80,14 +84,14 @@ static void	check_cmd_exec(t_global *shell, t_block *block, t_exec *data)
 			return ;
 		}
 		set_block_redirection_for_command(block, command);
-		exec_cmd(shell, block, data);
+		execute_command(shell, block, data);
 	}
 	else
 		open_and_immediatly_close_redirection(data->first_token);
 	close_command_pipe_redirections(data, command);
 }
 
-static void	exec_cmd( t_global *shell, t_block *block, t_exec *data)
+static void	execute_command( t_global *shell, t_block *block, t_exec *data)
 {
 	t_token	*command;
 
@@ -109,7 +113,7 @@ static void	exec_cmd( t_global *shell, t_block *block, t_exec *data)
 	{
 		exec_child(shell, command, data->pipe, block);
 		close_command_pipe_redirections(data, command);
-		close_heredocs_file_descriptors(shell->block_fd_list);
+		close_heredocs_file_descriptors(shell->heredoc_fd_list);
 		close_block_redirection(block);
 		exit(g_status);
 	}

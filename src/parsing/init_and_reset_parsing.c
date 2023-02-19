@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:52:00 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/18 19:21:22 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 13:54:28 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	set_environment(t_global *shell, char **env)
 	shell->token_list = NULL;
 	shell->block_list = NULL;
 	shell->input_completed = NULL;
-	shell->block_fd_list = NULL;
+	shell->heredoc_fd_list = NULL;
 	shell->nb_open_parenthesis = 0;
 	if (env != NULL && env[0] == NULL)
 		shell->env = set_minimum_env();
@@ -99,8 +99,8 @@ void	reset_commands(t_global	*shell)
 	shell->input_completed = NULL;
 	shell->command_line = BEGIN;
 	shell->nb_open_parenthesis = 0;
-	close_heredocs_file_descriptors(shell->block_fd_list);
-	ft_lstclear(&shell->block_fd_list, NULL);
+	close_heredocs_file_descriptors(shell->heredoc_fd_list);
+	ft_lstclear(&shell->heredoc_fd_list, NULL);
 	if (shell->block_list)
 		ft_lstclear_block(&shell->block_list);
 	else

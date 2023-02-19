@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:15:18 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/18 19:18:04 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 13:53:26 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	add_fd_to_list(t_global *shell, int *fd)
 
 	new_fd = ft_lstnew(fd);
 	test_failed_malloc(shell, new_fd);
-	ft_lstadd_back(&shell->block_fd_list, new_fd);
+	ft_lstadd_back(&shell->heredoc_fd_list, new_fd);
 }
 
 void	close_heredocs_file_descriptors(t_list *fd_list)

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:49 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/18 19:50:31 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 13:57:28 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		central_parsing(t_global *shell, char *prompt);
 
 void	set_environment(t_global *shell, char **env);
 void	reset_commands(t_global	*shell);
-void	close_heredocs_file_descriptors(t_list *fd_list);
 void	token_parsing(t_global *shell);
 int		new_token(t_token **token_list, char *str, \
 		int len, enum e_token type);
@@ -42,9 +41,6 @@ t_token	*create_sub_token_list(t_global *shell, char *str);
 */
 
 int		syntax_checking(t_global *shell);
-int		syntax_checking_end(t_global *shell);
-void	assign_ambiguous_redirect(t_global *shell, t_token *token, \
-		t_token *expanded_wildcard);
 void	find_and_merge_linked_token(t_global *shell, t_token *head_list);
 
 /*
@@ -63,7 +59,9 @@ t_block	*block_parsing(t_global *shell, t_block *upper_block, \
 /*
 	-------------- PARSING UTILS ---------------------------------
 */
+
 void	empty_token_assignation(t_token *token_list);
+void	close_heredocs_file_descriptors(t_list *fd_list);
 void	remove_empty_token(t_token **head_list, t_token *token);
 char	**get_path(t_global *shell, char **env);
 int		not_only_spaces(char *line);
@@ -73,6 +71,6 @@ void	print_command_line(t_token *token_list);
 void	print_block(t_block *block, int fd);
 void	test_failed_malloc(t_global *shell, void *content);
 void	insert_token_list(t_token **head_list, t_token *token, \
-t_token *splitted_token_list);
+		t_token *splitted_token_list);
 
 #endif

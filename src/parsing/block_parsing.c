@@ -6,14 +6,12 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 23:20:20 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 00:20:32 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 13:43:23 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "token_list_functions.h"
-
-//TODO : GARBAGE COLLECTOR pour les fails de mallocs
 
 static t_token	*create_new_block(t_global *shell, t_block **block_list, \
 	t_block *upper_block, t_token *token);

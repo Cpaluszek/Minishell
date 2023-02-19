@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:58:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/18 14:55:40 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 13:53:16 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ typedef struct s_global {
 	t_block			*block_list;
 	t_token			*token_list;
 	t_token			*here_doc_list;
-	t_list			*block_fd_list;
+	t_list			*heredoc_fd_list;
 	t_list			*garbage_block_list;
 	int				command_line;
 	struct termios	saved_attr;

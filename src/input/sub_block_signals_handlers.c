@@ -6,15 +6,15 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 00:46:31 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/19 01:00:03 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 14:12:13 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
 /**
- * @brief signal handler: ctrl-C execution mode
- * Kill the running process and give the prompt back
+ * @brief Kill the running  process and give the prompt back
+ * without any end of line
  * 
  * @param signum signal code
  * @param info additional information about the signal
@@ -29,8 +29,8 @@ void	handle_execution_sub_block_sigint(int signum, siginfo_t \
 }
 
 /**
- * @brief signal handler: ctrl-\ execution mode
- * Kill the running  process and give the prompt back
+ * @brief Kill the running  process and give the prompt back
+ * without any end of line
  * 
  * @param signum signal code
  * @param info additional information about the signal

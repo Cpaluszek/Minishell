@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:37:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/18 19:21:57 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 13:53:38 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	free_structs(t_global *shell)
 	ft_free_split(shell->env);
 	ft_free_split(shell->path);
 	ft_lstclear(&shell->env_list, ft_free);
-	ft_lstclear(&shell->block_fd_list, NULL);
+	ft_lstclear(&shell->heredoc_fd_list, NULL);
 	if (shell->block_list)
 		ft_lstclear_block(&shell->block_list);
 	else
 		ft_lstclear_token(&shell->token_list);
-	close_heredocs_file_descriptors(shell->block_fd_list);
+	close_heredocs_file_descriptors(shell->heredoc_fd_list);
 	ft_free(shell->input);
 	ft_free(shell->input_completed);
 }

@@ -6,12 +6,18 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:45:52 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/19 13:10:34 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 14:10:58 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
+/**
+ * @brief Wait for all command token in the concerning block.
+ * The global exit code will be set as the return exit code of 
+ * the last command executed.
+ * 
+ */
 void	wait_for_token_list(t_token *token)
 {
 	while (token)

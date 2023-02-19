@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/19 13:10:27 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 14:09:11 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ static t_block	*find_next_block_to_execute(t_block *block)
 	return (block);
 }
 
+
+/**
+ * @brief Will go back to the last previous block with 
+ * a PIPE_LINK. Then will wait each block.
+ */
 static void	wait_for_all_piped_block(t_block *block)
 {
 	while (block->prev && block->prev->logical_link == PIPE_LINK)
