@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:31:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/15 14:19:33 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:51:03 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_shell_attr(t_global *shell);
 void	set_interactive_signals(t_global *shell);
 void	set_execution_signals(t_global *shell);
 void	set_here_doc_signals(t_global *shell);
+void	set_sub_block_execution_signals(void);
 
 /*
 	--------- Signals Handlers -----------
@@ -36,5 +37,9 @@ void	handle_abort_input(int signum, siginfo_t *info, void *context);
 void	handle_execution_sigint(int signum, siginfo_t *info, void *context);
 void	handle_execution_sigquit(int signum, siginfo_t *info, void *context);
 void	handle_here_doc_sigint(int signum, siginfo_t *info, void *context);
+void	handle_execution_sub_block_sigquit(int signum, siginfo_t \
+		*info, void *context);
+void	handle_execution_sub_block_sigint(int signum, siginfo_t \
+		*info, void *context);
 
 #endif

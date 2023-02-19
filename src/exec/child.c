@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:41:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/18 19:19:05 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/18 20:46:30 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	exec_child(t_global *shell, t_token *command, t_token *pipe, \
 	close_block_redirection(block);
 	execve(command->cmd_path, command->cmd, env);
 	perror(ERR_EXEC);
+	g_status = EXIT_FAILURE;
 	return (EXIT_FAILURE);
 }

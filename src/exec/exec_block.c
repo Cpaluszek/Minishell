@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/18 19:20:06 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 00:51:22 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	exec_block(t_global *shell, t_block *block)
 
 static void	exec_sub_block(t_global *shell, t_block *block)
 {
+	set_sub_block_execution_signals();
 	if (block->make_a_pipe)
 		close(block->pipe_fd[0]);
 	if (expand_environment_variable_and_wildcard(shell, \
@@ -81,6 +82,7 @@ static void	exec_sub_block(t_global *shell, t_block *block)
 	set_block_fd_output_and_close_unused_fd(block);
 	exec_block_list(shell, block->sub_block);
 	close_block_redirection(block);
+	block->exit_status = g_status;
 	exit(g_status);
 }
 
@@ -104,9 +106,12 @@ static void	wait_for_all_piped_block(t_block *block)
 	while (block && block->logical_link == PIPE_LINK)
 	{
 		waitpid(block->pid, &block->exit_status, 0);
-		g_status = block->exit_status;
 		block = block->next;
 	}
 	waitpid(block->pid, &block->exit_status, 0);
+	if (WIFEXITED(block->exit_status))
+		block->exit_status = WEXITSTATUS(block->exit_status);
+	else if (WIFSIGNALED(block->exit_status))
+		block->exit_status = 128 + WTERMSIG(block->exit_status);
 	g_status = block->exit_status;
 }

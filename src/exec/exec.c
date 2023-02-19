@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:00:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/18 19:26:33 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/18 20:08:14 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,9 @@ static void	exec_cmd( t_global *shell, t_block *block, t_exec *data)
 		signal(SIGINT, SIG_IGN);
 		signal(SIGQUIT, SIG_IGN);
 	}
-	if (command->pid == 0 && exec_child(shell, command, data->pipe, block))
+	if (command->pid == 0)
 	{
+		exec_child(shell, command, data->pipe, block);
 		close_command_pipe_redirections(data, command);
 		close_heredocs_file_descriptors(shell->block_fd_list);
 		close_block_redirection(block);

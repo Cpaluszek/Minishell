@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 12:39:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/12 15:53:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:50:44 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,20 @@ void	set_execution_signals(t_global *shell)
 	sa.sa_sigaction = handle_execution_sigint;
 	sigaction(SIGINT, &sa, NULL);
 	sa.sa_sigaction = handle_execution_sigquit;
+	sigaction(SIGQUIT, &sa, NULL);
+}
+
+void	set_sub_block_execution_signals(void)
+{
+	struct sigaction	sa;
+
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART;
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+	sa.sa_sigaction = handle_execution_sub_block_sigint;
+	sigaction(SIGINT, &sa, NULL);
+	sa.sa_sigaction = handle_execution_sub_block_sigquit;
 	sigaction(SIGQUIT, &sa, NULL);
 }
 
