@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:24:16 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/19 18:01:54 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/19 18:13:36 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	syntax_exception(t_token *token1, t_token *token2)
 	}
 	if (token1->token == PIPE && token2->token == OPEN_PAR)
 		return (3);
-	if (token1->token == CLOSE_PAR && (token2->token != CLOSE_PAR))
+	if (token1->token == CLOSE_PAR && (token2->token < OPEN_PAR))
 		return (4);
 	if (token1->token == OPEN_PAR && (token2->token <= OUTPUT_APPEND))
 		return (5);
