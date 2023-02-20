@@ -26,7 +26,7 @@ void	exec_block_list(t_global *shell, t_block *block)
 	{
 		if (block->make_a_pipe == true)
 			if (pipe(block->pipe_fd) == -1)
-			error_exit_shell(shell, ERR_PIPE);
+				error_exit_shell(shell, ERR_PIPE);
 		exec_block(shell, block);
 		if (block->logical_link == PIPE_LINK)
 			block = block->next;

@@ -17,7 +17,11 @@
 
 int		g_status;
 
-// Todo: fd from a pipe is leaking from a block
+// Todo : check protect fork and pipe in exec_block_list
+// Todo: here_doc sometimes fail with `<< a cat` -> order matter
+// Todo: check headers and remove TEIKI
+// Todo: unset du PATH -> /bin/ls should work
+// Todo: remove all todos
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;
