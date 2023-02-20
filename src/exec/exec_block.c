@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exec_block.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/19 14:09:11 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/20 18:23:30 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand.h"
 #include "exec.h"
 #include "input.h"
+#include "minishell.h"
 
 static t_block	*find_next_block_to_execute(t_block *block);
 static void		exec_block(t_global *shell, t_block *block);
@@ -24,7 +25,8 @@ void	exec_block_list(t_global *shell, t_block *block)
 	while (block)
 	{
 		if (block->make_a_pipe == true)
-			pipe(block->pipe_fd);
+			if (pipe(block->pipe_fd) == -1)
+			error_exit_shell(shell, ERR_PIPE);
 		exec_block(shell, block);
 		if (block->logical_link == PIPE_LINK)
 			block = block->next;
@@ -41,6 +43,8 @@ static void	exec_block(t_global *shell, t_block *block)
 	if (block->sub_block)
 	{
 		block->pid = fork();
+		if (block->pid == -1)
+			error_exit_shell(shell, ERR_FORK);
 		if (block->pid == 0)
 			exec_sub_block(shell, block);
 		close_block_pipe_redirection(block);
@@ -81,7 +85,6 @@ static void	exec_sub_block(t_global *shell, t_block *block)
 	set_block_fd_output_and_close_unused_fd(block);
 	exec_block_list(shell, block->sub_block);
 	close_block_redirection(block);
-	// dprintf(1, "EXIT FROM SUB BLOCK (lvl : %d) : %d\n", block->block_level, g_status);
 	exit(g_status);
 }
 
@@ -98,7 +101,6 @@ static t_block	*find_next_block_to_execute(t_block *block)
 	return (block);
 }
 
-
 /**
  * @brief Will go back to the last previous block with 
  * a PIPE_LINK. Then will wait each block.
@@ -112,7 +114,6 @@ static void	wait_for_all_piped_block(t_block *block)
 		if (block->token_list)
 		{
 			wait_for_token_list(block->token_list);
-			// dprintf(1, "EXIT FROM token_list (lvl : %d) : %d\n", block->block_level, g_status);
 			block->exit_status = g_status;
 		}
 		else

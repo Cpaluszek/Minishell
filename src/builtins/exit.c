@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:57:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/16 12:49:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:34:45 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	ft_isnum(char *str)
 			return (0);
 		i++;
 	}
-	if (strlen(str) > ft_strlen(LONG_MIN_STR))
+	if (ft_strlen(str) > ft_strlen(LONG_MIN_STR))
 		return (0);
 	else if (str[0] == '-' && ft_strlen(str) == ft_strlen(LONG_MIN_STR))
 	{

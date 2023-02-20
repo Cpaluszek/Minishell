@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:37:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/19 13:53:38 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/20 13:52:28 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 #include <readline/readline.h>
 
 void	close_heredocs_file_descriptors(t_list *fd_list);
-
-// TODO : GARBAGE COLLECTOR FOR BLOCK PARSING
 
 void	free_structs(t_global *shell)
 {
@@ -53,7 +51,7 @@ void	exit_shell_from_signal(t_global *shell)
 	if (isatty(STDIN) && tcsetattr(0, TCSANOW, &shell->saved_attr) == -1)
 		perror(ERR_TCSET);
 	printf("exit\n");
-	// rl_clear_history();
+	rl_clear_history();
 	free_structs(shell);
 	exit(g_status);
 }

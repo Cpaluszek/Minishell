@@ -31,7 +31,6 @@ PARSING_FILES	:=	block_list_functions.c \
 					fill_all_heredocs.c \
 					ft_lstnew_token.c \
 					init_and_reset_parsing.c \
-					printing_functions.c \
 					quote_parsing.c \
 					syntax_checking.c \
 					syntax_checking_functions.c \
@@ -118,8 +117,8 @@ CCDEFS			:=	NAME=\"$(NAME)\"
 
 # Compiler options
 CC				:=	cc
-DEBUG_FLAG		:=	-g3 -fsanitize=address
-CC_FLAGS		:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
+DEBUG_FLAG		:=	-g3 #-fsanitize=address
+CC_FLAGS		:=	-Wextra -Werror -Wall
 CC_DEPS_FLAGS	:=	-MP -MMD
 CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))
 

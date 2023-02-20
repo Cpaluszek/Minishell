@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:57:23 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/18 19:17:29 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/20 13:51:24 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	set_block_fd_output_and_close_unused_fd(t_block *block);
 void	set_block_fd_input_and_close_unused_fd(t_block *block);
 void	set_block_redirection_for_command(t_block *block, t_token *command);
 void	close_block_redirection(t_block *block);
-void	close_block_pipe_redirection(t_block * block);
+void	close_block_pipe_redirection(t_block *block);
 void	set_block_redirection(t_block *block, t_block *upper_block);
 void	open_and_immediatly_close_redirection(t_token *token);
 void	close_heredocs_file_descriptors(t_list *fd_list);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/19 14:00:32 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/20 18:22:42 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv, char **env)
 			exec_block_list(&shell, shell.block_list);
 		}
 		else if (shell.command_line == SYNTAX_ERROR)
-			g_status = 258;
+			g_status = 2;
 	}
 	return (EXIT_SUCCESS);
 }

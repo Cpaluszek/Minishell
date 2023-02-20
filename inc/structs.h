@@ -105,9 +105,7 @@ typedef struct s_global {
 	int				nb_open_parenthesis;
 	t_block			*block_list;
 	t_token			*token_list;
-	t_token			*here_doc_list;
 	t_list			*heredoc_fd_list;
-	t_list			*garbage_block_list;
 	int				command_line;
 	struct termios	saved_attr;
 	struct termios	custom_attr;
