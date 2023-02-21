@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/20 18:22:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/21 08:30:37 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int		g_status;
 // Todo: here_doc sometimes fail with `<< a cat` -> order matter
 // Todo: check headers and remove TEIKI
 // Todo: unset du PATH -> /bin/ls should work
+// Todo : do not export charset with non alhanumeri character sur as {,}, ...
+// Todo : do not expand wildcard in export function.
+// Todo : merge quote with wildcards correctly.
 // Todo: remove all todos
 int	main(int argc, char **argv, char **env)
 {
