@@ -31,6 +31,7 @@ PARSING_FILES	:=	block_list_functions.c \
 					fill_all_heredocs.c \
 					ft_lstnew_token.c \
 					init_and_reset_parsing.c \
+					printing_functions.c \
 					quote_parsing.c \
 					syntax_checking.c \
 					syntax_checking_functions.c \

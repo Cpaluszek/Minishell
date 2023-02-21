@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/21 09:17:43 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/21 09:37:51 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		g_status;
 
 // Todo: here_doc sometimes fail with `<< a cat` -> order matter
 // Todo: check headers and remove TEIKI
-// Todo : do not export charset with non alhanumeri character sur as {,}, ...
+// Todo : do not export charset with non alphanumeri character sur as {,}, ...
 // Todo : do not expand wildcard in export function.
 // Todo : merge quote with wildcards correctly.
 // Todo: remove all todos
