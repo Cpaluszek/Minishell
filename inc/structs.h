@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:02:54 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:02:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:17:16 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_token {
 
 typedef struct s_global {
 	t_list			*env_list;
+	char			*name;
 	char			**path;
 	char			**env;
 	char			*input;

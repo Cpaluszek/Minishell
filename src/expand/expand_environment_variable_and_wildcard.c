@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_environment_variable_and_wildcard.c         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:04:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:04:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:21:53 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

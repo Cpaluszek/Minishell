@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_sub_dollar_list.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:07:15 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:07:15 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:21:47 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_block_redirection.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:03:26 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:03:26 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:21:30 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

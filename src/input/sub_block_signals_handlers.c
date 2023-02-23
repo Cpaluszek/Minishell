@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sub_block_signals_handlers.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:05:45 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:05:45 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:22:35 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

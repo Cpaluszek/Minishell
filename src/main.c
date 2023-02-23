@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:05:12 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:07:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:18:42 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv, char **env)
 	t_global		shell;
 
 	(void) argc;
-	(void) argv;
+	shell.name = argv[0];
 	g_status = EXIT_SUCCESS;
 	init_shell_attr(&shell);
 	set_environment(&shell, env);

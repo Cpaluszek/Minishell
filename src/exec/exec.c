@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:01:12 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:01:12 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:19:25 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static void	execute_command( t_global *shell, t_block *block, t_exec *data)
 		close_command_pipe_redirections(data, command);
 		error_exit_shell(shell, ERR_FORK);
 	}
-	if (command->pid != 0 && ft_strcmp(command->str, "./minishell") == 0)
+	if (command->pid != 0 && ft_strcmp(command->str, shell->name) == 0)
 	{
 		signal(SIGINT, SIG_IGN);
 		signal(SIGQUIT, SIG_IGN);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_redirections.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:03:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:03:59 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:19:43 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
