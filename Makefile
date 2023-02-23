@@ -184,5 +184,3 @@ banner:
 	@echo ""
 
 .PHONY: all clean fclean re force banner
-eewer
-w
