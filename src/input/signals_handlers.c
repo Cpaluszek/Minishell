@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals_handlers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/20 13:53:13 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:01:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	handle_execution_sigint(int signum, siginfo_t *info, void *context)
 	write(1, "\n", 1);
 	g_status = 128 + signum;
 }
-
 
 void	handle_execution_sigquit(int signum, siginfo_t *info, void *context)
 {

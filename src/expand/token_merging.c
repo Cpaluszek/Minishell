@@ -98,7 +98,6 @@ t_token *first_cmd,	int size_cmd_tab)
 	{
 		if (token->token >= CMD)
 		{
-			
 			first_cmd->cmd[i] = ft_strdup(token->str);
 			test_failed_malloc(shell, first_cmd->cmd[i++]);
 			temp = token;
