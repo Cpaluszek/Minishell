@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   empty_token_assignation.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 15:01:30 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/17 16:27:18 by jlitaudo         ###   ########.fr       */
+/*   Created: 2023/02/23 13:05:57 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/02/23 13:05:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

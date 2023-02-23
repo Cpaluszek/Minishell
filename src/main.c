@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 11:27:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 11:27:35 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/02/23 13:05:12 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/02/23 13:05:26 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 
 int		g_status;
 
-// Todo: check headers and remove TEIKI
 // Todo : do not expand wildcard in export function.
 // Todo : merge quote with wildcards correctly.
-// Todo: remove all todos
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;

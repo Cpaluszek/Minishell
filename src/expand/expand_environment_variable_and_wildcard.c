@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_environment_variable_and_wildcard.c         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 14:27:59 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/18 12:47:07 by Teiki            ###   ########.fr       */
+/*   Created: 2023/02/23 13:04:07 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/02/23 13:04:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
