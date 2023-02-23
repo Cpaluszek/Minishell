@@ -3,16 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   exec_block.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
 /*   Updated: 2023/02/20 13:53:31 by jlitaudo         ###   ########.fr       */
+=======
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
+/*   Updated: 2023/02/20 18:23:30 by cpalusze         ###   ########.fr       */
+>>>>>>> c21f1c66cd386ca3222eeb0128b9e340507c6b7d
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand.h"
 #include "exec.h"
 #include "input.h"
+#include "minishell.h"
 
 static t_block	*find_next_block_to_execute(t_block *block);
 static void		exec_block(t_global *shell, t_block *block);
@@ -24,7 +32,8 @@ void	exec_block_list(t_global *shell, t_block *block)
 	while (block)
 	{
 		if (block->make_a_pipe == true)
-			pipe(block->pipe_fd);
+			if (pipe(block->pipe_fd) == -1)
+				error_exit_shell(shell, ERR_PIPE);
 		exec_block(shell, block);
 		if (block->logical_link == PIPE_LINK)
 			block = block->next;
@@ -41,6 +50,8 @@ static void	exec_block(t_global *shell, t_block *block)
 	if (block->sub_block)
 	{
 		block->pid = fork();
+		if (block->pid == -1)
+			error_exit_shell(shell, ERR_FORK);
 		if (block->pid == 0)
 			exec_sub_block(shell, block);
 		close_block_pipe_redirection(block);

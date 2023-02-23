@@ -19,7 +19,6 @@
 # define ERR_FORK			"fork"
 # define ERR_PIPE			"pipe"
 # define ERR_DUP2			"dup2"
-# define ERR_EXEC			"execve"
 # define ERR_WRITE			"write"
 # define ERR_CLOSE			"close"
 # define ERR_TCSET			"tcsetattr"

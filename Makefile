@@ -118,8 +118,8 @@ CCDEFS			:=	NAME=\"$(NAME)\"
 
 # Compiler options
 CC				:=	cc
-DEBUG_FLAG		:=	-g3 -fsanitize=address
-CC_FLAGS		:=	-Wextra -Werror -Wall $(DEBUG_FLAG)
+DEBUG_FLAG		:=	-g3 #-fsanitize=address
+CC_FLAGS		:=	-Wextra -Werror -Wall
 CC_DEPS_FLAGS	:=	-MP -MMD
 CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))
 

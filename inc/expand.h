@@ -31,7 +31,6 @@ int		new_token(t_token **token_list, char *str, \
 void	empty_token_assignation(t_token *token_list);
 void	remove_empty_token(t_token **head_list, t_token *token);
 void	add_fd_to_list(t_global *shell, int *fd);
-void	print_command_line(t_token *token_list);
 
 /*
 	----------------- MERGING & SETTING CMD PATH -----------------------

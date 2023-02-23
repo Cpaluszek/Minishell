@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fill_all_heredocs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:53:37 by jlitaudo          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/02/20 14:25:41 by jlitaudo         ###   ########.fr       */
+=======
+/*   Updated: 2023/02/21 09:39:59 by Teiki            ###   ########.fr       */
+>>>>>>> c21f1c66cd386ca3222eeb0128b9e340507c6b7d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +66,13 @@ static t_token	*merge_linked_token(t_global *shell, t_token *here_doc)
 	remove_token(temp);
 	while (token && token->token >= CMD)
 	{
+		if (token->space_link == true)
+			break ;
 		here_doc->str = ft_strjoin_and_free(here_doc->str, token->str);
 		test_failed_malloc(shell, here_doc->str);
 		temp = token;
 		token = token->next;
 		remove_token(temp);
-		if (!token || token->space_link == true)
-			break ;
 	}
 	return (token);
 }

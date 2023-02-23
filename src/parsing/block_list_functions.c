@@ -67,15 +67,6 @@ void	ft_lstclear_block(t_block **first_block)
 	*first_block = NULL;
 }
 
-t_block	*ft_lstlast_block(t_block *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
 t_block	*ft_lstnew_block(t_block *upper_block, t_token *token_list)
 {
 	t_block	*elem;

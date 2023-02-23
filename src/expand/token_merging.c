@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_merging.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:54:42 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/17 11:00:35 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:21:23 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ t_token *first_cmd,	int size_cmd_tab)
 	{
 		if (token->token >= CMD)
 		{
+			
 			first_cmd->cmd[i] = ft_strdup(token->str);
 			test_failed_malloc(shell, first_cmd->cmd[i++]);
 			temp = token;

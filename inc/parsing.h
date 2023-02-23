@@ -67,8 +67,6 @@ char	**get_path(t_global *shell, char **env);
 int		not_only_spaces(char *line);
 void	get_input(t_global *shell, char *prompt);
 void	remove_token(t_token *token);
-void	print_command_line(t_token *token_list);
-void	print_block(t_block *block, int fd);
 void	test_failed_malloc(t_global *shell, void *content);
 void	insert_token_list(t_token **head_list, t_token *token, \
 		t_token *splitted_token_list);

@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/19 14:00:32 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/21 09:37:51 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 
 int		g_status;
 
-// Todo: fd from a pipe is leaking from a block
+// Todo: here_doc sometimes fail with `<< a cat` -> order matter
+// Todo: check headers and remove TEIKI
+// Todo : do not export charset with non alphanumeri character sur as {,}, ...
+// Todo : do not expand wildcard in export function.
+// Todo : merge quote with wildcards correctly.
+// Todo: remove all todos
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;
@@ -42,7 +47,7 @@ int	main(int argc, char **argv, char **env)
 			exec_block_list(&shell, shell.block_list);
 		}
 		else if (shell.command_line == SYNTAX_ERROR)
-			g_status = 258;
+			g_status = 2;
 	}
 	return (EXIT_SUCCESS);
 }
