@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_block.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:58:02 by Teiki             #+#    #+#             */
-/*   Updated: 2023/02/19 14:09:11 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/20 13:53:31 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ static void	exec_sub_block(t_global *shell, t_block *block)
 	set_block_fd_output_and_close_unused_fd(block);
 	exec_block_list(shell, block->sub_block);
 	close_block_redirection(block);
-	// dprintf(1, "EXIT FROM SUB BLOCK (lvl : %d) : %d\n", block->block_level, g_status);
 	exit(g_status);
 }
 
@@ -98,7 +97,6 @@ static t_block	*find_next_block_to_execute(t_block *block)
 	return (block);
 }
 
-
 /**
  * @brief Will go back to the last previous block with 
  * a PIPE_LINK. Then will wait each block.
@@ -112,7 +110,6 @@ static void	wait_for_all_piped_block(t_block *block)
 		if (block->token_list)
 		{
 			wait_for_token_list(block->token_list);
-			// dprintf(1, "EXIT FROM token_list (lvl : %d) : %d\n", block->block_level, g_status);
 			block->exit_status = g_status;
 		}
 		else

@@ -6,11 +6,12 @@
 /*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:53:37 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/17 10:49:17 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:25:41 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include <unistd.h>
 
 static void		merge_heredoc_redirection(t_global *shell, t_token *token);
 static t_token	*merge_linked_token(t_global *shell, t_token *here_doc);
