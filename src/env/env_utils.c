@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:10:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/17 16:37:38 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:23:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "errors.h"
 #include "env.h"
-#define INVALID_ID_SET	"=?_:{}[] |*-+!@^&#$<>\\,.:;"
+#define INVALID_ID_SET	"=?:{}[] |*-+!@^&#$<>\\,.:;"
 
 /**
  * @brief check if the input is a valid identifier. A valid identifier can only
@@ -33,8 +33,10 @@ int	is_valid_identifier(char *str)
 	i = 0;
 	space_position = ft_strchr(str, '=');
 	concat_pos = ft_strnstr(str, CONCAT_VAR, ft_strlen(str));
-	if (concat_pos < space_position)
+	if (concat_pos != NULL && concat_pos < space_position)
 		space_position = concat_pos;
+	if (space_position == NULL)
+		space_position = str + ft_strlen(str);
 	while (str + i < space_position)
 	{
 		if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && \

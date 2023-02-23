@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "input.h"
-#include <fcntl.h>
 
 /**
  * @brief signal handler: ctrl-C here_doc
