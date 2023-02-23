@@ -31,7 +31,6 @@ typedef struct s_exec {
 	t_token	*pipe;
 }	t_exec;
 
-// void	exec_start(t_global *shell, t_token *token_list);
 int		exec_token_list(t_global *shell, t_block *block, t_token *token);
 int		exec_child(t_global *shell, t_token *command, t_token *pipe, \
 		t_block *block);

@@ -42,7 +42,6 @@ int	ft_echo(t_token *token, t_global *shell)
 	exit(EXIT_SUCCESS);
 }
 
-// Skip all "-n" and "-nnnnn"
 static int	echo_option(t_token *t, int *arg_i)
 {
 	int		new_line;

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Print a list of environement variables
 #include "minishell.h"
 #include "exec.h"
 

@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// Exit the shell
-// Optionnal parameter: exit status code
-// Check for valid exit code
 #include "minishell.h"
 #include "exec.h"
 #define EXIT_MSG "exit\n"
