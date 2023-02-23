@@ -24,7 +24,6 @@ static void	update_var(t_global *shell, char *new, char *var);
 static void	add_oldpwd_to_env(t_global *shell, char *new);
 static char	*cd_env_var(t_global *shell, char *var_name);
 
-// TOdo: check cd ~/../$USER
 int	ft_cd(t_token *token, t_global *shell)
 {
 	char	*target;

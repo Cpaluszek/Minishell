@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:05:12 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:05:26 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:07:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 int		g_status;
 
-// Todo : do not expand wildcard in export function.
-// Todo : merge quote with wildcards correctly.
 int	main(int argc, char **argv, char **env)
 {
 	t_global		shell;
