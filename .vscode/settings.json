@@ -22,7 +22,8 @@
 		"errors.h": "c",
 		"termios.h": "c",
 		"__config": "c",
-		"expand.h": "c"
+		"expand.h": "c",
+		"typeinfo": "c"
 	},
 	"makefile.launchConfigurations": [
 		{
