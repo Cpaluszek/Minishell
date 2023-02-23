@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/20 14:01:58 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:48:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #define HERE_DOC_PROMPT	"pipe heredoc> "
 
 static void	here_doc_child(t_global *shell, t_token *token);
-static void	get_here_doc_input(t_global *shell, char *delim, int fd);
-static void	here_doc_error(t_global *shell, char *str, int fd, char *error);
+static void	get_here_doc_input(t_global *shell, char *delim);
+static void	here_doc_error(t_global *shell, char *str, char *error);
 static int	check_here_doc_end(char *buff, char *delim);
 
 int	make_pipe_heredoc(t_global *shell, t_token *token)
@@ -38,6 +38,8 @@ int	make_pipe_heredoc(t_global *shell, t_token *token)
 	waitpid(token->pid, &token->exit_status, 0);
 	token->exit_status = WEXITSTATUS(token->exit_status);
 	g_status = token->exit_status;
+	if (g_status != 0)
+		close(token->pipe_fd[0]);
 	set_execution_signals(shell);
 	return (token->exit_status);
 }
@@ -47,13 +49,15 @@ static void	here_doc_child(t_global *shell, t_token *token)
 	set_here_doc_signals(shell);
 	if (close(token->pipe_fd[0]) == -1)
 		perror(ERR_CLOSE);
-	get_here_doc_input(shell, token->str, token->pipe_fd[1]);
+	if (dup2(STDOUT, token->pipe_fd[1]) == -1)
+		perror(ERR_DUP2);
 	if (close(token->pipe_fd[1]) == -1)
 		perror(ERR_CLOSE);
+	get_here_doc_input(shell, token->str);
 	exit(0);
 }
 
-static void	get_here_doc_input(t_global *shell, char *delim, int fd)
+static void	get_here_doc_input(t_global *shell, char *delim)
 {
 	char	*buff;
 	char	*content;
@@ -67,17 +71,17 @@ static void	get_here_doc_input(t_global *shell, char *delim, int fd)
 		buff = check_for_expand(shell, buff);
 		buff = ft_strjoin_and_free(buff, "\n");
 		if (buff == NULL)
-			here_doc_error(shell, content, fd, ERR_MALLOC);
+			here_doc_error(shell, content, ERR_MALLOC);
 		content = ft_strjoin_and_free(content, buff);
 		ft_free(buff);
 		if (content == NULL)
-			here_doc_error(shell, content, fd, ERR_MALLOC);
+			here_doc_error(shell, content, ERR_MALLOC);
 	}
 	ft_free(buff);
 	if (content == NULL)
 		return ;
-	if (write(fd, content, ft_strlen(content)) == -1)
-		here_doc_error(shell, content, fd, ERR_WRITE);
+	if (write(STDOUT, content, ft_strlen(content)) == -1)
+		here_doc_error(shell, content, ERR_WRITE);
 	ft_free(content);
 }
 
@@ -92,10 +96,8 @@ static int	check_here_doc_end(char *buff, char *delim)
 	return (0);
 }
 
-static void	here_doc_error(t_global *shell, char *str, int fd, char *error)
+static void	here_doc_error(t_global *shell, char *str, char *error)
 {
 	ft_free(str);
-	if (close(fd) == -1)
-		perror(ERR_CLOSE);
 	error_exit_shell(shell, error);
 }
