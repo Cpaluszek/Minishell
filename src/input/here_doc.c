@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:06:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 11:48:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:46:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	here_doc_child(t_global *shell, t_token *token)
 	set_here_doc_signals(shell);
 	if (close(token->pipe_fd[0]) == -1)
 		perror(ERR_CLOSE);
-	if (dup2(STDOUT, token->pipe_fd[1]) == -1)
+	if (dup2(token->pipe_fd[1], STDERR) == -1)
 		perror(ERR_DUP2);
 	if (close(token->pipe_fd[1]) == -1)
 		perror(ERR_CLOSE);
@@ -80,9 +80,10 @@ static void	get_here_doc_input(t_global *shell, char *delim)
 	ft_free(buff);
 	if (content == NULL)
 		return ;
-	if (write(STDOUT, content, ft_strlen(content)) == -1)
+	if (write(STDERR, content, ft_strlen(content)) == -1)
 		here_doc_error(shell, content, ERR_WRITE);
 	ft_free(content);
+	close(STDERR);
 }
 
 static int	check_here_doc_end(char *buff, char *delim)
